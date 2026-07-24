@@ -1,6 +1,136 @@
 [
     {
         "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] IC CASALE 3 - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC83300T",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.538910"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO CASALE 1 - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC832002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539027"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO VIGUZZOLO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC81200R",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539141"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] IC ALESSANDRIA SPINETTA MARENGO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC81700X",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539289"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] ALIC81800Q -ISTITUTO COMPRENSIVO  G.PASCOLI  FELIZZANO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC81800Q",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539347"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] ICFRANCESCONEGRI - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC824003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539404"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] N.BOBBIO  RIVALTA BORMIDA - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC809001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539513"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] I.C.CERRINA - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC811001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539608"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] IC MARTIRI DELLA BENDICTA - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC807009",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.539664"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Alessandria",
+        "titolo": "[CHIUSO] IC NOVI LIGURE 3 - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php#no-link-ALIC831006",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T18:39:05.540538"
+    },
+    {
+        "regione": "Piemonte",
         "provincia": "Torino",
         "titolo": "[CHIUSO] I.C. PINEROLO IV - [CDC: ADAA]",
         "data": "2026-07-24",
