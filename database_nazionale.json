@@ -1,5 +1,1448 @@
 [
     {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PINEROLO IV - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BN00Q",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518057"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CHIERI IV - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AT00D",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518171"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC VENARIA 1 - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8A300D",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518239"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC Bruino - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC837002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518303"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC ALBERTI-SALGARI - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AZ00C",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518406"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C.SUSA - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC880008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518487"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. - SANT ANTONINO DI SUSA - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC82400X",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518599"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DI RIVALTA - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC84100N",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518663"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC SALVEMINI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC82000L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518803"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BRANDIZZO RODARI - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC85300X",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518861"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO PINEROLO I - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BM00X",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518920"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. MARCONI COLLEGNO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CG002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.518976"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PACINOTTI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC81700R",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519073"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO NICHELINO II - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8A6001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519205"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C.GASSINO T.SE - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC851008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519262"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Istituto Comprensivo Sandro Pertini - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC881004",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519532"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BALANGERO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC829003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519625"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. SETTIMO III - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BB008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519873"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC UMBERTO SABA - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC878008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.519969"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO CAMBIANO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC85600B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.520059"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CONDOVE E S.AMBROGIO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC82500Q",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.520115"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BRUSASCO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC86300E",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.520169"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CASTELLAMONTE - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BS008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.520335"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC SETTIMO IV - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BC004",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.520669"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. MONTANARO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC852004",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.520725"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC PRIMO LEVI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC872009",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.521245"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Istituto Comprensivo TORINO II - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BE00Q",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.521299"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC PIER GIORGIO FRASSATI - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B2008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.521829"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DI CARIGNANO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AQ00L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.522264"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. DANTE DI NANNI - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC86700T",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.522393"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. BORGARETTO BEINASCO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC895002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.522957"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC 2 SAN MAURO TORINESE - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AW001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.523163"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. DRUENTO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC89000V",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.523215"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CALUSO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BU00X",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.523655"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CHIERI I - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AV005",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.523901"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO S. GIORGIO C.SE - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BT004",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.524370"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC I SAN MAURO TORINESE - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AX00R",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.525459"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] TOIC82600G - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC82600G",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.525651"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC ALMESE - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC82100C",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.525780"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. LEINI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC86100V",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.526142"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DI FIANO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC828007",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.526198"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] TOIC87401 - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC874001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.526411"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Istituto Comprensivo di Vigone - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC84700L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.526475"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC COLLEGNO III - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CH00T",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.526649"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC PINEROLO 2- LAURO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BJ00C",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.526858"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. NASI MONCALIERI - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC887003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.527033"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC PACCHIOTTI-VIA REVEL - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B500Q",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.528098"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC 66 MARTIRI DI GRUGLIASCO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC86200P",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.529483"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DI NOLE - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC830007",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.530108"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BRUNO CACCIA - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CA003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.530173"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PADRE GEMELLI - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC873005",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.530329"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] MATTEOTTI_PELLICO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B9003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.531084"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CASELETTE - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC822008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.531200"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. BUTTIGLIERA ALTA - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AF001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.531268"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C.ADELAIDE CAIROLI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC866002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.531526"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC SAN MAURIZIO MARIA MONTESSORI - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC831003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.532056"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DAVID BERTRAND - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AD009",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.532443"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC ENNIO MORRICONE - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B700B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.532627"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C.COSOLA DI CHIVASSO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BK008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.532763"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] D.D. COLLODI - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOEE01400B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.532979"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC Ilaria Alpi - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BD00X",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.533159"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC FORNO CANAVESE - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC84800C",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.533474"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BORGARO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC89100P",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.534205"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] TOIC8AE005 - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AE005",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.534480"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. Ugo FOSCOLO Torino - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B600G",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.534614"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. Duca d Aosta - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BV00Q",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.534749"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] toic80500e - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC80500E",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.534886"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. Ezio Bosso - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BX00B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.535320"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. CEFALONIA-MAZZINI - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B000L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.535377"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Istituto Comprensivo G. Rodari di Torre Pellice - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC81300D",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.535487"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Giuseppe Allievo - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOEE00400R",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.536046"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC MAPPANO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC860003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.537101"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PINEROLO V - CUMIANA - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC84600R",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.537372"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC SANTA MARIA - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC88500B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.537778"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I. C. REGIO PARCO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC87700C",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.537972"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC RITA LEVI- MONTALCINI   NICHELINO IV - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BF00G",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.538203"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. LEONARDO DA VINCI -FRANK - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC808002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.538881"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CUORGNE - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CC00P",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.539371"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. CERES - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC80900T",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.539428"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. Antonelli - Casalegno - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BZ003",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.539822"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC VOLPIANO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BH007",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.539957"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMRENSIVO  C. GOUTHIER - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC807006",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.540268"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC VALPERGA - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CB00V",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.540682"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. F. MARRO VILLAR PEROSA - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC80400P",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.540867"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO BARICCO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CD00E",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.541073"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C.  G. Gozzano Rivarolo Canavese - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AC00D",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.541836"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PEYRON TORINO - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8A200N",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.542052"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC PIERO GOBETTI RIVOLI - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8A800L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.542111"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PINEROLO III - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8BP00B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.542287"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. TROFARELLO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC83200V",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.543290"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. MATTEOTTI RIVOLI - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC87100D",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.543348"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC Borgo San Pietro - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC88900P",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.543553"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. CAVOUR - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC845001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.544051"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Istituto Comprensivo Carmagnola I - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AN005",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.544317"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CARMAGNOLA 3 - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AM009",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.544522"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DI CORIO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC82700B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.544800"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. IVREA 1 - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AA00T",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.544860"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BEINASCO GRAMSCI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC89600T",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.545054"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO GINO STRADA - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC87600L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.545601"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO SETTIMO I - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8A900C",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.545814"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. PEROTTI-TOSCANINI - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CE00A",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.545954"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC ALVARO-GOBETTI - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8B3004",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.546130"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC M.L. KING - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC81200N",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.546227"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] Istituto Comprensivo di Luserna San Giovanni - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC843009",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.546287"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC BOBBIO NOVARO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8CF006",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.546972"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC Settimo Vittone - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC849008",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.547116"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] I.C. ORBASSANO I - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AH00L",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.547261"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO DI AZEGLIO - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC894006",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.547707"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] DIREZIONE DIDATTICA ANNA FRANK - [CDC: EEEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOEE122007",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.547805"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC PONT CANAVESE - [CDC: ADAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC814009",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.547869"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Torino",
+        "titolo": "[CHIUSO] IC CIRIE I - [CDC: ADEE]",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php#no-link-TOIC8AK00N",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T15:15:06.548100"
+    },
+    {
         "regione": "Lombardia",
         "provincia": "Sondrio",
         "titolo": "Interpello - I.C. di Teglio - [CDC: EEEE]",
