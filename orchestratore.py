@@ -49,11 +49,13 @@ def estrai_cdc(testo):
     # Rimuovi date e articoli per evitare interferenze
     testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
     
-    # 1. CDC Standard: Es. A022, B016, A-041
-    pattern_standard = r'\b[A-B][\-\s]*\d{2,3}\b'
+    # 1. CDC Standard Secondaria (LA REGOLA DI FERRO)
+    # Inizia per A o B. Poi accetta 1 o 2 numeri (es. A22, B16) 
+    # OPPURE 3 numeri ma il primo DEVE essere 0 (es. A022, B016).
+    # -> Questo polverizza tutti i codici catastali come B198 o B847!
+    pattern_standard = r'\b[AB][\-\s]*(?:0\d{2}|\d{1,2})\b'
     
-    # 2. Strumenti Musicali (55/56) e Conversatori Lingua (02): Es. AM56, BB02, AB55
-    # Questa riga è un "cecchino": prende solo se termina per 55, 56 o 02 per evitare falsi positivi.
+    # 2. Strumenti Musicali (55/56) e Conversatori Lingua (02)
     pattern_speciali = r'\b[A-B][A-Z](?:55|56|02)\b'
     
     # 3. Infanzia, Primaria, Sostegno, Motoria (EEEM), Educatori (PPPP) e Religione (IRC)
@@ -64,6 +66,28 @@ def estrai_cdc(testo):
     trovati_prim = re.findall(pattern_prim, testo_pulito, re.IGNORECASE)
     
     cdc_pulite = set()
+    
+    # Processa le standard e le NORMALIZZA
+    for c in trovati_standard:
+        sigla = re.sub(r'[^A-Za-z0-9]', '', c).upper()
+        # Normalizzatore: Se la scuola scrive A22, la trasformiamo in A022.
+        # Se scrive A1, la trasformiamo in A001. Così non avrai doppioni nel menu!
+        lettera = sigla[0]
+        numeri = sigla[1:]
+        sigla_ufficiale = f"{lettera}{numeri.zfill(3)}"
+        
+        if sigla_ufficiale != 'B000' and sigla_ufficiale != 'A000':
+            cdc_pulite.add(sigla_ufficiale)
+            
+    # Processa le speciali
+    for c in trovati_speciali:
+        cdc_pulite.add(c.upper())
+            
+    # Processa Primaria/Sostegno
+    for s in trovati_prim:
+        cdc_pulite.add(s.upper())
+            
+    return list(cdc_pulite)
     
     # Processa le standard
     for c in trovati_standard:
