@@ -2,6 +2,97 @@
     {
         "regione": "Piemonte",
         "provincia": "Asti",
+        "titolo": "[CHIUSO] I.C. CANELLI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC81300N",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352222"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
+        "titolo": "[CHIUSO] IC2 ASTI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC817001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352320"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO SAN DAMIANO D ASTI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC811002",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352427"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO MONTEGROSSO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC808006",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352664"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
+        "titolo": "[CHIUSO] ISTITUTO COMPRENSIVO 1 - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC81800R",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352771"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
+        "titolo": "[CHIUSO] I.C. CASTELNUOVO DON BOSCO - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC80100B",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352867"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
+        "titolo": "[CHIUSO] I.C. VILLAFRANCA D ASTI - [CDC: AAAA]",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php#no-link-ATIC810006",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-07-24T19:10:36.352956"
+    },
+    {
+        "regione": "Piemonte",
+        "provincia": "Asti",
         "titolo": "[CHIUSO] BIIC807008 - [CDC: ADEE]",
         "data": "2026-07-24",
         "cdc": [
