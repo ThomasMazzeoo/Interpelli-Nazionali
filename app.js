@@ -109,34 +109,15 @@ async function clickSuRegione(nomeRegione, bounds) {
     aggiornaMenuProvince(nomeRegione);
     map.removeLayer(geojsonRegioni);
     
-    try {
-        const response = await fetch(URL_PROVINCE);
-        const data = await response.json();
-        const provinceRegione = data.features.filter(f => f.properties.reg_name === nomeRegione);
-        if (geojsonProvince) map.removeLayer(geojsonProvince);
+    // ... [TUTTO IL CODICE IN MEZZO RIMANE UGUALE FINO ALLA FINE DELLA FUNZIONE] ...
 
-        geojsonProvince = L.geoJSON(provinceRegione, {
-            style: { color: "#991b1b", weight: 1.5, fillColor: "#ef4444", fillOpacity: 0.2, dashArray: '3' },
-            onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.prov_name, { permanent: true, direction: "center", className: "text-xs bg-transparent border-0 shadow-none font-bold text-gray-700" });
-                layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.5 }),
-                    mouseout: (e) => geojsonProvince.resetStyle(e.target),
-                    click: (e) => {
-                        const nomeDB = normalizzaProvincia(feature.properties.prov_name);
-                        selectProvincia.value = nomeDB;
-                        applicaFiltri(); 
-                        
-                        // AUTO-COLLAPSE: Chiude i filtri in automatico quando clicchi una provincia!
-                        if(filtriAperti) toggleFiltriBtn.click();
-                    }
-                });
-            }
-        }).addTo(map);
-        
         livelloAttuale = 'province';
         selectProvincia.value = "TUTTE";
         applicaFiltri();
+        
+        // MOSTRA IL BOTTONE DI RESET (Nuova riga)
+        btnReset.classList.remove('hidden');
+
     } catch (error) {}
 }
 
@@ -151,6 +132,9 @@ function resetMappa() {
     
     // Se i filtri erano chiusi, li riapre
     if(!filtriAperti) toggleFiltriBtn.click();
+    
+    // NASCONDE IL BOTTONE DI RESET
+    btnReset.classList.add('hidden');
     
     containerLista.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fa-solid fa-map text-4xl mb-3"></i><p>Seleziona una regione per iniziare.</p></div>`;
 }
