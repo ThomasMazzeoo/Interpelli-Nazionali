@@ -3,7 +3,6 @@ const URL_REGIONI = "https://raw.githubusercontent.com/openpolis/geojson-italy/m
 const URL_PROVINCE = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson";
 
 // --- TRADUTTORE ISTAT -> MINISTERO ---
-// Serve a correggere le differenze di nome tra i confini ufficiali e come le chiama il MIM
 const ALIAS_PROVINCE = {
     "Monza e della Brianza": "Monza Brianza",
     "Reggio di Calabria": "Reggio Calabria",
@@ -15,13 +14,19 @@ const ALIAS_PROVINCE = {
 function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
-// --------------------------------------
 
+// Variabili Mappa e Dati
 let map;
 let geojsonRegioni;
 let geojsonProvince;
 let livelloAttuale = 'regioni'; 
 let datiInterpelli = [];
+
+// --- VARIABILI PAGINAZIONE ---
+let risultatiCorrenti = []; // Contiene i dati filtrati attualmente selezionati
+let indiceMostrati = 0;     // Conta quanti ne stiamo mostrando
+const CHUNK_INIZIALE = 50;  // Quanti caricarne al primo click
+const CHUNK_SUCCESSIVO = 20;// Quanti caricarne coi click successivi
 
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
@@ -61,15 +66,10 @@ async function caricaLayerRegioni() {
         
         geojsonRegioni = L.geoJSON(data, {
             style: {
-                color: "#1e3a8a", 
-                weight: 2,
-                fillColor: "#3b82f6", 
-                fillOpacity: 0.2,
-                className: 'regione-polygon'
+                color: "#1e3a8a", weight: 2, fillColor: "#3b82f6", fillOpacity: 0.2, className: 'regione-polygon'
             },
             onEachFeature: (feature, layer) => {
                 layer.bindTooltip(feature.properties.reg_name, { permanent: false, direction: "center", className: "font-bold" });
-                
                 layer.on({
                     mouseover: (e) => e.target.setStyle({ fillOpacity: 0.5, weight: 3 }),
                     mouseout: (e) => geojsonRegioni.resetStyle(e.target),
@@ -80,7 +80,7 @@ async function caricaLayerRegioni() {
         
         livelloAttuale = 'regioni';
     } catch (error) {
-        console.error("Errore caricamento confini regioni", error);
+        console.error("Errore caricamento confini", error);
     }
 }
 
@@ -100,21 +100,14 @@ async function clickSuRegione(nomeRegione, bounds) {
 
         geojsonProvince = L.geoJSON(provinceRegione, {
             style: {
-                color: "#991b1b", 
-                weight: 1.5,
-                fillColor: "#ef4444", 
-                fillOpacity: 0.2,
-                dashArray: '3' 
+                color: "#991b1b", weight: 1.5, fillColor: "#ef4444", fillOpacity: 0.2, dashArray: '3' 
             },
             onEachFeature: (feature, layer) => {
-                // Il tooltip sulla mappa mostra il nome ISTAT ufficiale
                 layer.bindTooltip(feature.properties.prov_name, { permanent: true, direction: "center", className: "text-xs bg-transparent border-0 shadow-none font-bold text-gray-700" });
-                
                 layer.on({
                     mouseover: (e) => e.target.setStyle({ fillOpacity: 0.5 }),
                     mouseout: (e) => geojsonProvince.resetStyle(e.target),
                     click: (e) => {
-                        // LA MAGIA E' QUI: Traduce il nome ISTAT nel nome del nostro Database!
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
                         mostraInterpelli(nomeRegione, nomeDB);
@@ -148,41 +141,49 @@ async function caricaDatiScraper() {
         const response = await fetch('database_nazionale.json?' + new Date().getTime());
         if (response.ok) datiInterpelli = await response.json();
     } catch (e) {
-        console.log("Database non ancora pronto o vuoto.");
+        console.log("Database non pronto.");
     }
 }
 
 function aggiornaMenuProvince(regioneSelezionata) {
     selectProvincia.disabled = false;
     selectProvincia.innerHTML = '<option value="TUTTE">Tutte le Province</option>';
-    
     const provinceNelDB = [...new Set(datiInterpelli.filter(i => i.regione === regioneSelezionata).map(i => i.provincia))];
-    
-    // Mettiamo in ordine alfabetico le province nel menu
-    provinceNelDB.sort().forEach(prov => {
-        selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`;
-    });
+    provinceNelDB.sort().forEach(prov => selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`);
 }
 
 function selezionaRegioneDaMenu(regione) {
     if (!regione) return resetMappa();
-    
     if(geojsonRegioni) {
         geojsonRegioni.eachLayer(layer => {
-            if (layer.feature.properties.reg_name === regione) {
-                clickSuRegione(regione, layer.getBounds());
-            }
+            if (layer.feature.properties.reg_name === regione) clickSuRegione(regione, layer.getBounds());
         });
     }
 }
 
+// --- LOGICA DI PAGINAZIONE ---
 function mostraInterpelli(regione, provincia) {
+    // 1. Filtra i dati
     let filtrati = datiInterpelli.filter(i => i.regione === regione);
     if (provincia && provincia !== "TUTTE") {
         filtrati = filtrati.filter(i => i.provincia === provincia);
     }
 
-    if (filtrati.length === 0) {
+    // 2. Li ordina per data (dal più recente)
+    filtrati.sort((a, b) => {
+        let dataA = a.data || "";
+        let dataB = b.data || "";
+        if (dataA > dataB) return -1;
+        if (dataA < dataB) return 1;
+        return 0;
+    });
+
+    // 3. Resetta le variabili globali di impaginazione
+    risultatiCorrenti = filtrati;
+    indiceMostrati = 0;
+
+    // 4. Prepara il contenitore vuoto
+    if (risultatiCorrenti.length === 0) {
         containerLista.innerHTML = `
             <div class="bg-yellow-50 text-yellow-800 p-4 rounded-md border border-yellow-200">
                 <i class="fa-solid fa-triangle-exclamation"></i> Nessun interpello per ${provincia === 'TUTTE' ? regione : provincia} in questo momento.
@@ -190,21 +191,52 @@ function mostraInterpelli(regione, provincia) {
         return;
     }
 
-    containerLista.innerHTML = `<h3 class="font-bold text-gray-700 mb-4 border-b pb-2">Trovati ${filtrati.length} interpelli in ${provincia === 'TUTTE' ? regione : provincia}</h3>`;
+    containerLista.innerHTML = `
+        <h3 class="font-bold text-gray-700 mb-4 border-b pb-2">Trovati ${risultatiCorrenti.length} interpelli in ${provincia === 'TUTTE' ? regione : provincia}</h3>
+        <div id="grigliaCard"></div>
+    `;
     
-    filtrati.forEach(item => {
-        // Formattazione bella delle CDC (come avevamo fatto prima)
+    // Avvia la prima iniezione di 50 elementi
+    caricaPezzi(CHUNK_INIZIALE);
+}
+
+function caricaPezzi(quantita) {
+    const griglia = document.getElementById('grigliaCard');
+    if (!griglia) return;
+
+    // Rimuove il vecchio bottone "Carica Altri" se esiste
+    const oldBtn = document.getElementById('btnCaricaAltri');
+    if (oldBtn) oldBtn.remove();
+
+    // Seleziona la fetta di array da mostrare (es. da 0 a 50)
+    const daMostrare = risultatiCorrenti.slice(indiceMostrati, indiceMostrati + quantita);
+    
+    daMostrare.forEach(item => {
+        
+        // Pulisce il titolo rimuovendo il testo [CDC: ...] aggiunto da Python
+        let titoloPulito = item.titolo;
+        if (titoloPulito.includes(" - [CDC:")) {
+            titoloPulito = titoloPulito.split(" - [CDC:")[0];
+        }
+
         const badgeCDC = item.cdc && item.cdc.length > 0 
             ? item.cdc.map(c => `<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mr-1">${c}</span>`).join('')
             : `<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Generico</span>`;
 
-        containerLista.innerHTML += `
+        // Data in formato Italiano DD/MM/YYYY
+        let dataIta = item.data;
+        if(dataIta.includes('-')) {
+            let p = dataIta.split('-');
+            dataIta = `${p[2]}/${p[1]}/${p[0]}`;
+        }
+
+        griglia.innerHTML += `
             <div class="bg-white border border-gray-200 rounded-lg p-5 mb-4 shadow-sm hover:shadow-md transition">
                 <div class="text-xs text-gray-500 mb-2 flex justify-between items-center">
                     <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold">${item.provincia}</span>
-                    <span><i class="fa-regular fa-calendar"></i> ${item.data}</span>
+                    <span><i class="fa-regular fa-calendar"></i> ${dataIta}</span>
                 </div>
-                <h4 class="font-bold text-gray-900 leading-tight mb-3 text-lg">${item.titolo}</h4>
+                <h4 class="font-bold text-gray-900 leading-tight mb-3 text-lg">${titoloPulito}</h4>
                 <div class="mb-4">
                     ${badgeCDC}
                 </div>
@@ -212,4 +244,17 @@ function mostraInterpelli(regione, provincia) {
             </div>
         `;
     });
+
+    // Aggiorna l'indice di quanti ne abbiamo renderizzati finora
+    indiceMostrati += quantita;
+
+    // Se ci sono ancora elementi da mostrare, crea il bottone in fondo!
+    if (indiceMostrati < risultatiCorrenti.length) {
+        const btn = document.createElement('button');
+        btn.id = 'btnCaricaAltri';
+        btn.className = 'w-full bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-3 px-4 rounded-md mt-2 mb-8 border border-blue-200 transition shadow-sm';
+        btn.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i> Mostra prossimi 20 (Mostrati ${indiceMostrati} di ${risultatiCorrenti.length})`;
+        btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
+        containerLista.appendChild(btn);
+    }
 }
