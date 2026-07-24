@@ -22,14 +22,17 @@ let geojsonProvince;
 let livelloAttuale = 'regioni'; 
 let datiInterpelli = [];
 
-// --- VARIABILI PAGINAZIONE ---
-let risultatiCorrenti = []; // Contiene i dati filtrati attualmente selezionati
-let indiceMostrati = 0;     // Conta quanti ne stiamo mostrando
-const CHUNK_INIZIALE = 50;  // Quanti caricarne al primo click
-const CHUNK_SUCCESSIVO = 20;// Quanti caricarne coi click successivi
+// Variabili Paginazione
+let risultatiCorrenti = []; 
+let indiceMostrati = 0;     
+const CHUNK_INIZIALE = 50;  
+const CHUNK_SUCCESSIVO = 20;
 
+// Elementi DOM
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
+const selectCdc = document.getElementById('cdcSelect');
+const selectTipoScuola = document.getElementById('tipoScuolaSelect');
 const btnReset = document.getElementById('btnResetMappa');
 const containerLista = document.getElementById('listaInterpelli');
 
@@ -37,8 +40,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
     await caricaDatiScraper();
     
+    // Tutti i menu a tendina ora innescano la STESSA funzione di filtraggio combinato
     selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
-    selectProvincia.addEventListener('change', (e) => mostraInterpelli(selectRegione.value, e.target.value));
+    selectProvincia.addEventListener('change', applicaFiltri);
+    selectCdc.addEventListener('change', applicaFiltri);
+    selectTipoScuola.addEventListener('change', applicaFiltri);
+    
     btnReset.addEventListener('click', resetMappa);
 });
 
@@ -48,12 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function inizializzaMappa() {
     map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-        maxZoom: 10,
-        minZoom: 5
-    }).addTo(map);
-
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
     caricaLayerRegioni();
 }
 
@@ -61,13 +63,10 @@ async function caricaLayerRegioni() {
     try {
         const response = await fetch(URL_REGIONI);
         const data = await response.json();
-
         if (geojsonProvince) map.removeLayer(geojsonProvince);
         
         geojsonRegioni = L.geoJSON(data, {
-            style: {
-                color: "#1e3a8a", weight: 2, fillColor: "#3b82f6", fillOpacity: 0.2, className: 'regione-polygon'
-            },
+            style: { color: "#1e3a8a", weight: 2, fillColor: "#3b82f6", fillOpacity: 0.2, className: 'regione-polygon' },
             onEachFeature: (feature, layer) => {
                 layer.bindTooltip(feature.properties.reg_name, { permanent: false, direction: "center", className: "font-bold" });
                 layer.on({
@@ -77,11 +76,8 @@ async function caricaLayerRegioni() {
                 });
             }
         }).addTo(map);
-        
         livelloAttuale = 'regioni';
-    } catch (error) {
-        console.error("Errore caricamento confini", error);
-    }
+    } catch (error) { console.error(error); }
 }
 
 async function clickSuRegione(nomeRegione, bounds) {
@@ -93,15 +89,11 @@ async function clickSuRegione(nomeRegione, bounds) {
     try {
         const response = await fetch(URL_PROVINCE);
         const data = await response.json();
-        
         const provinceRegione = data.features.filter(f => f.properties.reg_name === nomeRegione);
-
         if (geojsonProvince) map.removeLayer(geojsonProvince);
 
         geojsonProvince = L.geoJSON(provinceRegione, {
-            style: {
-                color: "#991b1b", weight: 1.5, fillColor: "#ef4444", fillOpacity: 0.2, dashArray: '3' 
-            },
+            style: { color: "#991b1b", weight: 1.5, fillColor: "#ef4444", fillOpacity: 0.2, dashArray: '3' },
             onEachFeature: (feature, layer) => {
                 layer.bindTooltip(feature.properties.prov_name, { permanent: true, direction: "center", className: "text-xs bg-transparent border-0 shadow-none font-bold text-gray-700" });
                 layer.on({
@@ -110,18 +102,16 @@ async function clickSuRegione(nomeRegione, bounds) {
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
-                        mostraInterpelli(nomeRegione, nomeDB);
+                        applicaFiltri(); // Aggiorna i risultati in base a tutti i filtri attivi
                     }
                 });
             }
         }).addTo(map);
         
         livelloAttuale = 'province';
-        mostraInterpelli(nomeRegione, "TUTTE");
-
-    } catch (error) {
-        console.error("Errore province", error);
-    }
+        selectProvincia.value = "TUTTE";
+        applicaFiltri();
+    } catch (error) {}
 }
 
 function resetMappa() {
@@ -129,27 +119,10 @@ function resetMappa() {
     selectRegione.value = "";
     selectProvincia.innerHTML = '<option value="">-- Prima seleziona una Regione --</option>';
     selectProvincia.disabled = true;
+    selectCdc.value = "";
+    selectTipoScuola.value = "";
     caricaLayerRegioni();
     containerLista.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fa-solid fa-map text-4xl mb-3"></i><p>Seleziona una regione per iniziare.</p></div>`;
-}
-
-// =========================================
-// 2. GESTIONE LOGICA E DATI
-// =========================================
-async function caricaDatiScraper() {
-    try {
-        const response = await fetch('database_nazionale.json?' + new Date().getTime());
-        if (response.ok) datiInterpelli = await response.json();
-    } catch (e) {
-        console.log("Database non pronto.");
-    }
-}
-
-function aggiornaMenuProvince(regioneSelezionata) {
-    selectProvincia.disabled = false;
-    selectProvincia.innerHTML = '<option value="TUTTE">Tutte le Province</option>';
-    const provinceNelDB = [...new Set(datiInterpelli.filter(i => i.regione === regioneSelezionata).map(i => i.provincia))];
-    provinceNelDB.sort().forEach(prov => selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`);
 }
 
 function selezionaRegioneDaMenu(regione) {
@@ -161,42 +134,107 @@ function selezionaRegioneDaMenu(regione) {
     }
 }
 
-// --- LOGICA DI PAGINAZIONE ---
-function mostraInterpelli(regione, provincia) {
-    // 1. Filtra i dati
-    let filtrati = datiInterpelli.filter(i => i.regione === regione);
-    if (provincia && provincia !== "TUTTE") {
-        filtrati = filtrati.filter(i => i.provincia === provincia);
+// =========================================
+// 2. GESTIONE LOGICA E DATI
+// =========================================
+async function caricaDatiScraper() {
+    try {
+        const response = await fetch('database_nazionale.json?' + new Date().getTime());
+        if (response.ok) {
+            datiInterpelli = await response.json();
+            popolaMenuCDC(); // Carica tutte le CDC trovate in Italia
+        }
+    } catch (e) { console.log("Database non pronto."); }
+}
+
+function popolaMenuCDC() {
+    const cdcUniche = new Set();
+    datiInterpelli.forEach(item => {
+        if (item.cdc) item.cdc.forEach(c => cdcUniche.add(c));
+    });
+    // Ordina e aggiunge alla tendina
+    Array.from(cdcUniche).sort().forEach(cdc => {
+        selectCdc.innerHTML += `<option value="${cdc}">${cdc}</option>`;
+    });
+}
+
+function aggiornaMenuProvince(regioneSelezionata) {
+    selectProvincia.disabled = false;
+    selectProvincia.innerHTML = '<option value="TUTTE">Tutte le Province</option>';
+    const provinceNelDB = [...new Set(datiInterpelli.filter(i => i.regione === regioneSelezionata).map(i => i.provincia))];
+    provinceNelDB.sort().forEach(prov => selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`);
+}
+
+// --- IL SUPER-FILTRO COMBINATO ---
+function applicaFiltri() {
+    const reg = selectRegione.value;
+    const prov = selectProvincia.value;
+    const cdc = selectCdc.value;
+    const tipo = selectTipoScuola.value;
+
+    if (!reg) return; // Se non c'è la regione, non mostra nulla
+
+    let filtrati = datiInterpelli.filter(i => i.regione === reg);
+
+    // Filtro Provincia
+    if (prov && prov !== "TUTTE") {
+        filtrati = filtrati.filter(i => i.provincia === prov);
     }
 
-    // 2. Li ordina per data (dal più recente)
+    // Filtro CDC
+    if (cdc) {
+        filtrati = filtrati.filter(i => i.cdc && i.cdc.includes(cdc));
+    }
+
+    // Filtro Algoritmico "Tipo di Scuola"
+    if (tipo === "IC") {
+        // Cerca keyword di IC/Primaria nel titolo, OPPURE cerca CDC tipiche (AAAA, EEEE, ADAA, ecc)
+        const kw = [' ic ', 'i.c.', 'istituto comprensivo', 'primaria', 'infanzia', 'primo grado', ' 1 grado', ' i grado', 'media'];
+        const cdcBase = ['AAAA','EEEE','AAHN','EEHN','AAMM','EEMM','ADAA','ADEE','ADMM'];
+        
+        filtrati = filtrati.filter(i => {
+            const titolo = i.titolo.toLowerCase();
+            const matchTesto = kw.some(k => titolo.includes(k));
+            const matchCdc = i.cdc && i.cdc.some(c => cdcBase.includes(c));
+            return matchTesto || matchCdc;
+        });
+
+    } else if (tipo === "SUPERIORI") {
+        // Cerca keyword Licei/Superiori, OPPURE CDC di II grado (Iniziano con A o B + 2 numeri, es A041)
+        const kw = ['liceo', 'iis', 'i.i.s.', 'superiore', 'secondo grado', ' 2 grado', ' ii grado', 'tecnico', 'professionale', 'is '];
+        
+        filtrati = filtrati.filter(i => {
+            const titolo = i.titolo.toLowerCase();
+            const matchTesto = kw.some(k => titolo.includes(k));
+            const matchCdc = i.cdc && i.cdc.some(c => c.match(/^[A-Z]\d{2}$/) || c === 'ADSS');
+            return matchTesto || matchCdc;
+        });
+    }
+
+    // Ordinamento Data
     filtrati.sort((a, b) => {
-        let dataA = a.data || "";
-        let dataB = b.data || "";
-        if (dataA > dataB) return -1;
-        if (dataA < dataB) return 1;
-        return 0;
+        let dataA = a.data || ""; let dataB = b.data || "";
+        return dataA > dataB ? -1 : (dataA < dataB ? 1 : 0);
     });
 
-    // 3. Resetta le variabili globali di impaginazione
     risultatiCorrenti = filtrati;
     indiceMostrati = 0;
 
-    // 4. Prepara il contenitore vuoto
+    // Rendering
     if (risultatiCorrenti.length === 0) {
         containerLista.innerHTML = `
-            <div class="bg-yellow-50 text-yellow-800 p-4 rounded-md border border-yellow-200">
-                <i class="fa-solid fa-triangle-exclamation"></i> Nessun interpello per ${provincia === 'TUTTE' ? regione : provincia} in questo momento.
+            <div class="bg-yellow-50 text-yellow-800 p-4 rounded-md border border-yellow-200 mt-4">
+                <i class="fa-solid fa-triangle-exclamation"></i> Nessun interpello corrisponde ai tuoi filtri in ${prov === 'TUTTE' ? reg : prov}.
             </div>`;
         return;
     }
 
+    const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
     containerLista.innerHTML = `
-        <h3 class="font-bold text-gray-700 mb-4 border-b pb-2">Trovati ${risultatiCorrenti.length} interpelli in ${provincia === 'TUTTE' ? regione : provincia}</h3>
+        <h3 class="font-bold text-gray-700 mb-4 border-b pb-2">Trovati ${risultatiCorrenti.length} risultati (${titoloRisultati})</h3>
         <div id="grigliaCard"></div>
     `;
     
-    // Avvia la prima iniezione di 50 elementi
     caricaPezzi(CHUNK_INIZIALE);
 }
 
@@ -204,26 +242,19 @@ function caricaPezzi(quantita) {
     const griglia = document.getElementById('grigliaCard');
     if (!griglia) return;
 
-    // Rimuove il vecchio bottone "Carica Altri" se esiste
     const oldBtn = document.getElementById('btnCaricaAltri');
     if (oldBtn) oldBtn.remove();
 
-    // Seleziona la fetta di array da mostrare (es. da 0 a 50)
     const daMostrare = risultatiCorrenti.slice(indiceMostrati, indiceMostrati + quantita);
     
     daMostrare.forEach(item => {
-        
-        // Pulisce il titolo rimuovendo il testo [CDC: ...] aggiunto da Python
         let titoloPulito = item.titolo;
-        if (titoloPulito.includes(" - [CDC:")) {
-            titoloPulito = titoloPulito.split(" - [CDC:")[0];
-        }
+        if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
 
         const badgeCDC = item.cdc && item.cdc.length > 0 
-            ? item.cdc.map(c => `<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mr-1">${c}</span>`).join('')
-            : `<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Generico</span>`;
+            ? item.cdc.map(c => `<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mr-1 shadow-sm border border-blue-100">${c}</span>`).join('')
+            : `<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 shadow-sm border border-gray-100">Nessuna CDC specificata</span>`;
 
-        // Data in formato Italiano DD/MM/YYYY
         let dataIta = item.data;
         if(dataIta.includes('-')) {
             let p = dataIta.split('-');
@@ -232,28 +263,26 @@ function caricaPezzi(quantita) {
 
         griglia.innerHTML += `
             <div class="bg-white border border-gray-200 rounded-lg p-5 mb-4 shadow-sm hover:shadow-md transition">
-                <div class="text-xs text-gray-500 mb-2 flex justify-between items-center">
-                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold">${item.provincia}</span>
-                    <span><i class="fa-regular fa-calendar"></i> ${dataIta}</span>
+                <div class="text-xs text-gray-500 mb-3 flex justify-between items-center">
+                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold shadow-sm">${item.provincia}</span>
+                    <span class="font-medium bg-gray-50 px-2 py-1 rounded text-gray-600"><i class="fa-regular fa-calendar mr-1"></i> ${dataIta}</span>
                 </div>
-                <h4 class="font-bold text-gray-900 leading-tight mb-3 text-lg">${titoloPulito}</h4>
-                <div class="mb-4">
+                <h4 class="font-bold text-gray-900 leading-snug mb-3 text-[15px] uppercase tracking-tight">${titoloPulito}</h4>
+                <div class="mb-5 flex flex-wrap gap-1">
                     ${badgeCDC}
                 </div>
-                <a href="${item.url}" target="_blank" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-md text-sm px-4 py-2 text-center inline-block transition"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Apri Avviso</a>
+                <a href="${item.url}" target="_blank" class="w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-md text-sm px-4 py-2 text-center inline-block transition shadow-sm"><i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> Apri Avviso Ufficiale</a>
             </div>
         `;
     });
 
-    // Aggiorna l'indice di quanti ne abbiamo renderizzati finora
     indiceMostrati += quantita;
 
-    // Se ci sono ancora elementi da mostrare, crea il bottone in fondo!
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
         btn.className = 'w-full bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-3 px-4 rounded-md mt-2 mb-8 border border-blue-200 transition shadow-sm';
-        btn.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i> Mostra prossimi 20 (Mostrati ${indiceMostrati} di ${risultatiCorrenti.length})`;
+        btn.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i> Mostra altri (Mostrati ${indiceMostrati} di ${risultatiCorrenti.length})`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
     }
