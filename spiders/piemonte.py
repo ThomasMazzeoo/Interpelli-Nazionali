@@ -4,8 +4,11 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import converti_data_italiana, estrai_cdc
 
+# Ecco il dizionario aggiornato! Basterà aggiungere le altre province qui sotto
+# quando scoprirai i loro link.
 FONTI = {
-    "Torino": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php"
+    "Torino": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php",
+    "Alessandria": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php"
 }
 
 def run(url_visti):
@@ -32,6 +35,9 @@ def run(url_visti):
             
             for riga in righe:
                 cols = riga.find_all('td')
+                
+                # Il controllo < 9 funziona per Torino (9 colonne) e Alessandria (12 colonne)
+                # perché ci assicura di avere almeno i dati base fino a "Stato Interpello"
                 if len(cols) < 9: 
                     continue 
                 
@@ -67,7 +73,7 @@ def run(url_visti):
                 if cdc_pulite:
                     titolo_finale += f" - [CDC: {', '.join(cdc_pulite)}]"
 
-                print(f"    🎯 Trovato: {titolo_finale}")
+                print(f"    🎯 Trovato: {titolo_finale} ({provincia})")
                 
                 nuovi_interpelli.append({
                     "regione": "Piemonte", 
