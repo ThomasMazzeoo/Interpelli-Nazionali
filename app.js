@@ -33,7 +33,7 @@ const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
 const selectCdc = document.getElementById('cdcSelect');
 const selectTipoScuola = document.getElementById('tipoScuolaSelect');
-const btnReset = document.getElementById('btnResetMappa');
+const btnReset = document.getElementById('btnResetMappa'); // IL BOTTONE FLUTTUANTE
 const containerLista = document.getElementById('listaInterpelli');
 
 // Elementi Collapse
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     selectCdc.addEventListener('change', applicaFiltri);
     selectTipoScuola.addEventListener('change', applicaFiltri);
     
-    // Bottone reset (Sulla mappa e nei filtri)
+    // Bottone reset Mappa
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
     // --- LOGICA COLLAPSE (Apri/Chiudi Filtri) ---
@@ -138,6 +138,7 @@ async function clickSuRegione(nomeRegione, bounds) {
         selectProvincia.value = "TUTTE";
         applicaFiltri();
         
+        // --- LA MAGIA: MOSTRA IL BOTTONE SULLA MAPPA ---
         if(btnReset) btnReset.classList.remove('hidden');
 
     } catch (error) { console.error(error); }
@@ -150,9 +151,14 @@ function resetMappa() {
     selectProvincia.disabled = true;
     selectCdc.value = "";
     selectTipoScuola.value = "";
+    
+    // Rimuove le province prima di ricaricare le regioni
+    if (geojsonProvince) map.removeLayer(geojsonProvince);
     caricaLayerRegioni();
     
     if(!filtriAperti && toggleFiltriBtn) toggleFiltriBtn.click();
+    
+    // --- LA MAGIA: NASCONDE IL BOTTONE SULLA MAPPA ---
     if(btnReset) btnReset.classList.add('hidden');
     
     containerLista.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fa-solid fa-map text-4xl mb-3"></i><p>Seleziona una regione per iniziare.</p></div>`;
