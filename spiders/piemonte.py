@@ -10,10 +10,10 @@ FONTI = {
     "Torino": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php",
     "Alessandria": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php",
     "Asti": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_bi.php",
-    "cuneo":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_cn.php",
-    "novara":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_no.php",
-    "vercelli":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vc.php",
-    "verbano-cusio-ossola":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vb.php"
+    "Cuneo":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_cn.php",
+    "Novara":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_no.php",
+    "Vercelli":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vc.php",
+    "Verbano-Vusio-Ossola":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vb.php"
     
 }
 
