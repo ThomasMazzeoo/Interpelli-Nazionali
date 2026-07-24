@@ -19,7 +19,14 @@ FONTI_NAZIONALI = {
         "Milano": "https://www.mim.gov.it/web/milano/interpelli-ricerca-supplenti",
         "Brescia": "https://www.mim.gov.it/web/brescia/interpelli-ricerca-supplenti",
         "Bergamo": "https://www.mim.gov.it/web/bergamo/interpelli-ricerca-supplenti",
-        "Varese": "https://www.mim.gov.it/web/varese/interpelli-ricerca-supplenti"
+        "Varese": "https://www.mim.gov.it/web/varese/interpelli-ricerca-supplenti",
+        "Como": "https://www.mim.gov.it/web/como/interpelli-ricerca-supplenti",
+        "Cremona": "https://www.mim.gov.it/web/cremona/interpelli-ricerca-supplenti",
+        "Lecco": "https://www.mim.gov.it/web/lecco/interpelli-ricerca-supplenti",
+        "Lodi": "https://www.mim.gov.it/web/lodi/interpelli-ricerca-supplenti",
+        "Mantova": "https://www.mim.gov.it/web/mantova/interpelli-ricerca-supplenti",
+        "Pavia": "https://www.mim.gov.it/web/pavia/interpelli-ricerca-supplenti",
+        "Sondrio": "https://www.mim.gov.it/web/sondrio/interpelli-ricerca-supplenti"
     }
 }
 
