@@ -1,0 +1,24 @@
+/* Stile per nascondere i crediti della mappa per un look più pulito */
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+/* Colori politici delle Regioni/Province al passaggio del mouse */
+.regione-polygon {
+    transition: fill-opacity 0.2s, stroke-width 0.2s;
+}
+
+/* Stile per la scrollbar della colonna sinistra */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8; 
+}
