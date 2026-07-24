@@ -196,7 +196,6 @@ function popolaMenuCDC() {
     });
 }
 
-// NUOVA FUNZIONE: Estrae le province dai confini fisici, non dal Database!
 function aggiornaMenuProvinceDaGeoJSON(features) {
     selectProvincia.disabled = false;
     selectProvincia.innerHTML = '<option value="TUTTE">Tutte le Province</option>';
@@ -217,9 +216,15 @@ function applicaFiltri() {
 
     if (!reg) return; 
 
-    let filtrati = datiInterpelli.filter(i => i.regione === reg);
+    // MODIFICA CRITICA: Cerca le regioni rendendole tutte minuscole (.toLowerCase()) per evitare bug di Case-Sensitivity
+    let filtrati = datiInterpelli.filter(i => (i.regione || "").toLowerCase() === reg.toLowerCase());
 
-    if (prov && prov !== "TUTTE") filtrati = filtrati.filter(i => i.provincia === prov);
+    if (prov && prov !== "TUTTE") {
+        // MODIFICA CRITICA: Cerca le province rendendole tutte minuscole! 
+        // Così "cuneo" nel DB sarà uguale a "Cuneo" della mappa.
+        filtrati = filtrati.filter(i => (i.provincia || "").toLowerCase() === prov.toLowerCase());
+    }
+    
     if (cdc) filtrati = filtrati.filter(i => i.cdc && i.cdc.includes(cdc));
 
     if (tipo === "IC") {
@@ -296,11 +301,14 @@ function caricaPezzi(quantita) {
         const badgeNuovoHTML = isNuovo ? `<span class="badge-nuovo"><span class="flex h-2 w-2 relative mr-1 inline-flex"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>NUOVO</span>` : '';
         const classeCardNuova = isNuovo ? 'card-nuova border-green-300 bg-green-50/10' : 'border-gray-200 bg-white';
 
+        // Aggiungiamo un toUpperCase() solo per estetica visiva del badge azzurro!
+        const nomeProvinciaMostrato = (item.provincia || "").toUpperCase();
+
         griglia.innerHTML += `
             <div class="relative rounded-lg p-5 mb-4 shadow-sm hover:shadow-md transition border ${classeCardNuova}">
                 ${badgeNuovoHTML}
                 <div class="text-xs text-gray-500 mb-3 flex justify-between items-center">
-                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold shadow-sm">${item.provincia}</span>
+                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold shadow-sm">${nomeProvinciaMostrato}</span>
                     <span class="font-medium bg-gray-50 px-2 py-1 rounded text-gray-600 border border-gray-100"><i class="fa-regular fa-calendar mr-1"></i> ${dataIta}</span>
                 </div>
                 <h4 class="font-bold text-gray-900 leading-snug mb-3 text-[15px] uppercase tracking-tight pr-6">${titoloPulito}</h4>
