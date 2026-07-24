@@ -25,25 +25,11 @@
         </div>
 
         <!-- Sezione Filtri -->
-        <div class="p-6 border-b border-gray-100 bg-gray-50">
-            
-            <div class="mb-4">
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Regione</label>
-                <select id="regioneSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">-- Seleziona una Regione --</option>
-                    <option value="Lombardia">Lombardia</option>
-                    <!-- Altre regioni verranno popolate o aggiunte in futuro -->
-                </select>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Provincia</label>
-                <!-- Sezione Filtri -->
-        <div class="p-6 border-b border-gray-100 bg-gray-50 flex flex-col gap-4">
+        <div class="p-6 border-b border-gray-100 bg-gray-50 flex flex-col gap-4 shrink-0">
             
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">Regione</label>
-                <select id="regioneSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                <select id="regioneSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 shadow-sm">
                     <option value="">-- Seleziona una Regione --</option>
                     <option value="Lombardia">Lombardia</option>
                 </select>
@@ -51,15 +37,14 @@
 
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">Provincia</label>
-                <select id="provinciaSelect" disabled class="w-full p-2 border border-gray-300 rounded-md bg-gray-100 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50">
+                <select id="provinciaSelect" disabled class="w-full p-2 border border-gray-300 rounded-md bg-gray-100 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 shadow-sm">
                     <option value="">-- Prima seleziona una Regione --</option>
                 </select>
             </div>
 
-            <!-- NUOVI FILTRI -->
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">Classe di Concorso</label>
-                <select id="cdcSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                <select id="cdcSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 shadow-sm">
                     <option value="">Tutte le CDC</option>
                     <!-- Popolato in automatico dal JS -->
                 </select>
@@ -67,15 +52,15 @@
 
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1">Grado Scuola</label>
-                <select id="tipoScuolaSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                <select id="tipoScuolaSelect" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 shadow-sm">
                     <option value="">Tutti i gradi</option>
                     <option value="IC">Infanzia / Primaria / Medie (IC)</option>
                     <option value="SUPERIORI">Scuole Superiori (Licei, Tecnici, IIS)</option>
                 </select>
             </div>
 
-            <button id="btnResetMappa" class="w-full mt-2 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50 transition text-sm font-semibold shadow-sm">
-                <i class="fa-solid fa-rotate-left"></i> Ripristina Mappa Italia
+            <button id="btnResetMappa" class="w-full mt-2 bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-100 transition text-sm font-semibold shadow-sm">
+                <i class="fa-solid fa-rotate-left mr-1"></i> Ripristina Mappa Italia
             </button>
         </div>
 
