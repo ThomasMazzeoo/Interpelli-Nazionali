@@ -9,11 +9,10 @@ from datetime import datetime
 from PyPDF2 import PdfReader
 
 # ==========================================
-# 1. CONFIGURAZIONE NAZIONALE
+# 1. CONFIGURAZIONE NAZIONALE (Lombardia al 100%)
 # ==========================================
 DATA_FILE = "database_nazionale.json"
 
-# Dizionario delle fonti attive (Lombardia al 100%)
 FONTI_NAZIONALI = {
     "Lombardia": {
         "Milano": "https://www.mim.gov.it/web/milano/interpelli-ricerca-supplenti",
@@ -31,7 +30,6 @@ FONTI_NAZIONALI = {
     }
 }
 
-PAROLE_CHIAVE_OBBLIGATORIE = ['interpell'] 
 PAROLE_ESCLUSE = ['decreto', 'gps', 'graduatorie', 'esaurimento', 'mobilità', 'utilizzazione', 'assegnazione', 'dsga', 'ata', 'proroghe', 'commissione', 'scorrimenti']
 
 # ==========================================
@@ -103,7 +101,7 @@ def esplora_dettaglio(url_pagina):
     return dettagli
 
 # ==========================================
-# 3. SPIDER PRINCIPALE
+# 3. SPIDER PRINCIPALE (Avanzato per Lecco e simili)
 # ==========================================
 def raschia_provincia(regione, provincia, url_base, database):
     print(f"\n📡 Connessione a {provincia} ({regione})...")
@@ -113,7 +111,11 @@ def raschia_provincia(regione, provincia, url_base, database):
     
     try:
         risposta = requests.get(url_base, headers=headers, timeout=15)
-        if risposta.status_code != 200: return 0
+        if risposta.status_code == 404:
+            print(f"  ⚠️ UST {provincia} non ancora attivo sul nuovo portale (404).")
+            return 0
+        elif risposta.status_code != 200:
+            return 0
             
         soup = BeautifulSoup(risposta.text, 'html.parser')
         for art in soup.find_all('div', class_='article_wrapper'):
@@ -122,18 +124,30 @@ def raschia_provincia(regione, provincia, url_base, database):
                 
             a_tag = h3.find('a')
             titolo = a_tag.get_text(strip=True)
+            
+            # Legge TUTTO il testo dentro la card (incluso il sottotitolo con la CDC!)
+            testo_intero_card = art.get_text()
+            
             url_avviso = "https://www.mim.gov.it" + a_tag['href'] if a_tag['href'].startswith('/') else a_tag['href']
             
-            if not any(obblig in titolo.lower() for obblig in PAROLE_CHIAVE_OBBLIGATORIE): continue
-            if any(esclusa in titolo.lower() for esclusa in PAROLE_ESCLUSE): continue
+            # Esclude solo la vera burocrazia (decreti, ATA, ecc.)
+            if any(esclusa in testo_intero_card.lower() for esclusa in PAROLE_ESCLUSE): continue
             if url_avviso in url_visti: continue
                 
             data_tag = art.find('div', class_='article_data_tags')
             data_pulita = converti_data_italiana(data_tag.get_text(strip=True) if data_tag else "")
             
+            # Estrae le CDC sia dal titolo che dal testo della card (es. ADAA - AAAA a Lecco!)
+            cdc_da_card = estrai_cdc(testo_intero_card)
+            
+            # Entra nella pagina per cercare PDF e Form
             dettagli = esplora_dettaglio(url_avviso)
-            cdc_totali = list(set(estrai_cdc(titolo) + dettagli["cdc_extra"]))
-            titolo_finale = f"{titolo} - [CDC: {', '.join(cdc_totali)}]" if cdc_totali else titolo
+            
+            cdc_totali = list(set(cdc_da_card + dettagli["cdc_extra"]))
+            
+            titolo_finale = titolo
+            if cdc_totali and not any(c in titolo for c in cdc_totali):
+                titolo_finale = f"{titolo} - [CDC: {', '.join(cdc_totali)}]"
             
             print(f"    🎯 Trovato: {titolo_finale}")
             nuovi_trovati += 1
@@ -146,8 +160,9 @@ def raschia_provincia(regione, provincia, url_base, database):
             })
             url_visti.add(url_avviso)
             time.sleep(0.5) 
-    except:
-        pass
+    except Exception as e:
+        print(f"  ❌ Errore su {provincia}: {e}")
+        
     return nuovi_trovati
 
 # ==========================================
@@ -166,4 +181,6 @@ if __name__ == "__main__":
     if totale_nuovi > 0:
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(database, f, indent=4, ensure_ascii=False)
-        print(f"✅ Salvataggio completato! Aggiunti {totale_nuovi} avvisi.")
+        print(f"\n✅ Salvataggio completato! Aggiunti {totale_nuovi} avvisi.")
+    else:
+        print("\n💤 Nessun nuovo interpello trovato.")
