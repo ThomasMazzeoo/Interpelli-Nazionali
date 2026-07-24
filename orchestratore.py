@@ -13,13 +13,14 @@ from PyPDF2 import PdfReader
 # ==========================================
 DATA_FILE = "database_nazionale.json"
 
-# Dizionario delle fonti attive
+# Dizionario delle fonti attive (Lombardia al 100%)
 FONTI_NAZIONALI = {
     "Lombardia": {
         "Milano": "https://www.mim.gov.it/web/milano/interpelli-ricerca-supplenti",
         "Brescia": "https://www.mim.gov.it/web/brescia/interpelli-ricerca-supplenti",
         "Bergamo": "https://www.mim.gov.it/web/bergamo/interpelli-ricerca-supplenti",
         "Varese": "https://www.mim.gov.it/web/varese/interpelli-ricerca-supplenti",
+        "Monza Brianza": "https://www.mim.gov.it/web/monza-brianza/interpelli-ricerca-supplenti",
         "Como": "https://www.mim.gov.it/web/como/interpelli-ricerca-supplenti",
         "Cremona": "https://www.mim.gov.it/web/cremona/interpelli-ricerca-supplenti",
         "Lecco": "https://www.mim.gov.it/web/lecco/interpelli-ricerca-supplenti",
