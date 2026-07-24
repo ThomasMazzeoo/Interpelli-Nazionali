@@ -8,8 +8,8 @@ const ALIAS_PROVINCE = {
     "Reggio di Calabria": "Reggio Calabria",
     "Forlì-Cesena": "Forli Cesena",
     "Bolzano/Bozen": "Bolzano",
-    "Aosta": "Valle d'Aosta",
-    "Biella": "Biella"
+    "Aosta": "Valle d'Aosta"
+    
 };
 
 function normalizzaProvincia(nomeIstat) {
