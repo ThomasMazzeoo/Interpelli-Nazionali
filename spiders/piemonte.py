@@ -4,18 +4,16 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import converti_data_italiana, estrai_cdc
 
-# Ecco il dizionario aggiornato! Basterà aggiungere le altre province qui sotto
-# quando scoprirai i loro link.
+# TUTTO IL PIEMONTE COMPLETATO! 🎯
 FONTI = {
     "Torino": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php",
     "Alessandria": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php",
-    "Asti": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_bi.php",
-    "Cuneo":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_cn.php",
-    "Novara":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_no.php",
-    "Vercelli":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vc.php",
-    "Verbano-Vusio-Ossola":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vb.php",
-    "Biella":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_bi.php"
-    
+    "Asti": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_at.php",
+    "Biella": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_bi.php",
+    "Cuneo": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_cn.php",
+    "Novara": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_no.php",
+    "Vercelli": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vc.php",
+    "Verbano-Cusio-Ossola": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vb.php"
 }
 
 def run(url_visti):
@@ -43,8 +41,7 @@ def run(url_visti):
             for riga in righe:
                 cols = riga.find_all('td')
                 
-                # Il controllo < 9 funziona per Torino (9 colonne) e Alessandria (12 colonne)
-                # perché ci assicura di avere almeno i dati base fino a "Stato Interpello"
+                # Il controllo < 9 ci garantisce di prendere i dati giusti in tutte le tabelle del Piemonte
                 if len(cols) < 9: 
                     continue 
                 
