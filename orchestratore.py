@@ -162,7 +162,12 @@ def raschia_provincia(regione, provincia, url_base, database):
             return 0
             
         soup = BeautifulSoup(risposta.text, 'html.parser')
-        for art in soup.find_all('div', class_='article_wrapper'):
+        
+        # LA MAGIA E' QUI: Aggiungendo [:50] prende solo i primi 50 blocchi partendo dall'alto
+        articoli = soup.find_all('div', class_='article_wrapper')[:50]
+        print(f"  🔎 Analisi dei {len(articoli)} comunicati più recenti...")
+        
+        for art in articoli:
             h3 = art.find('h3')
             if not h3 or not h3.find('a'): continue
                 
