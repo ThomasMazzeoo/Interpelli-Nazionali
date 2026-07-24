@@ -46,28 +46,36 @@ def converti_data_italiana(data_str):
     return datetime.today().strftime('%Y-%m-%d')
 
 def estrai_cdc(testo):
-    # Rimuovi date e articoli di legge per sicurezza
+    # Rimuovi date e articoli per evitare interferenze
     testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
     
-    # LA VERA MAGIA: Cerca SOLO codici che iniziano per A o B seguite da 2 o 3 numeri.
-    # Questo distrugge in automatico tutti i Codici Catastali (C, D, E, F...)
-    pattern_sec = r'\b[A-B][\-\s]*\d{2,3}\b'
+    # 1. CDC Standard: Es. A022, B016, A-041
+    pattern_standard = r'\b[A-B][\-\s]*\d{2,3}\b'
     
-    # Sigle esatte per Infanzia, Primaria e Sostegno
-    pattern_prim = r'\b(AAAA|EEEE|AAHN|EEHN|AAMM|EEMM|ADAA|ADEE|ADMM|ADSS|AADA|EEDA)\b'
+    # 2. Strumenti Musicali (55/56) e Conversatori Lingua (02): Es. AM56, BB02, AB55
+    # Questa riga è un "cecchino": prende solo se termina per 55, 56 o 02 per evitare falsi positivi.
+    pattern_speciali = r'\b[A-B][A-Z](?:55|56|02)\b'
     
-    trovati_sec = re.findall(pattern_sec, testo_pulito, re.IGNORECASE)
+    # 3. Infanzia, Primaria, Sostegno, Motoria (EEEM), Educatori (PPPP) e Religione (IRC)
+    pattern_prim = r'\b(AAAA|EEEE|PPPP|EEIL|EEEM|AAHN|EEHN|AAMM|EEMM|AADA|EEDA|AD[A-Z]{2}|IRC)\b'
+    
+    trovati_standard = re.findall(pattern_standard, testo_pulito, re.IGNORECASE)
+    trovati_speciali = re.findall(pattern_speciali, testo_pulito, re.IGNORECASE)
     trovati_prim = re.findall(pattern_prim, testo_pulito, re.IGNORECASE)
     
     cdc_pulite = set()
     
-    for c in trovati_sec:
-        # Pulisce spazi e trattini (es. A-041 diventa A041)
+    # Processa le standard
+    for c in trovati_standard:
         sigla = re.sub(r'[^A-Za-z0-9]', '', c).upper()
-        # Assicuriamoci che non sia un falso positivo residuo
         if sigla != 'B00' and sigla != 'A00':
             cdc_pulite.add(sigla)
             
+    # Processa le speciali (Conversatori/Strumenti)
+    for c in trovati_speciali:
+        cdc_pulite.add(c.upper())
+            
+    # Processa Primaria/Sostegno
     for s in trovati_prim:
         cdc_pulite.add(s.upper())
             
