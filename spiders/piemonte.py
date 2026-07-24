@@ -13,7 +13,8 @@ FONTI = {
     "Cuneo":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_cn.php",
     "Novara":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_no.php",
     "Vercelli":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vc.php",
-    "Verbano-Vusio-Ossola":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vb.php"
+    "Verbano-Vusio-Ossola":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_vb.php",
+    "Biella":"https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_bi.php"
     
 }
 
