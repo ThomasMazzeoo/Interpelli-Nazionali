@@ -1,5 +1,3 @@
-
-
 // Link ai dati Open Source ISTAT (Confini Italia)
 const URL_REGIONI = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson";
 const URL_PROVINCE = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson";
@@ -30,7 +28,7 @@ let indiceMostrati = 0;
 const CHUNK_INIZIALE = 50;  
 const CHUNK_SUCCESSIVO = 20;
 
-// --- Elementi DOM ---
+// Elementi DOM
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
 const selectCdc = document.getElementById('cdcSelect');
@@ -38,41 +36,40 @@ const selectTipoScuola = document.getElementById('tipoScuolaSelect');
 const btnReset = document.getElementById('btnResetMappa');
 const containerLista = document.getElementById('listaInterpelli');
 
-// NUOVI ELEMENTI PER IL COLLAPSE
+// Elementi Collapse
 const toggleFiltriBtn = document.getElementById('toggleFiltriBtn');
 const filtriContainer = document.getElementById('filtriContainer');
 const toggleIcon = document.getElementById('toggleIcon');
 let filtriAperti = true;
 
-// --- LOGICA COLLAPSE (Chiudi/Apri filtri) ---
-toggleFiltriBtn.addEventListener('click', () => {
-    filtriAperti = !filtriAperti;
-    if (filtriAperti) {
-        // Espande
-        filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px";
-        toggleIcon.classList.remove('rotate-180');
-        // Dopo l'animazione, rimette maxHeight a 'none' per permettere ridimensionamenti
-        setTimeout(() => filtriContainer.style.maxHeight = 'none', 300);
-    } else {
-        // Comprime
-        filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px"; // Fissa l'altezza attuale
-        // Un millisecondo dopo la forza a zero per l'animazione
-        setTimeout(() => filtriContainer.style.maxHeight = "0px", 10);
-        toggleIcon.classList.add('rotate-180');
-    }
-});
-
 document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
     await caricaDatiScraper();
     
-    // Tutti i menu a tendina ora innescano la STESSA funzione di filtraggio combinato
+    // Eventi menu a tendina
     selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
     selectProvincia.addEventListener('change', applicaFiltri);
     selectCdc.addEventListener('change', applicaFiltri);
     selectTipoScuola.addEventListener('change', applicaFiltri);
     
+    // Bottone reset
     btnReset.addEventListener('click', resetMappa);
+
+    // --- LOGICA COLLAPSE (Apri/Chiudi Filtri) ---
+    toggleFiltriBtn.addEventListener('click', () => {
+        filtriAperti = !filtriAperti;
+        if (filtriAperti) {
+            // Espande
+            filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px";
+            toggleIcon.classList.remove('rotate-180');
+            setTimeout(() => { filtriContainer.style.maxHeight = 'none'; }, 300);
+        } else {
+            // Comprime
+            filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px"; 
+            setTimeout(() => { filtriContainer.style.maxHeight = "0px"; }, 10);
+            toggleIcon.classList.add('rotate-180');
+        }
+    });
 });
 
 // =========================================
@@ -128,7 +125,10 @@ async function clickSuRegione(nomeRegione, bounds) {
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
-                        applicaFiltri(); // Aggiorna i risultati in base a tutti i filtri attivi
+                        applicaFiltri(); 
+                        
+                        // AUTO-COLLAPSE: Chiude i filtri in automatico quando clicchi una provincia!
+                        if(filtriAperti) toggleFiltriBtn.click();
                     }
                 });
             }
@@ -148,6 +148,10 @@ function resetMappa() {
     selectCdc.value = "";
     selectTipoScuola.value = "";
     caricaLayerRegioni();
+    
+    // Se i filtri erano chiusi, li riapre
+    if(!filtriAperti) toggleFiltriBtn.click();
+    
     containerLista.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fa-solid fa-map text-4xl mb-3"></i><p>Seleziona una regione per iniziare.</p></div>`;
 }
 
@@ -168,7 +172,7 @@ async function caricaDatiScraper() {
         const response = await fetch('database_nazionale.json?' + new Date().getTime());
         if (response.ok) {
             datiInterpelli = await response.json();
-            popolaMenuCDC(); // Carica tutte le CDC trovate in Italia
+            popolaMenuCDC(); 
         }
     } catch (e) { console.log("Database non pronto."); }
 }
@@ -178,7 +182,6 @@ function popolaMenuCDC() {
     datiInterpelli.forEach(item => {
         if (item.cdc) item.cdc.forEach(c => cdcUniche.add(c));
     });
-    // Ordina e aggiunge alla tendina
     Array.from(cdcUniche).sort().forEach(cdc => {
         selectCdc.innerHTML += `<option value="${cdc}">${cdc}</option>`;
     });
@@ -198,46 +201,28 @@ function applicaFiltri() {
     const cdc = selectCdc.value;
     const tipo = selectTipoScuola.value;
 
-    if (!reg) return; // Se non c'è la regione, non mostra nulla
+    if (!reg) return; 
 
     let filtrati = datiInterpelli.filter(i => i.regione === reg);
 
-    // Filtro Provincia
-    if (prov && prov !== "TUTTE") {
-        filtrati = filtrati.filter(i => i.provincia === prov);
-    }
+    if (prov && prov !== "TUTTE") filtrati = filtrati.filter(i => i.provincia === prov);
+    if (cdc) filtrati = filtrati.filter(i => i.cdc && i.cdc.includes(cdc));
 
-    // Filtro CDC
-    if (cdc) {
-        filtrati = filtrati.filter(i => i.cdc && i.cdc.includes(cdc));
-    }
-
-    // Filtro Algoritmico "Tipo di Scuola"
     if (tipo === "IC") {
-        // Cerca keyword di IC/Primaria nel titolo, OPPURE cerca CDC tipiche (AAAA, EEEE, ADAA, ecc)
         const kw = [' ic ', 'i.c.', 'istituto comprensivo', 'primaria', 'infanzia', 'primo grado', ' 1 grado', ' i grado', 'media'];
         const cdcBase = ['AAAA','EEEE','AAHN','EEHN','AAMM','EEMM','ADAA','ADEE','ADMM'];
-        
         filtrati = filtrati.filter(i => {
             const titolo = i.titolo.toLowerCase();
-            const matchTesto = kw.some(k => titolo.includes(k));
-            const matchCdc = i.cdc && i.cdc.some(c => cdcBase.includes(c));
-            return matchTesto || matchCdc;
+            return kw.some(k => titolo.includes(k)) || (i.cdc && i.cdc.some(c => cdcBase.includes(c)));
         });
-
     } else if (tipo === "SUPERIORI") {
-        // Cerca keyword Licei/Superiori, OPPURE CDC di II grado (Iniziano con A o B + 2 numeri, es A041)
         const kw = ['liceo', 'iis', 'i.i.s.', 'superiore', 'secondo grado', ' 2 grado', ' ii grado', 'tecnico', 'professionale', 'is '];
-        
         filtrati = filtrati.filter(i => {
             const titolo = i.titolo.toLowerCase();
-            const matchTesto = kw.some(k => titolo.includes(k));
-            const matchCdc = i.cdc && i.cdc.some(c => c.match(/^[A-Z]\d{2}$/) || c === 'ADSS');
-            return matchTesto || matchCdc;
+            return kw.some(k => titolo.includes(k)) || (i.cdc && i.cdc.some(c => c.match(/^[A-Z]\d{2}$/) || c === 'ADSS'));
         });
     }
 
-    // Ordinamento Data
     filtrati.sort((a, b) => {
         let dataA = a.data || ""; let dataB = b.data || "";
         return dataA > dataB ? -1 : (dataA < dataB ? 1 : 0);
@@ -246,7 +231,6 @@ function applicaFiltri() {
     risultatiCorrenti = filtrati;
     indiceMostrati = 0;
 
-    // Rendering
     if (risultatiCorrenti.length === 0) {
         containerLista.innerHTML = `
             <div class="bg-yellow-50 text-yellow-800 p-4 rounded-md border border-yellow-200 mt-4">
@@ -257,7 +241,7 @@ function applicaFiltri() {
 
     const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
     containerLista.innerHTML = `
-        <h3 class="font-bold text-gray-700 mb-4 border-b pb-2">Trovati ${risultatiCorrenti.length} risultati (${titoloRisultati})</h3>
+        <h3 class="font-bold text-gray-700 mb-4 border-b pb-2 sticky top-0 bg-white z-10">Trovati ${risultatiCorrenti.length} risultati (${titoloRisultati})</h3>
         <div id="grigliaCard"></div>
     `;
     
@@ -272,7 +256,7 @@ function caricaPezzi(quantita) {
     if (oldBtn) oldBtn.remove();
 
     const daMostrare = risultatiCorrenti.slice(indiceMostrati, indiceMostrati + quantita);
-    const dataOdierna = new Date(); // Ci serve per calcolare se un interpello è "nuovo"
+    const dataOdierna = new Date(); 
     
     daMostrare.forEach(item => {
         let titoloPulito = item.titolo;
@@ -288,17 +272,13 @@ function caricaPezzi(quantita) {
             dataIta = `${p[2]}/${p[1]}/${p[0]}`;
         }
 
-        // --- LOGICA "BOLLINO NUOVO" (Ultime 48 ore) ---
         let isNuovo = false;
         if (item.data_rilevamento) {
             const dataRilevamento = new Date(item.data_rilevamento);
             const differenzaOre = (dataOdierna - dataRilevamento) / (1000 * 60 * 60);
-            if (differenzaOre <= 48) {
-                isNuovo = true;
-            }
+            if (differenzaOre <= 48) isNuovo = true;
         }
         
-        // Costruiamo il badge e la classe CSS speciale se è nuovo
         const badgeNuovoHTML = isNuovo ? `<span class="badge-nuovo"><span class="flex h-2 w-2 relative mr-1 inline-flex"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>NUOVO</span>` : '';
         const classeCardNuova = isNuovo ? 'card-nuova border-green-300 bg-green-50/10' : 'border-gray-200 bg-white';
 
