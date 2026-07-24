@@ -46,18 +46,30 @@ def converti_data_italiana(data_str):
     return datetime.today().strftime('%Y-%m-%d')
 
 def estrai_cdc(testo):
+    # Rimuovi date e articoli di legge per sicurezza
     testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
-    trovati_sec = re.findall(r'\b[A-Za-z]{1,2}[\-\s]*\d{2,3}\b', testo_pulito)
-    trovati_prim = re.findall(r'\b(AAAA|EEEE|AAHN|EEHN|AAMM|EEMM|ADAA|ADEE|ADMM|ADSS|AADA|EEDA)\b', testo_pulito, re.IGNORECASE)
     
-    falsi_positivi = {'AL01', 'AL02', 'AL03', 'AL15', 'AL30', 'AL31', 'OM88', 'OM27', 'E47', 'DI10', 'DI12', 'LE24'}
+    # LA VERA MAGIA: Cerca SOLO codici che iniziano per A o B seguite da 2 o 3 numeri.
+    # Questo distrugge in automatico tutti i Codici Catastali (C, D, E, F...)
+    pattern_sec = r'\b[A-B][\-\s]*\d{2,3}\b'
+    
+    # Sigle esatte per Infanzia, Primaria e Sostegno
+    pattern_prim = r'\b(AAAA|EEEE|AAHN|EEHN|AAMM|EEMM|ADAA|ADEE|ADMM|ADSS|AADA|EEDA)\b'
+    
+    trovati_sec = re.findall(pattern_sec, testo_pulito, re.IGNORECASE)
+    trovati_prim = re.findall(pattern_prim, testo_pulito, re.IGNORECASE)
     
     cdc_pulite = set()
+    
     for c in trovati_sec:
+        # Pulisce spazi e trattini (es. A-041 diventa A041)
         sigla = re.sub(r'[^A-Za-z0-9]', '', c).upper()
-        if sigla not in falsi_positivi and not sigla.startswith('AL'): cdc_pulite.add(sigla)
+        # Assicuriamoci che non sia un falso positivo residuo
+        if sigla != 'B00' and sigla != 'A00':
+            cdc_pulite.add(sigla)
+            
     for s in trovati_prim:
-        if s.upper() not in falsi_positivi: cdc_pulite.add(s.upper())
+        cdc_pulite.add(s.upper())
             
     return list(cdc_pulite)
 
