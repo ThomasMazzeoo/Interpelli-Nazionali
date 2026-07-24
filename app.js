@@ -1,3 +1,5 @@
+
+
 // Link ai dati Open Source ISTAT (Confini Italia)
 const URL_REGIONI = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson";
 const URL_PROVINCE = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson";
@@ -28,13 +30,37 @@ let indiceMostrati = 0;
 const CHUNK_INIZIALE = 50;  
 const CHUNK_SUCCESSIVO = 20;
 
-// Elementi DOM
+// --- Elementi DOM ---
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
 const selectCdc = document.getElementById('cdcSelect');
 const selectTipoScuola = document.getElementById('tipoScuolaSelect');
 const btnReset = document.getElementById('btnResetMappa');
 const containerLista = document.getElementById('listaInterpelli');
+
+// NUOVI ELEMENTI PER IL COLLAPSE
+const toggleFiltriBtn = document.getElementById('toggleFiltriBtn');
+const filtriContainer = document.getElementById('filtriContainer');
+const toggleIcon = document.getElementById('toggleIcon');
+let filtriAperti = true;
+
+// --- LOGICA COLLAPSE (Chiudi/Apri filtri) ---
+toggleFiltriBtn.addEventListener('click', () => {
+    filtriAperti = !filtriAperti;
+    if (filtriAperti) {
+        // Espande
+        filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px";
+        toggleIcon.classList.remove('rotate-180');
+        // Dopo l'animazione, rimette maxHeight a 'none' per permettere ridimensionamenti
+        setTimeout(() => filtriContainer.style.maxHeight = 'none', 300);
+    } else {
+        // Comprime
+        filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px"; // Fissa l'altezza attuale
+        // Un millisecondo dopo la forza a zero per l'animazione
+        setTimeout(() => filtriContainer.style.maxHeight = "0px", 10);
+        toggleIcon.classList.add('rotate-180');
+    }
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
