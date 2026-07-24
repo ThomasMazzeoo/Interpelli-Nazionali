@@ -8,7 +8,7 @@ DATA_FILE = "database_nazionale.json"
 # Aggiungerai qui i nomi dei pacchetti man mano che li crei
 MODULI_ATTIVI = [
     "spiders.lombardia",
-    "spiders.piemonte.torino"
+    "spiders.piemonte"
 ]
 
 def avvia_orchestratore():
