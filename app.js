@@ -106,7 +106,6 @@ async function caricaLayerRegioni() {
 async function clickSuRegione(nomeRegione, bounds) {
     map.fitBounds(bounds);
     selectRegione.value = nomeRegione;
-    aggiornaMenuProvince(nomeRegione);
     map.removeLayer(geojsonRegioni);
     
     try {
@@ -114,6 +113,9 @@ async function clickSuRegione(nomeRegione, bounds) {
         const data = await response.json();
         const provinceRegione = data.features.filter(f => f.properties.reg_name === nomeRegione);
         if (geojsonProvince) map.removeLayer(geojsonProvince);
+
+        // AGGIORNA LA TENDINA CON TUTTE LE PROVINCE DELLA CARTINA!
+        aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
         geojsonProvince = L.geoJSON(provinceRegione, {
             style: { color: "#991b1b", weight: 1.5, fillColor: "#ef4444", fillOpacity: 0.2, dashArray: '3' },
@@ -138,7 +140,7 @@ async function clickSuRegione(nomeRegione, bounds) {
         selectProvincia.value = "TUTTE";
         applicaFiltri();
         
-        // --- LA MAGIA: MOSTRA IL BOTTONE SULLA MAPPA ---
+        // MOSTRA IL BOTTONE SULLA MAPPA
         if(btnReset) btnReset.classList.remove('hidden');
 
     } catch (error) { console.error(error); }
@@ -152,13 +154,11 @@ function resetMappa() {
     selectCdc.value = "";
     selectTipoScuola.value = "";
     
-    // Rimuove le province prima di ricaricare le regioni
     if (geojsonProvince) map.removeLayer(geojsonProvince);
     caricaLayerRegioni();
     
     if(!filtriAperti && toggleFiltriBtn) toggleFiltriBtn.click();
     
-    // --- LA MAGIA: NASCONDE IL BOTTONE SULLA MAPPA ---
     if(btnReset) btnReset.classList.add('hidden');
     
     containerLista.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fa-solid fa-map text-4xl mb-3"></i><p>Seleziona una regione per iniziare.</p></div>`;
@@ -196,11 +196,16 @@ function popolaMenuCDC() {
     });
 }
 
-function aggiornaMenuProvince(regioneSelezionata) {
+// NUOVA FUNZIONE: Estrae le province dai confini fisici, non dal Database!
+function aggiornaMenuProvinceDaGeoJSON(features) {
     selectProvincia.disabled = false;
     selectProvincia.innerHTML = '<option value="TUTTE">Tutte le Province</option>';
-    const provinceNelDB = [...new Set(datiInterpelli.filter(i => i.regione === regioneSelezionata).map(i => i.provincia))];
-    provinceNelDB.sort().forEach(prov => selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`);
+    
+    const nomiProvince = features.map(f => normalizzaProvincia(f.properties.prov_name)).sort();
+    
+    nomiProvince.forEach(prov => {
+        selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`;
+    });
 }
 
 // --- IL SUPER-FILTRO COMBINATO ---
