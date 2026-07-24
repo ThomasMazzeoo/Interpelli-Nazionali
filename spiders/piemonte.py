@@ -27,8 +27,8 @@ def run(url_visti):
             if not tabella:
                 continue
 
-            # Salta la prima riga di intestazione [1:]
-            righe = tabella.find_all('tr')[1:]
+            # PRENDE SOLO LE PRIME 400 RIGHE (salta la prima riga di intestazione)
+            righe = tabella.find_all('tr')[1:401] 
             
             for riga in righe:
                 cols = riga.find_all('td')
@@ -62,7 +62,7 @@ def run(url_visti):
                 # COSTRUZIONE DEL TITOLO VISUALE
                 titolo_finale = nome_scuola
                 if is_chiuso:
-                    titolo_finale = f"[CHIUSO] {titolo_finale}" # Aggiunge l'etichetta per il frontend!
+                    titolo_finale = f"[CHIUSO] {titolo_finale}" 
                     
                 if cdc_pulite:
                     titolo_finale += f" - [CDC: {', '.join(cdc_pulite)}]"
