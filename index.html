@@ -6,7 +6,7 @@
     <title>Interpelli Nazionali - La mappa delle supplenze</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Configurazione Design System Ibrido -->
+    <!-- Configurazione Design System Apple -->
     <script>
         tailwind.config = {
             theme: {
@@ -16,11 +16,14 @@
                     },
                     colors: {
                         apple: {
-                            parchment: '#f8fafc', // Leggermente più luminoso
-                            pearl: '#ffffff',
-                            ink: '#1e293b',       // Grigio scuro bluastro
-                            muted: '#64748b',
-                            hairline: '#e2e8f0',
+                            blue: '#0066cc',
+                            blueFocus: '#0071e3',
+                            parchment: '#f5f5f7',
+                            pearl: '#fafafc',
+                            ink: '#1d1d1f',
+                            muted: '#7a7a7a',
+                            hairline: '#e0e0e0',
+                            black: '#000000'
                         }
                     },
                     letterSpacing: {
@@ -32,7 +35,8 @@
         }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Inter (Alternativa Open Source ad Apple SF Pro) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
@@ -40,36 +44,29 @@
 <body class="bg-apple-parchment text-apple-ink font-sans overflow-hidden h-screen w-screen flex tracking-tighter">
 
     <!-- 1. COLONNA SINISTRA (Filtri) -->
-    <aside class="w-[28%] min-w-[320px] bg-apple-parchment z-20 flex flex-col h-screen border-r border-apple-hairline shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+    <aside class="w-[28%] min-w-[320px] bg-apple-parchment z-20 flex flex-col h-screen border-r border-apple-hairline">
         
-        <!-- Header Colorato -->
-        <div class="relative bg-gradient-to-br from-blue-700 to-indigo-900 text-white px-6 py-5 flex items-center justify-between shrink-0 shadow-md overflow-hidden">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl -mr-10 -mt-10"></div>
-            <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-400 opacity-20 rounded-full blur-xl -ml-5 -mb-5"></div>
-            
-            <div class="flex items-center gap-3 relative z-10">
-                <div class="bg-white/10 p-2 rounded-lg backdrop-blur-sm border border-white/20">
-                    <i class="fa-solid fa-map-location-dot text-xl text-blue-100"></i>
-                </div>
-                <div>
-                    <h1 class="text-[19px] font-bold tracking-tight text-white leading-tight">Interpelli Nazionali</h1>
-                    <span class="text-[11px] text-blue-200 font-medium uppercase tracking-wider"><i class="fa-solid fa-bolt text-yellow-400 mr-1"></i> Live</span>
-                </div>
+        <!-- Global Nav (stile Apple) -->
+        <div class="bg-apple-black text-white px-6 py-4 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-map-location-dot text-lg text-white"></i>
+                <h1 class="text-[17px] font-semibold tracking-tightest">Interpelli Nazionali</h1>
             </div>
+            <span class="text-[12px] text-gray-400 font-normal">Ministero dell'Istruzione</span>
         </div>
 
         <div class="px-6 py-6 pb-2 shrink-0">
-            <h2 class="text-[28px] font-extrabold tracking-tightest text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-600 leading-tight drop-shadow-sm">Trova la tua<br>prossima cattedra.</h2>
+            <h2 class="text-[28px] font-semibold tracking-tightest text-apple-ink leading-tight">Trova la tua<br>prossima cattedra.</h2>
         </div>
 
         <div class="flex-1 overflow-y-auto px-6 py-4 flex flex-col gap-6">
             
             <!-- Utility Card: Territorio -->
-            <div class="bg-white rounded-[18px] border border-blue-100 shadow-sm p-5 flex flex-col gap-4">
-                <h3 class="text-[14px] font-bold text-indigo-900 tracking-tightest flex items-center gap-2"><i class="fa-solid fa-earth-europe text-blue-500"></i> Territorio & Stato</h3>
+            <div class="bg-white rounded-[18px] border border-apple-hairline p-5 flex flex-col gap-4">
+                <h3 class="text-[14px] font-semibold text-apple-ink tracking-tightest">Territorio & Stato</h3>
                 
                 <div>
-                    <select id="regioneSelect" class="w-full bg-slate-50 border border-slate-200 text-apple-ink text-[14px] rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none py-2.5 px-4 cursor-pointer transition-all font-medium">
+                    <select id="regioneSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="">Seleziona una Regione...</option>
                         <option value="Lombardia">Lombardia</option>
                         <option value="Piemonte">Piemonte</option>
@@ -77,30 +74,30 @@
                     </select>
                 </div>
                 <div>
-                    <select id="provinciaSelect" disabled class="w-full bg-slate-50 border border-slate-200 text-apple-ink text-[14px] rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none py-2.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all font-medium">
+                    <select id="provinciaSelect" disabled class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
                         <option value="">Provincia...</option>
                     </select>
                 </div>
                 <div>
-                    <select id="statoSelect" class="w-full bg-slate-50 border border-slate-200 text-apple-ink text-[14px] rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none py-2.5 px-4 cursor-pointer transition-all font-medium">
-                        <option value="TUTTI">🔵 Tutti gli Interpelli</option>
-                        <option value="ATTIVI" selected>🟢 Solo Attivi (Aperti)</option>
-                        <option value="SCADUTI">🔴 Solo Scaduti</option>
+                    <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                        <option value="TUTTI">Tutti gli Interpelli</option>
+                        <option value="ATTIVI" selected>Solo Attivi (Aperti)</option>
+                        <option value="SCADUTI">Solo Scaduti</option>
                     </select>
                 </div>
             </div>
 
             <!-- Utility Card: Posizione -->
-            <div class="bg-white rounded-[18px] border border-emerald-100 shadow-sm p-5 flex flex-col gap-4">
-                <h3 class="text-[14px] font-bold text-emerald-900 tracking-tightest flex items-center gap-2"><i class="fa-solid fa-chalkboard-user text-emerald-500"></i> Posizione d'Insegnamento</h3>
+            <div class="bg-white rounded-[18px] border border-apple-hairline p-5 flex flex-col gap-4">
+                <h3 class="text-[14px] font-semibold text-apple-ink tracking-tightest">Posizione d'Insegnamento</h3>
                 
                 <div>
-                    <select id="cdcSelect" class="w-full bg-slate-50 border border-slate-200 text-apple-ink text-[14px] rounded-xl focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none py-2.5 px-4 cursor-pointer transition-all font-medium">
+                    <select id="cdcSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="">Tutte le Classi di Concorso</option>
                     </select>
                 </div>
                 <div>
-                    <select id="tipoScuolaSelect" class="w-full bg-slate-50 border border-slate-200 text-apple-ink text-[14px] rounded-xl focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none py-2.5 px-4 cursor-pointer transition-all font-medium">
+                    <select id="tipoScuolaSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="">Tutti i gradi scolastici</option>
                         <option value="IC">Infanzia / Primaria / Medie (IC)</option>
                         <option value="SUPERIORI">Scuole Superiori</option>
@@ -111,24 +108,26 @@
     </aside>
 
     <!-- 2. COLONNA CENTRALE (Mappa) -->
-    <main class="flex-1 h-screen relative bg-[#f1f5f9] transition-all duration-300" id="map-container">
-        <button id="btnResetMappa" class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[1000] hidden bg-white/90 backdrop-blur-md border border-blue-200 text-blue-700 py-3 px-6 rounded-full hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all text-[14px] font-bold shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95">
-            <i class="fa-solid fa-earth-europe text-lg"></i> Torna all'Italia intera
+    <main class="flex-1 h-screen relative bg-apple-parchment transition-all duration-300" id="map-container">
+        <!-- Bottone Floating Stile Apple -->
+        <button id="btnResetMappa" class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[1000] hidden bg-[#f5f5f7]/80 backdrop-blur-md border border-apple-hairline text-apple-ink py-2.5 px-5 rounded-full hover:bg-white transition-all text-[14px] font-semibold shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+            <i class="fa-solid fa-rotate-left"></i> Resetta Mappa
         </button>
 
         <div id="map" class="w-full h-full z-0"></div>
     </main>
 
     <!-- 3. COLONNA DESTRA (Risultati) -->
-    <aside id="rightPanel" class="w-[34%] min-w-[380px] bg-slate-50 z-20 flex flex-col h-screen border-l border-slate-200 shadow-[-8px_0_24px_rgba(0,0,0,0.03)] hidden">
-        <div class="bg-white/80 backdrop-blur-xl border-b border-slate-200 px-6 py-4 flex justify-between items-center shrink-0 z-10 sticky top-0 shadow-sm">
-            <span class="text-[18px] font-bold text-slate-800 tracking-tightest flex items-center gap-2"><i class="fa-solid fa-list-check text-blue-600"></i> Risultati</span>
-            <button id="chiudiPannelloBtn" class="bg-slate-100 hover:bg-rose-100 hover:text-rose-600 text-slate-500 rounded-full w-8 h-8 flex items-center justify-center transition-colors active:scale-95 cursor-pointer">
+    <aside id="rightPanel" class="w-[34%] min-w-[380px] bg-apple-parchment z-20 flex flex-col h-screen border-l border-apple-hairline hidden">
+        <!-- Sub-Nav Frosted Glass -->
+        <div class="bg-[#f5f5f7]/80 backdrop-blur-xl border-b border-apple-hairline px-6 py-4 flex justify-between items-center shrink-0 z-10 sticky top-0">
+            <span class="text-[21px] font-semibold text-apple-ink tracking-tightest">Risultati</span>
+            <button id="chiudiPannelloBtn" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-8 h-8 flex items-center justify-center transition active:scale-95 cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
         
-        <div class="flex-1 min-h-0 overflow-y-auto px-5 py-6 relative" id="listaInterpelli">
+        <div class="flex-1 min-h-0 overflow-y-auto px-6 py-6 relative" id="listaInterpelli">
         </div>
     </aside>
 
