@@ -31,7 +31,6 @@ const selectStato = document.getElementById('statoSelect');
 const btnReset = document.getElementById('btnResetMappa'); 
 const containerLista = document.getElementById('listaInterpelli');
 
-// GESTIONE NUOVO PANNELLO DESTRO
 const rightPanel = document.getElementById('rightPanel');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
 
@@ -47,7 +46,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
-    // Chiude il pannello destro e riallarga la mappa
     if(chiudiPannelloBtn) {
         chiudiPannelloBtn.addEventListener('click', () => {
             rightPanel.classList.add('hidden');
@@ -70,11 +68,10 @@ async function caricaLayerRegioni() {
         if (geojsonProvince) map.removeLayer(geojsonProvince);
         
         geojsonRegioni = L.geoJSON(data, {
-            style: { color: "#1e3a8a", weight: 2, fillColor: "#3b82f6", fillOpacity: 0.2, className: 'regione-polygon' },
+            style: { color: "#181d26", weight: 1, fillColor: "#181d26", fillOpacity: 0.1 },
             onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.reg_name, { permanent: false, direction: "center", className: "font-bold" });
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.5, weight: 3 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.2 }),
                     mouseout: (e) => geojsonRegioni.resetStyle(e.target),
                     click: (e) => clickSuRegione(feature.properties.reg_name, e.target.getBounds())
                 });
@@ -98,11 +95,10 @@ async function clickSuRegione(nomeRegione, bounds) {
         aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
         geojsonProvince = L.geoJSON(provinceRegione, {
-            style: { color: "#991b1b", weight: 1.5, fillColor: "#ef4444", fillOpacity: 0.2, dashArray: '3' },
+            style: { color: "#1b61c9", weight: 1, fillColor: "#1b61c9", fillOpacity: 0.1 },
             onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.prov_name, { permanent: true, direction: "center", className: "text-xs bg-transparent border-0 shadow-none font-bold text-gray-700" });
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.5 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.3 }),
                     mouseout: (e) => geojsonProvince.resetStyle(e.target),
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
@@ -123,7 +119,7 @@ async function clickSuRegione(nomeRegione, bounds) {
 function resetMappa() {
     map.setView([41.8719, 12.5674], 6);
     selectRegione.value = "";
-    selectProvincia.innerHTML = '<option value="">-- Prima seleziona una Regione --</option>';
+    selectProvincia.innerHTML = '<option value="">Scegli prima la regione</option>';
     selectProvincia.disabled = true;
     selectCdc.value = "";
     selectTipoScuola.value = "";
@@ -132,7 +128,6 @@ function resetMappa() {
     caricaLayerRegioni();
     if(btnReset) btnReset.classList.add('hidden');
     
-    // Chiude il pannello destro quando si torna all'Italia intera
     rightPanel.classList.add('hidden');
     setTimeout(() => { if (map) map.invalidateSize(); }, 100);
 }
@@ -177,7 +172,6 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
 
 function isScaduto(item) {
     if ((item.titolo || "").toUpperCase().includes('[CHIUSO]')) return true;
-    
     if (item.data) {
         const parts = item.data.split('-');
         if (parts.length === 3) {
@@ -199,10 +193,8 @@ function applicaFiltri() {
 
     if (!reg) return; 
 
-    // APRE IL PANNELLO DESTRO IN AUTOMATICO
     if (rightPanel.classList.contains('hidden')) {
         rightPanel.classList.remove('hidden');
-        // Ricalcola le dimensioni della mappa per tenerla centrata
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
 
@@ -243,21 +235,21 @@ function applicaFiltri() {
     indiceMostrati = 0;
 
     if (risultatiCorrenti.length === 0) {
+        // Hero Card Dark - Empty state (Brand Voltage)
         containerLista.innerHTML = `
-            <div class="bg-yellow-50 text-yellow-800 p-5 rounded-lg border border-yellow-200 mt-4 shadow-sm text-center">
-                <i class="fa-solid fa-face-frown-open text-3xl mb-3 text-yellow-500"></i>
-                <p class="font-medium">Nessun interpello trovato in ${prov === 'TUTTE' ? reg : prov}.</p>
-                <p class="text-sm mt-1 opacity-80">Prova a cambiare lo "Stato" in "Tutti" se cerchi avvisi scaduti.</p>
+            <div class="bg-[#181d26] text-[#ffffff] p-[48px] rounded-[12px] mt-4 flex flex-col items-center justify-center text-center">
+                <p class="text-[20px] font-normal leading-[1.4]">Nessun risultato in ${prov === 'TUTTE' ? reg : prov}.</p>
+                <p class="text-[14px] text-[#9297a0] mt-3">Prova a rimuovere un filtro o a cercare tra gli interpelli chiusi.</p>
             </div>`;
         return;
     }
 
     const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
     containerLista.innerHTML = `
-        <h3 class="font-bold text-gray-500 mb-4 border-b border-gray-200 pb-2 flex justify-between text-xs tracking-wider uppercase">
-            <span>In ${titoloRisultati}</span>
-            <span class="bg-gray-200 text-gray-700 px-2 rounded-full">${risultatiCorrenti.length}</span>
-        </h3>
+        <div class="mb-6 flex justify-between items-center">
+            <span class="text-[14px] font-medium text-[#41454d]">Mostrando risultati per ${titoloRisultati}</span>
+            <span class="text-[14px] text-[#181d26] font-medium bg-[#e0e2e6] px-2 py-0.5 rounded-[6px]">${risultatiCorrenti.length}</span>
+        </div>
         <div id="grigliaCard"></div>
     `;
     caricaPezzi(CHUNK_INIZIALE);
@@ -278,9 +270,10 @@ function caricaPezzi(quantita) {
         if (titoloPulito.startsWith('-')) titoloPulito = titoloPulito.substring(1).trim();
         if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
 
+        // Classi CDC (Design System: soft gray background, hairline border)
         const badgeCDC = item.cdc && item.cdc.length > 0 
-            ? item.cdc.map(c => `<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-bold text-blue-700 ring-1 ring-inset ring-blue-700/10 mr-1 shadow-sm border border-blue-100">${c}</span>`).join('')
-            : `<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10 shadow-sm border border-gray-200">Nessuna CDC specificata</span>`;
+            ? item.cdc.map(c => `<span class="inline-block bg-[#ffffff] border border-[#dddddd] text-[#333840] px-2 py-1 rounded-[6px] text-[14px] font-medium">${c}</span>`).join('')
+            : `<span class="inline-block bg-[#ffffff] border border-[#dddddd] text-[#9297a0] px-2 py-1 rounded-[6px] text-[14px] font-medium">Nessuna classe specificata</span>`;
 
         let dataIta = item.data;
         if(dataIta.includes('-')) {
@@ -297,34 +290,45 @@ function caricaPezzi(quantita) {
             if (differenzaOre <= 48) isNuovo = true;
         }
         
-        const badgeNuovoHTML = isNuovo ? `<span class="badge-nuovo"><span class="flex h-2 w-2 relative mr-1 inline-flex"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>NUOVO</span>` : '';
+        // Brand Voltage Badge: Signature Mint
+        const badgeNuovoHTML = isNuovo ? `<span class="inline-block bg-[#a8d8c4] text-[#0a2e0e] px-2 py-1 rounded-[6px] text-[12px] font-medium mb-4 mr-2">Nuovo</span>` : '';
         
-        const classeCardNuova = scaduto 
-            ? 'opacity-60 bg-gray-50' 
-            : (isNuovo ? 'card-nuova border-green-300 bg-green-50/10 hover:shadow-md' : 'border-white bg-white hover:shadow-lg');
+        const nomeProvinciaMostrato = (item.provincia || "");
 
-        const nomeProvinciaMostrato = (item.provincia || "").toUpperCase();
-
+        // Brand Voltage Badge: Signature Cream + Coral per la data attiva. Flat gray per scaduto.
         let badgeDataHtml = '';
         if (scaduto) {
-            badgeDataHtml = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> SCADUTO</span>`;
+            badgeDataHtml = `<span class="inline-block bg-[#e0e2e6] text-[#41454d] px-2 py-1 rounded-[6px] text-[12px] font-medium mb-4"><i class="fa-solid fa-lock mr-1"></i> Chiuso</span>`;
         } else {
-            badgeDataHtml = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
+            badgeDataHtml = `<span class="inline-block bg-[#f5e9d4] text-[#aa2d00] px-2 py-1 rounded-[6px] text-[12px] font-medium mb-4"><i class="fa-regular fa-clock mr-1"></i> Scade il ${dataIta}</span>`;
         }
 
+        const badgeProvincia = `<span class="inline-block bg-[#ffffff] border border-[#dddddd] text-[#41454d] px-2 py-1 rounded-[6px] text-[12px] font-medium mb-4 mr-2">${nomeProvinciaMostrato}</span>`;
+
+        // Card Container (Demo Grid Card analog: 10px radius, 24px padding, 1px border, NO SHADOW)
+        const classeCardNuova = scaduto ? 'opacity-60 bg-[#ffffff] border-[#dddddd]' : 'bg-[#ffffff] border-[#dddddd]';
+
+        // Bottoni (Primary Button: Near Black, 12px radius)
+        const buttonClass = scaduto
+            ? 'bg-[#ffffff] border border-[#dddddd] text-[#41454d]'
+            : 'bg-[#181d26] hover:bg-[#0d1218] text-[#ffffff]';
+
         griglia.innerHTML += `
-            <div class="relative rounded-xl p-5 mb-4 shadow-sm transition-all border ${classeCardNuova}">
-                ${badgeNuovoHTML}
-                <div class="text-[10px] text-gray-500 mb-3 flex justify-between items-center tracking-wider">
-                    <span class="bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded-full font-bold shadow-sm">${nomeProvinciaMostrato}</span>
+            <div class="relative rounded-[10px] p-[24px] mb-6 border ${classeCardNuova}">
+                <div class="flex flex-wrap items-center">
+                    ${badgeNuovoHTML}
+                    ${badgeProvincia}
                     ${badgeDataHtml}
                 </div>
-                <h4 class="font-extrabold text-gray-900 leading-snug mb-3 text-[14px] uppercase tracking-tight pr-6">${titoloPulito}</h4>
-                <div class="mb-5 flex flex-wrap gap-1">
+                
+                <h4 class="font-normal text-[#181d26] text-[20px] leading-[1.4] mb-4">${titoloPulito}</h4>
+                
+                <div class="mb-6 flex flex-wrap gap-2">
                     ${badgeCDC}
                 </div>
-                <a href="${item.url}" target="_blank" class="w-full text-white ${scaduto ? 'bg-gray-400 hover:bg-gray-500' : 'bg-blue-600 hover:bg-blue-700'} font-bold rounded-lg text-sm px-4 py-2.5 text-center inline-block transition shadow-md">
-                    <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
+                
+                <a href="${item.url}" target="_blank" class="w-full ${buttonClass} font-medium rounded-[12px] text-[16px] h-[48px] flex items-center justify-center transition-colors">
+                    ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso'}
                 </a>
             </div>
         `;
@@ -335,8 +339,9 @@ function caricaPezzi(quantita) {
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
-        btn.className = 'w-full bg-white hover:bg-blue-50 text-blue-600 font-bold py-3 px-4 rounded-xl mt-2 mb-8 border border-blue-200 transition shadow-sm';
-        btn.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i> Mostra altri (Mostrati ${indiceMostrati} di ${risultatiCorrenti.length})`;
+        // Secondary Button per caricare gli altri (White, hairline border)
+        btn.className = 'w-full bg-[#ffffff] border border-[#dddddd] text-[#181d26] hover:bg-[#f8fafc] font-medium rounded-[12px] h-[48px] mb-8 transition-colors flex items-center justify-center';
+        btn.innerHTML = `Mostra altri`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
     }
