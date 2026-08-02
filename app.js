@@ -9,7 +9,6 @@ const ALIAS_PROVINCE = {
     "Forlì-Cesena": "Forli Cesena",
     "Bolzano/Bozen": "Bolzano",
     "Aosta": "Valle d'Aosta"
-    
 };
 
 function normalizzaProvincia(nomeIstat) {
@@ -115,7 +114,6 @@ async function clickSuRegione(nomeRegione, bounds) {
         const provinceRegione = data.features.filter(f => f.properties.reg_name === nomeRegione);
         if (geojsonProvince) map.removeLayer(geojsonProvince);
 
-        // AGGIORNA LA TENDINA CON TUTTE LE PROVINCE DELLA CARTINA!
         aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
         geojsonProvince = L.geoJSON(provinceRegione, {
@@ -130,7 +128,6 @@ async function clickSuRegione(nomeRegione, bounds) {
                         selectProvincia.value = nomeDB;
                         applicaFiltri(); 
                         
-                        // AUTO-COLLAPSE: Chiude i filtri in automatico
                         if(filtriAperti && toggleFiltriBtn) toggleFiltriBtn.click();
                     }
                 });
@@ -141,7 +138,6 @@ async function clickSuRegione(nomeRegione, bounds) {
         selectProvincia.value = "TUTTE";
         applicaFiltri();
         
-        // MOSTRA IL BOTTONE SULLA MAPPA
         if(btnReset) btnReset.classList.remove('hidden');
 
     } catch (error) { console.error(error); }
@@ -208,7 +204,6 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
     });
 }
 
-// --- IL SUPER-FILTRO COMBINATO ---
 function applicaFiltri() {
     const reg = selectRegione.value;
     const prov = selectProvincia.value;
@@ -217,12 +212,9 @@ function applicaFiltri() {
 
     if (!reg) return; 
 
-    // MODIFICA CRITICA: Cerca le regioni rendendole tutte minuscole (.toLowerCase()) per evitare bug di Case-Sensitivity
     let filtrati = datiInterpelli.filter(i => (i.regione || "").toLowerCase() === reg.toLowerCase());
 
     if (prov && prov !== "TUTTE") {
-        // MODIFICA CRITICA: Cerca le province rendendole tutte minuscole! 
-        // Così "cuneo" nel DB sarà uguale a "Cuneo" della mappa.
         filtrati = filtrati.filter(i => (i.provincia || "").toLowerCase() === prov.toLowerCase());
     }
     
@@ -302,16 +294,19 @@ function caricaPezzi(quantita) {
         const badgeNuovoHTML = isNuovo ? `<span class="badge-nuovo"><span class="flex h-2 w-2 relative mr-1 inline-flex"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>NUOVO</span>` : '';
         const classeCardNuova = isNuovo ? 'card-nuova border-green-300 bg-green-50/10' : 'border-gray-200 bg-white';
 
-        // Aggiungiamo un toUpperCase() solo per estetica visiva del badge azzurro!
         const nomeProvinciaMostrato = (item.provincia || "").toUpperCase();
 
+        // --- IL NUOVO BADGE SCADENZA ---
         griglia.innerHTML += `
             <div class="relative rounded-lg p-5 mb-4 shadow-sm hover:shadow-md transition border ${classeCardNuova}">
                 ${badgeNuovoHTML}
                 <div class="text-xs text-gray-500 mb-3 flex justify-between items-center">
                     <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold shadow-sm">${nomeProvinciaMostrato}</span>
-                    <span class="font-medium bg-gray-50 px-2 py-1 rounded text-gray-600 border border-gray-100"><i class="fa-regular fa-calendar mr-1"></i> ${dataIta}</span>
+                    
+                    <!-- BADGE SCADENZA ROSSO IN ALTO A DESTRA -->
+                    <span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scadenza: ${dataIta}</span>
                 </div>
+                
                 <h4 class="font-bold text-gray-900 leading-snug mb-3 text-[15px] uppercase tracking-tight pr-6">${titoloPulito}</h4>
                 <div class="mb-5 flex flex-wrap gap-1">
                     ${badgeCDC}
