@@ -40,24 +40,26 @@ def run(url_visti):
                 cdc_raw = cols[0].get_text(strip=True)
                 nome_scuola = cols[3].get_text(strip=True)
                 
-                # 1. SUPER FILTRO ANTI-SPORCIZIA:
                 if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper():
                     continue
                 if 'CDC' in cdc_raw.upper() or 'A.S.' in cdc_raw.upper() or 'A.S.' in nome_scuola.upper():
                     continue
 
                 codice_mecc = cols[2].get_text(strip=True)
-                # Estraiamo i dettagli delle ore (colonna 7) per rendere unica ogni riga!
-                dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
-                data_raw = cols[9].get_text(strip=True)
                 
+                # Preleviamo ORE, DAL e AL per fare un ID assolutamente unico!
+                dal_raw = cols[4].get_text(strip=True).replace('/', '-').replace('.', '-')
+                al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-')
+                dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
+                
+                data_raw = cols[9].get_text(strip=True) # Data Scadenza
                 link_tag = cols[10].find('a', href=True)
                 testo_link = cols[10].get_text(strip=True)
                 
-                # Creiamo un ID super-univoco (CDC + Ore)
+                # Creiamo l'ID Infallibile
                 cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
                 ore_per_link = dettaglio_ore.replace(' ', '_')
-                id_univoco = f"{cdc_per_link}-{ore_per_link}"
+                id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
                 
                 if link_tag:
                     url_avviso = link_tag['href']
@@ -65,7 +67,6 @@ def run(url_visti):
                         url_avviso = "https://www.istruzionegenova.gov.it" + url_avviso
                     url_avviso += f"#{id_univoco}" 
                 elif '@' in testo_link:
-                    # L'oggetto dell'email ora contiene anche le ore! Geniale per le segreterie.
                     url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw} ({dettaglio_ore})"
                 elif testo_link.lower().startswith('www.') or testo_link.lower().startswith('http'):
                     base_link = testo_link if testo_link.startswith('http') else 'https://' + testo_link
@@ -85,7 +86,6 @@ def run(url_visti):
                     
                 cdc_pulite = estrai_cdc(cdc_raw) 
                 
-                # 2. GESTIONE DELLE CDC NON STANDARD
                 if not cdc_pulite and cdc_raw:
                     if len(cdc_raw) <= 20: 
                         cdc_pulite = [cdc_raw.upper()]
