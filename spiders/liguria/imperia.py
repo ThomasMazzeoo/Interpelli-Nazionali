@@ -76,9 +76,7 @@ def run(url_visti):
                     data_pulita = f"{anno}-{mese}-{giorno}"
                     break 
                     
-            cdc_pulite = estrai_cdc(cdc_raw) 
-            if not cdc_pulite and cdc_raw:
-                cdc_pulite = [cdc_raw.upper()] if len(cdc_raw) <= 20 else ["PRIMARIA/INFANZIA" if "INFANZIA" in cdc_raw.upper() or "PRIMARIA" in cdc_raw.upper() else "ALTRO"]
+            cdc_pulite = estrai_cdc(cdc_raw)
             
             print(f"    🎯 Trovato: {nome_scuola} (Data estratta: {data_pulita})")
             
