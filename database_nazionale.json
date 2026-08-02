@@ -1,5 +1,5299 @@
 [
     {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "Istituto Suore Benedettine della Provvidenza",
+        "data": "2026-08-02",
+        "cdc": [
+            "SCUOLA D'INFANZIA"
+        ],
+        "url": "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_20-06-2027",
+        "pdf_links": [
+            "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_20-06-2027"
+        ],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.067404"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM48"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM48-Spezzone6_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.067623"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADEE-Spezzone8_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.067814"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADEE-18_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.067989"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "PRIMARIA/INFANZIA"
+        ],
+        "url": "mailto:personale_genova@libero.it#SCIENZE_SPORTIVE_MOTORIE_PRIMARIA-Spezzone_12_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.068170"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM2B"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM2B-Spezzone_4_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.068372"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM2B"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM2B-Spezzone_8_h-dal_01-09-2026-al_28-02-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.068551"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM12"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM12-Spezzone_8_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.068722"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADMM"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADMM-Spezzone_14_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.068894"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADMM"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADMM-Spezzone_12_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.069063"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "A001"
+        ],
+        "url": "http://www.scuolagenova.it/#A-01-2_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.069306"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "A054"
+        ],
+        "url": "http://www.scuolagenova.it/#A-54-6_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.069512"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "GEPS07500L",
+        "data": "2026-08-26",
+        "cdc": [
+            "A050"
+        ],
+        "url": "http://www.scuolagenova.it/#A-50-3_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.069688"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "A050"
+        ],
+        "url": "http://www.scuolagenova.it/#A-50-8_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.069878"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "http://www.scuolagenova.it/#AAAA-INTERA-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.070045"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "http://www.scuolagenova.it/#ADEE-10_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.070211"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "http://www.scuolagenova.it/#EEEE-INTERA-dal_1-9-2026-al_30-6-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.070397"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "Istituto Suore Benedettine della Provvidenza",
+        "data": "2026-07-22",
+        "cdc": [
+            "SCUOLA D'INFANZIA"
+        ],
+        "url": "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_30-06-2027",
+        "pdf_links": [
+            "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_30-06-2027"
+        ],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:40.070570"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. Riccò del Golfo-Isa 5 - Riccò del Golfo - INFANZIA LA GIOSTRA VALDELLORA",
+        "data": "2026-06-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-0",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.165898"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia PIGNONE",
+        "data": "2026-06-16",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-1",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.166073"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2026-06-12",
+        "cdc": [
+            "MMMM"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-MMMM-2",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.166225"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-06-09",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-3",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.166403"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-06-06",
+        "cdc": [
+            "A028"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A028-4",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.166552"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / INFANZIA LA GIOSTRA- VALDELLORA La Spezia (SP)",
+        "data": "2026-06-05",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-5",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.166705"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA FERMI - VALDELLORA La Spezia (SP)",
+        "data": "2026-06-05",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-6",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.166858"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2026-06-03",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-7",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167008"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria BEVERINO (SP)",
+        "data": "2026-06-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-8",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167151"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana - LALLI",
+        "data": "2026-05-27",
+        "cdc": [
+            "INFANZIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-INFANZIA-9",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167298"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria FERMI Valdellora(SP)",
+        "data": "2026-05-28",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-10",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167483"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA RICCO' del GOLFO (SP)",
+        "data": "2026-05-26",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-11",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167637"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana - MATTAZZONI",
+        "data": "2026-05-24",
+        "cdc": [
+            "INFANZIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-INFANZIA-12",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167789"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuola dell’infanzia Strà Via Montalbano n. 476 La Spezia",
+        "data": "2026-05-22",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-13",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.167939"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ILARIA ALPI - SARZANA",
+        "data": "2026-05-21",
+        "cdc": [
+            "AM12"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM12-14",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168089"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2026-05-21",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-15",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168233"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-05-20",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-16",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168403"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-05-16",
+        "cdc": [
+            "AM12"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM12-17",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168553"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-05-14",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-18",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168705"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. Riccò del Golfo-Isa 5 Scuola Primaria Venturini La Spezia",
+        "data": "2026-05-13",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-19",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168850"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-05-12",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-20",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.168998"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-05-12",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-21",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.169149"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-05-12",
+        "cdc": [
+            "AI56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AI56-22",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.169296"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-05-11",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-23",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.169467"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S. Parentucelli Arzelà",
+        "data": "2026-05-11",
+        "cdc": [
+            "AS48"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AS48-24",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.169612"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuole secondarie I grado J. Piaget e V. Alfieri I.C. ISA 1 Don Milani",
+        "data": "2026-05-08",
+        "cdc": [
+            "AM48"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM48-25",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.169762"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-05-07",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-26",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.169907"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-05-06",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-27",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170055"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2026-05-06",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-28",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170204"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI La Spezia (SP)",
+        "data": "2026-05-06",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-29",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170372"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA G. Rodari - BEVERINO (SP)",
+        "data": "2026-04-28",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-30",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170519"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana -LALLI",
+        "data": "2026-04-26",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-31",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170670"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuola primaria Revere Via Bellini La Spezia",
+        "data": "2026-04-26",
+        "cdc": [
+            "EH"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EH-32",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170821"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana - MATTAZZONI",
+        "data": "2026-04-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-33",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.170969"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuola dell’infanzia Via Napoli 144 La Spezia",
+        "data": "2026-04-26",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-34",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.171117"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2026-04-23",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-35",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.171262"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2026-04-23",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-36",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.171433"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2026-04-21",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-37",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.171584"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-04-20",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-38",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.171732"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-04-18",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-39",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.171878"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2026-04-17",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-40",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172026"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2026-04-17",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-41",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172171"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-04-16",
+        "cdc": [
+            "AI56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AI56-42",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172341"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-04-16",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-43",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172494"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2026-04-14",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-44",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172655"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2026-04-14",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-45",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172806"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia Via Ferrara(SP)",
+        "data": "2026-04-14",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-46",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.172953"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO CLASSICO \"L.COSTA\"",
+        "data": "2026-04-14",
+        "cdc": [
+            "AS2D"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AS2D-47",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.173100"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-04-13",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-48",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.173246"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / scuola Sec. I Grado A.Frank La Spezia",
+        "data": "2026-04-10",
+        "cdc": [
+            "MMMM"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-MMMM-49",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.173416"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2026-04-11",
+        "cdc": [
+            "AW55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AW55_–_FLAUTO_TRAVERSO-50",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.173574"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia RICCO' del GOLFO (SP)",
+        "data": "2026-04-09",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-51",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.173722"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2026-04-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-52",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.173866"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2026-04-06",
+        "cdc": [
+            "AC56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AC56_clarinetto-53",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.174016"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2026-04-03",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-54",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.174232"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S. Parentucelli Arzelà",
+        "data": "2026-04-07",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-55",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.174413"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA RICCO' del GOLFO (SP)",
+        "data": "2026-04-02",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-56",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.174562"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2026-04-03",
+        "cdc": [
+            "A051"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A051-SCIENZE,_TECNOLOGIE_E_TECNICHE_AGRARIE-57",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.174731"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2026-04-07",
+        "cdc": [
+            "A050"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A050-58",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.174879"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2026-04-02",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-59",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175026"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria FERMI Valdellora - La Spezia (SP)",
+        "data": "2026-03-30",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-60",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175171"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2026-03-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-61",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175335"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-03-26",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-62",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175488"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA BEVERINO",
+        "data": "2026-03-26",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-63",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175633"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-03-25",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-64",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175776"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-03-25",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-65",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.175919"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-03-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-66",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176066"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-03-23",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-67",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176207"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-03-21",
+        "cdc": [
+            "AB56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AB56-68",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176372"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 23 Levanto",
+        "data": "2026-03-20",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-69",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176515"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria Ricco' del Golfo (SP)",
+        "data": "2026-03-18",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-70",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176659"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO CLASSICO \"L.COSTA\"",
+        "data": "2026-03-17",
+        "cdc": [
+            "AS2D"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AS2D-71",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176826"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2026-03-24",
+        "cdc": [
+            "B024"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-B024-72",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.176977"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2026-03-16",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-73",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.177122"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-03-12",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-74",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.177269"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA Valdellora (SP)",
+        "data": "2026-03-11",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-75",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.177448"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2026-03-12",
+        "cdc": [
+            "B024"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-B024-76",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.177593"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-03-10",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-77",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.177737"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Liceo Scientifico “A. Pacinotti”",
+        "data": "2026-03-10",
+        "cdc": [
+            "A011"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A011-78",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.177883"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuola secondaria I grado J. Piaget I.C. ISA 1 Don Milani",
+        "data": "2026-03-09",
+        "cdc": [
+            "ALTRO"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM030_musica_scuola_secondaria_I_grado-79",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178034"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2026-03-06",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-80",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178182"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-03-06",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-81",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178348"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2026-03-05",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-82",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178502"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / INFANZIA PIGNONE",
+        "data": "2026-03-05",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-83",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178653"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2026-02-04",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-84",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178802"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2026-03-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-85",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.178945"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-03-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-86",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.179096"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / INFANZIA PIGNONE",
+        "data": "2026-03-03",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-87",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.179240"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA VENTURINI Via Bologna 13 - La Spezia (SP)",
+        "data": "2026-03-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-88",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.179449"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2026-03-03",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-89",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.179666"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Liceo Scientifico “A. Pacinotti”",
+        "data": "2026-03-04",
+        "cdc": [
+            "A011"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A011-90",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.179915"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-03-03",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-91",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.180119"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-03-03",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-92",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.180275"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2026-03-02",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-93",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.180534"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA(SP)",
+        "data": "2026-02-27",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-94",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.180775"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2026-02-27",
+        "cdc": [
+            "A051"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A051-SCIENZE,_TECNOLOGIE_E_TECNICHE_AGRARIE-95",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.180953"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO CLASSICO \"L.COSTA\"",
+        "data": "2026-02-27",
+        "cdc": [
+            "AS2B"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AS2B-96",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.181106"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-02-26",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-97",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.181252"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-02-25",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-98",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.181424"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-02-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-99",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.181565"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-02-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-100",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.181717"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "INTERPELLO supplenza fino al termine delle lezioni",
+        "data": "2026-02-24",
+        "cdc": [
+            "AM2C SPAGNOLO"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM2C_SPAGNOLO-101",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.181864"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-02-23",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-102",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182007"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-02-23",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-103",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182149"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2026-02-24",
+        "cdc": [
+            "AW55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AW55_–_FLAUTO_TRAVERSO-104",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182301"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2026-02-19",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-105",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182476"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-02-18",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-106",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182630"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuola primaria Revere Via Bellini 7 La Spezia – I.C. ISA 1 Don Milani",
+        "data": "2026-02-15",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-107",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182779"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2026-02-16",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-108",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.182924"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2026-02-12",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-109",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183073"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC ILARIA ALPI SARZANA",
+        "data": "2026-02-11",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-110",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183217"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC ILARIA ALPI SARZANA",
+        "data": "2026-02-11",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-111",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183385"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-02-11",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-112",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183535"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-02-10",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-113",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183681"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-02-10",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-114",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183829"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA Valdellora (SP)",
+        "data": "2026-02-10",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-115",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.183974"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo ISA 10 Lerici",
+        "data": "2026-06-30",
+        "cdc": [
+            "INFANZIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-INFANZIA-116",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.184119"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo ISA 10 Lerici",
+        "data": "2026-06-30",
+        "cdc": [
+            "INFANZIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-INFANZIA-117",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.184274"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "CPIA - LA SPEZIA",
+        "data": "2026-02-10",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-118",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.184487"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana",
+        "data": "2026-02-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-119",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.184645"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana",
+        "data": "2026-02-04",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-120",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.184795"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2026-02-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-121",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.184944"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello",
+        "data": "2026-02-04",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-aaaa-122",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.185094"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-02-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-123",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.185245"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA - Valdellora (SP)",
+        "data": "2026-02-04",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-124",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.185416"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-02-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-125",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.185563"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello",
+        "data": "2026-02-03",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-aaaa-126",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.185710"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2026-02-06",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-127",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.185860"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-01-30",
+        "cdc": [
+            "AM30"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM30-128",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186001"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-01-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-129",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186145"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2026-01-29",
+        "cdc": [
+            "AAAA",
+            "ADEE",
+            "EEEE",
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE_-_ADEE_-_AAAA_-_ADAA-130",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186295"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI  (SP)",
+        "data": "2026-01-28",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-131",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186467"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI(SP)",
+        "data": "2026-01-28",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-132",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186617"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2026-01-29",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-133",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186763"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IISS EINAUDI CHIODO",
+        "data": "2026-01-30",
+        "cdc": [
+            "A045"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A045_-_CORSO_SERALE-134",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.186928"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-01-27",
+        "cdc": [
+            "PRIMARIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-PRIMARIA-135",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.187076"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2026-01-30",
+        "cdc": [
+            "A020"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A020-136",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.187229"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2026-01-27",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-137",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.187402"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2026-01-27",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-138",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.187552"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2026-01-30",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-139",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.187744"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria BEVERINO",
+        "data": "2026-01-23",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-140",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.187892"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Primaria Manzoni V. Monfalcone 414A SP IC ISA 1 Don Milani",
+        "data": "2026-01-25",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-141",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.188044"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-01-26",
+        "cdc": [
+            "AI56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AI56-142",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.188192"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2026-01-22",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-143",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.188396"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2026-01-21",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-144",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.188559"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2026-01-20",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-145",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.188712"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2026-01-19",
+        "cdc": [
+            "AA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AA-146",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.188861"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-01-19",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-147",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189007"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2026-01-22",
+        "cdc": [
+            "AP55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AP55_–_CONTRABBASSO-148",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189164"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-01-16",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-149",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189311"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-01-15",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-150",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189484"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-01-14",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-151",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189632"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2026-01-15",
+        "cdc": [
+            "A051"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A051-SCIENZE,_TECNOLOGIE_E_TECNICHE_AGRARIE-152",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189800"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2026-01-16",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-153",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.189944"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA FERMI Valdellora (SP)",
+        "data": "2026-01-14",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-154",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.190092"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2026-01-14",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-155",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.190240"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2026-01-14",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-156",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.190407"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 2 / Primaria Pegazzano",
+        "data": "2026-01-15",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-157",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.190559"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2026-01-13",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-158",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.190709"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2026-01-13",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-159",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.190849"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO CLASSICO \"L.COSTA\"",
+        "data": "2026-01-10",
+        "cdc": [
+            "A011"
+        ],
+        "url": "https://web.spaggiari.eu/sdg2/Documenti/SPLG0001/199331942#A011-160",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191011"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Scuola primaria Revere Via Bellini 7 La Spezia – I.C. ISA 1 Don Milani",
+        "data": "2026-01-11",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-161",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191161"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO STATALE G. MAZZINI",
+        "data": "2026-01-12",
+        "cdc": [
+            "AO27"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AO27-162",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191334"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S. Parentucelli Arzelà",
+        "data": "2026-01-12",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-163",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191490"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO CLASSICO \"L.COSTA\"",
+        "data": "2026-01-09",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-164",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191640"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia RICCO' del GOLFO (SP)",
+        "data": "2026-01-09",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-165",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191786"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia - Via Ferrara La Spezia (SP)",
+        "data": "2026-01-08",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-166",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.191929"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia - Riccò del Golfo (SP)",
+        "data": "2026-01-08",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-167",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.192077"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Secondaria I Grado - Riccò del Golfo (SP)",
+        "data": "2026-01-08",
+        "cdc": [
+            "AM12"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM12-168",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.192221"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IISS EINAUDI CHIODO",
+        "data": "2026-01-07",
+        "cdc": [
+            "A045"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A045_-_CORSO_SERALE-169",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.192421"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-12-29",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-170",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.192573"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-12-23",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-171",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.192739"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-12-17",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-172",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.192896"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA La Spezia (SP)",
+        "data": "2025-12-16",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-173",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193047"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia RICCO' del GOLFO (SP)",
+        "data": "2025-12-15",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-174",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193194"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-12-12",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-175",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193368"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-12-12",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-176",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193521"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-12-15",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-177",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193666"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-12-15",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-178",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193809"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-12-11",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-179",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.193956"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-12-12",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-180",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.194119"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-12-12",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-181",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.194264"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 10 LERICI",
+        "data": "2026-06-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-182",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.194444"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-12-06",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-183",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.194589"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-12-06",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-184",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.194730"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2025-12-05",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-185",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.194876"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2025-12-05",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-186",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195020"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2025-12-05",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-187",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195160"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2025-12-05",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-188",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195304"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-12-09",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-189",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195482"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-12-05",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-190",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195631"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria PIGNONE (SP)",
+        "data": "2025-12-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-191",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195781"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-12-04",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-192",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.195943"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-12-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-193",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.196084"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-12-02",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-194",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.196227"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-12-02",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-195",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.196436"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2025-12-02",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-196",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.196672"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-12-02",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-197",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.196828"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / PRIMARIA Venturini (SP)",
+        "data": "2025-12-01",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-198",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.196984"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-11-28",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-199",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.197131"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-11-26",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-200",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.197276"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-11-26",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-201",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.197474"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana",
+        "data": "2025-11-28",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-202",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.197622"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana",
+        "data": "2025-11-28",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-203",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.197768"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia RICCO' del GOLFO (SP)",
+        "data": "2025-11-25",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-204",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.197913"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello",
+        "data": "2025-11-25",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-205",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198059"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-11-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-206",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198202"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-11-24",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-207",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198376"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2025-11-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-208",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198521"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IISS EINAUDI CHIODO",
+        "data": "2025-11-25",
+        "cdc": [
+            "A034"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A034_-_cl._di_conc._affini-209",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198672"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-19",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-210",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198816"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-11-18",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-211",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.198960"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-11-19",
+        "cdc": [
+            "A034"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A034_-_classi_di_concorso_affini-212",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.199107"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-16",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-213",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.199250"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-16",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-214",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.199421"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-14",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-215",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.199568"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO STATALE G. MAZZINILICEO STATALE L.COSTA",
+        "data": "2025-11-14",
+        "cdc": [
+            "BB02"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-BB02-216",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.199734"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-13",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-217",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.199884"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-12",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-218",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200031"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2025-11-12",
+        "cdc": [
+            "AS2B"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AS2B-219",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200178"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-11-12",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-220",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200362"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-11-13",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-221",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200521"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-11-11",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-222",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200670"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia VIA FERRARA (SP)",
+        "data": "2025-11-11",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-223",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200812"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-11-12",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-224",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.200958"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-11-12",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-225",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.201105"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria FERMI e VENTURINI (SP)",
+        "data": "2025-11-11",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-226",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.201249"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 23 - Levanto",
+        "data": "2025-11-10",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-227",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.201442"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-11-11",
+        "cdc": [
+            "A034"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A034-228",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.201596"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 10 LERICI",
+        "data": "2026-06-30",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-229",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.201759"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA (SP)",
+        "data": "2025-11-06",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-230",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.201902"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. Ilaria Alpi di Sarzana",
+        "data": "2025-11-06",
+        "cdc": [
+            "ALTRO"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM2A_-_Francese_I_Grado-231",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202058"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2025-11-06",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-232",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202205"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-11-04",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-233",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202392"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-11-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-234",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202549"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2025-11-04",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-235",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202697"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-11-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-236",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202837"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-10-31",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-237",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.202973"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia PIGNONE",
+        "data": "2025-10-31",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-238",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.203115"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-239",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.203261"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-240",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.203433"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-241",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.203583"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-29",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-242",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.203750"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-10-29",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-243",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.203888"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-10-29",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-244",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204029"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-10-30",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-245",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204169"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-10-30",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-246",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204309"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-10-30",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-247",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204482"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-27",
+        "cdc": [
+            "ADMM"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADMM-248",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204635"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I. C. Castelnuovo Luni Ortonovo",
+        "data": "2025-10-27",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-249",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204788"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-10-27",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-250",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.204929"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-10-27",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-251",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205071"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-10-27",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-252",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205211"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia RICCO' del GOLFO (SP)",
+        "data": "2025-10-24",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-253",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205375"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-10-24",
+        "cdc": [
+            "AJ56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AJ56-254",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205519"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo ISA 10 Lerici",
+        "data": "2025-10-23",
+        "cdc": [
+            "PRIMARIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-PRIMARIA-255",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205658"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia PIGNONE",
+        "data": "2025-10-23",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-256",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205801"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Ilaria Alpi Sarzana",
+        "data": "2025-10-23",
+        "cdc": [
+            "PRIMARIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-PRIMARIA-257",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.205942"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello preventivo",
+        "data": "2025-10-22",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-258",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206082"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello preventivo",
+        "data": "2025-10-24",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-259",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206219"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello",
+        "data": "2025-10-22",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-260",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206399"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello preventivo",
+        "data": "2026-06-11",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-eeee-261",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206542"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello",
+        "data": "2025-10-29",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-adaa-262",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206686"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-22",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-263",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206834"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-22",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-264",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.206986"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-22",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-265",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.207127"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI Via Bologna (SP)",
+        "data": "2025-10-22",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-266",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.207272"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-21",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-267",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.207442"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 10 LERICI",
+        "data": "2025-10-21",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-268",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.207591"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-21",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-269",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.207737"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-21",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-270",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.207879"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-21",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-271",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208022"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-21",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-272",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208167"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "INTERPELLO supplenza fino al termine delle attività didattiche",
+        "data": "2025-10-20",
+        "cdc": [],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link--273",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208310"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 /  Via FERRARA (SP)",
+        "data": "2025-10-17",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-274",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208482"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I. C.Castelnuovo Luni Ortonovo",
+        "data": "2025-10-20",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-275",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208646"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-17",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-276",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208792"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-17",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-277",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.208953"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "CPIA - LA SPEZIA",
+        "data": "2025-10-20",
+        "cdc": [
+            "A023"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A023-278",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.209101"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria FERMI Valdellora (SP)",
+        "data": "2025-10-16",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-279",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.209246"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-10-17",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-280",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.209415"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-10-16",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-281",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.209565"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-16",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-282",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.209718"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia Via FERRARA (SP)",
+        "data": "2025-10-15",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-283",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.209862"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia BEVERINO (SP)",
+        "data": "2025-10-15",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-284",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210008"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2025-10-15",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-285",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210157"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2025-10-15",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-286",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210304"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2025-10-15",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-287",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210480"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-14",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-288",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210629"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 10 LERICI",
+        "data": "2026-06-10",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-289",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210782"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia Ricco' del Golfo (SP)",
+        "data": "2025-10-14",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-290",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.210927"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-14",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-291",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211075"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-14",
+        "cdc": [
+            "AB56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AB56-292",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211218"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "interpello preventivo",
+        "data": "2026-06-30",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-293",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211387"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-10-17",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-294",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211533"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-10-17",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-295",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211676"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 20 BOLANO",
+        "data": "2025-10-10",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-296",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211813"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-10",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-297",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.211954"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-10-10",
+        "cdc": [
+            "AB56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AB56-298",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212103"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-10-10",
+        "cdc": [
+            "A034"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A034-299",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212250"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-10-08",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-300",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212420"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 8 - FAVARO",
+        "data": "2025-10-07",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-301",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212560"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "INTERPELLO PREVENTIVO",
+        "data": "2025-10-16",
+        "cdc": [],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link--302",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212691"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C FOLLO CALICE AL CORNOVIGLIO",
+        "data": "2025-10-07",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-303",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212832"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-10-09",
+        "cdc": [
+            "AH55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AH55_–_OBOE-304",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.212989"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-04",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-305",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.213137"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-10-03",
+        "cdc": [
+            "PRIMARIA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-PRIMARIA-306",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.213281"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-10-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-307",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.213453"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-10-03",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-308",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.213604"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-10-06",
+        "cdc": [
+            "A040"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A040-309",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.213753"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Isa 23 levanto",
+        "data": "2025-10-06",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-310",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.213900"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Isa 23 levanto",
+        "data": "2025-10-06",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-311",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.214100"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2025-10-06",
+        "cdc": [
+            "B024"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-B024-312",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.214373"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO / IIS EINAUDI-CHIODO",
+        "data": "2025-10-03",
+        "cdc": [
+            "A041"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A041-313",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.214536"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC ILARIA ALPI SARZANA",
+        "data": "2025-10-01",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-314",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.214685"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-10-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-315",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.214836"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC.CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-10-03",
+        "cdc": [
+            "AM56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM56-316",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.214985"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-10-06",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-317",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.215129"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-10-06",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-318",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.215274"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2025-10-02",
+        "cdc": [
+            "A020"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A020-319",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.215461"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC ILARIA ALPI SARZANA",
+        "data": "2025-10-03",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-320",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.215611"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC ILARIA ALPI SARZANA",
+        "data": "2025-10-03",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-321",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.215756"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2025-10-06",
+        "cdc": [
+            "AA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AA-322",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.215894"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2025-10-06",
+        "cdc": [
+            "EE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EE-323",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216028"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2025-10-06",
+        "cdc": [
+            "EE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EE-324",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216159"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO STATALE G. MAZZINI",
+        "data": "2025-10-01",
+        "cdc": [
+            "AS2C"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AS2C-325",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216307"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "OMINICOMPRENSIVO VAL DI VARA",
+        "data": "2025-10-03",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-326",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216503"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 Infanzia",
+        "data": "2025-10-02",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-327",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216662"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S. Parentucelli Arzelà",
+        "data": "2025-10-01",
+        "cdc": [
+            "A020"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A020-328",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216811"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-09-30",
+        "cdc": [
+            "A020"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A020-329",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.216967"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IC ILARIA ALPI SARZANA",
+        "data": "2025-09-30",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-330",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.217115"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2025-09-28",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-331",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.217260"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2025-09-28",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-332",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.217432"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. VEZZANO L.-S.STEFANO M.",
+        "data": "2025-09-28",
+        "cdc": [
+            "EE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EE-333",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.217579"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO STATALE G. MAZZINI",
+        "data": "2025-09-29",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-334",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.217733"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-09-27",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-335",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.217876"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-09-27",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-336",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.218017"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo Castelnuovo Luni Ortonovo",
+        "data": "2025-09-27",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-337",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.218160"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ITCT A. FOSSATI M. DA PASSANO",
+        "data": "2025-09-26",
+        "cdc": [
+            "A050"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A050-338",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.218307"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S. Parentucelli Arzelà",
+        "data": "2025-09-26",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-339",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.218584"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-09-26",
+        "cdc": [
+            "A042"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A042-340",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.218868"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5",
+        "data": "2025-09-25",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-341",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.219077"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2025-09-26",
+        "cdc": [
+            "B024"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-B024-342",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.219240"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Liceo Scientifico “A. Pacinotti”-SEDE DI LEVANTO",
+        "data": "2025-09-25",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-343",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.219422"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Liceo Scientifico “A. Pacinotti”",
+        "data": "2025-09-25",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-344",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.219570"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-09-25",
+        "cdc": [
+            "A020"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A020-345",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.219719"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. Riccò del Golfo-Isa 5 - Riccò del Golfo",
+        "data": "2025-09-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-346",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.219868"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / La Giostra SP",
+        "data": "2025-09-23",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-347",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220015"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / La Giostra SP",
+        "data": "2025-09-23",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-348",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220164"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / La Giostra SP",
+        "data": "2025-09-23",
+        "cdc": [
+            "AB56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AB56-349",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220344"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA18",
+        "data": "2025-09-22",
+        "cdc": [
+            "AI56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AI56-350",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220506"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-09-22",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-351",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220653"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Isa 23 levanto",
+        "data": "2025-09-25",
+        "cdc": [
+            "AM2C"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-am2c-352",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220797"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Isa 23 levanto",
+        "data": "2025-09-25",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-eeee-353",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.220942"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Isa 23 levanto",
+        "data": "2025-09-25",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ad0j_(adee)-354",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.221089"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Isa 23 levanto",
+        "data": "2025-09-25",
+        "cdc": [
+            "ADMM"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-admm-355",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.221234"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.P.S.S.E.O.A. G. CASINI",
+        "data": "2025-09-25",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-356",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.221428"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.P.S.S.E.O.A. G. CASINI CORSO SERALE",
+        "data": "2025-09-25",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-357",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.221582"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.P.S.S.E.O.A. G. CASINI CARCERE",
+        "data": "2025-09-25",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-358",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.221730"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2025-09-19",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-359",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.221877"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. CASTELNUOVO LUNI ORTONOVO",
+        "data": "2025-09-22",
+        "cdc": [
+            "AJ56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AJ56-360",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222025"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-23",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-361",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222174"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-23",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-362",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222340"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 10 LERICI",
+        "data": "2025-09-19",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-363",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222496"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-09-18",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-EEEE-364",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222641"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-09-18",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-365",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222792"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria VENTURINI (SP)",
+        "data": "2025-09-18",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-366",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.222938"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA Valdellora (SP)",
+        "data": "2025-09-18",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADAA-367",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223085"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Infanzia LA GIOSTRA Valdellora (SP)",
+        "data": "2025-09-18",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AAAA-368",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223233"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Ricco' del Golfo - Isa 5 / Primaria",
+        "data": "2025-09-18",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-ADEE-369",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223404"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-09-22",
+        "cdc": [
+            "B025"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-B025-370",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223553"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "Istituto Comprensivo n.4",
+        "data": "2025-09-18",
+        "cdc": [
+            "AK56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AK56-371",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223697"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-09-18",
+        "cdc": [
+            "AG56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AG56_flauto-372",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223840"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-09-18",
+        "cdc": [
+            "AC56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AC56_clarinetto-373",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.223986"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2025-09-18",
+        "cdc": [
+            "A026"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A026-374",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.224130"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-09-18",
+        "cdc": [
+            "AG56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AG56_flauto-375",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.224283"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.C. ISA 1 Don Milani",
+        "data": "2025-09-18",
+        "cdc": [
+            "AC56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AC56_clarinetto-376",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.224458"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-22",
+        "cdc": [
+            "AM55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AM55-377",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.224608"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-22",
+        "cdc": [
+            "AE55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AE55-378",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.224757"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-09-19",
+        "cdc": [
+            "A044"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A044-379",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.224906"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-22",
+        "cdc": [
+            "AR55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AR55-380",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225053"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS EINAUDI CHIODO",
+        "data": "2025-09-19",
+        "cdc": [
+            "A042"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A042-381",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225201"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-22",
+        "cdc": [
+            "AH55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AH55-382",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225370"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "I.I.S.S. V. CARDARELLI",
+        "data": "2025-09-22",
+        "cdc": [
+            "AF55"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AF55-383",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225521"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "LICEO CLASSICO \"L.COSTA\"",
+        "data": "2025-09-17",
+        "cdc": [
+            "A027"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A027-384",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225669"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-09-16",
+        "cdc": [
+            "AG56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AG56-385",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225828"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-09-16",
+        "cdc": [
+            "AI56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AI56-386",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.225974"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "ISA 7",
+        "data": "2025-09-16",
+        "cdc": [
+            "AB56"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-AB56-387",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.226115"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "La Spezia",
+        "titolo": "IIS CAPELLINI-SAURO",
+        "data": "2025-09-16",
+        "cdc": [
+            "A042"
+        ],
+        "url": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025#no-link-A042-388",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T18:15:43.226261"
+    },
+    {
         "regione": "Lombardia",
         "provincia": "Milano",
         "titolo": "IC Schweitzer - SEGRATE",
