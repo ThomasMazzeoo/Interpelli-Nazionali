@@ -35,25 +35,45 @@ def run(url_visti):
             al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-')
             dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
             
-            data_raw = cols[9].get_text(strip=True) # Genova ha la data in colonna 10 (indice 9)
-            testo_link = cols[10].get_text(strip=True) # Genova ha il link in colonna 11 (indice 10)
+            data_raw = cols[9].get_text(strip=True) 
+            testo_link = cols[10].get_text(strip=True) 
             link_tag = cols[10].find('a', href=True)
             
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
             ore_per_link = dettaglio_ore.replace(' ', '_')
             id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
             
+            # =========================================================
+            # LOGICA SMART LINK (Reindirizzamento Intelligente)
+            # =========================================================
             if link_tag:
                 url_avviso = link_tag['href']
                 if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
                     url_avviso = "https://www.istruzionegenova.gov.it" + url_avviso
-                url_avviso += f"#{id_univoco}" 
+                    
+                if url_avviso.startswith('http'):
+                    u_low = url_avviso.lower()
+                    # Se è un link "pigro" (solo dominio, senza PDF o portali), mandalo alla tabella USP!
+                    if u_low.count('/') <= 3 and '?' not in u_low and not u_low.endswith('.pdf') and 'albo' not in u_low and 'interpell' not in u_low:
+                        url_avviso = f"{URL_BASE}#tabella-usp-{id_univoco}"
+                    else:
+                        url_avviso += f"#{id_univoco}"
+                        
             elif '@' in testo_link:
+                # Precompila l'email!
                 url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw} ({dettaglio_ore})"
+                
             elif testo_link.lower().startswith('www.') or testo_link.lower().startswith('http'):
-                url_avviso = (testo_link if testo_link.startswith('http') else 'https://' + testo_link) + f"#{id_univoco}"
+                base_link = testo_link if testo_link.startswith('http') else 'https://' + testo_link
+                u_low = base_link.lower()
+                # Se il testo incollato è un link "pigro" (es. WWW.SCUOLAGENOVA.IT), mandalo alla tabella USP!
+                if u_low.count('/') <= 3 and '?' not in u_low and not u_low.endswith('.pdf') and 'albo' not in u_low and 'interpell' not in u_low:
+                    url_avviso = f"{URL_BASE}#tabella-usp-{id_univoco}"
+                else:
+                    url_avviso = f"{base_link}#{id_univoco}"
             else:
-                url_avviso = f"{URL_BASE}#no-link-{codice_mecc}-{id_univoco}"
+                # Nessun link: mandalo alla tabella ufficiale
+                url_avviso = f"{URL_BASE}#tabella-usp-{codice_mecc}-{id_univoco}"
             
             if url_avviso in url_visti: continue
             
