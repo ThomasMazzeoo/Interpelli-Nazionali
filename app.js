@@ -13,9 +13,6 @@ function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
 
-// =========================================
-// PALETTE COLORI APPLE E FUNZIONE HASH
-// =========================================
 const APPLE_COLORS = [
     '#0071e3', '#34c759', '#5856d6', '#ff9500', '#ff2d55', 
     '#af52de', '#ff3b30', '#5ac8fa', '#00c7be', '#32ade6'
@@ -48,9 +45,9 @@ const btnReset = document.getElementById('btnResetMappa');
 const containerLista = document.getElementById('listaInterpelli');
 
 const rightPanel = document.getElementById('rightPanel');
+const rightPanelTitle = document.getElementById('rightPanelTitle');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
 
-// INIEZIONE CSS PER PULIRE I TOOLTIP DI LEAFLET (Rimuove sfondo e freccette)
 const style = document.createElement('style');
 style.innerHTML = `
     .leaflet-tooltip.clean-label {
@@ -122,7 +119,7 @@ async function caricaLayerRegioni() {
 }
 
 async function clickSuRegione(nomeRegione, bounds) {
-    map.fitBounds(bounds);
+    if(bounds) map.fitBounds(bounds);
     selectRegione.value = nomeRegione;
     map.removeLayer(geojsonRegioni);
     
@@ -179,8 +176,7 @@ function resetMappa() {
     caricaLayerRegioni();
     if(btnReset) btnReset.classList.add('hidden');
     
-    rightPanel.classList.add('hidden');
-    setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+    mostraScoreboard(); // Torna alla Scoreboard!
 }
 
 function selezionaRegioneDaMenu(regione) {
@@ -189,6 +185,9 @@ function selezionaRegioneDaMenu(regione) {
         geojsonRegioni.eachLayer(layer => {
             if (layer.feature.properties.reg_name === regione) clickSuRegione(regione, layer.getBounds());
         });
+    } else {
+        // Se la mappa è già zoomata ma clicchiamo dalla scoreboard
+        clickSuRegione(regione, null);
     }
 }
 
@@ -198,6 +197,7 @@ async function caricaDatiScraper() {
         if (response.ok) {
             datiInterpelli = await response.json();
             popolaMenuCDC(); 
+            mostraScoreboard(); // Carica la Dashboard all'avvio!
         }
     } catch (e) { console.log("Database non pronto."); }
 }
@@ -221,7 +221,6 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
     });
 }
 
-// IL CERVELLO CHE CAPISCE SE UN INTERPELLO È SCADUTO
 function isScaduto(item) {
     if ((item.titolo || "").toUpperCase().includes('[CHIUSO]')) return true;
     if (item.data) {
@@ -236,6 +235,68 @@ function isScaduto(item) {
     return false; 
 }
 
+// =========================================
+// LA NUOVA DASHBOARD / SCOREBOARD
+// =========================================
+function mostraScoreboard() {
+    if (rightPanel.classList.contains('hidden')) {
+        rightPanel.classList.remove('hidden');
+        setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+    }
+
+    rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
+
+    // Calcola solo quelli ATTIVI
+    let attivi = datiInterpelli.filter(i => !isScaduto(i));
+    let conteggio = {};
+    
+    attivi.forEach(i => {
+        let r = i.regione || "Altre";
+        conteggio[r] = (conteggio[r] || 0) + 1;
+    });
+
+    let classifica = Object.keys(conteggio).map(r => ({ regione: r, conteggio: conteggio[r] }));
+    classifica.sort((a, b) => b.conteggio - a.conteggio);
+
+    if (classifica.length === 0) {
+        containerLista.innerHTML = `
+            <div class="text-center p-8 mt-10">
+                <i class="fa-solid fa-mug-hot text-4xl text-apple-muted mb-4 opacity-50"></i>
+                <p class="text-[17px] font-semibold text-apple-ink">Tutto tranquillo</p>
+                <p class="text-[14px] text-apple-muted mt-2">Al momento non ci sono posizioni aperte in Italia.</p>
+            </div>`;
+        return;
+    }
+
+    let html = `<p class="text-[14px] text-apple-muted font-medium mb-5">Regioni con più interpelli aperti</p><div class="flex flex-col gap-3">`;
+
+    let maxCount = classifica[0].conteggio;
+
+    classifica.forEach((item, index) => {
+        let percentuale = (item.conteggio / maxCount) * 100;
+        let medaglia = '';
+        if(index === 0) medaglia = '<span class="text-lg">🥇</span>';
+        else if(index === 1) medaglia = '<span class="text-lg">🥈</span>';
+        else if(index === 2) medaglia = '<span class="text-lg">🥉</span>';
+        else medaglia = `<span class="text-apple-muted text-[13px] font-bold w-[22px] inline-block text-center">${index+1}</span>`;
+
+        html += `
+            <div class="bg-white rounded-[14px] border border-apple-hairline p-4 hover:shadow-md transition-all cursor-pointer group" onclick="selezionaRegioneDaMenu('${item.regione}')">
+                <div class="flex justify-between items-center mb-2.5">
+                    <span class="font-semibold text-apple-ink tracking-tightest flex items-center gap-2 group-hover:text-apple-blue transition-colors">${medaglia} ${item.regione}</span>
+                    <span class="bg-apple-blue text-white text-[12px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">${item.conteggio}</span>
+                </div>
+                <div class="w-full bg-apple-pearl rounded-full h-1.5 overflow-hidden">
+                    <div class="bg-apple-blue h-1.5 rounded-full" style="width: ${percentuale}%"></div>
+                </div>
+            </div>
+        `;
+    });
+    
+    html += `</div>`;
+    containerLista.innerHTML = html;
+}
+
 function applicaFiltri() {
     const reg = selectRegione.value;
     const prov = selectProvincia.value;
@@ -243,14 +304,23 @@ function applicaFiltri() {
     const tipo = selectTipoScuola.value;
     const stato = selectStato.value;
 
-    if (!reg) return; 
+    // Se non è selezionato NIENTE (stato iniziale o reset), mostra la Scoreboard
+    if (!reg && !cdc && !tipo && stato === "ATTIVI") {
+        mostraScoreboard();
+        return;
+    }
+
+    // Altrimenti cambia il titolo in Risultati
+    rightPanelTitle.innerHTML = '<i class="fa-solid fa-list-check text-apple-blue mr-2"></i> Risultati';
 
     if (rightPanel.classList.contains('hidden')) {
         rightPanel.classList.remove('hidden');
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
 
-    let filtrati = datiInterpelli.filter(i => (i.regione || "").toLowerCase() === reg.toLowerCase());
+    let filtrati = datiInterpelli;
+    
+    if(reg) filtrati = filtrati.filter(i => (i.regione || "").toLowerCase() === reg.toLowerCase());
 
     if (prov && prov !== "TUTTE") {
         filtrati = filtrati.filter(i => (i.provincia || "").toLowerCase() === prov.toLowerCase());
@@ -295,7 +365,7 @@ function applicaFiltri() {
         return;
     }
 
-    const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
+    const titoloRisultati = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Tutta Italia");
     containerLista.innerHTML = `
         <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${titoloRisultati}</p>
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
