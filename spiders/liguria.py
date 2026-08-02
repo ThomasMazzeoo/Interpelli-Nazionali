@@ -1,5 +1,6 @@
 import time
 import requests
+import re
 from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import converti_data_italiana, estrai_cdc
@@ -23,50 +24,63 @@ def run(url_visti):
                 
             soup = BeautifulSoup(risposta.text, 'html.parser')
             
-            # Cerca la prima tabella nella pagina
             tabella = soup.find('table')
             if not tabella:
                 print(f"  ⚠️ Nessuna tabella trovata su {provincia}")
                 continue
 
-            # Salta la prima riga (titoli delle colonne)
-            righe = tabella.find_all('tr')[1:] 
+            # Analizziamo tutte le righe senza limitazioni, ci pensa il codice a scartare l'intestazione
+            righe = tabella.find_all('tr') 
             
             for riga in righe:
-                # Usa 'td' e 'th' perché a volte chi fa i siti sbaglia i tag HTML
                 cols = riga.find_all(['td', 'th'])
                 
                 # La tabella di Genova ha 11 colonne
                 if len(cols) < 11: 
                     continue 
                 
-                # Mappatura delle colonne in base al tuo screenshot
                 cdc_raw = cols[0].get_text(strip=True)
+                
+                # SALTA L'INTESTAZIONE IN AUTOMATICO (se la colonna 0 si chiama CDC)
+                if cdc_raw.upper() == 'CDC' or 'CLASSE DI CONCORSO' in cdc_raw.upper():
+                    continue
+
                 codice_mecc = cols[2].get_text(strip=True)
                 nome_scuola = cols[3].get_text(strip=True)
                 data_raw = cols[9].get_text(strip=True)
                 
-                # Gestione Avanzata dei Link / Email
                 link_tag = cols[10].find('a', href=True)
                 testo_link = cols[10].get_text(strip=True)
                 
+                # TRUCCO ANTI-DUPLICATO: Rendiamo il link univoco per ogni CDC!
+                # Rimuoviamo spazi e slash per non rompere l'URL
+                cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
+                
                 if link_tag:
                     url_avviso = link_tag['href']
-                    # Se il link è un PDF relativo (manca https), lo aggiungiamo
                     if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
                         url_avviso = "https://www.istruzionegenova.gov.it" + url_avviso
+                    url_avviso += f"#{cdc_per_link}" # Rende unico il link del PDF
                 elif '@' in testo_link:
-                    # Se non c'è un tag <a> ma c'è un'email scritta (es. personale_genova@libero.it)
-                    url_avviso = f"mailto:{testo_link}"
+                    # Crea un link mailto che apre l'email già precompilata con l'oggetto!
+                    url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw}"
+                elif testo_link.lower().startswith('www.') or testo_link.lower().startswith('http'):
+                    base_link = testo_link if testo_link.startswith('http') else 'https://' + testo_link
+                    url_avviso = f"{base_link}#{cdc_per_link}"
                 else:
-                    # Nessun link e nessuna email: generiamo un link finto per il database
-                    url_avviso = f"{url_base}#no-link-{codice_mecc}"
+                    url_avviso = f"{url_base}#no-link-{codice_mecc}-{cdc_per_link}"
                 
-                # Anti-Duplicati
+                # Ora il controllo anti-duplicato scatterà solo per avvisi davvero identici!
                 if url_avviso in url_visti:
                     continue
                 
-                data_pulita = converti_data_italiana(data_raw)
+                # ESTRAZIONE DATA PRECISA per il formato DD/MM/YYYY o DD-MM-YYYY
+                match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4})', data_raw)
+                if match_dt:
+                    data_pulita = f"{match_dt.group(3)}-{match_dt.group(2).zfill(2)}-{match_dt.group(1).zfill(2)}"
+                else:
+                    data_pulita = converti_data_italiana(data_raw)
+                    
                 cdc_pulite = estrai_cdc(cdc_raw) 
                 
                 # Costruzione Titolo
@@ -74,10 +88,10 @@ def run(url_visti):
                 if cdc_pulite:
                     titolo_finale += f" - [CDC: {', '.join(cdc_pulite)}]"
                 elif cdc_raw:
-                    # Se è un testo anomalo tipo "Scuola d'Infanzia", lo aggiungiamo comunque
+                    # Se non è una CDC standard (es. "Scuola d'Infanzia"), mettiamo la descrizione originale
                     titolo_finale += f" - [{cdc_raw}]"
 
-                print(f"    🎯 Trovato: {titolo_finale} ({provincia})")
+                print(f"    🎯 Trovato: {titolo_finale}")
                 
                 nuovi_interpelli.append({
                     "regione": "Liguria", 
