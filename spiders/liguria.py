@@ -41,33 +41,37 @@ def run(url_visti):
                 nome_scuola = cols[3].get_text(strip=True)
                 
                 # 1. SUPER FILTRO ANTI-SPORCIZIA:
-                # Saltiamo le righe di intestazione, le righe vuote o le righe "A.S. 2026-2027"
                 if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper():
                     continue
                 if 'CDC' in cdc_raw.upper() or 'A.S.' in cdc_raw.upper() or 'A.S.' in nome_scuola.upper():
                     continue
 
                 codice_mecc = cols[2].get_text(strip=True)
+                # Estraiamo i dettagli delle ore (colonna 7) per rendere unica ogni riga!
+                dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
                 data_raw = cols[9].get_text(strip=True)
                 
                 link_tag = cols[10].find('a', href=True)
                 testo_link = cols[10].get_text(strip=True)
                 
-                # Creiamo un ID unico per il link per non confondere l'anti-duplicato
+                # Creiamo un ID super-univoco (CDC + Ore)
                 cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
+                ore_per_link = dettaglio_ore.replace(' ', '_')
+                id_univoco = f"{cdc_per_link}-{ore_per_link}"
                 
                 if link_tag:
                     url_avviso = link_tag['href']
                     if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
                         url_avviso = "https://www.istruzionegenova.gov.it" + url_avviso
-                    url_avviso += f"#{cdc_per_link}" 
+                    url_avviso += f"#{id_univoco}" 
                 elif '@' in testo_link:
-                    url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw}"
+                    # L'oggetto dell'email ora contiene anche le ore! Geniale per le segreterie.
+                    url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw} ({dettaglio_ore})"
                 elif testo_link.lower().startswith('www.') or testo_link.lower().startswith('http'):
                     base_link = testo_link if testo_link.startswith('http') else 'https://' + testo_link
-                    url_avviso = f"{base_link}#{cdc_per_link}"
+                    url_avviso = f"{base_link}#{id_univoco}"
                 else:
-                    url_avviso = f"{url_base}#no-link-{codice_mecc}-{cdc_per_link}"
+                    url_avviso = f"{url_base}#no-link-{codice_mecc}-{id_univoco}"
                 
                 if url_avviso in url_visti:
                     continue
@@ -82,16 +86,15 @@ def run(url_visti):
                 cdc_pulite = estrai_cdc(cdc_raw) 
                 
                 # 2. GESTIONE DELLE CDC NON STANDARD
-                # Se l'algoritmo non trova nulla, forziamo la creazione di un badge!
                 if not cdc_pulite and cdc_raw:
-                    if len(cdc_raw) <= 20: # Se è corta, mettiamo la sigla (es. AM48)
+                    if len(cdc_raw) <= 20: 
                         cdc_pulite = [cdc_raw.upper()]
-                    else: # Se è lunga (es. Scienze Motorie), creiamo un badge generico
+                    else: 
                         cdc_pulite = ["PRIMARIA/INFANZIA" if "INFANZIA" in cdc_raw.upper() or "PRIMARIA" in cdc_raw.upper() else "ALTRO"]
                 
                 titolo_finale = nome_scuola
 
-                print(f"    🎯 Trovato: {titolo_finale}")
+                print(f"    🎯 Trovato: {titolo_finale} ({dettaglio_ore})")
                 
                 nuovi_interpelli.append({
                     "regione": "Liguria", 
