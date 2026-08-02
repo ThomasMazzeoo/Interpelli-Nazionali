@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function inizializzaMappa() {
     map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    // Base cartografica pulitissima
+    // Tiles neutre e pulite
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
     caricaLayerRegioni();
 }
@@ -67,12 +67,12 @@ async function caricaLayerRegioni() {
         const data = await response.json();
         if (geojsonProvince) map.removeLayer(geojsonProvince);
         
-        // Stile "Color Block" per l'Italia sulla mappa
         geojsonRegioni = L.geoJSON(data, {
-            style: { color: "#000000", weight: 1, fillColor: "#f4ecd6", fillOpacity: 0.9 },
+            // Estetica Apple: Confini scuri e puliti, niente blu
+            style: { color: "#1d1d1f", weight: 1, fillColor: "#1d1d1f", fillOpacity: 0.03 },
             onEachFeature: (feature, layer) => {
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillColor: "#c5b0f4" }), // Diventa Lilla al passaggio!
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.1 }),
                     mouseout: (e) => geojsonRegioni.resetStyle(e.target),
                     click: (e) => clickSuRegione(feature.properties.reg_name, e.target.getBounds())
                 });
@@ -94,12 +94,11 @@ async function clickSuRegione(nomeRegione, bounds) {
 
         aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
-        // Le province usano il color block Lime
         geojsonProvince = L.geoJSON(provinceRegione, {
-            style: { color: "#000000", weight: 1, fillColor: "#dceeb1", fillOpacity: 0.9 },
+            style: { color: "#7a7a7a", weight: 1, fillColor: "#1d1d1f", fillOpacity: 0.05, dashArray: '4' },
             onEachFeature: (feature, layer) => {
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillColor: "#efd4d4" }), // Rosa al passaggio
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.15 }),
                     mouseout: (e) => geojsonProvince.resetStyle(e.target),
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
@@ -119,7 +118,7 @@ async function clickSuRegione(nomeRegione, bounds) {
 function resetMappa() {
     map.setView([41.8719, 12.5674], 6);
     selectRegione.value = "";
-    selectProvincia.innerHTML = '<option value="">-- Seleziona prima una Regione --</option>';
+    selectProvincia.innerHTML = '<option value="">-- Prima seleziona una Regione --</option>';
     selectProvincia.disabled = true;
     selectCdc.value = "";
     selectTipoScuola.value = "";
@@ -235,22 +234,18 @@ function applicaFiltri() {
     indiceMostrati = 0;
 
     if (risultatiCorrenti.length === 0) {
-        // Blocco colore Corallo per lo stato vuoto!
         containerLista.innerHTML = `
-            <div class="bg-figma-coral rounded-[24px] p-8 flex flex-col items-center justify-center text-center">
-                <i class="fa-solid fa-ghost text-4xl text-figma-black mb-4"></i>
-                <h3 class="text-[26px] font-[540] tracking-tighter leading-tight text-figma-black">Nessun interpello in questa zona.</h3>
-                <p class="font-sans text-[18px] font-[320] text-figma-black mt-2">Prova a cambiare filtri o guarda gli scaduti.</p>
+            <div class="text-center p-8 mt-10">
+                <p class="text-[17px] font-semibold text-apple-ink">Nessun risultato</p>
+                <p class="text-[14px] text-apple-muted mt-2">Prova a modificare i filtri o controlla gli interpelli scaduti.</p>
             </div>`;
         return;
     }
 
+    const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
     containerLista.innerHTML = `
-        <div class="mb-6">
-            <h2 class="text-[32px] font-[600] tracking-tighter leading-none text-figma-black mb-1">${prov && prov !== "TUTTE" ? prov : reg}</h2>
-            <p class="font-mono text-[12px] uppercase tracking-widest text-gray-500">${risultatiCorrenti.length} Trovati</p>
-        </div>
-        <div id="grigliaCard" class="flex flex-col gap-6"></div>
+        <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${titoloRisultati}</p>
+        <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
     caricaPezzi(CHUNK_INIZIALE);
 }
@@ -270,10 +265,10 @@ function caricaPezzi(quantita) {
         if (titoloPulito.startsWith('-')) titoloPulito = titoloPulito.substring(1).trim();
         if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
 
-        // Badges: font mono, uppercase, bordi netti
+        // Badges ultra-puliti: Niente sfondi colorati, solo bordi e grigio chiaro
         const badgeCDC = item.cdc && item.cdc.length > 0 
-            ? item.cdc.map(c => `<span class="border border-figma-hairline px-2 py-1 rounded-[4px] font-mono text-[12px] uppercase tracking-widest text-figma-black bg-white">${c}</span>`).join('')
-            : `<span class="border border-figma-hairline px-2 py-1 rounded-[4px] font-mono text-[12px] uppercase tracking-widest text-gray-400 bg-white">NO CDC</span>`;
+            ? item.cdc.map(c => `<span class="bg-apple-parchment text-apple-ink border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">${c}</span>`).join('')
+            : `<span class="bg-apple-parchment text-apple-muted border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">CDC non specificata</span>`;
 
         let dataIta = item.data;
         if(dataIta.includes('-')) {
@@ -290,33 +285,40 @@ function caricaPezzi(quantita) {
             if (differenzaOre <= 48) isNuovo = true;
         }
         
-        const badgeNuovoHTML = isNuovo ? `<span class="bg-figma-lilac text-figma-black font-mono text-[10px] uppercase tracking-widest px-2 py-1 rounded-[4px] mr-2">Nuovo</span>` : '';
-        
-        const classeCardContainer = scaduto ? 'opacity-50' : '';
-        const nomeProvinciaMostrato = (item.provincia || "");
+        // La "Card Apple": 18px radius, bordo leggerissimo, sfondo bianco.
+        const classeCard = scaduto 
+            ? 'opacity-50 bg-apple-pearl' 
+            : 'bg-white';
 
-        // Typography Card: Figma Design
+        const nomeProvinciaMostrato = (item.provincia || "");
+        
+        // Testo in alto: Provincia a sinistra, Data a destra. Se è nuovo, la provincia diventa blu.
+        const testoProvincia = isNuovo ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${nomeProvinciaMostrato}</span>` : `<span class="uppercase">${nomeProvinciaMostrato}</span>`;
+        const testoData = scaduto ? `Chiuso` : `Scade il ${dataIta}`;
+
+        // Il "Pill Button": Azzurro primario di Apple
+        const stileBottone = scaduto 
+            ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
+            : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
+
         griglia.innerHTML += `
-            <div class="rounded-[24px] border border-figma-hairline bg-figma-white p-6 flex flex-col ${classeCardContainer}">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center">
-                        ${badgeNuovoHTML}
-                        <span class="font-mono text-[12px] uppercase tracking-widest text-gray-500">${nomeProvinciaMostrato}</span>
-                    </div>
-                    <span class="font-mono text-[12px] uppercase tracking-widest ${scaduto ? 'text-gray-400' : 'text-figma-success'}">
-                        ${scaduto ? 'CHIUSO' : `Scade ${dataIta}`}
-                    </span>
+            <div class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}">
+                
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-[12px] tracking-tightest font-medium ${isNuovo ? '' : 'text-apple-muted'}">${testoProvincia}</span>
+                    <span class="text-[12px] tracking-tightest font-medium text-apple-muted">${testoData}</span>
                 </div>
                 
-                <h4 class="font-sans font-[600] text-[22px] leading-[1.3] tracking-tighter text-figma-black mb-5 pr-2">${titoloPulito}</h4>
+                <h4 class="text-apple-ink font-semibold text-[19px] leading-tight tracking-tightest mb-4 pr-2">${titoloPulito}</h4>
                 
-                <div class="mb-8 flex flex-wrap gap-2">
+                <div class="mb-6 flex flex-wrap gap-2">
                     ${badgeCDC}
                 </div>
                 
-                <a href="${item.url}" target="_blank" class="w-full ${scaduto ? 'bg-figma-soft text-figma-black border border-figma-hairline' : 'bg-figma-black text-figma-white hover:bg-gray-800'} rounded-full text-[18px] px-6 py-3 text-center transition-transform active:scale-95 font-sans font-[500] block">
-                    ${scaduto ? 'Bando Scaduto' : 'Apri Avviso'}
+                <a href="${item.url}" target="_blank" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
+                    ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                 </a>
+                
             </div>
         `;
     });
@@ -326,7 +328,7 @@ function caricaPezzi(quantita) {
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
-        btn.className = 'w-full bg-figma-white text-figma-black border border-figma-hairline font-sans font-[500] py-3 px-6 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[18px]';
+        btn.className = 'w-full bg-apple-pearl hover:bg-apple-parchment text-apple-ink border border-apple-hairline font-medium py-3 px-4 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[15px]';
         btn.innerHTML = `Mostra altri`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
