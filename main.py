@@ -5,17 +5,16 @@ import importlib
 DATA_FILE = "database_nazionale.json"
 
 # LISTA DEI MODULI DA ESEGUIRE
-# Aggiunta la Liguria!
 MODULI_ATTIVI = [
     "spiders.lombardia",
     "spiders.piemonte",
-    "spiders.liguria"
+    "spiders.liguria.genova",
+    "spiders.liguria.laspezia"
 ]
 
 def avvia_orchestratore():
     print("🚀 AVVIO ORCHESTRATORE INTERPELLI NAZIONALI (Modulare)")
     
-    # 1. Carica il DB Esistente
     database = []
     if os.path.exists(DATA_FILE):
         try:
@@ -24,13 +23,11 @@ def avvia_orchestratore():
         except Exception as e:
             print(f"⚠️ Errore lettura DB precedente: {e}")
             
-    # Crea un set degli URL già scansionati per passarlo agli spider
     url_visti = {item["url"] for item in database if "url" in item}
     
     totale_nuovi = 0
     nuovi_interpelli_totali = []
 
-    # 2. Esecuzione Dinamica e Sicura degli Spider
     for modulo_nome in MODULI_ATTIVI:
         try:
             spider = importlib.import_module(modulo_nome)
@@ -47,10 +44,8 @@ def avvia_orchestratore():
         except Exception as e:
             print(f"\n❌ ERRORE CRITICO nello spider '{modulo_nome}': {e}")
             
-    # 3. Salvataggio
     if nuovi_interpelli_totali:
         database = nuovi_interpelli_totali + database
-        
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(database, f, indent=4, ensure_ascii=False)
         print(f"\n✅ Salvataggio completato! Aggiunti {totale_nuovi} nuovi avvisi.")
