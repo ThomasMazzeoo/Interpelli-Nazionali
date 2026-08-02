@@ -29,40 +29,39 @@ def run(url_visti):
                 print(f"  ⚠️ Nessuna tabella trovata su {provincia}")
                 continue
 
-            # Analizziamo tutte le righe senza limitazioni, ci pensa il codice a scartare l'intestazione
             righe = tabella.find_all('tr') 
             
             for riga in righe:
                 cols = riga.find_all(['td', 'th'])
                 
-                # La tabella di Genova ha 11 colonne
                 if len(cols) < 11: 
                     continue 
                 
                 cdc_raw = cols[0].get_text(strip=True)
+                nome_scuola = cols[3].get_text(strip=True)
                 
-                # SALTA L'INTESTAZIONE IN AUTOMATICO (se la colonna 0 si chiama CDC)
-                if cdc_raw.upper() == 'CDC' or 'CLASSE DI CONCORSO' in cdc_raw.upper():
+                # 1. SUPER FILTRO ANTI-SPORCIZIA:
+                # Saltiamo le righe di intestazione, le righe vuote o le righe "A.S. 2026-2027"
+                if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper():
+                    continue
+                if 'CDC' in cdc_raw.upper() or 'A.S.' in cdc_raw.upper() or 'A.S.' in nome_scuola.upper():
                     continue
 
                 codice_mecc = cols[2].get_text(strip=True)
-                nome_scuola = cols[3].get_text(strip=True)
                 data_raw = cols[9].get_text(strip=True)
                 
                 link_tag = cols[10].find('a', href=True)
                 testo_link = cols[10].get_text(strip=True)
                 
-                # TRUCCO ANTI-DUPLICATO: Rendiamo il link univoco per ogni CDC!
-                # Rimuoviamo spazi e slash per non rompere l'URL
+                # Creiamo un ID unico per il link per non confondere l'anti-duplicato
                 cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
                 
                 if link_tag:
                     url_avviso = link_tag['href']
                     if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
                         url_avviso = "https://www.istruzionegenova.gov.it" + url_avviso
-                    url_avviso += f"#{cdc_per_link}" # Rende unico il link del PDF
+                    url_avviso += f"#{cdc_per_link}" 
                 elif '@' in testo_link:
-                    # Crea un link mailto che apre l'email già precompilata con l'oggetto!
                     url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw}"
                 elif testo_link.lower().startswith('www.') or testo_link.lower().startswith('http'):
                     base_link = testo_link if testo_link.startswith('http') else 'https://' + testo_link
@@ -70,11 +69,10 @@ def run(url_visti):
                 else:
                     url_avviso = f"{url_base}#no-link-{codice_mecc}-{cdc_per_link}"
                 
-                # Ora il controllo anti-duplicato scatterà solo per avvisi davvero identici!
                 if url_avviso in url_visti:
                     continue
                 
-                # ESTRAZIONE DATA PRECISA per il formato DD/MM/YYYY o DD-MM-YYYY
+                # Estrazione data precisa
                 match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4})', data_raw)
                 if match_dt:
                     data_pulita = f"{match_dt.group(3)}-{match_dt.group(2).zfill(2)}-{match_dt.group(1).zfill(2)}"
@@ -83,13 +81,15 @@ def run(url_visti):
                     
                 cdc_pulite = estrai_cdc(cdc_raw) 
                 
-                # Costruzione Titolo
+                # 2. GESTIONE DELLE CDC NON STANDARD
+                # Se l'algoritmo non trova nulla, forziamo la creazione di un badge!
+                if not cdc_pulite and cdc_raw:
+                    if len(cdc_raw) <= 20: # Se è corta, mettiamo la sigla (es. AM48)
+                        cdc_pulite = [cdc_raw.upper()]
+                    else: # Se è lunga (es. Scienze Motorie), creiamo un badge generico
+                        cdc_pulite = ["PRIMARIA/INFANZIA" if "INFANZIA" in cdc_raw.upper() or "PRIMARIA" in cdc_raw.upper() else "ALTRO"]
+                
                 titolo_finale = nome_scuola
-                if cdc_pulite:
-                    titolo_finale += f" - [CDC: {', '.join(cdc_pulite)}]"
-                elif cdc_raw:
-                    # Se non è una CDC standard (es. "Scuola d'Infanzia"), mettiamo la descrizione originale
-                    titolo_finale += f" - [{cdc_raw}]"
 
                 print(f"    🎯 Trovato: {titolo_finale}")
                 
