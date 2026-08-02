@@ -17,19 +17,10 @@ function normalizzaProvincia(nomeIstat) {
 // PALETTE COLORI APPLE E FUNZIONE HASH
 // =========================================
 const APPLE_COLORS = [
-    '#0071e3', // Blue
-    '#34c759', // Green
-    '#5856d6', // Indigo
-    '#ff9500', // Orange
-    '#ff2d55', // Pink
-    '#af52de', // Purple
-    '#ff3b30', // Red
-    '#5ac8fa', // Teal
-    '#00c7be', // Cyan
-    '#32ade6'  // Light blue
+    '#0071e3', '#34c759', '#5856d6', '#ff9500', '#ff2d55', 
+    '#af52de', '#ff3b30', '#5ac8fa', '#00c7be', '#32ade6'
 ];
 
-// Genera sempre lo stesso colore per lo stesso nome
 function getColorFromName(name) {
     if (!name) return '#0071e3';
     let hash = 0;
@@ -107,13 +98,12 @@ async function caricaLayerRegioni() {
         
         geojsonRegioni = L.geoJSON(data, {
             style: (feature) => ({ 
-                color: "#ffffff", // Bordo bianco per separare i colori
+                color: "#ffffff", 
                 weight: 1.5, 
                 fillColor: getColorFromName(feature.properties.reg_name), 
-                fillOpacity: 0.25 // Semi-trasparente
+                fillOpacity: 0.25 
             }),
             onEachFeature: (feature, layer) => {
-                // Etichetta fissa al centro, senza sfondo
                 layer.bindTooltip(feature.properties.reg_name, { 
                     permanent: true, 
                     direction: "center", 
@@ -127,6 +117,7 @@ async function caricaLayerRegioni() {
                 });
             }
         }).addTo(map);
+        livelloAttuale = 'regioni';
     } catch (error) { console.error(error); }
 }
 
@@ -151,7 +142,6 @@ async function clickSuRegione(nomeRegione, bounds) {
                 fillOpacity: 0.3 
             }),
             onEachFeature: (feature, layer) => {
-                // Etichetta Provincia fissa
                 layer.bindTooltip(feature.properties.prov_name, { 
                     permanent: true, 
                     direction: "center", 
@@ -170,6 +160,7 @@ async function clickSuRegione(nomeRegione, bounds) {
             }
         }).addTo(map);
         
+        livelloAttuale = 'province';
         selectProvincia.value = "TUTTE";
         applicaFiltri();
         if(btnReset) btnReset.classList.remove('hidden');
@@ -230,6 +221,7 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
     });
 }
 
+// IL CERVELLO CHE CAPISCE SE UN INTERPELLO È SCADUTO
 function isScaduto(item) {
     if ((item.titolo || "").toUpperCase().includes('[CHIUSO]')) return true;
     if (item.data) {
