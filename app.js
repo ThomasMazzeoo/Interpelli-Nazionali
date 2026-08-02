@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function inizializzaMappa() {
     map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
+    // Tiles neutre e pulite
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
     caricaLayerRegioni();
 }
@@ -67,11 +68,11 @@ async function caricaLayerRegioni() {
         if (geojsonProvince) map.removeLayer(geojsonProvince);
         
         geojsonRegioni = L.geoJSON(data, {
-            // Mappa vibrante e colorata
-            style: { color: "#3b82f6", weight: 1.5, fillColor: "#60a5fa", fillOpacity: 0.15 },
+            // Estetica Apple: Confini scuri e puliti, niente blu
+            style: { color: "#1d1d1f", weight: 1, fillColor: "#1d1d1f", fillOpacity: 0.03 },
             onEachFeature: (feature, layer) => {
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.3, weight: 2 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.1 }),
                     mouseout: (e) => geojsonRegioni.resetStyle(e.target),
                     click: (e) => clickSuRegione(feature.properties.reg_name, e.target.getBounds())
                 });
@@ -94,12 +95,10 @@ async function clickSuRegione(nomeRegione, bounds) {
         aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
         geojsonProvince = L.geoJSON(provinceRegione, {
-            // Colore vivace per le province (Rose/Rosso tenue)
-            style: { color: "#f43f5e", weight: 1.5, fillColor: "#fb7185", fillOpacity: 0.1, dashArray: '4' },
+            style: { color: "#7a7a7a", weight: 1, fillColor: "#1d1d1f", fillOpacity: 0.05, dashArray: '4' },
             onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.prov_name, { permanent: true, direction: "center", className: "text-xs bg-transparent border-0 shadow-none font-bold text-gray-700" });
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.25 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.15 }),
                     mouseout: (e) => geojsonProvince.resetStyle(e.target),
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
@@ -236,20 +235,16 @@ function applicaFiltri() {
 
     if (risultatiCorrenti.length === 0) {
         containerLista.innerHTML = `
-            <div class="text-center p-8 mt-10 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <i class="fa-solid fa-ghost text-4xl mb-4 text-slate-300"></i>
-                <p class="text-[16px] font-bold text-slate-700">Nessun risultato trovato</p>
-                <p class="text-[13px] text-slate-500 mt-2 leading-relaxed">Prova a modificare i filtri o seleziona "Tutti gli Interpelli" nello stato.</p>
+            <div class="text-center p-8 mt-10">
+                <p class="text-[17px] font-semibold text-apple-ink">Nessun risultato</p>
+                <p class="text-[14px] text-apple-muted mt-2">Prova a modificare i filtri o controlla gli interpelli scaduti.</p>
             </div>`;
         return;
     }
 
     const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
     containerLista.innerHTML = `
-        <div class="flex justify-between items-center mb-5 px-1">
-            <p class="text-[13px] text-slate-500 font-bold uppercase tracking-wider">${titoloRisultati}</p>
-            <span class="bg-blue-100 text-blue-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">${risultatiCorrenti.length} Trovati</span>
-        </div>
+        <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${titoloRisultati}</p>
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
     caricaPezzi(CHUNK_INIZIALE);
@@ -270,10 +265,10 @@ function caricaPezzi(quantita) {
         if (titoloPulito.startsWith('-')) titoloPulito = titoloPulito.substring(1).trim();
         if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
 
-        // Badge CDC: Colore Indaco vibrante
+        // Badges ultra-puliti: Niente sfondi colorati, solo bordi e grigio chiaro
         const badgeCDC = item.cdc && item.cdc.length > 0 
-            ? item.cdc.map(c => `<span class="bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 py-1 rounded-lg text-[11px] font-bold shadow-sm">${c}</span>`).join('')
-            : `<span class="bg-slate-100 text-slate-500 border border-slate-200 px-2.5 py-1 rounded-lg text-[11px] font-bold shadow-sm">Nessuna CDC</span>`;
+            ? item.cdc.map(c => `<span class="bg-apple-parchment text-apple-ink border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">${c}</span>`).join('')
+            : `<span class="bg-apple-parchment text-apple-muted border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">CDC non specificata</span>`;
 
         let dataIta = item.data;
         if(dataIta.includes('-')) {
@@ -290,57 +285,38 @@ function caricaPezzi(quantita) {
             if (differenzaOre <= 48) isNuovo = true;
         }
         
+        // La "Card Apple": 18px radius, bordo leggerissimo, sfondo bianco.
         const classeCard = scaduto 
-            ? 'opacity-60 bg-slate-50 border-slate-200 grayscale-[0.2]' 
-            : 'bg-white border-blue-100 shadow-sm hover:shadow-md hover:border-blue-300';
+            ? 'opacity-50 bg-apple-pearl' 
+            : 'bg-white';
 
         const nomeProvinciaMostrato = (item.provincia || "");
         
-        // Provincia: Azzurro vivido. Nuovo: Smeraldo acceso con pallino pulsante.
-        let testoProvincia = `<span class="text-blue-700 font-bold uppercase bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200 shadow-sm">${nomeProvinciaMostrato}</span>`;
-        
-        if (isNuovo) {
-            testoProvincia = `
-                <span class="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-md text-[10px] font-extrabold tracking-wider shadow-sm uppercase">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    Nuovo
-                </span>
-                ${testoProvincia}
-            `;
-        }
+        // Testo in alto: Provincia a sinistra, Data a destra. Se è nuovo, la provincia diventa blu.
+        const testoProvincia = isNuovo ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${nomeProvinciaMostrato}</span>` : `<span class="uppercase">${nomeProvinciaMostrato}</span>`;
+        const testoData = scaduto ? `Chiuso` : `Scade il ${dataIta}`;
 
-        // Data: Rosa scuro vibrante per la scadenza, Grigio per lo scaduto
-        const testoData = scaduto 
-            ? `<span class="text-slate-500 font-bold bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200 flex items-center gap-1 shadow-sm"><i class="fa-solid fa-lock text-[10px]"></i> Chiuso</span>` 
-            : `<span class="text-rose-600 font-bold bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-200 flex items-center gap-1 shadow-sm"><i class="fa-regular fa-clock text-[10px]"></i> Scade: ${dataIta}</span>`;
-
+        // Il "Pill Button": Azzurro primario di Apple
         const stileBottone = scaduto 
-            ? 'bg-slate-200 text-slate-500 cursor-not-allowed border border-slate-300' 
-            : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-md';
+            ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
+            : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
 
         griglia.innerHTML += `
-            <div class="rounded-[16px] border p-5 flex flex-col transition-all duration-200 ${classeCard}">
+            <div class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}">
                 
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center gap-2 text-[10px] tracking-tightest">
-                        ${testoProvincia}
-                    </div>
-                    <div class="text-[10px] tracking-tightest">
-                        ${testoData}
-                    </div>
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-[12px] tracking-tightest font-medium ${isNuovo ? '' : 'text-apple-muted'}">${testoProvincia}</span>
+                    <span class="text-[12px] tracking-tightest font-medium text-apple-muted">${testoData}</span>
                 </div>
                 
-                <h4 class="text-slate-800 font-bold text-[16px] leading-tight tracking-tight mb-4 pr-2">${titoloPulito}</h4>
+                <h4 class="text-apple-ink font-semibold text-[19px] leading-tight tracking-tightest mb-4 pr-2">${titoloPulito}</h4>
                 
-                <div class="mb-5 flex flex-wrap gap-1.5">
+                <div class="mb-6 flex flex-wrap gap-2">
                     ${badgeCDC}
                 </div>
                 
-                <a href="${item.url}" target="_blank" class="w-full rounded-xl text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-bold tracking-tight ${stileBottone}">
-                    ${scaduto ? '<i class="fa-solid fa-ban mr-1"></i> Bando Chiuso' : '<i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Apri Avviso Ufficiale'}
+                <a href="${item.url}" target="_blank" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
+                    ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                 </a>
                 
             </div>
@@ -352,8 +328,8 @@ function caricaPezzi(quantita) {
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
-        btn.className = 'w-full bg-white hover:bg-blue-50 text-blue-700 border border-blue-200 font-bold py-3 px-4 rounded-xl mt-2 mb-8 transition-transform active:scale-95 text-[14px] shadow-sm';
-        btn.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i> Mostra altri (Mostrati ${indiceMostrati} di ${risultatiCorrenti.length})`;
+        btn.className = 'w-full bg-apple-pearl hover:bg-apple-parchment text-apple-ink border border-apple-hairline font-medium py-3 px-4 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[15px]';
+        btn.innerHTML = `Mostra altri`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
     }
