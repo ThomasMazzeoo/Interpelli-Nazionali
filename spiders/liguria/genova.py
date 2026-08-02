@@ -80,9 +80,7 @@ def run(url_visti):
             match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4})', data_raw)
             data_pulita = f"{match_dt.group(3)}-{match_dt.group(2).zfill(2)}-{match_dt.group(1).zfill(2)}" if match_dt else converti_data_italiana(data_raw)
                 
-            cdc_pulite = estrai_cdc(cdc_raw) 
-            if not cdc_pulite and cdc_raw:
-                cdc_pulite = [cdc_raw.upper()] if len(cdc_raw) <= 20 else ["PRIMARIA/INFANZIA" if "INFANZIA" in cdc_raw.upper() or "PRIMARIA" in cdc_raw.upper() else "ALTRO"]
+            cdc_pulite = estrai_cdc(cdc_raw)
             
             nuovi_interpelli.append({
                 "regione": "Liguria", "provincia": "Genova", "titolo": nome_scuola,
