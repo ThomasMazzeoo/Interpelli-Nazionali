@@ -1,5 +1,242 @@
 [
-    
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "Istituto Suore Benedettine della Provvidenza",
+        "data": "2026-08-02",
+        "cdc": [
+            "SCUOLA D'INFANZIA"
+        ],
+        "url": "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_20-06-2027",
+        "pdf_links": [
+            "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_20-06-2027"
+        ],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.068744"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM48"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM48-Spezzone6_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.068908"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADEE-Spezzone8_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069044"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADEE-18_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069162"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "PRIMARIA/INFANZIA"
+        ],
+        "url": "mailto:personale_genova@libero.it#SCIENZE_SPORTIVE_MOTORIE_PRIMARIA-Spezzone_12_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069282"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM2B"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM2B-Spezzone_4_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069441"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM2B"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM2B-Spezzone_8_h-dal_01-09-2026-al_28-02-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069558"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AM12"
+        ],
+        "url": "mailto:personale_genova@libero.it#AM12-Spezzone_8_h-dal_01-09-2026-al_30-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069684"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADMM"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADMM-Spezzone_14_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069801"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
+        "data": "2026-07-24",
+        "cdc": [
+            "ADMM"
+        ],
+        "url": "mailto:personale_genova@libero.it#ADMM-Spezzone_12_h-dal_01-09-2026-al_15-06-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.069914"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "A001"
+        ],
+        "url": "http://www.scuolagenova.it/#A-01-2_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070080"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "A054"
+        ],
+        "url": "http://www.scuolagenova.it/#A-54-6_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070203"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "GEPS07500L",
+        "data": "2026-08-26",
+        "cdc": [
+            "A050"
+        ],
+        "url": "http://www.scuolagenova.it/#A-50-3_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070319"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "A050"
+        ],
+        "url": "http://www.scuolagenova.it/#A-50-8_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070446"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "AAAA"
+        ],
+        "url": "http://www.scuolagenova.it/#AAAA-INTERA-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070558"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "http://www.scuolagenova.it/#ADEE-10_ORE-dal_1-9-2026-al_30-6-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070678"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "ISTITUTO CALASANZIO-PROVINCIA LIGURE DEI PADRI SCOLOPI",
+        "data": "2026-08-26",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "http://www.scuolagenova.it/#EEEE-INTERA-dal_1-9-2026-al_30-6-2027",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070791"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "Istituto Suore Benedettine della Provvidenza",
+        "data": "2026-07-22",
+        "cdc": [
+            "SCUOLA D'INFANZIA"
+        ],
+        "url": "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_30-06-2027",
+        "pdf_links": [
+            "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_30-06-2027"
+        ],
+        "form_links": [],
+        "data_rilevamento": "2026-08-02T11:02:21.070903"
+    },
     {
         "regione": "Lombardia",
         "provincia": "Milano",
