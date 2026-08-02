@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interpello Nazionale - La mappa delle supplenze</title>
+    <title>Interpelli Nazionali - La mappa delle supplenze</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -48,9 +48,9 @@
                         <label class="flex items-center text-sm font-semibold text-gray-700 mb-1.5"><i class="fa-solid fa-map text-blue-600 w-5"></i> Regione</label>
                         <select id="regioneSelect" class="w-full bg-slate-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block p-2.5 outline-none cursor-pointer">
                             <option value="">-- Clicca sulla mappa o scegli --</option>
-                            
                             <option value="Lombardia">Lombardia</option>
                             <option value="Piemonte">Piemonte</option>
+                            <option value="Liguria">Liguria</option>
                         </select>
                     </div>
                     <div>
@@ -95,7 +95,7 @@
 
     <!-- COLONNA DESTRA (Mappa) -->
     <main class="w-2/3 h-screen relative bg-[#e2e8f0]" id="map-container">
-        <!-- Bottone Fluttuante Mappa (con z-[1000] per superare Leaflet) -->
+        <!-- Bottone Fluttuante Mappa -->
         <button id="btnResetMappa" class="absolute top-6 right-6 z-[1000] hidden bg-white border border-slate-200 text-slate-800 py-3 px-6 rounded-full hover:bg-slate-50 hover:text-blue-700 hover:border-blue-400 hover:shadow-xl transition-all text-sm font-extrabold shadow-lg flex items-center justify-center gap-2 cursor-pointer">
             <i class="fa-solid fa-earth-europe text-blue-600 text-lg"></i> Torna all'Italia intera
         </button>
