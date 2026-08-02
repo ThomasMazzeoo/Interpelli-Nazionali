@@ -16,33 +16,55 @@ def converti_data_italiana(data_str):
     return datetime.today().strftime('%Y-%m-%d')
 
 def estrai_cdc(testo):
-    testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
-    
+    # Rimuove parole inutili che confondono l'algoritmo
+    testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?|posti?|n\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
+    testo_upper = testo.upper()
+
+    cdc_trovate = set()
+
+    # 1. Sigle Standard (A022, B016)
     pattern_standard = r'\b[AB][\-\s]*(?:0\d{2}|\d{1,2})\b'
-    pattern_speciali = r'\b[A-B][A-Z](?:55|56|02)\b'
-    pattern_prim = r'\b(AAAA|EEEE|PPPP|EEIL|EEEM|AAHN|EEHN|AAMM|EEMM|AADA|EEDA|AD[A-Z]{2}|IRC)\b'
-    
-    trovati_standard = re.findall(pattern_standard, testo_pulito, re.IGNORECASE)
-    trovati_speciali = re.findall(pattern_speciali, testo_pulito, re.IGNORECASE)
-    trovati_prim = re.findall(pattern_prim, testo_pulito, re.IGNORECASE)
-    
-    cdc_pulite = set()
-    
-    for c in trovati_standard:
+    for c in re.findall(pattern_standard, testo_pulito, re.IGNORECASE):
         sigla = re.sub(r'[^A-Za-z0-9]', '', c).upper()
-        lettera = sigla[0]
-        numeri = sigla[1:]
-        sigla_ufficiale = f"{lettera}{numeri.zfill(3)}"
+        sigla_ufficiale = f"{sigla[0]}{sigla[1:].zfill(3)}"
         if sigla_ufficiale not in ['B000', 'A000']:
-            cdc_pulite.add(sigla_ufficiale)
-            
-    for c in trovati_speciali:
-        cdc_pulite.add(c.upper())
-            
-    for s in trovati_prim:
-        cdc_pulite.add(s.upper())
-            
-    return list(cdc_pulite)
+            cdc_trovate.add(sigla_ufficiale)
+
+    # 2. Sostegno e Strumenti (Cattura anche se sono scritti attaccati tipo "POSTIADEE")
+    pattern_speciali = r'(ADAA|ADEE|ADMM|ADSS|AAAA|EEEE|PPPP|EEIL|EEEM|AAHN|EEHN|AAMM|EEMM|AADA|EEDA|IRC|[A-B][A-Z]\d{2})'
+    for c in re.findall(pattern_speciali, testo_upper):
+        cdc_trovate.add(c)
+
+    # 3. TRADUTTORE SEMANTICO: Se non usa sigle ufficiali ma parole intere
+    if not cdc_trovate:
+        if "INFANZIA" in testo_upper and "PRIMARIA" in testo_upper:
+            cdc_trovate.update(["INFANZIA", "PRIMARIA"])
+        elif "INFANZIA" in testo_upper:
+            cdc_trovate.add("INFANZIA")
+        elif "PRIMARIA" in testo_upper:
+            cdc_trovate.add("PRIMARIA")
+        elif "SECONDARIA I" in testo_upper or "1 GRADO" in testo_upper or "MEDIE" in testo_upper:
+            cdc_trovate.add("SECONDARIA I GRADO")
+        elif "SECONDARIA II" in testo_upper or "2 GRADO" in testo_upper or "SUPERIORI" in testo_upper:
+            cdc_trovate.add("SECONDARIA II GRADO")
+        elif "SECONDARIA" in testo_upper:
+            cdc_trovate.add("SECONDARIA")
+        elif "RELIGIONE" in testo_upper:
+            cdc_trovate.add("RELIGIONE")
+        elif "SOSTEGNO" in testo_upper:
+            cdc_trovate.add("SOSTEGNO")
+
+    # 4. PULIZIA FINALE Falsi Positivi
+    if "MMMM" in cdc_trovate:
+        cdc_trovate.remove("MMMM")
+
+    cdc_finali = []
+    for cdc in cdc_trovate:
+        # Elimina i Codici Meccanografici finiti qui per errore delle segreterie (es. SVIC812001)
+        if not re.match(r'^[A-Z]{2,4}\d{4,5}[A-Z\d]?$', cdc):
+            cdc_finali.append(cdc)
+
+    return sorted(cdc_finali)
 
 def leggi_cdc_da_pdf(pdf_url):
     cdc_trovate = set()
