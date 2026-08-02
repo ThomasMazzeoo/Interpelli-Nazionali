@@ -9,7 +9,8 @@ MODULI_ATTIVI = [
     "spiders.lombardia",
     "spiders.piemonte",
     "spiders.liguria.genova",
-    "spiders.liguria.laspezia"
+    "spiders.liguria.laspezia",
+    "spiders.liguria.imperia"  # <-- AGGIUNTA IMPERIA QUI!
 ]
 
 def avvia_orchestratore():
