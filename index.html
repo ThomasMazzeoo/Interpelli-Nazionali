@@ -5,121 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interpelli Nazionali - La mappa delle supplenze</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configurazione Design System Apple -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            blue: '#0066cc',
+                            blueFocus: '#0071e3',
+                            parchment: '#f5f5f7',
+                            pearl: '#fafafc',
+                            ink: '#1d1d1f',
+                            muted: '#7a7a7a',
+                            hairline: '#e0e0e0',
+                            black: '#000000'
+                        }
+                    },
+                    letterSpacing: {
+                        tightest: '-0.022em',
+                        tighter: '-0.015em'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Inter (Alternativa Open Source ad Apple SF Pro) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <style>
-        /* Tipografia rigorosa del Design System */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-            color: #333840; /* Body text */
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* Nasconde i crediti di Leaflet per mantenere la mappa pulita */
-        .leaflet-control-attribution { display: none !important; }
-        
-        /* Stile Scrollbar minimale */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f8fafc; }
-        ::-webkit-scrollbar-thumb { background: #dddddd; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9297a0; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#ffffff] overflow-hidden h-screen w-screen flex">
+<body class="bg-apple-parchment text-apple-ink font-sans overflow-hidden h-screen w-screen flex tracking-tighter">
 
-    <!-- 1. COLONNA SINISTRA (Filtri Editoriali) -->
-    <aside class="w-[28%] min-w-[340px] bg-[#ffffff] z-20 flex flex-col h-screen border-r border-[#dddddd]">
+    <!-- 1. COLONNA SINISTRA (Filtri) -->
+    <aside class="w-[28%] min-w-[320px] bg-apple-parchment z-20 flex flex-col h-screen border-r border-apple-hairline">
         
-        <!-- Hero Band (White Canvas) -->
-        <div class="px-8 py-10 shrink-0 border-b border-[#dddddd]">
-            <div class="flex items-center gap-3 mb-2">
-                <div class="w-10 h-10 rounded-full bg-[#181d26] flex items-center justify-center text-[#ffffff]">
-                    <i class="fa-solid fa-layer-group text-lg"></i>
-                </div>
-                <h1 class="text-[32px] font-normal text-[#181d26] tracking-tight leading-[1.2]">Interpelli</h1>
+        <!-- Global Nav (stile Apple) -->
+        <div class="bg-apple-black text-white px-6 py-4 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-map-location-dot text-lg text-white"></i>
+                <h1 class="text-[17px] font-semibold tracking-tightest">Interpelli Nazionali</h1>
             </div>
-            <p class="text-[14px] font-normal text-[#41454d] mt-1">La mappa nazionale delle supplenze.</p>
+            <span class="text-[12px] text-gray-400 font-normal">Ministero dell'Istruzione</span>
         </div>
 
-        <!-- Area Filtri (Flat Design) -->
-        <div class="flex-1 overflow-y-auto px-8 py-8 flex flex-col gap-8">
+        <div class="px-6 py-6 pb-2 shrink-0">
+            <h2 class="text-[28px] font-semibold tracking-tightest text-apple-ink leading-tight">Trova la tua<br>prossima cattedra.</h2>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-6 py-4 flex flex-col gap-6">
             
-            <div class="flex flex-col gap-5">
-                <h2 class="text-[16px] font-medium text-[#181d26]">Territorio e Stato</h2>
+            <!-- Utility Card: Territorio -->
+            <div class="bg-white rounded-[18px] border border-apple-hairline p-5 flex flex-col gap-4">
+                <h3 class="text-[14px] font-semibold text-apple-ink tracking-tightest">Territorio & Stato</h3>
                 
                 <div>
-                    <label class="block text-[14px] font-medium text-[#181d26] mb-2">Regione</label>
-                    <select id="regioneSelect" class="w-full bg-[#ffffff] border border-[#dddddd] text-[#333840] text-[14px] rounded-[6px] h-[44px] px-3 focus:outline-none focus:border-[#458fff] focus:ring-1 focus:ring-[#458fff] cursor-pointer">
-                        <option value="">Seleziona una regione</option>
+                    <select id="regioneSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                        <option value="">Seleziona una Regione...</option>
                         <option value="Lombardia">Lombardia</option>
                         <option value="Piemonte">Piemonte</option>
                         <option value="Liguria">Liguria</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-[14px] font-medium text-[#181d26] mb-2">Provincia</label>
-                    <select id="provinciaSelect" disabled class="w-full bg-[#ffffff] border border-[#dddddd] text-[#333840] text-[14px] rounded-[6px] h-[44px] px-3 focus:outline-none focus:border-[#458fff] focus:ring-1 focus:ring-[#458fff] disabled:opacity-50 disabled:bg-[#f8fafc] cursor-pointer">
-                        <option value="">Scegli prima la regione</option>
+                    <select id="provinciaSelect" disabled class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+                        <option value="">Provincia...</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-[14px] font-medium text-[#181d26] mb-2">Stato Interpello</label>
-                    <select id="statoSelect" class="w-full bg-[#ffffff] border border-[#dddddd] text-[#333840] text-[14px] rounded-[6px] h-[44px] px-3 focus:outline-none focus:border-[#458fff] focus:ring-1 focus:ring-[#458fff] cursor-pointer">
-                        <option value="TUTTI">Tutti (Attivi e Chiusi)</option>
+                    <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                        <option value="TUTTI">Tutti gli Interpelli</option>
                         <option value="ATTIVI" selected>Solo Attivi (Aperti)</option>
                         <option value="SCADUTI">Solo Scaduti</option>
                     </select>
                 </div>
             </div>
 
-            <div class="w-full h-px bg-[#dddddd]"></div> <!-- Hairline divider -->
-
-            <div class="flex flex-col gap-5">
-                <h2 class="text-[16px] font-medium text-[#181d26]">Posizione</h2>
+            <!-- Utility Card: Posizione -->
+            <div class="bg-white rounded-[18px] border border-apple-hairline p-5 flex flex-col gap-4">
+                <h3 class="text-[14px] font-semibold text-apple-ink tracking-tightest">Posizione d'Insegnamento</h3>
                 
                 <div>
-                    <label class="block text-[14px] font-medium text-[#181d26] mb-2">Classe di Concorso</label>
-                    <select id="cdcSelect" class="w-full bg-[#ffffff] border border-[#dddddd] text-[#333840] text-[14px] rounded-[6px] h-[44px] px-3 focus:outline-none focus:border-[#458fff] focus:ring-1 focus:ring-[#458fff] cursor-pointer">
-                        <option value="">Tutte le classi</option>
+                    <select id="cdcSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                        <option value="">Tutte le Classi di Concorso</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-[14px] font-medium text-[#181d26] mb-2">Grado Scuola</label>
-                    <select id="tipoScuolaSelect" class="w-full bg-[#ffffff] border border-[#dddddd] text-[#333840] text-[14px] rounded-[6px] h-[44px] px-3 focus:outline-none focus:border-[#458fff] focus:ring-1 focus:ring-[#458fff] cursor-pointer">
-                        <option value="">Tutti i gradi</option>
+                    <select id="tipoScuolaSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                        <option value="">Tutti i gradi scolastici</option>
                         <option value="IC">Infanzia / Primaria / Medie (IC)</option>
-                        <option value="SUPERIORI">Scuole Superiori (Licei, Tecnici)</option>
+                        <option value="SUPERIORI">Scuole Superiori</option>
                     </select>
                 </div>
             </div>
-            
         </div>
     </aside>
 
     <!-- 2. COLONNA CENTRALE (Mappa) -->
-    <main class="flex-1 h-screen relative bg-[#f8fafc]" id="map-container">
-        <!-- Secondary Button Style -->
-        <button id="btnResetMappa" class="absolute top-8 right-8 z-[1000] hidden bg-[#ffffff] border border-[#dddddd] text-[#181d26] px-6 h-[44px] rounded-[12px] hover:bg-[#f8fafc] transition-colors text-[14px] font-medium flex items-center justify-center gap-2 cursor-pointer shadow-none">
-            <i class="fa-solid fa-earth-europe text-[#41454d]"></i> Torna all'Italia
+    <main class="flex-1 h-screen relative bg-apple-parchment transition-all duration-300" id="map-container">
+        <!-- Bottone Floating Stile Apple -->
+        <button id="btnResetMappa" class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[1000] hidden bg-[#f5f5f7]/80 backdrop-blur-md border border-apple-hairline text-apple-ink py-2.5 px-5 rounded-full hover:bg-white transition-all text-[14px] font-semibold shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+            <i class="fa-solid fa-rotate-left"></i> Resetta Mappa
         </button>
 
         <div id="map" class="w-full h-full z-0"></div>
     </main>
 
-    <!-- 3. COLONNA DESTRA (Risultati Editoriali) -->
-    <aside id="rightPanel" class="w-[32%] min-w-[380px] bg-[#f8fafc] z-20 flex flex-col h-screen border-l border-[#dddddd] hidden">
-        
-        <div class="bg-[#ffffff] border-b border-[#dddddd] px-8 py-8 flex justify-between items-center shrink-0">
-            <h2 class="text-[24px] font-normal text-[#181d26] tracking-tight">Risultati</h2>
-            
-            <!-- Icon Circular Button -->
-            <button id="chiudiPannelloBtn" class="w-10 h-10 rounded-full bg-[#ffffff] border border-[#dddddd] text-[#181d26] hover:bg-[#f8fafc] flex items-center justify-center transition cursor-pointer">
+    <!-- 3. COLONNA DESTRA (Risultati) -->
+    <aside id="rightPanel" class="w-[34%] min-w-[380px] bg-apple-parchment z-20 flex flex-col h-screen border-l border-apple-hairline hidden">
+        <!-- Sub-Nav Frosted Glass -->
+        <div class="bg-[#f5f5f7]/80 backdrop-blur-xl border-b border-apple-hairline px-6 py-4 flex justify-between items-center shrink-0 z-10 sticky top-0">
+            <span class="text-[21px] font-semibold text-apple-ink tracking-tightest">Risultati</span>
+            <button id="chiudiPannelloBtn" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-8 h-8 flex items-center justify-center transition active:scale-95 cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
         
-        <div class="flex-1 min-h-0 overflow-y-auto px-6 py-8 relative" id="listaInterpelli">
+        <div class="flex-1 min-h-0 overflow-y-auto px-6 py-6 relative" id="listaInterpelli">
         </div>
     </aside>
 
