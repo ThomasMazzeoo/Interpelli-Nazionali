@@ -1,6 +1,8 @@
+// Link ai dati Open Source ISTAT (Confini Italia)
 const URL_REGIONI = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson";
 const URL_PROVINCE = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson";
 
+// --- TRADUTTORE ISTAT -> MINISTERO ---
 const ALIAS_PROVINCE = {
     "Monza e della Brianza": "Monza Brianza",
     "Reggio di Calabria": "Reggio Calabria",
@@ -13,24 +15,29 @@ function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
 
+// Variabili Mappa e Dati
 let map;
 let geojsonRegioni;
 let geojsonProvince;
 let livelloAttuale = 'regioni'; 
 let datiInterpelli = [];
+
+// Variabili Paginazione
 let risultatiCorrenti = []; 
 let indiceMostrati = 0;     
 const CHUNK_INIZIALE = 50;  
 const CHUNK_SUCCESSIVO = 20;
 
+// Elementi DOM
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
 const selectCdc = document.getElementById('cdcSelect');
 const selectTipoScuola = document.getElementById('tipoScuolaSelect');
-const selectStato = document.getElementById('statoSelect'); // IL NUOVO MENU STATO
+const selectStato = document.getElementById('statoSelect');
 const btnReset = document.getElementById('btnResetMappa'); 
 const containerLista = document.getElementById('listaInterpelli');
 
+// Elementi Collapse
 const toggleFiltriBtn = document.getElementById('toggleFiltriBtn');
 const filtriContainer = document.getElementById('filtriContainer');
 const toggleIcon = document.getElementById('toggleIcon');
@@ -44,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     selectProvincia.addEventListener('change', applicaFiltri);
     selectCdc.addEventListener('change', applicaFiltri);
     selectTipoScuola.addEventListener('change', applicaFiltri);
-    selectStato.addEventListener('change', applicaFiltri); // Listener per lo stato
+    selectStato.addEventListener('change', applicaFiltri);
     
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
@@ -64,6 +71,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// =========================================
+// 1. GESTIONE MAPPA (Leaflet)
+// =========================================
 function inizializzaMappa() {
     map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -183,22 +193,25 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
     });
 }
 
+// =========================================
 // IL CERVELLO CHE CAPISCE SE UN INTERPELLO È SCADUTO
+// =========================================
 function isScaduto(item) {
-    // 1. Controllo Piemonte (ha l'etichetta nel titolo)
+    // 1. Se c'è l'etichetta [CHIUSO] scritta dal sito ufficiale
     if ((item.titolo || "").toUpperCase().includes('[CHIUSO]')) return true;
     
-    // 2. Controllo Liguria (confronta la data di scadenza col calendario di oggi)
-    if (item.regione === "Liguria" && item.data) {
+    // 2. Controllo Matematico sulle date (ORA APPLICATO A TUTTA ITALIA)
+    if (item.data) {
         const parts = item.data.split('-');
         if (parts.length === 3) {
             const dataScadenza = new Date(parts[0], parts[1] - 1, parts[2]);
             const oggi = new Date();
-            oggi.setHours(0, 0, 0, 0); // Azzera l'orologio per un confronto pulito al giorno
+            oggi.setHours(0, 0, 0, 0); // Azzera l'orologio di oggi per fare un confronto pulito
+            // Se la data indicata è precedente a oggi, consideralo scaduto in automatico!
             return dataScadenza < oggi;
         }
     }
-    return false; // Di default lo consideriamo aperto
+    return false; // Di default lo consideriamo aperto se non rientra nei casi sopra
 }
 
 function applicaFiltri() {
@@ -276,7 +289,6 @@ function caricaPezzi(quantita) {
     const dataOdierna = new Date(); 
     
     daMostrare.forEach(item => {
-        // Rimuoviamo [CHIUSO] dal titolo visivamente, perché ora mettiamo il badge
         let titoloPulito = item.titolo.replace('[CHIUSO]', '').trim();
         if (titoloPulito.startsWith('-')) titoloPulito = titoloPulito.substring(1).trim();
         if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
@@ -302,21 +314,19 @@ function caricaPezzi(quantita) {
         
         const badgeNuovoHTML = isNuovo ? `<span class="badge-nuovo"><span class="flex h-2 w-2 relative mr-1 inline-flex"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>NUOVO</span>` : '';
         
-        // Se è chiuso, rendiamo la scheda grigia e semitrasparente
         const classeCardNuova = scaduto 
             ? 'opacity-60 bg-gray-50' 
             : (isNuovo ? 'card-nuova border-green-300 bg-green-50/10 hover:shadow-md' : 'border-gray-200 bg-white hover:shadow-md');
 
         const nomeProvinciaMostrato = (item.provincia || "").toUpperCase();
 
-        // GRAFICA DELLA DATA: Lucchetto chiuso vs Calendario Scadenza
+        // GRAFICA DELLA DATA UNIFORMATA PER TUTTA ITALIA!
         let badgeDataHtml = '';
         if (scaduto) {
             badgeDataHtml = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
-        } else if (item.regione === "Liguria") {
-            badgeDataHtml = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
         } else {
-            badgeDataHtml = `<span class="font-bold bg-gray-50 px-2.5 py-1 rounded text-gray-700 border border-gray-200 shadow-sm"><i class="fa-regular fa-calendar mr-1"></i> Del: ${dataIta}</span>`;
+            // Se è attivo, mostriamo sempre il badge "Scade il" in rosso con orologio!
+            badgeDataHtml = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
         }
 
         griglia.innerHTML += `
