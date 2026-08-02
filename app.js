@@ -13,6 +13,32 @@ function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
 
+// =========================================
+// PALETTE COLORI APPLE E FUNZIONE HASH
+// =========================================
+const APPLE_COLORS = [
+    '#0071e3', // Blue
+    '#34c759', // Green
+    '#5856d6', // Indigo
+    '#ff9500', // Orange
+    '#ff2d55', // Pink
+    '#af52de', // Purple
+    '#ff3b30', // Red
+    '#5ac8fa', // Teal
+    '#00c7be', // Cyan
+    '#32ade6'  // Light blue
+];
+
+// Genera sempre lo stesso colore per lo stesso nome
+function getColorFromName(name) {
+    if (!name) return '#0071e3';
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return APPLE_COLORS[Math.abs(hash) % APPLE_COLORS.length];
+}
+
 let map;
 let geojsonRegioni;
 let geojsonProvince;
@@ -32,6 +58,19 @@ const containerLista = document.getElementById('listaInterpelli');
 
 const rightPanel = document.getElementById('rightPanel');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
+
+// INIEZIONE CSS PER PULIRE I TOOLTIP DI LEAFLET (Rimuove sfondo e freccette)
+const style = document.createElement('style');
+style.innerHTML = `
+    .leaflet-tooltip.clean-label {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        text-shadow: 0 1px 3px rgba(255,255,255,0.8), 0 -1px 3px rgba(255,255,255,0.8), 1px 0 3px rgba(255,255,255,0.8), -1px 0 3px rgba(255,255,255,0.8);
+    }
+    .leaflet-tooltip.clean-label::before { display: none !important; }
+`;
+document.head.appendChild(style);
 
 document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
@@ -56,7 +95,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 function inizializzaMappa() {
     map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
-    // Tiles neutre e pulite
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
     caricaLayerRegioni();
 }
@@ -68,11 +106,22 @@ async function caricaLayerRegioni() {
         if (geojsonProvince) map.removeLayer(geojsonProvince);
         
         geojsonRegioni = L.geoJSON(data, {
-            // Estetica Apple: Confini scuri e puliti, niente blu
-            style: { color: "#1d1d1f", weight: 1, fillColor: "#1d1d1f", fillOpacity: 0.03 },
+            style: (feature) => ({ 
+                color: "#ffffff", // Bordo bianco per separare i colori
+                weight: 1.5, 
+                fillColor: getColorFromName(feature.properties.reg_name), 
+                fillOpacity: 0.25 // Semi-trasparente
+            }),
             onEachFeature: (feature, layer) => {
+                // Etichetta fissa al centro, senza sfondo
+                layer.bindTooltip(feature.properties.reg_name, { 
+                    permanent: true, 
+                    direction: "center", 
+                    className: "clean-label text-apple-ink font-bold text-[12px] uppercase tracking-wider" 
+                });
+                
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.1 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.45, weight: 2 }),
                     mouseout: (e) => geojsonRegioni.resetStyle(e.target),
                     click: (e) => clickSuRegione(feature.properties.reg_name, e.target.getBounds())
                 });
@@ -95,10 +144,22 @@ async function clickSuRegione(nomeRegione, bounds) {
         aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
         geojsonProvince = L.geoJSON(provinceRegione, {
-            style: { color: "#7a7a7a", weight: 1, fillColor: "#1d1d1f", fillOpacity: 0.05, dashArray: '4' },
+            style: (feature) => ({ 
+                color: "#ffffff", 
+                weight: 1.5, 
+                fillColor: getColorFromName(feature.properties.prov_name), 
+                fillOpacity: 0.3 
+            }),
             onEachFeature: (feature, layer) => {
+                // Etichetta Provincia fissa
+                layer.bindTooltip(feature.properties.prov_name, { 
+                    permanent: true, 
+                    direction: "center", 
+                    className: "clean-label text-apple-ink font-bold text-[10px] uppercase tracking-wider" 
+                });
+
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.15 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.55 }),
                     mouseout: (e) => geojsonProvince.resetStyle(e.target),
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
@@ -265,7 +326,6 @@ function caricaPezzi(quantita) {
         if (titoloPulito.startsWith('-')) titoloPulito = titoloPulito.substring(1).trim();
         if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
 
-        // Badges ultra-puliti: Niente sfondi colorati, solo bordi e grigio chiaro
         const badgeCDC = item.cdc && item.cdc.length > 0 
             ? item.cdc.map(c => `<span class="bg-apple-parchment text-apple-ink border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">${c}</span>`).join('')
             : `<span class="bg-apple-parchment text-apple-muted border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">CDC non specificata</span>`;
@@ -285,18 +345,15 @@ function caricaPezzi(quantita) {
             if (differenzaOre <= 48) isNuovo = true;
         }
         
-        // La "Card Apple": 18px radius, bordo leggerissimo, sfondo bianco.
         const classeCard = scaduto 
             ? 'opacity-50 bg-apple-pearl' 
             : 'bg-white';
 
         const nomeProvinciaMostrato = (item.provincia || "");
         
-        // Testo in alto: Provincia a sinistra, Data a destra. Se è nuovo, la provincia diventa blu.
         const testoProvincia = isNuovo ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${nomeProvinciaMostrato}</span>` : `<span class="uppercase">${nomeProvinciaMostrato}</span>`;
         const testoData = scaduto ? `Chiuso` : `Scade il ${dataIta}`;
 
-        // Il "Pill Button": Azzurro primario di Apple
         const stileBottone = scaduto 
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
             : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
