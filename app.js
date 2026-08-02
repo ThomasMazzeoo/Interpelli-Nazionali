@@ -1,8 +1,6 @@
-// Link ai dati Open Source ISTAT (Confini Italia)
 const URL_REGIONI = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson";
 const URL_PROVINCE = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson";
 
-// --- TRADUTTORE ISTAT -> MINISTERO ---
 const ALIAS_PROVINCE = {
     "Monza e della Brianza": "Monza Brianza",
     "Reggio di Calabria": "Reggio Calabria",
@@ -15,20 +13,16 @@ function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
 
-// Variabili Mappa e Dati
 let map;
 let geojsonRegioni;
 let geojsonProvince;
 let livelloAttuale = 'regioni'; 
 let datiInterpelli = [];
-
-// Variabili Paginazione
 let risultatiCorrenti = []; 
 let indiceMostrati = 0;     
 const CHUNK_INIZIALE = 50;  
 const CHUNK_SUCCESSIVO = 20;
 
-// Elementi DOM
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
 const selectCdc = document.getElementById('cdcSelect');
@@ -37,11 +31,9 @@ const selectStato = document.getElementById('statoSelect');
 const btnReset = document.getElementById('btnResetMappa'); 
 const containerLista = document.getElementById('listaInterpelli');
 
-// Elementi Collapse
-const toggleFiltriBtn = document.getElementById('toggleFiltriBtn');
-const filtriContainer = document.getElementById('filtriContainer');
-const toggleIcon = document.getElementById('toggleIcon');
-let filtriAperti = true;
+// GESTIONE NUOVO PANNELLO DESTRO
+const rightPanel = document.getElementById('rightPanel');
+const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
 
 document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
@@ -55,25 +47,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
-    if(toggleFiltriBtn) {
-        toggleFiltriBtn.addEventListener('click', () => {
-            filtriAperti = !filtriAperti;
-            if (filtriAperti) {
-                filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px";
-                toggleIcon.classList.remove('rotate-180');
-                setTimeout(() => { filtriContainer.style.maxHeight = 'none'; }, 300);
-            } else {
-                filtriContainer.style.maxHeight = filtriContainer.scrollHeight + "px"; 
-                setTimeout(() => { filtriContainer.style.maxHeight = "0px"; }, 10);
-                toggleIcon.classList.add('rotate-180');
-            }
+    // Chiude il pannello destro e riallarga la mappa
+    if(chiudiPannelloBtn) {
+        chiudiPannelloBtn.addEventListener('click', () => {
+            rightPanel.classList.add('hidden');
+            setTimeout(() => { if (map) map.invalidateSize(); }, 100);
         });
     }
 });
 
-// =========================================
-// 1. GESTIONE MAPPA (Leaflet)
-// =========================================
 function inizializzaMappa() {
     map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -126,7 +108,6 @@ async function clickSuRegione(nomeRegione, bounds) {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
                         applicaFiltri(); 
-                        if(filtriAperti && toggleFiltriBtn) toggleFiltriBtn.click();
                     }
                 });
             }
@@ -149,10 +130,11 @@ function resetMappa() {
     
     if (geojsonProvince) map.removeLayer(geojsonProvince);
     caricaLayerRegioni();
-    if(!filtriAperti && toggleFiltriBtn) toggleFiltriBtn.click();
     if(btnReset) btnReset.classList.add('hidden');
     
-    containerLista.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fa-solid fa-map text-4xl mb-3"></i><p>Seleziona una regione per iniziare.</p></div>`;
+    // Chiude il pannello destro quando si torna all'Italia intera
+    rightPanel.classList.add('hidden');
+    setTimeout(() => { if (map) map.invalidateSize(); }, 100);
 }
 
 function selezionaRegioneDaMenu(regione) {
@@ -193,25 +175,19 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
     });
 }
 
-// =========================================
-// IL CERVELLO CHE CAPISCE SE UN INTERPELLO È SCADUTO
-// =========================================
 function isScaduto(item) {
-    // 1. Se c'è l'etichetta [CHIUSO] scritta dal sito ufficiale
     if ((item.titolo || "").toUpperCase().includes('[CHIUSO]')) return true;
     
-    // 2. Controllo Matematico sulle date (ORA APPLICATO A TUTTA ITALIA)
     if (item.data) {
         const parts = item.data.split('-');
         if (parts.length === 3) {
             const dataScadenza = new Date(parts[0], parts[1] - 1, parts[2]);
             const oggi = new Date();
-            oggi.setHours(0, 0, 0, 0); // Azzera l'orologio di oggi per fare un confronto pulito
-            // Se la data indicata è precedente a oggi, consideralo scaduto in automatico!
+            oggi.setHours(0, 0, 0, 0); 
             return dataScadenza < oggi;
         }
     }
-    return false; // Di default lo consideriamo aperto se non rientra nei casi sopra
+    return false; 
 }
 
 function applicaFiltri() {
@@ -223,6 +199,13 @@ function applicaFiltri() {
 
     if (!reg) return; 
 
+    // APRE IL PANNELLO DESTRO IN AUTOMATICO
+    if (rightPanel.classList.contains('hidden')) {
+        rightPanel.classList.remove('hidden');
+        // Ricalcola le dimensioni della mappa per tenerla centrata
+        setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+    }
+
     let filtrati = datiInterpelli.filter(i => (i.regione || "").toLowerCase() === reg.toLowerCase());
 
     if (prov && prov !== "TUTTE") {
@@ -230,7 +213,6 @@ function applicaFiltri() {
     }
     if (cdc) filtrati = filtrati.filter(i => i.cdc && i.cdc.includes(cdc));
 
-    // APPLICA IL FILTRO DI STATO
     if (stato === "ATTIVI") {
         filtrati = filtrati.filter(i => !isScaduto(i));
     } else if (stato === "SCADUTI") {
@@ -262,16 +244,19 @@ function applicaFiltri() {
 
     if (risultatiCorrenti.length === 0) {
         containerLista.innerHTML = `
-            <div class="bg-yellow-50 text-yellow-800 p-4 rounded-md border border-yellow-200 mt-4">
-                <i class="fa-solid fa-triangle-exclamation"></i> Nessun interpello corrisponde ai tuoi filtri (potrebbero essere tutti scaduti).
+            <div class="bg-yellow-50 text-yellow-800 p-5 rounded-lg border border-yellow-200 mt-4 shadow-sm text-center">
+                <i class="fa-solid fa-face-frown-open text-3xl mb-3 text-yellow-500"></i>
+                <p class="font-medium">Nessun interpello trovato in ${prov === 'TUTTE' ? reg : prov}.</p>
+                <p class="text-sm mt-1 opacity-80">Prova a cambiare lo "Stato" in "Tutti" se cerchi avvisi scaduti.</p>
             </div>`;
         return;
     }
 
     const titoloRisultati = prov && prov !== "TUTTE" ? prov : reg;
     containerLista.innerHTML = `
-        <h3 class="font-bold text-gray-700 mb-4 border-b pb-2 sticky top-0 bg-white z-10 flex justify-between">
-            <span>Trovati ${risultatiCorrenti.length} risultati (${titoloRisultati})</span>
+        <h3 class="font-bold text-gray-500 mb-4 border-b border-gray-200 pb-2 flex justify-between text-xs tracking-wider uppercase">
+            <span>In ${titoloRisultati}</span>
+            <span class="bg-gray-200 text-gray-700 px-2 rounded-full">${risultatiCorrenti.length}</span>
         </h3>
         <div id="grigliaCard"></div>
     `;
@@ -294,8 +279,8 @@ function caricaPezzi(quantita) {
         if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
 
         const badgeCDC = item.cdc && item.cdc.length > 0 
-            ? item.cdc.map(c => `<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mr-1 shadow-sm border border-blue-100">${c}</span>`).join('')
-            : `<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 shadow-sm border border-gray-100">Nessuna CDC specificata</span>`;
+            ? item.cdc.map(c => `<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-bold text-blue-700 ring-1 ring-inset ring-blue-700/10 mr-1 shadow-sm border border-blue-100">${c}</span>`).join('')
+            : `<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10 shadow-sm border border-gray-200">Nessuna CDC specificata</span>`;
 
         let dataIta = item.data;
         if(dataIta.includes('-')) {
@@ -316,32 +301,30 @@ function caricaPezzi(quantita) {
         
         const classeCardNuova = scaduto 
             ? 'opacity-60 bg-gray-50' 
-            : (isNuovo ? 'card-nuova border-green-300 bg-green-50/10 hover:shadow-md' : 'border-gray-200 bg-white hover:shadow-md');
+            : (isNuovo ? 'card-nuova border-green-300 bg-green-50/10 hover:shadow-md' : 'border-white bg-white hover:shadow-lg');
 
         const nomeProvinciaMostrato = (item.provincia || "").toUpperCase();
 
-        // GRAFICA DELLA DATA UNIFORMATA PER TUTTA ITALIA!
         let badgeDataHtml = '';
         if (scaduto) {
-            badgeDataHtml = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
+            badgeDataHtml = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> SCADUTO</span>`;
         } else {
-            // Se è attivo, mostriamo sempre il badge "Scade il" in rosso con orologio!
             badgeDataHtml = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
         }
 
         griglia.innerHTML += `
-            <div class="relative rounded-lg p-5 mb-4 shadow-sm transition border ${classeCardNuova}">
+            <div class="relative rounded-xl p-5 mb-4 shadow-sm transition-all border ${classeCardNuova}">
                 ${badgeNuovoHTML}
-                <div class="text-xs text-gray-500 mb-3 flex justify-between items-center">
-                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold shadow-sm">${nomeProvinciaMostrato}</span>
+                <div class="text-[10px] text-gray-500 mb-3 flex justify-between items-center tracking-wider">
+                    <span class="bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded-full font-bold shadow-sm">${nomeProvinciaMostrato}</span>
                     ${badgeDataHtml}
                 </div>
-                <h4 class="font-bold text-gray-900 leading-snug mb-3 text-[15px] uppercase tracking-tight pr-6">${titoloPulito}</h4>
+                <h4 class="font-extrabold text-gray-900 leading-snug mb-3 text-[14px] uppercase tracking-tight pr-6">${titoloPulito}</h4>
                 <div class="mb-5 flex flex-wrap gap-1">
                     ${badgeCDC}
                 </div>
-                <a href="${item.url}" target="_blank" class="w-full text-white ${scaduto ? 'bg-gray-400 hover:bg-gray-500' : 'bg-blue-600 hover:bg-blue-700'} font-medium rounded-md text-sm px-4 py-2 text-center inline-block transition shadow-sm">
-                    <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> Apri Avviso Ufficiale
+                <a href="${item.url}" target="_blank" class="w-full text-white ${scaduto ? 'bg-gray-400 hover:bg-gray-500' : 'bg-blue-600 hover:bg-blue-700'} font-bold rounded-lg text-sm px-4 py-2.5 text-center inline-block transition shadow-md">
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                 </a>
             </div>
         `;
@@ -352,7 +335,7 @@ function caricaPezzi(quantita) {
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
-        btn.className = 'w-full bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold py-3 px-4 rounded-md mt-2 mb-8 border border-blue-200 transition shadow-sm';
+        btn.className = 'w-full bg-white hover:bg-blue-50 text-blue-600 font-bold py-3 px-4 rounded-xl mt-2 mb-8 border border-blue-200 transition shadow-sm';
         btn.innerHTML = `<i class="fa-solid fa-chevron-down mr-2"></i> Mostra altri (Mostrati ${indiceMostrati} di ${risultatiCorrenti.length})`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
