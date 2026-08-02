@@ -5,8 +5,10 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import converti_data_italiana, estrai_cdc
 
+# Aggiunta La Spezia al dizionario!
 FONTI = {
-    "Genova": "https://www.istruzionegenova.gov.it/pagine/interpelli-ge---as-2026-2027"
+    "Genova": "https://www.istruzionegenova.gov.it/pagine/interpelli-ge---as-2026-2027",
+    "La Spezia": "https://www.istruzionelaspezia.gov.it/pagine/interpelli-la-spezia---as-2024-2025"
 }
 
 def run(url_visti):
@@ -15,6 +17,9 @@ def run(url_visti):
     
     for provincia, url_base in FONTI.items():
         print(f"📡 [LIGURIA] Connessione a {provincia}...")
+        
+        # Estraiamo dinamicamente il dominio (es. https://www.istruzionelaspezia.gov.it)
+        dominio_base = "https://" + url_base.split('/')[2]
         
         try:
             risposta = requests.get(url_base, headers=headers, timeout=15)
@@ -34,7 +39,8 @@ def run(url_visti):
             for riga in righe:
                 cols = riga.find_all(['td', 'th'])
                 
-                if len(cols) < 11: 
+                # Genova ha 11 colonne, La Spezia ne ha 10. Mettiamo >= 10 così le legge entrambe!
+                if len(cols) < 10: 
                     continue 
                 
                 cdc_raw = cols[0].get_text(strip=True)
@@ -46,17 +52,17 @@ def run(url_visti):
                     continue
 
                 codice_mecc = cols[2].get_text(strip=True)
-                
-                # Preleviamo ORE, DAL e AL per fare un ID assolutamente unico!
                 dal_raw = cols[4].get_text(strip=True).replace('/', '-').replace('.', '-')
                 al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-')
                 dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
                 
-                data_raw = cols[9].get_text(strip=True) # Data Scadenza
-                link_tag = cols[10].find('a', href=True)
-                testo_link = cols[10].get_text(strip=True)
+                # TRUCCO NINJA: Usiamo indici negativi per gestire tabelle di lunghezze diverse
+                data_raw = cols[-2].get_text(strip=True) # Penultima colonna
+                link_col = cols[-1] # Ultima colonna
                 
-                # Creiamo l'ID Infallibile
+                link_tag = link_col.find('a', href=True)
+                testo_link = link_col.get_text(strip=True)
+                
                 cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
                 ore_per_link = dettaglio_ore.replace(' ', '_')
                 id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
@@ -64,7 +70,8 @@ def run(url_visti):
                 if link_tag:
                     url_avviso = link_tag['href']
                     if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
-                        url_avviso = "https://www.istruzionegenova.gov.it" + url_avviso
+                        # Aggiunge il dominio corretto in automatico
+                        url_avviso = dominio_base + url_avviso
                     url_avviso += f"#{id_univoco}" 
                 elif '@' in testo_link:
                     url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw} ({dettaglio_ore})"
@@ -77,7 +84,6 @@ def run(url_visti):
                 if url_avviso in url_visti:
                     continue
                 
-                # Estrazione data precisa
                 match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4})', data_raw)
                 if match_dt:
                     data_pulita = f"{match_dt.group(3)}-{match_dt.group(2).zfill(2)}-{match_dt.group(1).zfill(2)}"
