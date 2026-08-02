@@ -97,10 +97,26 @@ def run(url_visti):
                 
                 titolo_finale = nome_scuola
 
-                # Ho modificato il print per mostrarti la data che trova in tempo reale!
+                # Mostra la data che trova in tempo reale!
                 print(f"    🎯 Trovato: {titolo_finale} (Data: {data_pulita})")
                 
                 nuovi_interpelli.append({
                     "regione": "Liguria", 
                     "provincia": provincia, 
-                    "titolo": titolo_f
+                    "titolo": titolo_finale,
+                    "data": data_pulita, 
+                    "cdc": cdc_pulite, 
+                    "url": url_avviso,
+                    "pdf_links": [url_avviso] if '.pdf' in url_avviso.lower() else [], 
+                    "form_links": [],
+                    "data_rilevamento": datetime.now().isoformat()
+                })
+                
+                url_visti.add(url_avviso)
+                
+            time.sleep(0.5)
+                
+        except Exception as e:
+            print(f"  ❌ Errore critico su {provincia}: {e}")
+            
+    return nuovi_interpelli
