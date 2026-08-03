@@ -56,3 +56,10 @@
 .pb-safe {
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
+
+/* 📱 MODULO 2: Stili per il Bottom Sheet Mobile */
+@media (max-width: 767px) {
+    #rightPanel {
+        touch-action: pan-y;
+    }
+}
