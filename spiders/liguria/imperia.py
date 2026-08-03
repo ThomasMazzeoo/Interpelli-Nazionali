@@ -1,6 +1,7 @@
 import time
 import requests
 import re
+import hashlib
 from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import estrai_cdc
@@ -14,9 +15,7 @@ def run(url_visti):
     
     try:
         risposta = requests.get(URL_BASE, headers=headers, timeout=15)
-        if risposta.status_code != 200: 
-            print(f"  ⚠️ HTTP {risposta.status_code}")
-            return []
+        if risposta.status_code != 200: return []
             
         soup = BeautifulSoup(risposta.text, 'html.parser')
         tabella = soup.find('table')
@@ -29,15 +28,19 @@ def run(url_visti):
             cdc_raw = cols[0].get_text(strip=True)
             if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
                 
-            nome_scuola = cols[3].get_text(strip=True) if len(cols) > 3 else "Scuola"
+            nome_scuola = cols[3].get_text(separator=' ', strip=True) if len(cols) > 3 else "Scuola"
+            nome_scuola = re.sub(r'\s+', ' ', nome_scuola)
             if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper(): continue
 
             link_col = cols[-1]
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
+            # --- IMPRONTA DIGITALE (HASH) ---
+            testo_riga = riga.get_text(separator=' ', strip=True)
+            hash_riga = hashlib.md5(testo_riga.encode('utf-8')).hexdigest()[:8]
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
-            id_univoco = f"{cdc_per_link}-{len(nuovi_interpelli)}"
+            id_univoco = f"{cdc_per_link}-{hash_riga}"
             
             data_pulita = datetime.today().strftime('%Y-%m-%d')
             for cell in reversed(cols):
