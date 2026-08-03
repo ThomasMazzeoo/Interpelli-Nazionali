@@ -2,6 +2,7 @@ import os
 import json
 import importlib
 from datetime import datetime
+from utils.sitemap import genera_sitemap_e_robots
 
 DATA_FILE = "database_nazionale.json"
 
@@ -99,9 +100,15 @@ def avvia_orchestratore():
         database = nuovi_interpelli_totali + database
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(database, f, indent=4, ensure_ascii=False)
+            # Genera automaticamente Sitemap e Robots.txt per Google SEO
+            try:
+                genera_sitemap_e_robots(database)
+            except Exception as e:
+                print(f"⚠️ Errore durante la generazione della sitemap: {e}")
         print(f"\n✅ Salvataggio completato! Aggiunti {totale_nuovi} nuovi avvisi. (Totale nel DB: {len(database)})")
     else:
         print("\n💤 Nessun nuovo interpello e nessuna pulizia necessaria oggi.")
+        
 
 if __name__ == "__main__":
     avvia_orchestratore()
