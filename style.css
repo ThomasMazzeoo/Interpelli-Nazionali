@@ -87,7 +87,7 @@
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
-/* 📱 PUNTO 5: Stili e transizioni per il Bottom Sheet Mobile */
+/* Stili per il Bottom Sheet Mobile */
 @media (max-width: 767px) {
     #rightPanel {
         touch-action: pan-y;
