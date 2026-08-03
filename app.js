@@ -242,7 +242,7 @@ function mostraScoreboard() {
 
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
 
-    let attivi = datiInterpelli.filter(i => !isScaduto(i));
+    let attivi = datiInterpelli.filter(i => !isScaduto(i) && i.data && i.data !== "" && !i.escludi_scoreboard);
     let conteggio = {};
     
     attivi.forEach(i => {
