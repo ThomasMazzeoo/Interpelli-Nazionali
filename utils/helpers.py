@@ -28,7 +28,8 @@ def converti_data_italiana(data_str):
         return f"{anno}-{mese}-{giorno}"
         
     # Se fallisce, restituisce la data di oggi per non far crashare nulla
-    return datetime.today().strftime('%Y-%m-%d')
+    # Se fallisce e non trova una data valida, restituisce stringa vuota
+    return ""
 
 def estrai_cdc(testo):
     testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?|posti?|n\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
