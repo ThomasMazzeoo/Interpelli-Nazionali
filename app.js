@@ -176,7 +176,7 @@ function resetMappa() {
     caricaLayerRegioni();
     if(btnReset) btnReset.classList.add('hidden');
     
-    mostraScoreboard(); // Torna alla Scoreboard!
+    mostraScoreboard();
 }
 
 function selezionaRegioneDaMenu(regione) {
@@ -186,7 +186,6 @@ function selezionaRegioneDaMenu(regione) {
             if (layer.feature.properties.reg_name === regione) clickSuRegione(regione, layer.getBounds());
         });
     } else {
-        // Se la mappa è già zoomata ma clicchiamo dalla scoreboard
         clickSuRegione(regione, null);
     }
 }
@@ -197,7 +196,7 @@ async function caricaDatiScraper() {
         if (response.ok) {
             datiInterpelli = await response.json();
             popolaMenuCDC(); 
-            mostraScoreboard(); // Carica la Dashboard all'avvio!
+            mostraScoreboard();
         }
     } catch (e) { console.log("Database non pronto."); }
 }
@@ -223,7 +222,7 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
 
 function isScaduto(item) {
     if ((item.titolo || "").toUpperCase().includes('[CHIUSO]')) return true;
-    if (item.data) {
+    if (item.data && item.data !== "") {
         const parts = item.data.split('-');
         if (parts.length === 3) {
             const dataScadenza = new Date(parts[0], parts[1] - 1, parts[2]);
@@ -235,9 +234,6 @@ function isScaduto(item) {
     return false; 
 }
 
-// =========================================
-// LA NUOVA DASHBOARD / SCOREBOARD
-// =========================================
 function mostraScoreboard() {
     if (rightPanel.classList.contains('hidden')) {
         rightPanel.classList.remove('hidden');
@@ -246,7 +242,6 @@ function mostraScoreboard() {
 
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
 
-    // Calcola solo quelli ATTIVI
     let attivi = datiInterpelli.filter(i => !isScaduto(i));
     let conteggio = {};
     
@@ -269,7 +264,6 @@ function mostraScoreboard() {
     }
 
     let html = `<p class="text-[14px] text-apple-muted font-medium mb-5">Regioni con più interpelli aperti</p><div class="flex flex-col gap-3">`;
-
     let maxCount = classifica[0].conteggio;
 
     classifica.forEach((item, index) => {
@@ -304,13 +298,11 @@ function applicaFiltri() {
     const tipo = selectTipoScuola.value;
     const stato = selectStato.value;
 
-    // Se non è selezionato NIENTE (stato iniziale o reset), mostra la Scoreboard
     if (!reg && !cdc && !tipo && stato === "ATTIVI") {
         mostraScoreboard();
         return;
     }
 
-    // Altrimenti cambia il titolo in Risultati
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-list-check text-apple-blue mr-2"></i> Risultati';
 
     if (rightPanel.classList.contains('hidden')) {
@@ -393,7 +385,7 @@ function caricaPezzi(quantita) {
             : `<span class="bg-apple-parchment text-apple-muted border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">CDC non specificata</span>`;
 
         let dataIta = item.data;
-        if(dataIta.includes('-')) {
+        if(dataIta && dataIta.includes('-')) {
             let p = dataIta.split('-');
             dataIta = `${p[2]}/${p[1]}/${p[0]}`;
         }
@@ -412,9 +404,18 @@ function caricaPezzi(quantita) {
             : 'bg-white';
 
         const nomeProvinciaMostrato = (item.provincia || "");
-        
         const testoProvincia = isNuovo ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${nomeProvinciaMostrato}</span>` : `<span class="uppercase">${nomeProvinciaMostrato}</span>`;
-        const testoData = scaduto ? `Chiuso` : `Scade il ${dataIta}`;
+        
+        // IL NUOVO BADGE DELLA DATA
+        let testoData = "";
+        if (scaduto) {
+            testoData = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
+        } else if (!item.data || item.data === "") {
+            // SE LA DATA E' VUOTA, BADGE GIALLO!
+            testoData = `<span class="font-bold bg-amber-50 px-2.5 py-1 rounded text-amber-600 border border-amber-200 shadow-sm"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Non specificata</span>`;
+        } else {
+            testoData = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
+        }
 
         const stileBottone = scaduto 
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
@@ -423,9 +424,9 @@ function caricaPezzi(quantita) {
         griglia.innerHTML += `
             <div class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}">
                 
-                <div class="flex justify-between items-start mb-2">
+                <div class="flex justify-between items-center mb-4">
                     <span class="text-[12px] tracking-tightest font-medium ${isNuovo ? '' : 'text-apple-muted'}">${testoProvincia}</span>
-                    <span class="text-[12px] tracking-tightest font-medium text-apple-muted">${testoData}</span>
+                    ${testoData}
                 </div>
                 
                 <h4 class="text-apple-ink font-semibold text-[19px] leading-tight tracking-tightest mb-4 pr-2">${titoloPulito}</h4>
