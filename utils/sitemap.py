@@ -3,16 +3,15 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 import urllib.parse
 
-# Sostituisci con il tuo dominio reale (es. https://www.interpellonazionale.it)
+# Sostituisci con il tuo dominio reale
 BASE_URL = "https://www.interpellonazionale.it"
 
 def genera_sitemap_e_robots(database, output_sitemap="sitemap.xml", output_robots="robots.txt"):
-    print("\n🗺️ [SEO ENGINE] Avvio generazione Sitemap.xml e Robots.txt...")
+    print("\n🗺️ [SEO ENGINE - INTERPELLO NAZIONALE] Avvio generazione Sitemap.xml e Robots.txt...")
     
     # 1. Creiamo il root XML con lo namespace ufficiale Sitemaps
     urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     
-    # Data di oggi nel formato ISO richiesto da Google
     oggi_str = datetime.now().strftime("%Y-%m-%d")
     
     # --- HOMEPAGE PRINCIPALE ---
@@ -65,19 +64,19 @@ def genera_sitemap_e_robots(database, output_sitemap="sitemap.xml", output_robot
     # --- SALVATAGGIO SITEMAP.XML ---
     tree = ET.ElementTree(urlset)
     try:
-        ET.indent(tree, space="  ", level=0) # Formattazione pulita dell'XML
+        ET.indent(tree, space="  ", level=0)
     except AttributeError:
-        pass # Per versioni Python più vecchie
+        pass
         
     tree.write(output_sitemap, encoding="utf-8", xml_declaration=True)
     totale_urls = len(urlset)
-    print(f"  ✅ Sitemap.xml generata con successo ({totale_urls} URL indicizzabili pronti per Google!)")
+    print(f"  ✅ Sitemap.xml generata con successo per Interpello Nazionale ({totale_urls} URL pronti!)")
 
     # --- GENERAZIONE ROBOTS.TXT ---
     robots_content = f"""User-agent: *
 Allow: /
 
-# Link automatico alla Sitemap per i crawler di Google e Bing
+# Link alla Sitemap Ufficiale per Googlebot e Bing
 Sitemap: {BASE_URL}/{output_sitemap}
 """
     with open(output_robots, "w", encoding="utf-8") as f:
