@@ -1,14 +1,15 @@
-/* Stile per nascondere i crediti della mappa per un look più pulito */
+/* Nasconde l'attribuzione Leaflet per un design Apple minimale */
 .leaflet-control-attribution {
     display: none !important;
 }
 
-/* Colori politici delle Regioni/Province al passaggio del mouse */
+/* Transizioni fluide per i poligoni della mappa (Accelerazione GPU) */
 .regione-polygon {
     transition: fill-opacity 0.2s, stroke-width 0.2s;
+    will-change: fill-opacity, stroke-width;
 }
 
-/* Stile per la scrollbar della colonna sinistra */
+/* Scrollbar minimale stile macOS */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -22,12 +23,19 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8; 
 }
-/* Grafica per l'etichetta "NUOVO" */
+
+/* 🚀 PERFORMANCE FASE 5: Content-Visibility per rendering GPU fluido a 60 FPS */
+#grigliaCard > article {
+    content-visibility: auto;
+    contain-intrinsic-size: 180px;
+}
+
+/* Animazioni e Badge */
 .badge-nuovo {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: #10b981; /* Verde Tailwind (Emerald 500) */
+    background-color: #10b981;
     color: white;
     font-size: 0.70rem;
     font-weight: 800;
@@ -40,7 +48,6 @@
     z-index: 10;
 }
 
-/* Leggero bagliore verde per tutta la scheda se è nuova */
 .card-nuova {
     box-shadow: 0 4px 15px -3px rgba(16, 185, 129, 0.15), 0 0 0 1px rgba(16, 185, 129, 0.1) inset !important;
 }
