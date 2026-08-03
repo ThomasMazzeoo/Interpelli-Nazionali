@@ -30,6 +30,13 @@
     contain-intrinsic-size: 180px;
 }
 
+/* 📱 PUNTO 3: REGOLA WEBKIT ANTI AUTO-ZOOM PER SAFARI / IOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select, input, textarea {
+        font-size: 16px !important;
+    }
+}
+
 /* Animazioni e Badge */
 .badge-nuovo {
     position: absolute;
@@ -57,7 +64,7 @@
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
-/* 📱 MODULO 2: Stili per il Bottom Sheet Mobile */
+/* Stili per il Bottom Sheet Mobile */
 @media (max-width: 767px) {
     #rightPanel {
         touch-action: pan-y;
