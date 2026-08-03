@@ -105,8 +105,11 @@
 </head>
 <body class="bg-apple-parchment text-apple-ink font-sans overflow-hidden h-screen w-screen flex flex-col md:flex-row tracking-tighter">
 
-    <!-- 1. COLONNA SINISTRA (Filtri) -->
-    <aside id="leftSidebar" class="w-full md:w-[28%] min-w-0 md:min-w-[320px] bg-apple-parchment z-30 fixed md:relative inset-0 pb-16 md:pb-0 hidden md:flex flex-col h-screen border-r border-apple-hairline overflow-y-auto" role="search" aria-label="Filtri ricerca interpelli">
+    <!-- 📱 PUNTO 5: SFONDO SCURO SFOCATO (BACKDROP OVERLAY PER MOBILE) -->
+    <div id="mobileBackdrop" onclick="mostraVistaMobile('mappa')" class="fixed inset-0 bg-apple-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300 md:hidden" aria-hidden="true"></div>
+
+    <!-- 1. COLONNA SINISTRA (Filtri) - Drawer Scorrevole su Mobile -->
+    <aside id="leftSidebar" class="w-full md:w-[28%] min-w-0 md:min-w-[320px] bg-apple-parchment z-40 fixed md:relative inset-0 pb-16 md:pb-0 hidden md:flex flex-col h-screen border-r border-apple-hairline overflow-y-auto transition-transform duration-300" role="search" aria-label="Filtri ricerca interpelli">
         
         <!-- Global Nav (stile Apple) -->
         <header class="bg-apple-black text-white px-6 py-4 flex items-center justify-between shrink-0">
@@ -123,8 +126,11 @@
             <span class="text-[12px] text-gray-400 font-normal">www.interpelloNazionale.it</span>
         </header>
 
-        <div class="px-6 py-6 pb-2 shrink-0">
+        <div class="px-6 py-6 pb-2 shrink-0 flex justify-between items-center">
             <h2 class="text-[28px] font-semibold tracking-tightest text-apple-ink leading-tight">Trova la tua<br>prossima cattedra.</h2>
+            <button onclick="mostraVistaMobile('mappa')" aria-label="Chiudi filtri" class="md:hidden bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-9 h-9 flex items-center justify-center min-h-[36px]">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
 
         <div class="flex-1 px-6 py-4 flex flex-col gap-6">
@@ -195,7 +201,7 @@
         <div id="map" class="w-full h-full z-0"></div>
     </main>
 
-    <!-- 📱 3. PANNELLO RISULTATI (BOTTOM SHEET PER MOBILE / COLONNA DESTRO PER DESKTOP) -->
+    <!-- 📱 3. PANNELLO RISULTATI (BOTTOM SHEET PER MOBILE) -->
     <aside id="rightPanel" class="w-full md:w-[34%] min-w-0 md:min-w-[380px] bg-apple-parchment z-40 fixed md:relative inset-x-0 bottom-0 md:inset-auto md:top-0 md:right-0 h-[85vh] md:h-screen rounded-t-[28px] md:rounded-none border-t md:border-t-0 md:border-l border-apple-hairline shadow-2xl md:shadow-none transition-transform duration-300 ease-out hidden md:flex flex-col pb-16 md:pb-0" aria-label="Risultati e dettagli interpello">
         
         <!-- Maniglia di trascinamento touch -->
