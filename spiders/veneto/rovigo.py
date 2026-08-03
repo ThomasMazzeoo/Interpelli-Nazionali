@@ -11,18 +11,17 @@ URL_BASE = "https://rovigo.istruzioneveneto.gov.it/category/5-interpelli/docenti
 
 def estrai_data_scadenza_mirata(testo):
     """
-    Cerca una data SOLO se è vicina a parole chiave di scadenza (entro, termine, scade)
-    per evitare di prendere la data di inizio supplenza.
+    Cerca una data SOLO se è vicina a parole chiave DI SCADENZA ESATTE.
+    Integra logica temporale per evitare gli anni '90 (es. D.M. del '97 diventerà 1997 e scartato)
     """
     testo = testo.lower().replace('\n', ' ')
     
-    # Cerca parole chiave seguite da massimo 40 caratteri (es. "entro le ore 12:00 del") e poi una data
-    pattern_keyword = r'(?:scadenz|scade|entro|termine).{0,40}?(\d{1,2}[\s\-\/\.]+(?:gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(?:\d{4}|\d{2})|\d{1,2}[\/\-\.]\d{1,2}[\/\-\.](?:\d{4}|\d{2}))'
+    # Radar chirurgico: evita frasi come "entro l'anno" e punta solo alle vere scadenze
+    pattern_keyword = r'(?:scadenza|scade\s*il|entro\s*(?:il|le|le\s*ore\s*\d{1,2}[:\.]\d{2}\s*del)|termine\s*presentazione).{0,25}?(\d{1,2}[\s\-\/\.]+(?:gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(?:\d{4}|\d{2})|\d{1,2}[\/\-\.]\d{1,2}[\/\-\.](?:\d{4}|\d{2}))'
     
     match = re.search(pattern_keyword, testo)
     if match:
         data_str = match.group(1)
-        # Sfrutta il nostro traduttore collaudato per convertire il frammento
         match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', data_str)
         match_num = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', data_str)
         
@@ -31,13 +30,18 @@ def estrai_data_scadenza_mirata(testo):
             giorno = match_alpha.group(1).zfill(2)
             mese = mesi_map[match_alpha.group(2)]
             anno = match_alpha.group(3)
-            if len(anno) == 2: anno = "20" + anno
+            # Logica Anti-2097!
+            if len(anno) == 2: 
+                anno = f"19{anno}" if int(anno) > 50 else f"20{anno}"
             return f"{anno}-{mese}-{giorno}"
+            
         elif match_num:
             giorno = match_num.group(1).zfill(2)
             mese = match_num.group(2).zfill(2)
             anno = match_num.group(3)
-            if len(anno) == 2: anno = "20" + anno
+            # Logica Anti-2097!
+            if len(anno) == 2: 
+                anno = f"19{anno}" if int(anno) > 50 else f"20{anno}"
             return f"{anno}-{mese}-{giorno}"
             
     return ""
