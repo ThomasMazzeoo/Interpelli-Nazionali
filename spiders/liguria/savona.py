@@ -2,7 +2,7 @@ import time
 import requests
 import re
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta
 from utils.helpers import estrai_cdc
 
 URL_BASE = "https://www.istruzionesavona.gov.it/pagine/interpelli-sv---as-2024-2025-2"
@@ -28,7 +28,6 @@ def run(url_visti):
             
             cdc_raw = cols[0].get_text(strip=True)
             
-            # FILTRO ANTI-BUROCRAZIA: Salta i titoli e le righe legali (es. "Art. 13...")
             if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): 
                 continue
                 
@@ -41,9 +40,58 @@ def run(url_visti):
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
+            # Generiamo l'ID base (lo useremo se supera il controllo data)
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
             id_univoco = f"{cdc_per_link}-{len(nuovi_interpelli)}"
             
+            # ==========================================
+            # 1. L'ESTRATTORE LINGUISTICO DELLE DATE
+            # ==========================================
+            data_pulita = datetime.today().strftime('%Y-%m-%d')
+            
+            for cell in reversed(cols):
+                testo_cella = cell.get_text(strip=True).lower()
+                
+                # Cerca formato con lettere (es. 25-set-25 o 25 set 2025)
+                match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', testo_cella)
+                # Cerca formato con numeri (es. 24/09/2025)
+                match_num = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo_cella)
+                
+                if match_alpha:
+                    mesi_map = {'gen':'01', 'feb':'02', 'mar':'03', 'apr':'04', 'mag':'05', 'giu':'06', 'lug':'07', 'ago':'08', 'set':'09', 'ott':'10', 'nov':'11', 'dic':'12'}
+                    giorno = match_alpha.group(1).zfill(2)
+                    mese = mesi_map[match_alpha.group(2)]
+                    anno = match_alpha.group(3)
+                    if len(anno) == 2: anno = "20" + anno
+                    data_pulita = f"{anno}-{mese}-{giorno}"
+                    break 
+                elif match_num:
+                    giorno = match_num.group(1).zfill(2)
+                    mese = match_num.group(2).zfill(2)
+                    anno = match_num.group(3)
+                    if len(anno) == 2: anno = "20" + anno
+                    data_pulita = f"{anno}-{mese}-{giorno}"
+                    break 
+
+            # ==========================================
+            # 2. IL MIETITORE DI ZOMBIE (Filtro Antichità)
+            # ==========================================
+            try:
+                data_obj = datetime.strptime(data_pulita, '%Y-%m-%d')
+                oggi = datetime.now()
+                # Calcola quanti giorni sono passati dalla scadenza a oggi
+                giorni_passati = (oggi - data_obj).days
+
+                # Se l'interpello è scaduto da più di 15 giorni (es. roba del 2025)
+                # LO CANCELLIAMO DALLA FACCIA DELLA TERRA! Non prosegue.
+                if giorni_passati > 15:
+                    continue
+            except:
+                pass # Se la data è incomprensibile, prosegue per non perdere l'avviso
+            
+            # ==========================================
+            # Se è sopravvissuto, costruiamo il Link!
+            # ==========================================
             if link_tag:
                 url_avviso = link_tag['href']
                 if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
@@ -58,27 +106,12 @@ def run(url_visti):
             
             if url_avviso in url_visti: 
                 continue
-            
-            # SUPER RADAR PER LE DATE
-            data_pulita = datetime.today().strftime('%Y-%m-%d')
-            for cell in reversed(cols):
-                testo_cella = cell.get_text(strip=True)
-                match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo_cella)
-                
-                if match_dt:
-                    giorno = match_dt.group(1).zfill(2)
-                    mese = match_dt.group(2).zfill(2)
-                    anno = match_dt.group(3)
                     
-                    if len(anno) == 2:
-                        anno = "20" + anno
-                        
-                    data_pulita = f"{anno}-{mese}-{giorno}"
-                    break 
-                    
-            cdc_pulite = estrai_cdc(cdc_raw)
+            cdc_pulite = estrai_cdc(cdc_raw) 
+            if not cdc_pulite and cdc_raw:
+                cdc_pulite = [cdc_raw.upper()] if len(cdc_raw) <= 20 else ["PRIMARIA/INFANZIA" if "INFANZIA" in cdc_raw.upper() or "PRIMARIA" in cdc_raw.upper() else "ALTRO"]
             
-            print(f"    🎯 Trovato: {nome_scuola} (Data estratta: {data_pulita})")
+            print(f"    🎯 Trovato (Recente): {nome_scuola} (Data: {data_pulita})")
             
             nuovi_interpelli.append({
                 "regione": "Liguria", "provincia": "Savona", "titolo": nome_scuola,
