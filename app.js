@@ -325,7 +325,7 @@ function mostraScoreboard() {
         else medaglia = `<span class="text-apple-muted text-[13px] font-bold w-[22px] inline-block text-center">${index+1}</span>`;
 
         html += `
-            <div class="bg-white rounded-[14px] border border-apple-hairline p-4 hover:shadow-md transition-all cursor-pointer group" onclick="selezionaRegioneDaMenu('${escapeHTML(item.regione)}')">
+            <div class="bg-white rounded-[14px] border border-apple-hairline p-4 hover:shadow-md transition-all cursor-pointer group min-h-[44px] flex flex-col justify-center" onclick="selezionaRegioneDaMenu('${escapeHTML(item.regione)}')">
                 <div class="flex justify-between items-center mb-2.5">
                     <span class="font-semibold text-apple-ink tracking-tightest flex items-center gap-2 group-hover:text-apple-blue transition-colors">${medaglia} ${escapeHTML(item.regione)}</span>
                     <span class="bg-apple-blue text-white text-[12px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">${item.conteggio}</span>
@@ -426,7 +426,7 @@ function applicaFiltri() {
                     </p>
                     <div class="flex flex-col gap-3">
                         ${suggeriti.map(s => `
-                            <a href="${sanitizeURL(s.url)}" target="_blank" rel="noopener noreferrer" class="p-3.5 bg-white rounded-[14px] border border-apple-hairline hover:border-apple-blue hover:shadow-sm transition-all group block">
+                            <a href="${sanitizeURL(s.url)}" target="_blank" rel="noopener noreferrer" class="p-3.5 bg-white rounded-[14px] border border-apple-hairline hover:border-apple-blue hover:shadow-sm transition-all group block min-h-[44px]">
                                 <div class="text-[11px] text-apple-blue font-bold uppercase tracking-tight">${escapeHTML(s.provincia)} · ${s.cdc ? escapeHTML(s.cdc.join(', ')) : 'Varie'}</div>
                                 <div class="text-[14px] font-semibold text-apple-ink leading-snug group-hover:text-apple-blue transition-colors mt-0.5">${escapeHTML(s.titolo)}</div>
                             </a>
@@ -530,7 +530,7 @@ function caricaPezzi(quantita) {
                     ${badgeCDC}
                 </div>
                 
-                <a href="${urlSicuro}" target="_blank" rel="noopener noreferrer" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
+                <a href="${urlSicuro}" target="_blank" rel="noopener noreferrer" class="w-full rounded-full text-[15px] px-4 py-3 text-center transition-transform active:scale-95 font-medium tracking-tightest min-h-[44px] flex items-center justify-center ${stileBottone}">
                     ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                 </a>
                 
@@ -543,7 +543,7 @@ function caricaPezzi(quantita) {
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
-        btn.className = 'w-full bg-apple-pearl hover:bg-apple-parchment text-apple-ink border border-apple-hairline font-medium py-3 px-4 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[15px] cursor-pointer';
+        btn.className = 'w-full bg-apple-pearl hover:bg-apple-parchment text-apple-ink border border-apple-hairline font-medium py-3.5 px-4 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[15px] cursor-pointer min-h-[44px]';
         btn.innerHTML = `Mostra altri`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
@@ -551,7 +551,7 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
-// 📱 MODULO MOBILE 1 & 2: Viste, Bottom Nav e Gesture Bottom Sheet
+// 📱 MODULI MOBILE 1, 2 & 3: Viste, Bottom Nav, Touch Targets e Gestures
 // ----------------------------------------------------------------------
 
 function mostraVistaMobile(vista) {
@@ -638,7 +638,7 @@ function inizializzaBottomSheetTouch() {
     handle.addEventListener('touchmove', (e) => {
         if (!isDragging || window.innerWidth >= 768) return;
         currentY = e.touches[0].clientY - startY;
-        if (currentY > 0) { // Trascinamento verso il basso
+        if (currentY > 0) {
             panel.style.transform = `translateY(${currentY}px)`;
         }
     }, { passive: true });
@@ -648,7 +648,6 @@ function inizializzaBottomSheetTouch() {
         isDragging = false;
         panel.style.transition = 'transform 0.3s ease-out';
         
-        // Se il trascina supera i 100px, chiudi il Bottom Sheet
         if (currentY > 100) {
             panel.style.transform = '';
             mostraVistaMobile('mappa');
