@@ -54,8 +54,11 @@ let geojsonProvince;
 let datiInterpelli = [];
 let risultatiCorrenti = []; 
 let indiceMostrati = 0;     
-const CHUNK_INIZIALE = 50;  
-const CHUNK_SUCCESSIVO = 20;
+
+// 📱 PUNTO 6: Paginazione adattiva (15 per Mobile, 50 per Desktop)
+const isMobileDevice = window.innerWidth < 768;
+const CHUNK_INIZIALE = isMobileDevice ? 15 : 50;  
+const CHUNK_SUCCESSIVO = isMobileDevice ? 15 : 20;
 
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
@@ -70,6 +73,8 @@ const leftSidebar = document.getElementById('leftSidebar');
 const mobileBackdrop = document.getElementById('mobileBackdrop');
 const rightPanelTitle = document.getElementById('rightPanelTitle');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
+const btnMostraRisultatiMappa = document.getElementById('btnMostraRisultatiMappa');
+const testoBtnRisultatiMappa = document.getElementById('testoBtnRisultatiMappa');
 
 // Stile per le etichette pulite sulla Mappa Leaflet
 const style = document.createElement('style');
@@ -95,10 +100,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     applicaFiltriDaURL();
 
     selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
-    selectProvincia.addEventListener('change', applicaFiltri);
-    selectCdc.addEventListener('change', applicaFiltri);
-    selectTipoScuola.addEventListener('change', applicaFiltri);
-    selectStato.addEventListener('change', applicaFiltri);
+    selectProvincia.addEventListener('change', () => applicaFiltri(false));
+    selectCdc.addEventListener('change', () => applicaFiltri(false));
+    selectTipoScuola.addEventListener('change', () => applicaFiltri(false));
+    selectStato.addEventListener('change', () => applicaFiltri(false));
     
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
@@ -136,7 +141,7 @@ function inizializzaMappa() {
 
     L.control.zoom({ position: isMobile ? 'topright' : 'bottomright' }).addTo(map);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
+    L.tileLayer('https://{s].basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
     caricaLayerRegioni();
 }
 
@@ -204,7 +209,8 @@ async function clickSuRegione(nomeRegione, bounds) {
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
-                        applicaFiltri(); 
+                        // PUNTO 6: Cliccando sulla Provincia la Mappa Zoomma senza aprire il pannello!
+                        applicaFiltri(false); 
                     }
                 });
             }
@@ -212,7 +218,10 @@ async function clickSuRegione(nomeRegione, bounds) {
         
         livelloAttuale = 'province';
         selectProvincia.value = "TUTTE";
-        applicaFiltri();
+        
+        // 🎯 PUNTO 6: Zoom sulla Regione SENZA aprire automaticamente il pannello dei risultati!
+        applicaFiltri(false);
+        
         if(btnReset) btnReset.classList.remove('hidden');
     } catch (error) { console.error(error); }
 }
@@ -227,7 +236,9 @@ function resetMappa() {
     
     if (geojsonProvince) map.removeLayer(geojsonProvince);
     caricaLayerRegioni();
+    
     if(btnReset) btnReset.classList.add('hidden');
+    if(btnMostraRisultatiMappa) btnMostraRisultatiMappa.classList.add('hidden');
     
     window.history.replaceState({}, '', window.location.pathname);
     aggiornaMetaTagsSEO(null, null, null);
@@ -295,7 +306,7 @@ function isScaduto(item) {
 }
 
 function mostraScoreboard() {
-    if (rightPanel.classList.contains('hidden')) {
+    if (rightPanel.classList.contains('hidden') && window.innerWidth >= 768) {
         rightPanel.classList.remove('hidden');
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
@@ -353,7 +364,8 @@ function mostraScoreboard() {
     containerLista.innerHTML = html;
 }
 
-function applicaFiltri() {
+// 🎯 PUNTO 6: 'apriPannelloEsplicito' controlla se mostrare il pannello risultati o tenere il focus sulla mappa
+function applicaFiltri(apriPannelloEsplicito = false) {
     const reg = selectRegione.value;
     const prov = selectProvincia.value;
     const cdc = selectCdc.value;
@@ -371,13 +383,6 @@ function applicaFiltri() {
     if (!reg && !cdc && !tipo && stato === "ATTIVI") {
         mostraScoreboard();
         return;
-    }
-
-    rightPanelTitle.innerHTML = '<i class="fa-solid fa-list-check text-apple-blue mr-2"></i> Risultati';
-
-    if (rightPanel.classList.contains('hidden')) {
-        rightPanel.classList.remove('hidden');
-        setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
 
     let filtrati = datiInterpelli;
@@ -418,13 +423,43 @@ function applicaFiltri() {
     risultatiCorrenti = filtrati;
     indiceMostrati = 0;
 
-    aggiornaBadgeMobile(risultatiCorrenti.length);
+    const conteggioInZona = risultatiCorrenti.length;
+    aggiornaBadgeMobile(conteggioInZona);
+
+    // 🎯 PUNTO 6: AGGIORNA IL PULSANTE FLUTTUANTE SULLA MAPPA "VEDI X INTERPELLI"
+    const nomeZona = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Italia");
+    if (testoBtnRisultatiMappa && btnMostraRisultatiMappa) {
+        if (conteggioInZona > 0) {
+            testoBtnRisultatiMappa.textContent = `Vedi ${conteggioInZona} Interpelli in ${nomeZona}`;
+            btnMostraRisultatiMappa.classList.remove('hidden');
+        } else {
+            testoBtnRisultatiMappa.textContent = `Nessun Interpello in ${nomeZona}`;
+            btnMostraRisultatiMappa.classList.remove('hidden');
+        }
+    }
+
+    // Apri il pannello risultati SOLO se l'utente ha esplicitamente cliccato sul pulsante o cercato dai filtri
+    if (apriPannelloEsplicito) {
+        apriPannelloRisultatiGUI(nomeZona);
+    }
+}
+
+// Apre il pannello con i risultati renderizzati
+function apriPannelloRisultatiGUI(nomeZona) {
+    rightPanelTitle.innerHTML = '<i class="fa-solid fa-list-check text-apple-blue mr-2"></i> Risultati';
+
+    if (rightPanel.classList.contains('hidden')) {
+        rightPanel.classList.remove('hidden');
+        setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+    }
 
     if (window.innerWidth < 768) {
         mostraVistaMobile('risultati');
     }
 
     if (risultatiCorrenti.length === 0) {
+        const reg = selectRegione.value;
+        const cdc = selectCdc.value;
         let suggeriti = datiInterpelli.filter(i => !isScaduto(i) && (
             (reg && i.regione === reg) || (cdc && i.cdc && i.cdc.includes(cdc))
         )).slice(0, 5);
@@ -459,14 +494,20 @@ function applicaFiltri() {
         return;
     }
 
-    const titoloRisultati = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Tutta Italia");
     containerLista.innerHTML = `
-        <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${escapeHTML(titoloRisultati)}</p>
+        <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${escapeHTML(nomeZona)}</p>
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
     
     aggiornaDatiStrutturatiSchema(risultatiCorrenti);
     caricaPezzi(CHUNK_INIZIALE);
+}
+
+function apriRisultatiDaMappa() {
+    const reg = selectRegione.value;
+    const prov = selectProvincia.value;
+    const nomeZona = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Italia");
+    apriPannelloRisultatiGUI(nomeZona);
 }
 
 function caricaPezzi(quantita) {
@@ -563,7 +604,7 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
-// 📱 MODULI MOBILE 1, 2, 3, 4 & 5: Viste, Bottom Nav, Bottom Sheet & Backdrop
+// 📱 MODULI MOBILE: Viste, Bottom Nav, Bottom Sheet & Gesture Drag
 // ----------------------------------------------------------------------
 
 function mostraVistaMobile(vista) {
@@ -595,7 +636,6 @@ function mostraVistaMobile(vista) {
             btnFiltri.classList.remove('text-apple-muted');
             btnFiltri.classList.add('text-apple-blue');
         }
-        // 📱 PUNTO 5: Mostra lo Sfondo Scuro Sfocato
         if (backdrop) backdrop.classList.remove('hidden');
         if (mapContainer) mapContainer.classList.add('pointer-events-none');
 
@@ -610,7 +650,6 @@ function mostraVistaMobile(vista) {
             btnRisultati.classList.remove('text-apple-muted');
             btnRisultati.classList.add('text-apple-blue');
         }
-        // 📱 PUNTO 5: Mostra lo Sfondo Scuro Sfocato
         if (backdrop) backdrop.classList.remove('hidden');
         if (mapContainer) mapContainer.classList.add('pointer-events-none');
 
@@ -624,7 +663,6 @@ function mostraVistaMobile(vista) {
             btnMappa.classList.remove('text-apple-muted');
             btnMappa.classList.add('text-apple-blue');
         }
-        // 📱 PUNTO 5: Nascondi lo Sfondo Scuro Sfocato
         if (backdrop) backdrop.classList.add('hidden');
         if (mapContainer) mapContainer.classList.remove('pointer-events-none');
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
@@ -704,7 +742,8 @@ function applicaFiltriDaURL() {
     if (cdc && selectCdc) selectCdc.value = cdc;
 
     if (reg || prov || cdc) {
-        applicaFiltri();
+        // All'avvio via Deep Link o Search Engine, mostriamo esplicitamente i risultati!
+        applicaFiltri(true);
     }
 }
 
