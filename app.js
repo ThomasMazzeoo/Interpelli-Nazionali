@@ -371,12 +371,39 @@ function applicaFiltri() {
     risultatiCorrenti = filtrati;
     indiceMostrati = 0;
 
+    // FASE 4: SMART FALLBACK (Se 0 risultati, proponiamo interpelli attivi correlati invece di una pagina morta)
     if (risultatiCorrenti.length === 0) {
+        let suggeriti = datiInterpelli.filter(i => !isScaduto(i) && (
+            (reg && i.regione === reg) || (cdc && i.cdc && i.cdc.includes(cdc))
+        )).slice(0, 5);
+        
+        let htmlSuggeriti = "";
+        if (suggeriti.length > 0) {
+            htmlSuggeriti = `
+                <div class="mt-6 pt-6 border-t border-apple-hairline">
+                    <p class="text-[14px] font-semibold text-apple-ink mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i> Potrebbero interessarti in ${reg || 'Italia'}:
+                    </p>
+                    <div class="flex flex-col gap-3">
+                        ${suggeriti.map(s => `
+                            <a href="${s.url}" target="_blank" rel="noopener" class="p-3.5 bg-white rounded-[14px] border border-apple-hairline hover:border-apple-blue hover:shadow-sm transition-all group block">
+                                <div class="text-[11px] text-apple-blue font-bold uppercase tracking-tight">${s.provincia} · ${s.cdc ? s.cdc.join(', ') : 'Varie'}</div>
+                                <div class="text-[14px] font-semibold text-apple-ink leading-snug group-hover:text-apple-blue transition-colors mt-0.5">${s.titolo}</div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
         containerLista.innerHTML = `
-            <div class="text-center p-8 mt-10">
-                <p class="text-[17px] font-semibold text-apple-ink">Nessun risultato</p>
-                <p class="text-[14px] text-apple-muted mt-2">Prova a modificare i filtri o controlla gli interpelli scaduti.</p>
-            </div>`;
+            <div class="text-center p-6 mt-4 bg-white rounded-[18px] border border-apple-hairline">
+                <i class="fa-solid fa-folder-open text-3xl text-apple-muted mb-2 opacity-50"></i>
+                <p class="text-[16px] font-semibold text-apple-ink">Nessun interpello attivo trovato</p>
+                <p class="text-[13px] text-apple-muted mt-1">Non ci sono posizioni aperte con i filtri selezionati.</p>
+            </div>
+            ${htmlSuggeriti}
+        `;
         return;
     }
 
@@ -386,7 +413,7 @@ function applicaFiltri() {
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
     
-    // Genera e inietta i Dati Strutturati Schema.org JobPosting per Google for Jobs
+    // Genera Dati Strutturati Schema.org JobPosting solo per i posti attivi
     aggiornaDatiStrutturatiSchema(risultatiCorrenti);
 
     caricaPezzi(CHUNK_INIZIALE);
@@ -484,7 +511,7 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
-// 🚀 MODULI SEO DEDICATI (Fase 1, 2 e 3)
+// 🚀 MODULI SEO DEDICATI (Fase 1, 2, 3 e 4)
 // ----------------------------------------------------------------------
 
 // 1. LEGGE I PARAMETRI DALL'URL ALL'AVVIO DEL SITO (Deep Linking)
@@ -585,7 +612,7 @@ function aggiornaDatiStrutturatiSchema(lista) {
 
     if (!lista || lista.length === 0) return;
 
-    // Prendiamo i primi 20 per non appesantire il DOM
+    // FASE 4: Filtra SOLO gli interpelli ATTIVI per il markup Google for Jobs
     const daIndicizzare = lista.slice(0, 20).filter(i => !isScaduto(i));
     if (daIndicizzare.length === 0) return;
 
