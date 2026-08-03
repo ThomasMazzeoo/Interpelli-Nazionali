@@ -72,7 +72,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
 
-    <!-- DATI STRUTTURATI BASE SCHEMA.ORG (Google Organization & WebSite) -->
+    <!-- DATI STRUTTURATI BASE SCHEMA.ORG -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -105,10 +105,10 @@
 </head>
 <body class="bg-apple-parchment text-apple-ink font-sans overflow-hidden h-screen w-screen flex flex-col md:flex-row tracking-tighter">
 
-    <!-- 📱 PUNTO 5: SFONDO SCURO SFOCATO (BACKDROP OVERLAY PER MOBILE) -->
+    <!-- 📱 SFONDO SCURO SFOCATO (BACKDROP OVERLAY PER MOBILE) -->
     <div id="mobileBackdrop" onclick="mostraVistaMobile('mappa')" class="fixed inset-0 bg-apple-black/40 backdrop-blur-sm z-30 hidden transition-opacity duration-300 md:hidden" aria-hidden="true"></div>
 
-    <!-- 1. COLONNA SINISTRA (Filtri) - Drawer Scorrevole su Mobile -->
+    <!-- 1. COLONNA SINISTRA (Filtri) -->
     <aside id="leftSidebar" class="w-full md:w-[28%] min-w-0 md:min-w-[320px] bg-apple-parchment z-40 fixed md:relative inset-0 pb-16 md:pb-0 hidden md:flex flex-col h-screen border-r border-apple-hairline overflow-y-auto transition-transform duration-300" role="search" aria-label="Filtri ricerca interpelli">
         
         <!-- Global Nav (stile Apple) -->
@@ -194,7 +194,14 @@
 
     <!-- 2. COLONNA CENTRALE (Mappa) -->
     <main class="flex-1 h-screen relative bg-apple-parchment transition-all duration-300 w-full" id="map-container" aria-label="Mappa interattiva delle supplenze">
-        <button id="btnResetMappa" class="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 z-[1000] hidden bg-[#f5f5f7]/80 backdrop-blur-md border border-apple-hairline text-apple-ink py-3 px-6 rounded-full hover:bg-white transition-all text-[14px] font-semibold shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-95 min-h-[44px]">
+        
+        <!-- 🎯 PUNTO 6: PULSANTE FLUTTUANTE SULLA MAPPA "VEDI X INTERPELLI" -->
+        <button id="btnMostraRisultatiMappa" onclick="apriRisultatiDaMappa()" class="absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-[1000] hidden bg-apple-blue hover:bg-apple-blueFocus text-white py-3 px-6 rounded-full font-semibold shadow-xl transition-all text-[14px] flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer min-h-[44px] backdrop-blur-md">
+            <i class="fa-solid fa-list-check text-[15px]"></i>
+            <span id="testoBtnRisultatiMappa">Vedi Interpelli</span>
+        </button>
+
+        <button id="btnResetMappa" class="absolute top-4 left-4 md:top-auto md:bottom-8 md:left-8 z-[1000] hidden bg-[#f5f5f7]/90 backdrop-blur-md border border-apple-hairline text-apple-ink py-2.5 px-5 rounded-full hover:bg-white transition-all text-[13px] font-semibold shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95 min-h-[40px]">
             <i class="fa-solid fa-rotate-left"></i> Resetta Mappa
         </button>
 
