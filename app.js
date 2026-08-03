@@ -254,7 +254,7 @@ function mostraScoreboard() {
 
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
 
-    // Filtra solo gli interpelli davvero ATTIVI e con data reale (escludendo le bacheche fisse)
+    // Filtra solo gli interpelli davvero ATTIVI e con data reale
     let attivi = datiInterpelli.filter(i => !isScaduto(i) && i.data && i.data !== "" && !i.escludi_scoreboard);
     let conteggio = {};
     
@@ -448,8 +448,9 @@ function caricaPezzi(quantita) {
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
             : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
 
+        // USA <article> PER UN SEO ON-PAGE SEMANTICO
         griglia.innerHTML += `
-            <div class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}">
+            <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}" aria-label="Interpello ${titoloPulito}">
                 
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-[12px] tracking-tightest font-medium ${isNuovo ? '' : 'text-apple-muted'}">${testoProvincia}</span>
@@ -462,11 +463,11 @@ function caricaPezzi(quantita) {
                     ${badgeCDC}
                 </div>
                 
-                <a href="${item.url}" target="_blank" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
+                <a href="${item.url}" target="_blank" rel="noopener" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
                     ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                 </a>
                 
-            </div>
+            </article>
         `;
     });
 
@@ -483,7 +484,7 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
-// 🚀 MODULI SEO DEDICATI (Fase 1 e Fase 2)
+// 🚀 MODULI SEO DEDICATI (Fase 1, 2 e 3)
 // ----------------------------------------------------------------------
 
 // 1. LEGGE I PARAMETRI DALL'URL ALL'AVVIO DEL SITO (Deep Linking)
@@ -510,8 +511,8 @@ function applicaFiltriDaURL() {
 
 // 2. AGGIORNA I META TAGS E IL TITOLO DELLA PAGINA PER GOOGLE
 function aggiornaMetaTagsSEO(reg, prov, cdc) {
-    let titolo = "Interpelli Nazionali - La mappa delle supplenze scolastiche";
-    let desc = "Trova la tua prossima cattedra. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia per docenti e supplenze.";
+    let titolo = "Interpello Nazionale - La mappa delle supplenze scolastiche";
+    let desc = "Trova la tua prossima cattedra con Interpello Nazionale. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia per docenti e supplenze.";
 
     if (reg || prov || cdc) {
         let parti = [];
@@ -519,8 +520,8 @@ function aggiornaMetaTagsSEO(reg, prov, cdc) {
         if (prov && prov !== "TUTTE") parti.push(`Provincia di ${prov}`);
         else if (reg) parti.push(`Regione ${reg}`);
 
-        titolo = `Interpelli ${parti.join(' - ')} | Interpelli Nazionali`;
-        desc = `Tutti gli interpelli scolastici attivi per ${parti.join(', ')}. Consulta gli avvisi di reclutamento docenti e candidati subito.`;
+        titolo = `Interpelli ${parti.join(' - ')} | Interpello Nazionale`;
+        desc = `Tutti gli interpelli scolastici attivi per ${parti.join(', ')}. Consulta gli avvisi di reclutamento docenti e candidati subito su Interpello Nazionale.`;
     }
 
     document.title = titolo;
@@ -547,10 +548,10 @@ function generaSchemaJobPosting(item) {
         "@context": "https://schema.org/",
         "@type": "JobPosting",
         "title": `Interpello Docente ${cdcText} - ${titoloPulito}`,
-        "description": `Avviso di reclutamento docente (Interpello) per ${titoloPulito} in provincia di ${item.provincia || 'Italia'} (${item.regione || ''}). Classe di concorso: ${cdcText}.`,
+        "description": `Avviso di reclutamento docente (Interpello Nazionale) per ${titoloPulito} in provincia di ${item.provincia || 'Italia'} (${item.regione || ''}). Classe di concorso: ${cdcText}.`,
         "identifier": {
             "@type": "PropertyValue",
-            "name": "Interpelli Nazionali",
+            "name": "Interpello Nazionale",
             "value": item.url
         },
         "datePosted": datePosted,
