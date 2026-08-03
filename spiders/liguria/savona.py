@@ -14,14 +14,15 @@ def run(url_visti):
     
     try:
         risposta = requests.get(URL_BASE, headers=headers, timeout=15)
-        if risposta.status_code != 200: return []
+        if risposta.status_code != 200: 
+            print(f"  ⚠️ HTTP {risposta.status_code}")
+            return []
             
         soup = BeautifulSoup(risposta.text, 'html.parser')
         tabella = soup.find('table')
         if not tabella: return []
 
-        # SOLO LE PRIME 20 RIGHE DOPO IL TITOLO
-        for riga in tabella.find_all('tr')[1:21]:
+        for riga in tabella.find_all('tr')[1:]:
             cols = riga.find_all(['td', 'th'])
             if len(cols) < 5: continue 
             
@@ -60,11 +61,6 @@ def run(url_visti):
                     data_pulita = f"{anno}-{mese}-{giorno}"
                     break 
 
-            try:
-                data_obj = datetime.strptime(data_pulita, '%Y-%m-%d')
-                if (datetime.now() - data_obj).days > 15: continue
-            except: pass
-            
             if link_tag:
                 url_avviso = link_tag['href']
                 if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
@@ -78,7 +74,7 @@ def run(url_visti):
                 url_avviso = f"{URL_BASE}#no-link-{id_univoco}"
             
             if url_avviso in url_visti: continue
-                    
+            
             cdc_pulite = estrai_cdc(cdc_raw) 
             
             nuovi_interpelli.append({
