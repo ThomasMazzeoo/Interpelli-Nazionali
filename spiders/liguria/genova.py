@@ -20,8 +20,8 @@ def run(url_visti):
         tabella = soup.find('table')
         if not tabella: return []
 
-        # SOLO LE PRIME 20 RIGHE DOPO IL TITOLO
-        for riga in tabella.find_all('tr')[1:21]:
+        # RIMOSSO IL LIMITE A 20: Le tabelle vengono lette interamente!
+        for riga in tabella.find_all('tr')[1:]:
             cols = riga.find_all(['td', 'th'])
             if len(cols) < 11: continue 
             
