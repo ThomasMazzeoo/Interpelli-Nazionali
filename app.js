@@ -117,13 +117,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (window.innerWidth >= 768) {
             if (leftSidebar) leftSidebar.classList.remove('hidden');
             if (rightPanel) rightPanel.style.transform = '';
+            const mapContainer = document.getElementById('map-container');
+            if (mapContainer) mapContainer.classList.remove('pointer-events-none');
         }
     });
 });
 
 function inizializzaMappa() {
-    map = L.map('map', { zoomControl: false }).setView([41.8719, 12.5674], 6);
-    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    const isMobile = window.innerWidth < 768;
+
+    // 📱 PUNTO 4: Disattiva tap emulato su mobile per eliminare ritardi su iOS
+    map = L.map('map', { 
+        zoomControl: false,
+        tap: !L.Browser.mobile,
+        bounceAtZoomLimits: false
+    }).setView([41.8719, 12.5674], 6);
+
+    // Su mobile sposta i bottoni Zoom in alto a destra per non coprire la Bottom Bar
+    L.control.zoom({ position: isMobile ? 'topright' : 'bottomright' }).addTo(map);
+
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
     caricaLayerRegioni();
 }
@@ -551,7 +563,7 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
-// 📱 MODULI MOBILE 1, 2 & 3: Viste, Bottom Nav, Touch Targets e Gestures
+// 📱 MODULI MOBILE 1, 2, 3 & 4: Viste, Bottom Nav, Bottom Sheet e Map Trap Fix
 // ----------------------------------------------------------------------
 
 function mostraVistaMobile(vista) {
@@ -560,6 +572,7 @@ function mostraVistaMobile(vista) {
     const btnFiltri = document.getElementById('navFiltriBtn');
     const btnMappa = document.getElementById('navMappaBtn');
     const btnRisultati = document.getElementById('navRisultatiBtn');
+    const mapContainer = document.getElementById('map-container');
 
     [btnFiltri, btnMappa, btnRisultati].forEach(b => {
         if(b) {
@@ -581,6 +594,9 @@ function mostraVistaMobile(vista) {
             btnFiltri.classList.remove('text-apple-muted');
             btnFiltri.classList.add('text-apple-blue');
         }
+        // 📱 PUNTO 4: Disattiva interazione con la mappa quando un pannello è aperto per evitare la "Map Trap"
+        if (mapContainer) mapContainer.classList.add('pointer-events-none');
+
     } else if (vista === 'risultati') {
         if (rightPanel) {
             rightPanel.classList.remove('hidden');
@@ -592,6 +608,9 @@ function mostraVistaMobile(vista) {
             btnRisultati.classList.remove('text-apple-muted');
             btnRisultati.classList.add('text-apple-blue');
         }
+        // 📱 PUNTO 4: Disattiva interazione con la mappa quando il Bottom Sheet è aperto
+        if (mapContainer) mapContainer.classList.add('pointer-events-none');
+
     } else { // 'mappa'
         if (leftSidebar) leftSidebar.classList.add('hidden');
         if (rightPanel) {
@@ -602,6 +621,8 @@ function mostraVistaMobile(vista) {
             btnMappa.classList.remove('text-apple-muted');
             btnMappa.classList.add('text-apple-blue');
         }
+        // 📱 PUNTO 4: Riapri la mappa al tocco del dito quando torna in primo piano
+        if (mapContainer) mapContainer.classList.remove('pointer-events-none');
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
 }
