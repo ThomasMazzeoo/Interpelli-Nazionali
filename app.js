@@ -48,6 +48,7 @@ const rightPanel = document.getElementById('rightPanel');
 const rightPanelTitle = document.getElementById('rightPanelTitle');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
 
+// Stile personalizzato per le etichette pulite della mappa Leaflet
 const style = document.createElement('style');
 style.innerHTML = `
     .leaflet-tooltip.clean-label {
@@ -64,6 +65,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
     await caricaDatiScraper();
     
+    // Legge i parametri dall'URL e applica i filtri SEO se presenti
+    applicaFiltriDaURL();
+
     selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
     selectProvincia.addEventListener('change', applicaFiltri);
     selectCdc.addEventListener('change', applicaFiltri);
@@ -121,7 +125,7 @@ async function caricaLayerRegioni() {
 async function clickSuRegione(nomeRegione, bounds) {
     if(bounds) map.fitBounds(bounds);
     selectRegione.value = nomeRegione;
-    map.removeLayer(geojsonRegioni);
+    if (geojsonRegioni) map.removeLayer(geojsonRegioni);
     
     try {
         const response = await fetch(URL_PROVINCE);
@@ -176,6 +180,9 @@ function resetMappa() {
     caricaLayerRegioni();
     if(btnReset) btnReset.classList.add('hidden');
     
+    // Ripristina l'URL di base senza parametri SEO
+    window.history.replaceState({}, '', window.location.pathname);
+    
     mostraScoreboard();
 }
 
@@ -204,7 +211,11 @@ async function caricaDatiScraper() {
 function popolaMenuCDC() {
     const cdcUniche = new Set();
     datiInterpelli.forEach(item => {
-        if (item.cdc) item.cdc.forEach(c => cdcUniche.add(c));
+        if (item.cdc) item.cdc.forEach(c => {
+            if(c && c !== "TUTTE LE CLASSI" && c !== "DA VERIFICARE SUL SITO") {
+                cdcUniche.add(c);
+            }
+        });
     });
     Array.from(cdcUniche).sort().forEach(cdc => {
         selectCdc.innerHTML += `<option value="${cdc}">${cdc}</option>`;
@@ -242,6 +253,7 @@ function mostraScoreboard() {
 
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
 
+    // Filtra solo gli interpelli davvero ATTIVI e con data reale (escludendo le bacheche fisse/directory)
     let attivi = datiInterpelli.filter(i => !isScaduto(i) && i.data && i.data !== "" && !i.escludi_scoreboard);
     let conteggio = {};
     
@@ -297,6 +309,13 @@ function applicaFiltri() {
     const cdc = selectCdc.value;
     const tipo = selectTipoScuola.value;
     const stato = selectStato.value;
+
+    // Aggiorna l'URL del browser in tempo reale per SEO e Deep Linking
+    const newUrl = new URL(window.location.href);
+    if (reg) newUrl.searchParams.set('regione', reg); else newUrl.searchParams.delete('regione');
+    if (prov && prov !== "TUTTE") newUrl.searchParams.set('provincia', prov); else newUrl.searchParams.delete('provincia');
+    if (cdc) newUrl.searchParams.set('cdc', cdc); else newUrl.searchParams.delete('cdc');
+    window.history.replaceState({}, '', newUrl);
 
     if (!reg && !cdc && !tipo && stato === "ATTIVI") {
         mostraScoreboard();
@@ -406,7 +425,7 @@ function caricaPezzi(quantita) {
         const nomeProvinciaMostrato = (item.provincia || "");
         const testoProvincia = isNuovo ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${nomeProvinciaMostrato}</span>` : `<span class="uppercase">${nomeProvinciaMostrato}</span>`;
         
-        // IL NUOVO BADGE DELLA DATA
+        // BADGE DATA INTELIGENTE
         let testoData = "";
         if (scaduto) {
             testoData = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
@@ -452,5 +471,27 @@ function caricaPezzi(quantita) {
         btn.innerHTML = `Mostra altri`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
+    }
+}
+
+// LEGGE I PARAMETRI DALL'URL ALL'AVVIO DEL SITO (SEO Deep Linking)
+function applicaFiltriDaURL() {
+    const params = new URLSearchParams(window.location.search);
+    const reg = params.get('regione');
+    const prov = params.get('provincia');
+    const cdc = params.get('cdc');
+
+    if (reg && selectRegione) {
+        selectRegione.value = reg;
+        selezionaRegioneDaMenu(reg);
+    }
+    if (prov && selectProvincia) {
+        selectProvincia.disabled = false;
+        selectProvincia.innerHTML = `<option value="${prov}" selected>${prov}</option>`;
+    }
+    if (cdc && selectCdc) selectCdc.value = cdc;
+
+    if (reg || prov || cdc) {
+        applicaFiltri();
     }
 }
