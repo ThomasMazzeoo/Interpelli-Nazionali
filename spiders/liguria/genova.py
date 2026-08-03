@@ -29,17 +29,28 @@ def run(url_visti):
             cdc_raw = cols[0].get_text(strip=True)
             if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
                 
-            nome_scuola = cols[3].get_text(strip=True) if len(cols) > 3 else "Scuola"
+            # separator=' ' evita che le parole si incollino se vanno a capo nell'HTML!
+            nome_scuola = cols[3].get_text(separator=' ', strip=True) if len(cols) > 3 else "Scuola"
+            nome_scuola = re.sub(r'\s+', ' ', nome_scuola) # Pulisce gli spazi doppi
+            
             if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper(): continue
+
+            codice_mecc = cols[2].get_text(strip=True) if len(cols) > 2 else ""
+            dal_raw = cols[4].get_text(strip=True).replace('/', '-').replace('.', '-') if len(cols) > 4 else ""
+            al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-') if len(cols) > 5 else ""
+            dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ') if len(cols) > 7 else ""
 
             link_col = cols[-1]
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
-            id_univoco = f"{cdc_per_link}-{len(nuovi_interpelli)}"
+            ore_per_link = dettaglio_ore.replace(' ', '_')
+            id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
             
-            # RADAR DATE 
+            # ============================================
+            # IL SUPER RADAR DELLE DATE IN AZIONE!
+            # ============================================
             data_pulita = datetime.today().strftime('%Y-%m-%d')
             for cell in reversed(cols):
                 testo_cella = cell.get_text(strip=True).lower()
@@ -62,7 +73,7 @@ def run(url_visti):
                     data_pulita = f"{anno}-{mese}-{giorno}"
                     break 
             
-            # SMART LINK REDIRECT
+            # SMART LINK REDIRECT (Se il link è "pigro" manda alla tabella)
             if link_tag:
                 url_avviso = link_tag['href']
                 if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
@@ -75,7 +86,7 @@ def run(url_visti):
                     else:
                         url_avviso += f"#{id_univoco}"
             elif '@' in testo_link:
-                url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw}"
+                url_avviso = f"mailto:{testo_link}?subject=Interpello {cdc_raw} ({dettaglio_ore})"
             elif testo_link.lower().startswith('www.') or testo_link.lower().startswith('http'):
                 base_link = testo_link if testo_link.startswith('http') else 'https://' + testo_link
                 u_low = base_link.lower()
@@ -84,7 +95,7 @@ def run(url_visti):
                 else:
                     url_avviso = f"{base_link}#{id_univoco}"
             else:
-                url_avviso = f"{URL_BASE}#tabella-usp-{id_univoco}"
+                url_avviso = f"{URL_BASE}#tabella-usp-{codice_mecc}-{id_univoco}"
             
             if url_avviso in url_visti: continue
             
