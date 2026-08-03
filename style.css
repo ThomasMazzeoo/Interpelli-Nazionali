@@ -24,7 +24,7 @@
     background: #a8a8a8; 
 }
 
-/* 🚀 PERFORMANCE FASE 5: Content-Visibility per rendering GPU fluido a 60 FPS */
+/* PERFORMANCE: Content-Visibility per rendering GPU fluido a 60 FPS */
 #grigliaCard > article {
     content-visibility: auto;
     contain-intrinsic-size: 180px;
@@ -50,4 +50,9 @@
 
 .card-nuova {
     box-shadow: 0 4px 15px -3px rgba(16, 185, 129, 0.15), 0 0 0 1px rgba(16, 185, 129, 0.1) inset !important;
+}
+
+/* Supporto per Safe Area su iPhone con Notch */
+.pb-safe {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
