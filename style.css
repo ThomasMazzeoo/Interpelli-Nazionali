@@ -37,7 +37,7 @@
     }
 }
 
-/* 📱 PUNTO 4: RIPOSIZIONAMENTO PANTOGRAFO ZOOM LEAFLET SU MOBILE (Evita la Bottom Bar) */
+/* RIPOSIZIONAMENTO PANTOGRAFO ZOOM LEAFLET SU MOBILE */
 @media (max-width: 767px) {
     .leaflet-top.leaflet-right {
         top: 16px !important;
@@ -87,7 +87,7 @@
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
-/* Stili per il Bottom Sheet Mobile */
+/* 📱 PUNTO 5: Stili e transizioni per il Bottom Sheet Mobile */
 @media (max-width: 767px) {
     #rightPanel {
         touch-action: pan-y;
