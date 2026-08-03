@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import estrai_cdc
 
+# URL temporaneo per i test (da aggiornare a 2026-2027 quando lo pubblicheranno)
 URL_BASE = "https://www.istruzionesavona.gov.it/pagine/interpelli-sv---as-2024-2025-2"
 
 def run(url_visti):
@@ -20,34 +21,69 @@ def run(url_visti):
         tabella = soup.find('table')
         if not tabella: return []
 
-        for riga in tabella.find_all('tr')[1:]:
-            cols = riga.find_all(['td', 'th'])
-            if len(cols) < 9: continue 
-            
-            cdc_raw = cols[0].get_text(strip=True)
-            if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
+        righe = tabella.find_all('tr')
+        if len(righe) < 2: return []
+        
+        # 1. AUTO-MAPPATURA DELLE COLONNE
+        idx_cdc = 0
+        idx_scuola = 3
+        idx_dal = 4
+        idx_al = 5
+        idx_ore = 7
+        idx_scad = 8
+        idx_link = 9
+        
+        start_row = 1
+        for i, riga in enumerate(righe):
+            text = riga.get_text(strip=True).lower()
+            if 'cdc' in text and 'denominazione' in text:
+                intestazioni = [th.get_text(strip=True).lower() for th in riga.find_all(['th', 'td'])]
                 
-            nome_scuola = cols[3].get_text(separator=' ', strip=True)
+                for j, s in enumerate(intestazioni):
+                    s_clean = s.replace('\xa0', ' ').strip()
+                    if s_clean == 'cdc': idx_cdc = j
+                    elif 'denominazione' in s_clean: idx_scuola = j
+                    # Cattura dinamicamente "dal", "DAL", "dal giorno"
+                    elif s_clean.startswith('dal'): idx_dal = j
+                    # Cattura "al", "Al", "al giorno"
+                    elif s_clean.startswith('al ') or s_clean == 'al': idx_al = j
+                    elif 'ore' in s_clean or 'intera' in s_clean or 'spezzone' in s_clean: idx_ore = j
+                    elif 'termine' in s_clean or 'scadenza' in s_clean or 'domanda' in s_clean: idx_scad = j
+                    elif 'link' in s_clean: idx_link = j
+                        
+                start_row = i + 1
+                break
+
+        # 2. ESTRAZIONE DINAMICA E ANTIFRAGILE
+        for riga in righe[start_row:]:
+            cols = riga.find_all(['td', 'th'])
+            
+            if len(cols) <= max(idx_cdc, idx_scuola, idx_link): continue 
+            
+            cdc_raw = cols[idx_cdc].get_text(strip=True)
+            if not cdc_raw or 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
+                
+            nome_scuola = cols[idx_scuola].get_text(separator=' ', strip=True)
             nome_scuola = re.sub(r'\s+', ' ', nome_scuola)
             if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper(): continue
 
-            codice_mecc = cols[2].get_text(strip=True)
-            dal_raw = cols[4].get_text(strip=True).replace('/', '-').replace('.', '-')
-            al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-')
-            dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
+            dal_raw = cols[idx_dal].get_text(strip=True).replace('/', '-').replace('.', '-') if len(cols) > idx_dal else ""
+            al_raw = cols[idx_al].get_text(strip=True).replace('/', '-').replace('.', '-') if len(cols) > idx_al else ""
+            dettaglio_ore = cols[idx_ore].get_text(strip=True).replace('\n', ' ') if len(cols) > idx_ore else ""
 
-            # ID DETERMINISTICO
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
             ore_per_link = dettaglio_ore.replace(' ', '_')
             id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
             
-            testo_scadenza = cols[-2].get_text(strip=True).lower()
-            link_col = cols[-1]
+            testo_scadenza = cols[idx_scad].get_text(strip=True).lower() if len(cols) > idx_scad else ""
+            link_col = cols[idx_link] if len(cols) > idx_link else cols[-1]
+            
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
             data_pulita = ""
             
+            # Il Super Radar taglierà fuori stringhe come "ORE 12:00" e prenderà solo la data pulita
             match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', testo_scadenza)
             match_num = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo_scadenza)
             
@@ -65,13 +101,6 @@ def run(url_visti):
                 if len(anno) == 2: anno = "20" + anno
                 data_pulita = f"{anno}-{mese}-{giorno}"
 
-            # Mietitore per Savona
-            try:
-                if data_pulita:
-                    data_obj = datetime.strptime(data_pulita, '%Y-%m-%d')
-                    if (datetime.now() - data_obj).days > 15: continue
-            except: pass
-            
             if link_tag:
                 url_avviso = link_tag['href']
                 if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
