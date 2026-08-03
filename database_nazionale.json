@@ -1,28 +1,5 @@
 [
-    {
-        "regione": "Veneto",
-        "provincia": "Rovigo",
-        "titolo": "Interpello Posto Comune Primaria – IC Adria Uno",
-        "data": "2097-03-10",
-        "cdc": [
-            "B011",
-            "IRC",
-            "B006",
-            "PRIMARIA",
-            "B015",
-            "EEEE",
-            "B014",
-            "A060",
-            "B016",
-            "B017"
-        ],
-        "url": "https://rovigo.istruzioneveneto.gov.it/2026/05/13/interpello-per-un-posto-comune-primaria-ic-adria-uno/",
-        "pdf_links": [
-            "https://rovigo.istruzioneveneto.gov.it/wp-content/uploads/2026/05/INTERPELLO-EEEE-24-ore-dal-15.05-al-05.06-2026.pdf"
-        ],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T20:17:38.932578"
-    },
+    
     {
         "regione": "Piemonte",
         "provincia": "Cuneo",
