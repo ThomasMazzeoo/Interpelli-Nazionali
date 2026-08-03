@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import converti_data_italiana, estrai_cdc
 
-# TUTTO IL PIEMONTE COMPLETATO! 🎯
 FONTI = {
     "Torino": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_to.php",
     "Alessandria": "https://servizi.istruzionepiemonte.it/interpello2025/ric_interpello_ambito_al.php",
@@ -35,23 +34,26 @@ def run(url_visti):
             if not tabella:
                 continue
 
-            # PRENDE SOLO LE PRIME 400 RIGHE (salta la prima riga di intestazione)
             righe = tabella.find_all('tr')[1:401] 
             
             for riga in righe:
                 cols = riga.find_all('td')
                 
-                # Il controllo < 9 ci garantisce di prendere i dati giusti in tutte le tabelle del Piemonte
                 if len(cols) < 9: 
                     continue 
                 
-                # Leggiamo lo stato (aperto/chiuso)
                 stato = cols[8].get_text(strip=True).lower()
-                is_chiuso = 'chiuso' in stato
+                is_chiuso = 'chiuso' in stato or 'cancellato' in stato
                 
                 nome_scuola = cols[1].get_text(strip=True)
                 cdc_raw = cols[2].get_text(strip=True)
-                data_raw = cols[6].get_text(strip=True)
+                
+                # --- NOVITÀ: Cerca la vera data di Scadenza! ---
+                data_raw = cols[6].get_text(strip=True) # Fallback: Data Interpello
+                if len(cols) > 9:
+                    scadenza_text = cols[9].get_text(strip=True)
+                    if scadenza_text and "senza" not in scadenza_text.lower() and "-" not in scadenza_text:
+                        data_raw = scadenza_text
                 
                 link_tag = cols[7].find('a', href=True)
                 
@@ -69,15 +71,11 @@ def run(url_visti):
                 data_pulita = converti_data_italiana(data_raw)
                 cdc_pulite = estrai_cdc(cdc_raw) 
                 
-                # COSTRUZIONE DEL TITOLO VISUALE
                 titolo_finale = nome_scuola
                 if is_chiuso:
                     titolo_finale = f"[CHIUSO] {titolo_finale}" 
                     
-                if cdc_pulite:
-                    titolo_finale += f" - [CDC: {', '.join(cdc_pulite)}]"
-
-                print(f"    🎯 Trovato: {titolo_finale} ({provincia})")
+                print(f"    🎯 Trovato: {titolo_finale} ({provincia}) - Scadenza: {data_pulita}")
                 
                 nuovi_interpelli.append({
                     "regione": "Piemonte", 
