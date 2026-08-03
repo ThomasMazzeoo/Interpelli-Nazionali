@@ -1,5 +1,70 @@
 [
     {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
+        "data": "2010-10-00",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.istruzioneimperia.gov.it/pagine/interpelli-im---as-2024-2025-1#no-link-EEEE-272",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T10:58:23.834643"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
+        "data": "2010-17-00",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzioneimperia.gov.it/pagine/interpelli-im---as-2024-2025-1#no-link-ADEE-294",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T10:58:23.837920"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
+        "data": "2010-17-00",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzioneimperia.gov.it/pagine/interpelli-im---as-2024-2025-1#no-link-ADAA-295",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T10:58:23.838057"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "Ist. Comp. Diano Marina",
+        "data": "2026-10-21",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.istruzioneimperia.gov.it/pagine/interpelli-im---as-2024-2025-1#no-link-ADAA-329",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T10:58:23.842928"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Savona",
+        "titolo": "IC ALBENGA I",
+        "data": "2026-09-19",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.istruzionesavona.gov.it/pagine/interpelli-sv---as-2024-2025-2#no-link-ADEE-599",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T10:58:26.903600"
+    },
+    {
         "regione": "Piemonte",
         "provincia": "Cuneo",
         "titolo": "ISTITUTO COMPRENSIVO BENE VAGIENNA",
