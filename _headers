@@ -1,0 +1,20 @@
+/*
+  Cache-Control: public, max-age=3600
+
+# Cache aggressiva immutabile per 1 anno per CSS, JS e Font
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Il database JSON viene re-validato ogni 60 secondi
+/database_nazionale.json
+  Cache-Control: public, max-age=60, must-revalidate
+
+# Sitemap e Robots re-validati ogni ora
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=3600, must-revalidate
