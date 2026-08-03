@@ -16,7 +16,7 @@ MODULI_ATTIVI = [
     # "spiders.liguria.savona",
     # "spiders.veneto.rovigo",
     # "spiders.veneto.padova"  # <--- SOLO LUI ATTIVO PER IL TEST
-    # "spiders.veneto.venezia"
+    "spiders.veneto.venezia"
 ]
 
 def is_troppo_vecchio(item):
