@@ -2,7 +2,7 @@ import time
 import requests
 import re
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
+from datetime import datetime
 from utils.helpers import estrai_cdc
 
 URL_BASE = "https://www.istruzionesavona.gov.it/pagine/interpelli-sv---as-2024-2025-2"
@@ -20,41 +20,28 @@ def run(url_visti):
         tabella = soup.find('table')
         if not tabella: return []
 
-        for riga in tabella.find_all('tr'):
+        # SOLO LE PRIME 20 RIGHE DOPO IL TITOLO
+        for riga in tabella.find_all('tr')[1:21]:
             cols = riga.find_all(['td', 'th'])
-            
-            if len(cols) < 5: 
-                continue 
+            if len(cols) < 5: continue 
             
             cdc_raw = cols[0].get_text(strip=True)
-            
-            if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): 
-                continue
+            if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
                 
             nome_scuola = cols[3].get_text(strip=True) if len(cols) > 3 else "Scuola"
-            
-            if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper():
-                continue
+            if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper(): continue
 
             link_col = cols[-1]
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
-            # Generiamo l'ID base (lo useremo se supera il controllo data)
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
             id_univoco = f"{cdc_per_link}-{len(nuovi_interpelli)}"
             
-            # ==========================================
-            # 1. L'ESTRATTORE LINGUISTICO DELLE DATE
-            # ==========================================
             data_pulita = datetime.today().strftime('%Y-%m-%d')
-            
             for cell in reversed(cols):
                 testo_cella = cell.get_text(strip=True).lower()
-                
-                # Cerca formato con lettere (es. 25-set-25 o 25 set 2025)
                 match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', testo_cella)
-                # Cerca formato con numeri (es. 24/09/2025)
                 match_num = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo_cella)
                 
                 if match_alpha:
@@ -73,25 +60,11 @@ def run(url_visti):
                     data_pulita = f"{anno}-{mese}-{giorno}"
                     break 
 
-            # ==========================================
-            # 2. IL MIETITORE DI ZOMBIE (Filtro Antichità)
-            # ==========================================
             try:
                 data_obj = datetime.strptime(data_pulita, '%Y-%m-%d')
-                oggi = datetime.now()
-                # Calcola quanti giorni sono passati dalla scadenza a oggi
-                giorni_passati = (oggi - data_obj).days
-
-                # Se l'interpello è scaduto da più di 15 giorni (es. roba del 2025)
-                # LO CANCELLIAMO DALLA FACCIA DELLA TERRA! Non prosegue.
-                if giorni_passati > 15:
-                    continue
-            except:
-                pass # Se la data è incomprensibile, prosegue per non perdere l'avviso
+                if (datetime.now() - data_obj).days > 15: continue
+            except: pass
             
-            # ==========================================
-            # Se è sopravvissuto, costruiamo il Link!
-            # ==========================================
             if link_tag:
                 url_avviso = link_tag['href']
                 if not url_avviso.startswith('http') and not url_avviso.startswith('mailto:'):
@@ -104,14 +77,9 @@ def run(url_visti):
             else:
                 url_avviso = f"{URL_BASE}#no-link-{id_univoco}"
             
-            if url_avviso in url_visti: 
-                continue
+            if url_avviso in url_visti: continue
                     
             cdc_pulite = estrai_cdc(cdc_raw) 
-            if not cdc_pulite and cdc_raw:
-                cdc_pulite = [cdc_raw.upper()] if len(cdc_raw) <= 20 else ["PRIMARIA/INFANZIA" if "INFANZIA" in cdc_raw.upper() or "PRIMARIA" in cdc_raw.upper() else "ALTRO"]
-            
-            print(f"    🎯 Trovato (Recente): {nome_scuola} (Data: {data_pulita})")
             
             nuovi_interpelli.append({
                 "regione": "Liguria", "provincia": "Savona", "titolo": nome_scuola,
@@ -121,7 +89,5 @@ def run(url_visti):
             })
             url_visti.add(url_avviso)
             
-    except Exception as e: 
-        print(f"  ❌ Errore critico su Savona: {e}")
-        
+    except Exception as e: print(f"  ❌ Errore critico su Savona: {e}")
     return nuovi_interpelli
