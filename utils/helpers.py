@@ -6,23 +6,36 @@ from datetime import datetime
 from PyPDF2 import PdfReader
 
 def converti_data_italiana(data_str):
-    mesi = {'gennaio': '01', 'febbraio': '02', 'marzo': '03', 'aprile': '04', 'maggio': '05', 'giugno': '06', 'luglio': '07', 'agosto': '08', 'settembre': '09', 'ottobre': '10', 'novembre': '11', 'dicembre': '12'}
-    try:
-        match = re.search(r'(\d{1,2})\s+([a-zA-Z]+)\s+(\d{4})', data_str.lower())
-        if match:
-            return f"{match.group(3)}-{mesi.get(match.group(2), '01')}-{match.group(1).zfill(2)}"
-    except:
-        pass
+    testo = data_str.lower().strip()
+    
+    # 1. Prova formato con mesi a lettere (es. 4 Giugno 2026, 25-set-25)
+    match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', testo)
+    if match_alpha:
+        mesi_map = {'gen':'01', 'feb':'02', 'mar':'03', 'apr':'04', 'mag':'05', 'giu':'06', 'lug':'07', 'ago':'08', 'set':'09', 'ott':'10', 'nov':'11', 'dic':'12'}
+        giorno = match_alpha.group(1).zfill(2)
+        mese = mesi_map[match_alpha.group(2)]
+        anno = match_alpha.group(3)
+        if len(anno) == 2: anno = "20" + anno
+        return f"{anno}-{mese}-{giorno}"
+
+    # 2. Prova formato numerico (es. 24/07/2026, 24.07.26, 24-07-2026)
+    match_num = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo)
+    if match_num:
+        giorno = match_num.group(1).zfill(2)
+        mese = match_num.group(2).zfill(2)
+        anno = match_num.group(3)
+        if len(anno) == 2: anno = "20" + anno
+        return f"{anno}-{mese}-{giorno}"
+        
+    # Se fallisce, restituisce la data di oggi per non far crashare nulla
     return datetime.today().strftime('%Y-%m-%d')
 
 def estrai_cdc(testo):
-    # Rimuove parole inutili che confondono l'algoritmo
     testo_pulito = re.sub(r'\b(fino\s+al|dal|del|il|om|art\.?|posti?|n\.?)\s+\d{1,4}\b', '', testo, flags=re.IGNORECASE)
     testo_upper = testo.upper()
 
     cdc_trovate = set()
 
-    # 1. Sigle Standard (A022, B016)
     pattern_standard = r'\b[AB][\-\s]*(?:0\d{2}|\d{1,2})\b'
     for c in re.findall(pattern_standard, testo_pulito, re.IGNORECASE):
         sigla = re.sub(r'[^A-Za-z0-9]', '', c).upper()
@@ -30,12 +43,10 @@ def estrai_cdc(testo):
         if sigla_ufficiale not in ['B000', 'A000']:
             cdc_trovate.add(sigla_ufficiale)
 
-    # 2. Sostegno e Strumenti (Cattura anche se sono scritti attaccati tipo "POSTIADEE")
     pattern_speciali = r'(ADAA|ADEE|ADMM|ADSS|AAAA|EEEE|PPPP|EEIL|EEEM|AAHN|EEHN|AAMM|EEMM|AADA|EEDA|IRC|[A-B][A-Z]\d{2})'
     for c in re.findall(pattern_speciali, testo_upper):
         cdc_trovate.add(c)
 
-    # 3. TRADUTTORE SEMANTICO: Se non usa sigle ufficiali ma parole intere
     if not cdc_trovate:
         if "INFANZIA" in testo_upper and "PRIMARIA" in testo_upper:
             cdc_trovate.update(["INFANZIA", "PRIMARIA"])
@@ -54,13 +65,11 @@ def estrai_cdc(testo):
         elif "SOSTEGNO" in testo_upper:
             cdc_trovate.add("SOSTEGNO")
 
-    # 4. PULIZIA FINALE Falsi Positivi
     if "MMMM" in cdc_trovate:
         cdc_trovate.remove("MMMM")
 
     cdc_finali = []
     for cdc in cdc_trovate:
-        # Elimina i Codici Meccanografici finiti qui per errore delle segreterie (es. SVIC812001)
         if not re.match(r'^[A-Z]{2,4}\d{4,5}[A-Z\d]?$', cdc):
             cdc_finali.append(cdc)
 
