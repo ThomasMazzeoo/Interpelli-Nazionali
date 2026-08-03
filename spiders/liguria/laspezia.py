@@ -20,28 +20,22 @@ def run(url_visti):
         tabella = soup.find('table')
         if not tabella: return []
 
-        for riga in tabella.find_all('tr'):
+        # SOLO LE PRIME 20 RIGHE DOPO IL TITOLO
+        for riga in tabella.find_all('tr')[1:21]:
             cols = riga.find_all(['td', 'th'])
-            
-            # Abbassato il limite di colonne per evitare che salti righe malformate
-            if len(cols) < 5: 
-                continue 
+            if len(cols) < 5: continue 
             
             cdc_raw = cols[0].get_text(strip=True)
-            # Salta la riga dei titoli
-            if 'CDC' in cdc_raw.upper(): 
-                continue
+            if 'CDC' in cdc_raw.upper(): continue
                 
             nome_scuola = cols[3].get_text(strip=True) if len(cols) > 3 else "Scuola"
-            
             if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper():
                 continue
 
-            link_col = cols[-1] # L'ultima colonna è sempre il link
+            link_col = cols[-1] 
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
-            # Generiamo un ID univoco basato sulla CDC e sulla lunghezza della lista per non perdere nulla
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
             id_univoco = f"{cdc_per_link}-{len(nuovi_interpelli)}"
             
@@ -57,34 +51,21 @@ def run(url_visti):
             else:
                 url_avviso = f"{URL_BASE}#no-link-{id_univoco}"
             
-            if url_avviso in url_visti: 
-                continue
+            if url_avviso in url_visti: continue
             
-            # ==========================================
-            # IL SUPER RADAR PER LE DATE DI LA SPEZIA
-            # ==========================================
             data_pulita = datetime.today().strftime('%Y-%m-%d')
-            # Legge le colonne da destra verso sinistra!
             for cell in reversed(cols):
                 testo_cella = cell.get_text(strip=True)
-                # Regex migliorata: accetta anni di 4 cifre (\d{4}) o di 2 cifre (\d{2})
                 match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo_cella)
-                
                 if match_dt:
                     giorno = match_dt.group(1).zfill(2)
                     mese = match_dt.group(2).zfill(2)
                     anno = match_dt.group(3)
-                    
-                    # Se l'anno è scritto corto (es. '26'), lo fa diventare '2026'
-                    if len(anno) == 2:
-                        anno = "20" + anno
-                        
+                    if len(anno) == 2: anno = "20" + anno
                     data_pulita = f"{anno}-{mese}-{giorno}"
-                    break # Si ferma appena trova la data di Scadenza!
+                    break 
                     
-            cdc_pulite = estrai_cdc(cdc_raw)
-            
-            print(f"    🎯 Trovato: {nome_scuola} (Data estratta: {data_pulita})")
+            cdc_pulite = estrai_cdc(cdc_raw) 
             
             nuovi_interpelli.append({
                 "regione": "Liguria", "provincia": "La Spezia", "titolo": nome_scuola,
@@ -94,7 +75,5 @@ def run(url_visti):
             })
             url_visti.add(url_avviso)
             
-    except Exception as e: 
-        print(f"  ❌ Errore critico su La Spezia: {e}")
-        
+    except Exception as e: print(f"  ❌ Errore critico su La Spezia: {e}")
     return nuovi_interpelli
