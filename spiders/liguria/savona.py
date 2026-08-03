@@ -1,7 +1,6 @@
 import time
 import requests
 import re
-import hashlib
 from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import estrai_cdc
@@ -37,17 +36,16 @@ def run(url_visti):
             al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-')
             dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
 
+            # ID DETERMINISTICO
+            cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
+            ore_per_link = dettaglio_ore.replace(' ', '_')
+            id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
+            
+            testo_scadenza = cols[-2].get_text(strip=True).lower()
             link_col = cols[-1]
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
-            stringa_id = f"{cdc_raw}_{nome_scuola}_{codice_mecc}_{dal_raw}_{al_raw}_{dettaglio_ore}"
-            hash_riga = hashlib.md5(stringa_id.encode('utf-8')).hexdigest()[:8]
-            
-            cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
-            id_univoco = f"{cdc_per_link}-{hash_riga}"
-            
-            testo_scadenza = cols[-2].get_text(strip=True).lower()
             data_pulita = ""
             
             match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', testo_scadenza)
@@ -67,6 +65,7 @@ def run(url_visti):
                 if len(anno) == 2: anno = "20" + anno
                 data_pulita = f"{anno}-{mese}-{giorno}"
 
+            # Mietitore per Savona
             try:
                 if data_pulita:
                     data_obj = datetime.strptime(data_pulita, '%Y-%m-%d')
