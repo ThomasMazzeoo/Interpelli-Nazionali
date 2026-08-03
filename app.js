@@ -13,6 +13,27 @@ function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
 
+// 🛡️ FUNZIONE ANTI-XSS: Converte caratteri pericolosi in entità HTML sicure
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+// 🛡️ FUNZIONE ANTI-LINK INJECTION: Permette solo URL sicuri
+function sanitizeURL(url) {
+    if (!url) return '#';
+    const str = String(url).trim();
+    if (str.startsWith('http://') || str.startsWith('https://') || str.startsWith('mailto:')) {
+        return escapeHTML(str);
+    }
+    return '#';
+}
+
 const APPLE_COLORS = [
     '#0071e3', '#34c759', '#5856d6', '#ff9500', '#ff2d55', 
     '#af52de', '#ff3b30', '#5ac8fa', '#00c7be', '#32ade6'
@@ -45,6 +66,7 @@ const btnReset = document.getElementById('btnResetMappa');
 const containerLista = document.getElementById('listaInterpelli');
 
 const rightPanel = document.getElementById('rightPanel');
+const leftSidebar = document.getElementById('leftSidebar');
 const rightPanelTitle = document.getElementById('rightPanelTitle');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
 
@@ -78,10 +100,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if(chiudiPannelloBtn) {
         chiudiPannelloBtn.addEventListener('click', () => {
-            rightPanel.classList.add('hidden');
-            setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+            if (window.innerWidth < 768) {
+                mostraVistaMobile('mappa');
+            } else {
+                rightPanel.classList.add('hidden');
+                setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+            }
         });
     }
+
+    // Gestione ridimensionamento finestra
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            if (leftSidebar) leftSidebar.classList.remove('hidden');
+        }
+    });
 });
 
 function inizializzaMappa() {
@@ -219,7 +252,7 @@ function popolaMenuCDC() {
         });
     });
     Array.from(cdcUniche).sort().forEach(cdc => {
-        selectCdc.innerHTML += `<option value="${cdc}">${cdc}</option>`;
+        selectCdc.innerHTML += `<option value="${escapeHTML(cdc)}">${escapeHTML(cdc)}</option>`;
     });
 }
 
@@ -228,7 +261,7 @@ function aggiornaMenuProvinceDaGeoJSON(features) {
     selectProvincia.innerHTML = '<option value="TUTTE">Tutte le Province</option>';
     const nomiProvince = features.map(f => normalizzaProvincia(f.properties.prov_name)).sort();
     nomiProvince.forEach(prov => {
-        selectProvincia.innerHTML += `<option value="${prov}">${prov}</option>`;
+        selectProvincia.innerHTML += `<option value="${escapeHTML(prov)}">${escapeHTML(prov)}</option>`;
     });
 }
 
@@ -256,8 +289,11 @@ function mostraScoreboard() {
 
     // Filtra solo gli interpelli davvero ATTIVI e con data reale
     let attivi = datiInterpelli.filter(i => !isScaduto(i) && i.data && i.data !== "" && !i.escludi_scoreboard);
-    let conteggio = {};
     
+    // Aggiorna il badge notifica mobile
+    aggiornaBadgeMobile(attivi.length);
+
+    let conteggio = {};
     attivi.forEach(i => {
         let r = i.regione || "Altre";
         conteggio[r] = (conteggio[r] || 0) + 1;
@@ -288,9 +324,9 @@ function mostraScoreboard() {
         else medaglia = `<span class="text-apple-muted text-[13px] font-bold w-[22px] inline-block text-center">${index+1}</span>`;
 
         html += `
-            <div class="bg-white rounded-[14px] border border-apple-hairline p-4 hover:shadow-md transition-all cursor-pointer group" onclick="selezionaRegioneDaMenu('${item.regione}')">
+            <div class="bg-white rounded-[14px] border border-apple-hairline p-4 hover:shadow-md transition-all cursor-pointer group" onclick="selezionaRegioneDaMenu('${escapeHTML(item.regione)}')">
                 <div class="flex justify-between items-center mb-2.5">
-                    <span class="font-semibold text-apple-ink tracking-tightest flex items-center gap-2 group-hover:text-apple-blue transition-colors">${medaglia} ${item.regione}</span>
+                    <span class="font-semibold text-apple-ink tracking-tightest flex items-center gap-2 group-hover:text-apple-blue transition-colors">${medaglia} ${escapeHTML(item.regione)}</span>
                     <span class="bg-apple-blue text-white text-[12px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">${item.conteggio}</span>
                 </div>
                 <div class="w-full bg-apple-pearl rounded-full h-1.5 overflow-hidden">
@@ -371,7 +407,15 @@ function applicaFiltri() {
     risultatiCorrenti = filtrati;
     indiceMostrati = 0;
 
-    // FASE 4: SMART FALLBACK (Se 0 risultati, proponiamo interpelli attivi correlati invece di una pagina morta)
+    // Aggiorna il badge notifica della bottom bar mobile
+    aggiornaBadgeMobile(risultatiCorrenti.length);
+
+    // Su mobile, passa automaticamente alla vista Risultati quando l'utente applica un filtro
+    if (window.innerWidth < 768) {
+        mostraVistaMobile('risultati');
+    }
+
+    // FASE 4: SMART FALLBACK (Se 0 risultati, proponiamo interpelli attivi correlati)
     if (risultatiCorrenti.length === 0) {
         let suggeriti = datiInterpelli.filter(i => !isScaduto(i) && (
             (reg && i.regione === reg) || (cdc && i.cdc && i.cdc.includes(cdc))
@@ -382,13 +426,13 @@ function applicaFiltri() {
             htmlSuggeriti = `
                 <div class="mt-6 pt-6 border-t border-apple-hairline">
                     <p class="text-[14px] font-semibold text-apple-ink mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb text-amber-500"></i> Potrebbero interessarti in ${reg || 'Italia'}:
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i> Potrebbero interessarti in ${escapeHTML(reg || 'Italia')}:
                     </p>
                     <div class="flex flex-col gap-3">
                         ${suggeriti.map(s => `
-                            <a href="${s.url}" target="_blank" rel="noopener" class="p-3.5 bg-white rounded-[14px] border border-apple-hairline hover:border-apple-blue hover:shadow-sm transition-all group block">
-                                <div class="text-[11px] text-apple-blue font-bold uppercase tracking-tight">${s.provincia} · ${s.cdc ? s.cdc.join(', ') : 'Varie'}</div>
-                                <div class="text-[14px] font-semibold text-apple-ink leading-snug group-hover:text-apple-blue transition-colors mt-0.5">${s.titolo}</div>
+                            <a href="${sanitizeURL(s.url)}" target="_blank" rel="noopener noreferrer" class="p-3.5 bg-white rounded-[14px] border border-apple-hairline hover:border-apple-blue hover:shadow-sm transition-all group block">
+                                <div class="text-[11px] text-apple-blue font-bold uppercase tracking-tight">${escapeHTML(s.provincia)} · ${s.cdc ? escapeHTML(s.cdc.join(', ')) : 'Varie'}</div>
+                                <div class="text-[14px] font-semibold text-apple-ink leading-snug group-hover:text-apple-blue transition-colors mt-0.5">${escapeHTML(s.titolo)}</div>
                             </a>
                         `).join('')}
                     </div>
@@ -409,7 +453,7 @@ function applicaFiltri() {
 
     const titoloRisultati = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Tutta Italia");
     containerLista.innerHTML = `
-        <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${titoloRisultati}</p>
+        <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${escapeHTML(titoloRisultati)}</p>
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
     
@@ -423,7 +467,6 @@ function caricaPezzi(quantita) {
     const griglia = document.getElementById('grigliaCard');
     if (!griglia) return;
 
-    // Rimuove il vecchio bottone "Mostra altri" se presente
     const oldBtn = document.getElementById('btnCaricaAltri');
     if (oldBtn) oldBtn.remove();
 
@@ -431,30 +474,26 @@ function caricaPezzi(quantita) {
     const dataOdierna = new Date(); 
     
     daMostrare.forEach(item => {
-        // 🛡️ SANITIZZAZIONE E PULIZIA TITOLO (Anti-XSS)
         let titoloGrezzo = (item.titolo || "").replace('[CHIUSO]', '').trim();
         if (titoloGrezzo.startsWith('-')) titoloGrezzo = titoloGrezzo.substring(1).trim();
         if (titoloGrezzo.includes(" - [CDC:")) titoloGrezzo = titoloGrezzo.split(" - [CDC:")[0];
-        
+
         let titoloPulito = escapeHTML(titoloGrezzo);
         let urlSicuro = sanitizeURL(item.url);
         let provinciaSicura = escapeHTML(item.provincia || "");
 
-        // 🛡️ SANITIZZAZIONE BADGE CDC
         const badgeCDC = item.cdc && item.cdc.length > 0 
             ? item.cdc.map(c => `<span class="bg-apple-parchment text-apple-ink border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">${escapeHTML(c)}</span>`).join('')
             : `<span class="bg-apple-parchment text-apple-muted border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">CDC non specificata</span>`;
 
-        // FORMATTAZIONE DATA (DA YYYY-MM-DD A DD/MM/YYYY)
         let dataIta = item.data;
-        if (dataIta && dataIta.includes('-')) {
+        if(dataIta && dataIta.includes('-')) {
             let p = dataIta.split('-');
             dataIta = `${escapeHTML(p[2])}/${escapeHTML(p[1])}/${escapeHTML(p[0])}`;
         }
 
         const scaduto = isScaduto(item);
         
-        // CALCOLO BADGE "NUOVO" (Se rilevato negli ultimi 2 giorni)
         let isNuovo = false;
         if (item.data_rilevamento && !scaduto) {
             const dataRilevamento = new Date(item.data_rilevamento);
@@ -470,7 +509,7 @@ function caricaPezzi(quantita) {
             ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${provinciaSicura}</span>` 
             : `<span class="uppercase">${provinciaSicura}</span>`;
         
-        // 🎯 BADGE DATA INTELLIGENTE (Chiuso, Non Specificata, o Data Scadenza)
+        // BADGE DATA INTELLIGENTE
         let testoData = "";
         if (scaduto) {
             testoData = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
@@ -485,7 +524,7 @@ function caricaPezzi(quantita) {
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
             : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
 
-        // RENDER CARD CON TAG SEMANTICO <article>
+        // USA <article> PER UN SEO ON-PAGE SEMANTICO
         griglia.innerHTML += `
             <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}" aria-label="Interpello ${titoloPulito}">
                 
@@ -510,7 +549,6 @@ function caricaPezzi(quantita) {
 
     indiceMostrati += quantita;
 
-    // BOTTONE PAGINAZIONE "MOSTRA ALTRI"
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
@@ -522,10 +560,71 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
+// 📱 MODULO 1 MOBILE FIRST: Gestore delle Viste e della Bottom Nav Bar
+// ----------------------------------------------------------------------
+
+function mostraVistaMobile(vista) {
+    if (window.innerWidth >= 768) return; // Disattivato su Desktop
+
+    const btnFiltri = document.getElementById('navFiltriBtn');
+    const btnMappa = document.getElementById('navMappaBtn');
+    const btnRisultati = document.getElementById('navRisultatiBtn');
+
+    // Reset stili bottoni bottom bar
+    [btnFiltri, btnMappa, btnRisultati].forEach(b => {
+        if(b) {
+            b.classList.remove('text-apple-blue');
+            b.classList.add('text-apple-muted');
+        }
+    });
+
+    if (vista === 'filtri') {
+        if (leftSidebar) {
+            leftSidebar.classList.remove('hidden');
+            leftSidebar.classList.add('flex');
+        }
+        if (rightPanel) rightPanel.classList.add('hidden');
+        if (btnFiltri) {
+            btnFiltri.classList.remove('text-apple-muted');
+            btnFiltri.classList.add('text-apple-blue');
+        }
+    } else if (vista === 'risultati') {
+        if (rightPanel) {
+            rightPanel.classList.remove('hidden');
+            rightPanel.classList.add('flex');
+        }
+        if (leftSidebar) leftSidebar.classList.add('hidden');
+        if (btnRisultati) {
+            btnRisultati.classList.remove('text-apple-muted');
+            btnRisultati.classList.add('text-apple-blue');
+        }
+    } else { // vista 'mappa'
+        if (leftSidebar) leftSidebar.classList.add('hidden');
+        if (rightPanel) rightPanel.classList.add('hidden');
+        if (btnMappa) {
+            btnMappa.classList.remove('text-apple-muted');
+            btnMappa.classList.add('text-apple-blue');
+        }
+        setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+    }
+}
+
+function aggiornaBadgeMobile(conteggio) {
+    const badge = document.getElementById('mobileBadgeRisultati');
+    if (!badge) return;
+
+    if (conteggio > 0) {
+        badge.textContent = conteggio > 99 ? '99+' : conteggio;
+        badge.classList.remove('hidden');
+    } else {
+        badge.classList.add('hidden');
+    }
+}
+
+// ----------------------------------------------------------------------
 // 🚀 MODULI SEO DEDICATI (Fase 1, 2, 3 e 4)
 // ----------------------------------------------------------------------
 
-// 1. LEGGE I PARAMETRI DALL'URL ALL'AVVIO DEL SITO (Deep Linking)
 function applicaFiltriDaURL() {
     const params = new URLSearchParams(window.location.search);
     const reg = params.get('regione');
@@ -538,7 +637,7 @@ function applicaFiltriDaURL() {
     }
     if (prov && selectProvincia) {
         selectProvincia.disabled = false;
-        selectProvincia.innerHTML = `<option value="${prov}" selected>${prov}</option>`;
+        selectProvincia.innerHTML = `<option value="${escapeHTML(prov)}" selected>${escapeHTML(prov)}</option>`;
     }
     if (cdc && selectCdc) selectCdc.value = cdc;
 
@@ -547,7 +646,6 @@ function applicaFiltriDaURL() {
     }
 }
 
-// 2. AGGIORNA I META TAGS E IL TITOLO DELLA PAGINA PER GOOGLE
 function aggiornaMetaTagsSEO(reg, prov, cdc) {
     let titolo = "Interpello Nazionale - La mappa delle supplenze scolastiche";
     let desc = "Trova la tua prossima cattedra con Interpello Nazionale. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia per docenti e supplenze.";
@@ -574,7 +672,6 @@ function aggiornaMetaTagsSEO(reg, prov, cdc) {
     if (ogDesc) ogDesc.setAttribute('content', desc);
 }
 
-// 3. GENERATORE DINAMICO DATI STRUTTURATI SCHEMA.ORG (JobPosting per Google Jobs)
 function generaSchemaJobPosting(item) {
     let datePosted = item.data_rilevamento ? item.data_rilevamento.split('T')[0] : new Date().toISOString().split('T')[0];
     let validThrough = item.data && item.data !== "" ? `${item.data}T23:59:59` : undefined;
@@ -623,7 +720,7 @@ function aggiornaDatiStrutturatiSchema(lista) {
 
     if (!lista || lista.length === 0) return;
 
-    // FASE 4: Filtra SOLO gli interpelli ATTIVI per il markup Google for Jobs
+    // Filtra SOLO gli interpelli ATTIVI per il markup Google for Jobs
     const daIndicizzare = lista.slice(0, 20).filter(i => !isScaduto(i));
     if (daIndicizzare.length === 0) return;
 
@@ -634,24 +731,4 @@ function aggiornaDatiStrutturatiSchema(lista) {
     script.type = 'application/ld+json';
     script.text = JSON.stringify(schemas, null, 2);
     document.head.appendChild(script);
-}
-// 🛡️ FUNZIONE ANTI-XSS: Converte caratteri pericolosi in entità HTML sicure
-function escapeHTML(str) {
-    if (!str) return '';
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-}
-
-// 🛡️ FUNZIONE ANTI-LINK INJECTION: Permette solo URL sicuri
-function sanitizeURL(url) {
-    if (!url) return '#';
-    const str = String(url).trim();
-    if (str.startsWith('http://') || str.startsWith('https://') || str.startsWith('mailto:')) {
-        return escapeHTML(str);
-    }
-    return '#';
 }
