@@ -20,22 +20,16 @@ def run(url_visti):
         tabella = soup.find('table')
         if not tabella: return []
 
-        for riga in tabella.find_all('tr'):
+        # SOLO LE PRIME 20 RIGHE DOPO IL TITOLO
+        for riga in tabella.find_all('tr')[1:21]:
             cols = riga.find_all(['td', 'th'])
-            
-            if len(cols) < 5: 
-                continue 
+            if len(cols) < 5: continue 
             
             cdc_raw = cols[0].get_text(strip=True)
-            
-            # FILTRO ANTI-BUROCRAZIA: Salta i titoli e le righe legali (es. "Art. 13...")
-            if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): 
-                continue
+            if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
                 
             nome_scuola = cols[3].get_text(strip=True) if len(cols) > 3 else "Scuola"
-            
-            if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper():
-                continue
+            if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper(): continue
 
             link_col = cols[-1]
             link_tag = link_col.find('a', href=True)
@@ -56,29 +50,21 @@ def run(url_visti):
             else:
                 url_avviso = f"{URL_BASE}#no-link-{id_univoco}"
             
-            if url_avviso in url_visti: 
-                continue
+            if url_avviso in url_visti: continue
             
-            # SUPER RADAR PER LE DATE
             data_pulita = datetime.today().strftime('%Y-%m-%d')
             for cell in reversed(cols):
                 testo_cella = cell.get_text(strip=True)
                 match_dt = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', testo_cella)
-                
                 if match_dt:
                     giorno = match_dt.group(1).zfill(2)
                     mese = match_dt.group(2).zfill(2)
                     anno = match_dt.group(3)
-                    
-                    if len(anno) == 2:
-                        anno = "20" + anno
-                        
+                    if len(anno) == 2: anno = "20" + anno
                     data_pulita = f"{anno}-{mese}-{giorno}"
                     break 
                     
-            cdc_pulite = estrai_cdc(cdc_raw)
-            
-            print(f"    🎯 Trovato: {nome_scuola} (Data estratta: {data_pulita})")
+            cdc_pulite = estrai_cdc(cdc_raw) 
             
             nuovi_interpelli.append({
                 "regione": "Liguria", "provincia": "Imperia", "titolo": nome_scuola,
@@ -88,7 +74,5 @@ def run(url_visti):
             })
             url_visti.add(url_avviso)
             
-    except Exception as e: 
-        print(f"  ❌ Errore critico su Imperia: {e}")
-        
+    except Exception as e: print(f"  ❌ Errore critico su Imperia: {e}")
     return nuovi_interpelli
