@@ -76,17 +76,18 @@ def run(url_visti):
             print(f"    🎯 Trovato Treviso: {nome_scuola}")
             
             nuovi_interpelli.append({
-                "regione": "Veneto",
-                "provincia": "Treviso",
-                "titolo": titolo_finale,
-                "data": data_scadenza,
-                # Inseriamo un badge palese al posto della Classe di Concorso
-                "cdc": ["DA VERIFICARE SUL SITO"], 
-                "url": url_avviso,
-                "pdf_links": [],
-                "form_links": [],
-                "data_rilevamento": datetime.now().isoformat()
-            })
+                    "regione": "Veneto",
+                    "provincia": "Treviso",
+                    "titolo": titolo_finale,
+                    "data": "",                  # <--- NESSUNA DATA INVENTATA!
+                    "permanente": True,          # <--- Dice a main.py di non cancellarlo
+                    "escludi_scoreboard": True,  # <--- Dice alla Mappa di non contarlo in classifica
+                    "cdc": ["DA VERIFICARE SUL SITO"],
+                    "url": url_avviso,
+                    "pdf_links": [],
+                    "form_links": [],
+                    "data_rilevamento": datetime.now().isoformat()
+                })
             
             url_visti.add(url_avviso)
             conteggio += 1
