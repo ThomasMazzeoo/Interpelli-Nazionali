@@ -6,13 +6,14 @@ from datetime import datetime
 DATA_FILE = "database_nazionale.json"
 
 # LISTA DEI MODULI DA ESEGUIRE
+# LISTA DEI MODULI DA ESEGUIRE
 MODULI_ATTIVI = [
-    "spiders.lombardia",
-    "spiders.piemonte",
-    "spiders.liguria.genova",
-    "spiders.liguria.laspezia",
-    "spiders.liguria.imperia",
-    "spiders.liguria.savona",
+    # "spiders.lombardia",
+    # "spiders.piemonte",
+    # "spiders.liguria.genova",
+    # "spiders.liguria.laspezia",
+    # "spiders.liguria.imperia",
+    # "spiders.liguria.savona",
     "spiders.veneto.rovigo"
 ]
 
