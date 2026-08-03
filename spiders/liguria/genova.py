@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from utils.helpers import estrai_cdc
 
+# URL corretto per l'Anno Scolastico in corso!
 URL_BASE = "https://www.istruzionegenova.gov.it/pagine/interpelli-ge---as-2026-2027"
 
 def run(url_visti):
@@ -20,30 +21,66 @@ def run(url_visti):
         tabella = soup.find('table')
         if not tabella: return []
 
-        for riga in tabella.find_all('tr')[1:]:
-            cols = riga.find_all(['td', 'th'])
-            if len(cols) < 11: continue 
-            
-            cdc_raw = cols[0].get_text(strip=True)
-            if 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
+        righe = tabella.find_all('tr')
+        if len(righe) < 2: return []
+        
+        # 1. AUTO-MAPPATURA DELLE COLONNE
+        # Indici di default nel caso il sito fosse formattato in modo alieno
+        idx_cdc = 0
+        idx_scuola = 3
+        idx_dal = 4
+        idx_al = 5
+        idx_ore = 7
+        idx_scad = -2
+        idx_link = -1
+        
+        start_row = 1
+        # Cerchiamo la riga delle intestazioni leggendo i nomi delle colonne
+        for i, riga in enumerate(righe):
+            text = riga.get_text(strip=True).lower()
+            if 'cdc' in text and 'denominazione' in text:
+                intestazioni = [th.get_text(strip=True).lower() for th in riga.find_all(['th', 'td'])]
                 
-            nome_scuola = cols[3].get_text(separator=' ', strip=True)
-            nome_scuola = re.sub(r'\s+', ' ', nome_scuola)
+                for j, s in enumerate(intestazioni):
+                    s_clean = s.replace('\xa0', ' ').strip()
+                    if s_clean == 'cdc': idx_cdc = j
+                    elif 'denominazione' in s_clean: idx_scuola = j
+                    elif s_clean == 'dal': idx_dal = j
+                    elif s_clean == 'al': idx_al = j
+                    elif 'ore' in s_clean or 'spezzone' in s_clean: idx_ore = j
+                    elif 'termine' in s_clean or 'scadenza' in s_clean or 'domanda' in s_clean: idx_scad = j
+                    elif 'link' in s_clean: idx_link = j
+                        
+                start_row = i + 1
+                break
+
+        # 2. LETTURA DINAMICA
+        for riga in righe[start_row:]:
+            cols = riga.find_all(['td', 'th'])
             
+            # Controllo di sicurezza: se la riga è troppo corta, saltala
+            if len(cols) <= max(idx_cdc, idx_scuola, idx_dal, idx_al): continue 
+            
+            cdc_raw = cols[idx_cdc].get_text(strip=True)
+            if not cdc_raw or 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
+                
+            nome_scuola = cols[idx_scuola].get_text(separator=' ', strip=True)
+            nome_scuola = re.sub(r'\s+', ' ', nome_scuola)
             if not nome_scuola or 'DENOMINAZIONE' in nome_scuola.upper() or 'A.S.' in nome_scuola.upper(): continue
 
-            codice_mecc = cols[2].get_text(strip=True)
-            dal_raw = cols[4].get_text(strip=True).replace('/', '-').replace('.', '-')
-            al_raw = cols[5].get_text(strip=True).replace('/', '-').replace('.', '-')
-            dettaglio_ore = cols[7].get_text(strip=True).replace('\n', ' ')
+            dal_raw = cols[idx_dal].get_text(strip=True).replace('/', '-').replace('.', '-') if len(cols) > idx_dal else ""
+            al_raw = cols[idx_al].get_text(strip=True).replace('/', '-').replace('.', '-') if len(cols) > idx_al else ""
+            dettaglio_ore = cols[idx_ore].get_text(strip=True).replace('\n', ' ') if len(cols) > idx_ore else ""
             
-            # IL RITORNO ALL'ID DETERMINISTICO INFALLIBILE!
+            # ID Univoco Infallibile
             cdc_per_link = cdc_raw.replace(' ', '_').replace('/', '-')
             ore_per_link = dettaglio_ore.replace(' ', '_')
             id_univoco = f"{cdc_per_link}-{ore_per_link}-dal_{dal_raw}-al_{al_raw}"
             
-            testo_scadenza = cols[9].get_text(strip=True).lower()
-            link_col = cols[10]
+            # Estrazione Scadenza e Link usando gli indici scoperti in automatico!
+            testo_scadenza = cols[idx_scad].get_text(strip=True).lower() if len(cols) > idx_scad else ""
+            link_col = cols[idx_link] if len(cols) > idx_link else cols[-1]
+            
             link_tag = link_col.find('a', href=True)
             testo_link = link_col.get_text(strip=True)
             
