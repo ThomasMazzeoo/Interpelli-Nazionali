@@ -22,24 +22,18 @@ FONTI = {
 PAROLE_ESCLUSE = ['decreto', 'gps', 'graduatorie', 'esaurimento', 'mobilità', 'utilizzazione', 'assegnazione', 'dsga', 'ata', 'proroghe', 'commissione', 'scorrimenti']
 
 def run(url_visti):
-    """
-    Ritorna una lista di dizionari con i nuovi interpelli trovati in Lombardia.
-    Riceve il set 'url_visti' dal main per evitare duplicati senza interrogare il DB.
-    """
     nuovi_interpelli = []
     headers = {'User-Agent': 'Mozilla/5.0'}
     
     for provincia, url_base in FONTI.items():
         print(f"📡 [LOMBARDIA] Connessione a {provincia}...")
-        
         try:
             risposta = requests.get(url_base, headers=headers, timeout=15)
-            if risposta.status_code != 200:
-                print(f"  ⚠️ HTTP {risposta.status_code} su {provincia}")
-                continue
+            if risposta.status_code != 200: continue
                 
             soup = BeautifulSoup(risposta.text, 'html.parser')
-            articoli = soup.find_all('div', class_='article_wrapper')[:50]
+            # PRENDE SOLO GLI ULTIMI 20 ARTICOLI
+            articoli = soup.find_all('div', class_='article_wrapper')[:20]
             
             for art in articoli:
                 h3 = art.find('h3')
@@ -61,9 +55,7 @@ def run(url_visti):
                 dettagli = esplora_dettaglio(url_avviso)
                 cdc_totali = list(set(cdc_da_card + dettagli["cdc_extra"]))
                 
-                titolo_finale = titolo
-                if cdc_totali and not any(c in titolo for c in cdc_totali):
-                    titolo_finale = f"{titolo} - [CDC: {', '.join(cdc_totali)}]"
+                titolo_finale = f"{titolo} - [CDC: {', '.join(cdc_totali)}]" if cdc_totali and not any(c in titolo for c in cdc_totali) else titolo
                 
                 print(f"    🎯 Trovato: {titolo_finale}")
                 
@@ -73,11 +65,7 @@ def run(url_visti):
                     "pdf_links": dettagli["pdf_links"], "form_links": dettagli["form_links"],
                     "data_rilevamento": datetime.now().isoformat()
                 })
-                
-                url_visti.add(url_avviso) # Aggiungo l'URL per i giri successivi
+                url_visti.add(url_avviso)
                 time.sleep(0.5)
-                
-        except Exception as e:
-            print(f"  ❌ Errore critico su {provincia}: {e}")
-            
+        except Exception as e: print(f"  ❌ Errore critico su {provincia}: {e}")
     return nuovi_interpelli
