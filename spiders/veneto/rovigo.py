@@ -1,11 +1,60 @@
 import time
 import requests
 import re
+import io
 from bs4 import BeautifulSoup
 from datetime import datetime
+from PyPDF2 import PdfReader
 from utils.helpers import converti_data_italiana, estrai_cdc, esplora_dettaglio
 
 URL_BASE = "https://rovigo.istruzioneveneto.gov.it/category/5-interpelli/docenti-rovigo/"
+
+def estrai_data_scadenza_mirata(testo):
+    """
+    Cerca una data SOLO se è vicina a parole chiave di scadenza (entro, termine, scade)
+    per evitare di prendere la data di inizio supplenza.
+    """
+    testo = testo.lower().replace('\n', ' ')
+    
+    # Cerca parole chiave seguite da massimo 40 caratteri (es. "entro le ore 12:00 del") e poi una data
+    pattern_keyword = r'(?:scadenz|scade|entro|termine).{0,40}?(\d{1,2}[\s\-\/\.]+(?:gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(?:\d{4}|\d{2})|\d{1,2}[\/\-\.]\d{1,2}[\/\-\.](?:\d{4}|\d{2}))'
+    
+    match = re.search(pattern_keyword, testo)
+    if match:
+        data_str = match.group(1)
+        # Sfrutta il nostro traduttore collaudato per convertire il frammento
+        match_alpha = re.search(r'(\d{1,2})[\s\-\/\.]+(gen|feb|mar|apr|mag|giu|lug|ago|set|ott|nov|dic)[a-z]*[\s\-\/\.]+(\d{4}|\d{2})', data_str)
+        match_num = re.search(r'(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4}|\d{2})', data_str)
+        
+        if match_alpha:
+            mesi_map = {'gen':'01', 'feb':'02', 'mar':'03', 'apr':'04', 'mag':'05', 'giu':'06', 'lug':'07', 'ago':'08', 'set':'09', 'ott':'10', 'nov':'11', 'dic':'12'}
+            giorno = match_alpha.group(1).zfill(2)
+            mese = mesi_map[match_alpha.group(2)]
+            anno = match_alpha.group(3)
+            if len(anno) == 2: anno = "20" + anno
+            return f"{anno}-{mese}-{giorno}"
+        elif match_num:
+            giorno = match_num.group(1).zfill(2)
+            mese = match_num.group(2).zfill(2)
+            anno = match_num.group(3)
+            if len(anno) == 2: anno = "20" + anno
+            return f"{anno}-{mese}-{giorno}"
+            
+    return ""
+
+def esplora_pdf_per_scadenza(pdf_url):
+    """Scarica il PDF in RAM e legge le prime due pagine per trovare la scadenza."""
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        resp = requests.get(pdf_url, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            # Legge il PDF direttamente in memoria, senza salvarlo su disco
+            reader = PdfReader(io.BytesIO(resp.content))
+            testo_pdf = " ".join(page.extract_text() for i, page in enumerate(reader.pages) if i < 2 and page.extract_text())
+            return estrai_data_scadenza_mirata(testo_pdf)
+    except:
+        pass
+    return ""
 
 def run(url_visti):
     nuovi_interpelli = []
@@ -19,16 +68,14 @@ def run(url_visti):
             
         soup = BeautifulSoup(risposta.text, 'html.parser')
         
-        # Cerca i blocchi degli articoli (WordPress usa <article> o div simili)
         articoli = soup.find_all('article')
         if not articoli:
             articoli = soup.find_all('div', class_=lambda c: c and ('post' in c.lower() or 'entry' in c.lower()))
 
-        # Ne prendiamo massimo 20 per non sovraccaricare il server del Ministero
-        for art in articoli[:20]:
+        # Prendiamo gli ultimi 15 post
+        for art in articoli[:15]:
             
-            # Troviamo il link (di solito è nell'h2 o nell'h3 del titolo)
-            titolo_tag = art.find(['h2', 'h3'])
+            titolo_tag = art.find(['h2', 'h3', 'h4'])
             if not titolo_tag: continue
                 
             link_tag = titolo_tag.find('a')
@@ -37,23 +84,37 @@ def run(url_visti):
             titolo_raw = link_tag.get_text(strip=True)
             url_avviso = link_tag['href']
             
-            # Anti-Duplicati e Anti-Burocrazia
             if url_avviso in url_visti: 
                 continue
             if any(x in titolo_raw.lower() for x in ['decreto', 'graduatorie', 'gps', 'ata', 'mobilità', 'assunzioni']): 
                 continue
 
-            # Passiamo l'intero testo del blocco alla nostra IA che scoverà la data!
-            testo_intero = art.get_text(separator=' ')
-            data_pulita = converti_data_italiana(testo_intero)
-            
-            # IL MAGICO ESPLORATORE: entra nella pagina e "legge" i file allegati!
+            # Usiamo l'Esploratore per trovare allegati PDF e scovare CDC nascoste
             dettagli = esplora_dettaglio(url_avviso)
-            
-            # Uniamo le CDC trovate nel titolo con quelle scovate nel testo della pagina e nei PDF
             cdc_totali = list(set(estrai_cdc(titolo_raw) + dettagli["cdc_extra"]))
+            
+            data_pulita = ""
+            
+            # FASE 1: Cerca la scadenza direttamente nel testo della pagina web
+            try:
+                resp_dettaglio = requests.get(url_avviso, headers=headers, timeout=10)
+                soup_dettaglio = BeautifulSoup(resp_dettaglio.text, 'html.parser')
+                testo_pagina = soup_dettaglio.get_text(separator=' ')
+                data_pulita = estrai_data_scadenza_mirata(testo_pagina)
+            except:
+                pass
+            
+            # FASE 2: Se la pagina web non dice nulla (come spesso accade), l'IA entra nel PDF!
+            if not data_pulita and dettagli["pdf_links"]:
+                for pdf_url in dettagli["pdf_links"]:
+                    data_pdf = esplora_pdf_per_scadenza(pdf_url)
+                    if data_pdf:
+                        data_pulita = data_pdf
+                        break # Appena trova la data, ferma la ricerca nei PDF
 
-            print(f"    🎯 Trovato: {titolo_raw} (Data: {data_pulita})")
+            # NOTA: Se 'data_pulita' è rimasta vuota (""), l'interpello verrà scartato da main.py in sicurezza!
+            
+            print(f"    🎯 Analizzato: {titolo_raw[:50]}... -> Scadenza: {data_pulita if data_pulita else 'NESSUNA (SCARTATO)'}")
             
             nuovi_interpelli.append({
                 "regione": "Veneto", 
@@ -68,7 +129,7 @@ def run(url_visti):
             })
             
             url_visti.add(url_avviso)
-            time.sleep(0.5) # Pausa gentile tra un caricamento e l'altro
+            time.sleep(0.5) 
             
     except Exception as e:
         print(f"  ❌ Errore critico su Rovigo: {e}")
