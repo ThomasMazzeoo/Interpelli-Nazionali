@@ -21,26 +21,20 @@ def run(url_visti):
     
     for provincia, url_base in FONTI.items():
         print(f"📡 [PIEMONTE] Connessione a {provincia}...")
-        
         try:
             risposta = requests.get(url_base, headers=headers, timeout=15)
-            if risposta.status_code != 200:
-                print(f"  ⚠️ HTTP {risposta.status_code} su {provincia}")
-                continue
+            if risposta.status_code != 200: continue
                 
             soup = BeautifulSoup(risposta.text, 'html.parser')
-            
             tabella = soup.find('table')
-            if not tabella:
-                continue
+            if not tabella: continue
 
-            righe = tabella.find_all('tr')[1:401] 
+            # PRENDE SOLO LE PRIME 20 RIGHE DOPO IL TITOLO
+            righe = tabella.find_all('tr')[1:21] 
             
             for riga in righe:
                 cols = riga.find_all('td')
-                
-                if len(cols) < 9: 
-                    continue 
+                if len(cols) < 9: continue 
                 
                 stato = cols[8].get_text(strip=True).lower()
                 is_chiuso = 'chiuso' in stato or 'cancellato' in stato
@@ -48,52 +42,35 @@ def run(url_visti):
                 nome_scuola = cols[1].get_text(strip=True)
                 cdc_raw = cols[2].get_text(strip=True)
                 
-                # --- NOVITÀ: Cerca la vera data di Scadenza! ---
-                data_raw = cols[6].get_text(strip=True) # Fallback: Data Interpello
+                data_raw = cols[6].get_text(strip=True)
                 if len(cols) > 9:
                     scadenza_text = cols[9].get_text(strip=True)
                     if scadenza_text and "senza" not in scadenza_text.lower() and "-" not in scadenza_text:
                         data_raw = scadenza_text
                 
                 link_tag = cols[7].find('a', href=True)
-                
                 if link_tag:
                     url_avviso = link_tag['href']
                     if not url_avviso.startswith('http'):
                         url_avviso = "https://servizi.istruzionepiemonte.it/interpello2025/" + url_avviso
                 else:
-                    codice_mecc = cols[0].get_text(strip=True)
-                    url_avviso = f"{url_base}#no-link-{codice_mecc}"
+                    url_avviso = f"{url_base}#no-link-{cols[0].get_text(strip=True)}"
                 
-                if url_avviso in url_visti:
-                    continue
+                if url_avviso in url_visti: continue
                 
                 data_pulita = converti_data_italiana(data_raw)
                 cdc_pulite = estrai_cdc(cdc_raw) 
                 
-                titolo_finale = nome_scuola
-                if is_chiuso:
-                    titolo_finale = f"[CHIUSO] {titolo_finale}" 
-                    
+                titolo_finale = f"[CHIUSO] {nome_scuola}" if is_chiuso else nome_scuola
                 print(f"    🎯 Trovato: {titolo_finale} ({provincia}) - Scadenza: {data_pulita}")
                 
                 nuovi_interpelli.append({
-                    "regione": "Piemonte", 
-                    "provincia": provincia, 
-                    "titolo": titolo_finale,
-                    "data": data_pulita, 
-                    "cdc": cdc_pulite, 
-                    "url": url_avviso,
+                    "regione": "Piemonte", "provincia": provincia, "titolo": titolo_finale,
+                    "data": data_pulita, "cdc": cdc_pulite, "url": url_avviso,
                     "pdf_links": [url_avviso] if '.pdf' in url_avviso.lower() else [], 
-                    "form_links": [url_avviso] if 'google' in url_avviso.lower() or 'forms' in url_avviso.lower() else [],
-                    "data_rilevamento": datetime.now().isoformat()
+                    "form_links": [], "data_rilevamento": datetime.now().isoformat()
                 })
-                
                 url_visti.add(url_avviso)
-                
             time.sleep(0.5)
-                
-        except Exception as e:
-            print(f"  ❌ Errore critico su {provincia}: {e}")
-            
+        except Exception as e: print(f"  ❌ Errore critico su {provincia}: {e}")
     return nuovi_interpelli
