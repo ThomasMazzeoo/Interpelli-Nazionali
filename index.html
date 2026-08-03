@@ -105,7 +105,7 @@
 </head>
 <body class="bg-apple-parchment text-apple-ink font-sans overflow-hidden h-screen w-screen flex flex-col md:flex-row tracking-tighter">
 
-    <!-- 1. COLONNA SINISTRA (Filtri) - Responsive per Mobile -->
+    <!-- 1. COLONNA SINISTRA (Filtri) - Touch Target da 44px e Font 16px Anti-Zoom -->
     <aside id="leftSidebar" class="w-full md:w-[28%] min-w-0 md:min-w-[320px] bg-apple-parchment z-30 fixed md:relative inset-0 pb-16 md:pb-0 hidden md:flex flex-col h-screen border-r border-apple-hairline overflow-y-auto" role="search" aria-label="Filtri ricerca interpelli">
         
         <!-- Global Nav (stile Apple) -->
@@ -134,7 +134,8 @@
                 
                 <div>
                     <label for="regioneSelect" class="sr-only">Seleziona Regione</label>
-                    <select id="regioneSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <!-- 📱 PUNTO 3: font text-[16px] disattiva l'auto-zoom di Safari iOS + min-h-[44px] per Apple HIG -->
+                    <select id="regioneSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="">Seleziona una Regione...</option>
                         <option value="Lombardia">Lombardia</option>
                         <option value="Piemonte">Piemonte</option>
@@ -144,13 +145,13 @@
                 </div>
                 <div>
                     <label for="provinciaSelect" class="sr-only">Seleziona Provincia</label>
-                    <select id="provinciaSelect" disabled class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+                    <select id="provinciaSelect" disabled class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
                         <option value="">Provincia...</option>
                     </select>
                 </div>
                 <div>
                     <label for="statoSelect" class="sr-only">Stato Interpelli</label>
-                    <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="TUTTI">Tutti gli Interpelli</option>
                         <option value="ATTIVI" selected>🟢Solo Attivi (Aperti)</option>
                         <option value="SCADUTI">🔴Solo Scaduti</option>
@@ -163,13 +164,13 @@
                 
                 <div>
                     <label for="cdcSelect" class="sr-only">Classe di Concorso</label>
-                    <select id="cdcSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <select id="cdcSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="">Tutte le Classi di Concorso</option>
                     </select>
                 </div>
                 <div>
                     <label for="tipoScuolaSelect" class="sr-only">Grado Scolastico</label>
-                    <select id="tipoScuolaSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <select id="tipoScuolaSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
                         <option value="">Tutti i gradi scolastici</option>
                         <option value="IC">Infanzia / Primaria / Medie (IC)</option>
                         <option value="SUPERIORI">Scuole Superiori</option>
@@ -188,7 +189,7 @@
 
     <!-- 2. COLONNA CENTRALE (Mappa) -->
     <main class="flex-1 h-screen relative bg-apple-parchment transition-all duration-300 w-full" id="map-container" aria-label="Mappa interattiva delle supplenze">
-        <button id="btnResetMappa" class="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 z-[1000] hidden bg-[#f5f5f7]/80 backdrop-blur-md border border-apple-hairline text-apple-ink py-2.5 px-5 rounded-full hover:bg-white transition-all text-[14px] font-semibold shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-95">
+        <button id="btnResetMappa" class="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 z-[1000] hidden bg-[#f5f5f7]/80 backdrop-blur-md border border-apple-hairline text-apple-ink py-3 px-6 rounded-full hover:bg-white transition-all text-[14px] font-semibold shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-95 min-h-[44px]">
             <i class="fa-solid fa-rotate-left"></i> Resetta Mappa
         </button>
 
@@ -198,12 +199,12 @@
     <!-- 📱 3. PANNELLO RISULTATI (BOTTOM SHEET PER MOBILE / COLONNA DESTRO PER DESKTOP) -->
     <aside id="rightPanel" class="w-full md:w-[34%] min-w-0 md:min-w-[380px] bg-apple-parchment z-40 fixed md:relative inset-x-0 bottom-0 md:inset-auto md:top-0 md:right-0 h-[85vh] md:h-screen rounded-t-[28px] md:rounded-none border-t md:border-t-0 md:border-l border-apple-hairline shadow-2xl md:shadow-none transition-transform duration-300 ease-out hidden md:flex flex-col pb-16 md:pb-0" aria-label="Risultati e dettagli interpello">
         
-        <!-- Maniglia di trascinamento touch (Visibile solo su Mobile) -->
-        <div id="bottomSheetHandle" class="w-12 h-1.5 bg-apple-muted/30 rounded-full mx-auto my-2.5 shrink-0 md:hidden cursor-grab active:cursor-grabbing"></div>
+        <!-- Maniglia di trascinamento touch (Touch Target da 44px) -->
+        <div id="bottomSheetHandle" class="w-12 h-1.5 bg-apple-muted/30 rounded-full mx-auto my-3 shrink-0 md:hidden cursor-grab active:cursor-grabbing"></div>
 
         <div class="bg-[#f5f5f7]/80 backdrop-blur-xl border-b border-apple-hairline px-6 py-3 flex justify-between items-center shrink-0 z-10 sticky top-0 rounded-t-[28px] md:rounded-none">
             <span id="rightPanelTitle" class="text-[20px] md:text-[21px] font-semibold text-apple-ink tracking-tightest">Risultati</span>
-            <button id="chiudiPannelloBtn" aria-label="Chiudi pannello" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-8 h-8 flex items-center justify-center transition active:scale-95 cursor-pointer hover:bg-red-50 hover:text-red-500">
+            <button id="chiudiPannelloBtn" aria-label="Chiudi pannello" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-9 h-9 flex items-center justify-center transition active:scale-95 cursor-pointer hover:bg-red-50 hover:text-red-500 min-h-[36px]">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -215,20 +216,20 @@
     <!-- 📱 4. BARRA DI NAVIGAZIONE INFERIORE (BOTTOM NAV BAR PER MOBILE) -->
     <nav id="bottomNav" class="fixed bottom-0 left-0 right-0 h-16 bg-[#f5f5f7]/90 backdrop-blur-xl border-t border-apple-hairline flex justify-around items-center z-50 md:hidden px-2 pb-safe" aria-label="Navigazione mobile">
         
-        <!-- Tab Filtri -->
-        <button id="navFiltriBtn" onclick="mostraVistaMobile('filtri')" class="flex flex-col items-center justify-center w-1/3 h-full text-apple-muted hover:text-apple-blue transition-colors active:scale-95">
+        <!-- Tab Filtri (Touch Target 44px) -->
+        <button id="navFiltriBtn" onclick="mostraVistaMobile('filtri')" class="flex flex-col items-center justify-center w-1/3 h-full text-apple-muted hover:text-apple-blue transition-colors active:scale-95 min-h-[44px]">
             <i class="fa-solid fa-sliders text-[19px] mb-1"></i>
             <span class="text-[10px] font-semibold tracking-tight">Filtri</span>
         </button>
 
-        <!-- Tab Mappa -->
-        <button id="navMappaBtn" onclick="mostraVistaMobile('mappa')" class="flex flex-col items-center justify-center w-1/3 h-full text-apple-blue transition-colors active:scale-95">
+        <!-- Tab Mappa (Touch Target 44px) -->
+        <button id="navMappaBtn" onclick="mostraVistaMobile('mappa')" class="flex flex-col items-center justify-center w-1/3 h-full text-apple-blue transition-colors active:scale-95 min-h-[44px]">
             <i class="fa-solid fa-map-location-dot text-[19px] mb-1"></i>
             <span class="text-[10px] font-semibold tracking-tight">Mappa</span>
         </button>
 
-        <!-- Tab Risultati con Badge Notifica -->
-        <button id="navRisultatiBtn" onclick="mostraVistaMobile('risultati')" class="relative flex flex-col items-center justify-center w-1/3 h-full text-apple-muted hover:text-apple-blue transition-colors active:scale-95">
+        <!-- Tab Risultati con Badge Notifica (Touch Target 44px) -->
+        <button id="navRisultatiBtn" onclick="mostraVistaMobile('risultati')" class="relative flex flex-col items-center justify-center w-1/3 h-full text-apple-muted hover:text-apple-blue transition-colors active:scale-95 min-h-[44px]">
             <div class="relative inline-block">
                 <i class="fa-solid fa-list-check text-[19px] mb-1"></i>
                 <span id="mobileBadgeRisultati" class="hidden absolute -top-1.5 -right-3 bg-apple-blue text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full min-w-[18px] text-center shadow-sm border border-white">0</span>
