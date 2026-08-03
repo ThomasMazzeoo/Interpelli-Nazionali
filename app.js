@@ -423,6 +423,7 @@ function caricaPezzi(quantita) {
     const griglia = document.getElementById('grigliaCard');
     if (!griglia) return;
 
+    // Rimuove il vecchio bottone "Mostra altri" se presente
     const oldBtn = document.getElementById('btnCaricaAltri');
     if (oldBtn) oldBtn.remove();
 
@@ -430,22 +431,30 @@ function caricaPezzi(quantita) {
     const dataOdierna = new Date(); 
     
     daMostrare.forEach(item => {
-        let titoloPulito = item.titolo.replace('[CHIUSO]', '').trim();
-        if (titoloPulito.startsWith('-')) titoloPulito = titoloPulito.substring(1).trim();
-        if (titoloPulito.includes(" - [CDC:")) titoloPulito = titoloPulito.split(" - [CDC:")[0];
+        // 🛡️ SANITIZZAZIONE E PULIZIA TITOLO (Anti-XSS)
+        let titoloGrezzo = (item.titolo || "").replace('[CHIUSO]', '').trim();
+        if (titoloGrezzo.startsWith('-')) titoloGrezzo = titoloGrezzo.substring(1).trim();
+        if (titoloGrezzo.includes(" - [CDC:")) titoloGrezzo = titoloGrezzo.split(" - [CDC:")[0];
+        
+        let titoloPulito = escapeHTML(titoloGrezzo);
+        let urlSicuro = sanitizeURL(item.url);
+        let provinciaSicura = escapeHTML(item.provincia || "");
 
+        // 🛡️ SANITIZZAZIONE BADGE CDC
         const badgeCDC = item.cdc && item.cdc.length > 0 
-            ? item.cdc.map(c => `<span class="bg-apple-parchment text-apple-ink border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">${c}</span>`).join('')
+            ? item.cdc.map(c => `<span class="bg-apple-parchment text-apple-ink border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">${escapeHTML(c)}</span>`).join('')
             : `<span class="bg-apple-parchment text-apple-muted border border-apple-hairline px-3 py-1 rounded-full text-[12px] font-medium">CDC non specificata</span>`;
 
+        // FORMATTAZIONE DATA (DA YYYY-MM-DD A DD/MM/YYYY)
         let dataIta = item.data;
-        if(dataIta && dataIta.includes('-')) {
+        if (dataIta && dataIta.includes('-')) {
             let p = dataIta.split('-');
-            dataIta = `${p[2]}/${p[1]}/${p[0]}`;
+            dataIta = `${escapeHTML(p[2])}/${escapeHTML(p[1])}/${escapeHTML(p[0])}`;
         }
 
         const scaduto = isScaduto(item);
         
+        // CALCOLO BADGE "NUOVO" (Se rilevato negli ultimi 2 giorni)
         let isNuovo = false;
         if (item.data_rilevamento && !scaduto) {
             const dataRilevamento = new Date(item.data_rilevamento);
@@ -457,10 +466,11 @@ function caricaPezzi(quantita) {
             ? 'opacity-50 bg-apple-pearl' 
             : 'bg-white';
 
-        const nomeProvinciaMostrato = (item.provincia || "");
-        const testoProvincia = isNuovo ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${nomeProvinciaMostrato}</span>` : `<span class="uppercase">${nomeProvinciaMostrato}</span>`;
+        const testoProvincia = isNuovo 
+            ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${provinciaSicura}</span>` 
+            : `<span class="uppercase">${provinciaSicura}</span>`;
         
-        // BADGE DATA INTELIGENTE
+        // 🎯 BADGE DATA INTELLIGENTE (Chiuso, Non Specificata, o Data Scadenza)
         let testoData = "";
         if (scaduto) {
             testoData = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
@@ -475,7 +485,7 @@ function caricaPezzi(quantita) {
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
             : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
 
-        // USA <article> PER UN SEO ON-PAGE SEMANTICO
+        // RENDER CARD CON TAG SEMANTICO <article>
         griglia.innerHTML += `
             <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}" aria-label="Interpello ${titoloPulito}">
                 
@@ -490,7 +500,7 @@ function caricaPezzi(quantita) {
                     ${badgeCDC}
                 </div>
                 
-                <a href="${item.url}" target="_blank" rel="noopener" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
+                <a href="${urlSicuro}" target="_blank" rel="noopener noreferrer" class="w-full rounded-full text-[15px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest ${stileBottone}">
                     ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                 </a>
                 
@@ -500,10 +510,11 @@ function caricaPezzi(quantita) {
 
     indiceMostrati += quantita;
 
+    // BOTTONE PAGINAZIONE "MOSTRA ALTRI"
     if (indiceMostrati < risultatiCorrenti.length) {
         const btn = document.createElement('button');
         btn.id = 'btnCaricaAltri';
-        btn.className = 'w-full bg-apple-pearl hover:bg-apple-parchment text-apple-ink border border-apple-hairline font-medium py-3 px-4 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[15px]';
+        btn.className = 'w-full bg-apple-pearl hover:bg-apple-parchment text-apple-ink border border-apple-hairline font-medium py-3 px-4 rounded-full mt-2 mb-8 transition-transform active:scale-95 text-[15px] cursor-pointer';
         btn.innerHTML = `Mostra altri`;
         btn.onclick = () => caricaPezzi(CHUNK_SUCCESSIVO);
         containerLista.appendChild(btn);
@@ -623,4 +634,24 @@ function aggiornaDatiStrutturatiSchema(lista) {
     script.type = 'application/ld+json';
     script.text = JSON.stringify(schemas, null, 2);
     document.head.appendChild(script);
+}
+// 🛡️ FUNZIONE ANTI-XSS: Converte caratteri pericolosi in entità HTML sicure
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+// 🛡️ FUNZIONE ANTI-LINK INJECTION: Permette solo URL sicuri
+function sanitizeURL(url) {
+    if (!url) return '#';
+    const str = String(url).trim();
+    if (str.startsWith('http://') || str.startsWith('https://') || str.startsWith('mailto:')) {
+        return escapeHTML(str);
+    }
+    return '#';
 }
