@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta name="google-site-verification" content="d1p5DRbKeXiKSnHNShfLP-N8w_8B1-myo4CSkG-wimM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interpello Nazionale - La mappa delle supplenze</title>
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="d1p5DRbKeXiKSnHNShfLP-N8w_8B1-myo4CSkG-wimM" />
+    
+    <!-- Meta Tag SEO Base -->
+    <title>Interpelli Nazionali - La mappa delle supplenze scolastiche</title>
+    <meta name="description" content="Trova la tua prossima cattedra. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia per supplenze e reclutamento docenti." />
+    <meta name="keywords" content="interpelli, supplenze, scuola, docenti, MAD, classe di concorso, ministero istruzione, reclutamento docenti" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.interpellonazionale.it/" />
+
+    <!-- Open Graph / Facebook / WhatsApp (Anteprime Social Virali) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.interpellonazionale.it/" />
+    <meta property="og:title" content="Interpelli Nazionali - Trova la tua cattedra" />
+    <meta property="og:description" content="Mappa interattiva aggiornata in tempo reale con tutte le posizioni aperte e i bandi di reclutamento docenti nelle scuole italiane." />
+    <meta property="og:image" content="https://www.interpellonazionale.it/og-image.jpg" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Interpelli Nazionali - La mappa delle supplenze" />
+    <meta name="twitter:description" content="Mappa interattiva aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia." />
+    <meta name="twitter:image" content="https://www.interpellonazionale.it/og-image.jpg" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Configurazione Design System Apple -->
@@ -36,11 +58,42 @@
         }
     </script>
     
-    <!-- Font Inter (Alternativa Open Source ad Apple SF Pro) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Inter & Librerie Grafiche -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
+
+    <!-- DATI STRUTTURATI BASE SCHEMA.ORG (Google Organization & WebSite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.interpellonazionale.it/#website",
+          "url": "https://www.interpellonazionale.it/",
+          "name": "Interpelli Nazionali",
+          "description": "Mappa interattiva per la ricerca di supplenze e cattedre nella scuola italiana",
+          "publisher": {
+            "@id": "https://www.interpellonazionale.it/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.interpellonazionale.it/?cdc={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.interpellonazionale.it/#organization",
+          "name": "Interpelli Nazionali",
+          "url": "https://www.interpellonazionale.it/",
+          "logo": "https://www.interpellonazionale.it/logo.png"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-apple-parchment text-apple-ink font-sans overflow-hidden h-screen w-screen flex tracking-tighter">
 
@@ -50,7 +103,6 @@
         <!-- Global Nav (stile Apple) -->
         <div class="bg-apple-black text-white px-6 py-4 flex items-center justify-between shrink-0">
             <div class="flex items-center gap-3">
-                <!-- NUOVO LOGO VETTORIALE SVG (Disegnato a mano) -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-8 h-8 text-white">
                     <path d="M 50 95 C 50 95 15 60 15 35 A 35 35 0 0 1 85 35 C 85 60 50 95 50 95 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
                     <polygon points="50 25, 18 38, 50 51, 82 38" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
@@ -58,7 +110,7 @@
                     <line x1="82" y1="38" x2="82" y2="56" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     <rect x="74" y="56" width="16" height="8" rx="2" fill="#0071e3" stroke="none"/>
                 </svg>
-                <h1 class="text-[17px] font-semibold tracking-tightest">Interpello Nazionale</h1>
+                <h1 class="text-[17px] font-semibold tracking-tightest">Interpelli Nazionali</h1>
             </div>
             <span class="text-[12px] text-gray-400 font-normal">www.interpelloNazionale.it</span>
         </div>
@@ -126,7 +178,6 @@
     <!-- 3. COLONNA DESTRA (Risultati o Dashboard) -->
     <aside id="rightPanel" class="w-[34%] min-w-[380px] bg-apple-parchment z-20 flex flex-col h-screen border-l border-apple-hairline hidden">
         <div class="bg-[#f5f5f7]/80 backdrop-blur-xl border-b border-apple-hairline px-6 py-4 flex justify-between items-center shrink-0 z-10 sticky top-0">
-            <!-- TITOLO DINAMICO -->
             <span id="rightPanelTitle" class="text-[21px] font-semibold text-apple-ink tracking-tightest">Risultati</span>
             <button id="chiudiPannelloBtn" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-8 h-8 flex items-center justify-center transition active:scale-95 cursor-pointer hover:bg-red-50 hover:text-red-500">
                 <i class="fa-solid fa-xmark"></i>
