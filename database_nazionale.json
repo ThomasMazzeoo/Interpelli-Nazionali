@@ -1,6 +1,266 @@
 [
     {
         "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC PREGANZIOL (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icpreganziol.edu.it/servizio/interpello/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.495721"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC VOLPAGO DEL  MONTELLO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC81400N/inserisci",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.495815"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CASTELFRANCO VENETO 1 (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.ic1castelfranco.edu.it/pagine/interpelli-personale-supplente",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.495896"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CASTELFRANCO VENETO 2 (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://web.spaggiari.eu/sdg2/Interpelli/TVME0012",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.495975"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CAPPELLA MAGGIORE (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.iccappellamaggiore.it/index.php/documenti-2/avvisi-di-selezione-o-m-88-2024-art-13-comma-23-ex-interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496052"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC FOLLINA E TARZO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icfollinatarzo.it/interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496130"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC RESANA (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://madinterpello.portaleargo.it/index.html#/operation",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496207"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC VEDELAGO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icvedelago.edu.it/category/2425-interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496283"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CAERANO DI SAN MARCO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://madinterpello.portaleargo.it/index.html#/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496359"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CASALE SUL SILE (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/bacheca-digitale/bacheca/TVIC82200L/18/IN_PUBBLICAZIONE/0/show",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496435"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CASIER (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.iccasier.edu.it/risorse-per-famiglie-e-personale/interpello/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496515"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC LORIA E CASTELLO DI GODEGO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC824008/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496594"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC NIEVO  CORDIGNANO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.iccordignano.edu.it/pagine/interpelli---avvisi-finalizzati-al-reclutamento-docenti-om-882024-articolo-13-comma-23-",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496683"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC QUINTO DI TREVISO E MORGANO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "http://WWW.ICQUINTOTV-MORGANO.EDU.IT",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496759"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC TREVIGNANO E ISTRANA (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC82800G/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496836"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC ASOLO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://madinterpello.portaleargo.it/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496916"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SAN BIAGIO DI CALLALTA (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC832007/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.496992"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC PONZANO VENETO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/bacheca-digitale/bacheca/TVIC833003/17/IN_PUBBLICAZIONE/0/show",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.497068"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SILEA (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC83400V/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.497143"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC ZERO BRANCO (Bacheca Ufficiale dell'Istituto)",
+        "data": "2026-08-06",
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC83500P/inserisci",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:45:41.497217"
+    },
+    {
+        "regione": "Veneto",
         "provincia": "Vicenza",
         "titolo": "Cartella Ufficiale Interpelli Vicenza (Report aggiornati ogni 6 ore)",
         "data": "2026-08-06",
