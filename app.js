@@ -48,7 +48,7 @@ const rightPanel = document.getElementById('rightPanel');
 const rightPanelTitle = document.getElementById('rightPanelTitle');
 const chiudiPannelloBtn = document.getElementById('chiudiPannelloBtn');
 
-// Stile personalizzato per le etichette pulite della mappa Leaflet
+// Stile per le etichette pulite sulla Mappa Leaflet
 const style = document.createElement('style');
 style.innerHTML = `
     .leaflet-tooltip.clean-label {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
     await caricaDatiScraper();
     
-    // Legge i parametri dall'URL e applica i filtri SEO se presenti
+    // Legge i parametri dall'URL e applica i filtri SEO Deep Linking
     applicaFiltriDaURL();
 
     selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
@@ -180,9 +180,10 @@ function resetMappa() {
     caricaLayerRegioni();
     if(btnReset) btnReset.classList.add('hidden');
     
-    // Ripristina l'URL di base senza parametri SEO
+    // Ripristina l'URL senza parametri SEO
     window.history.replaceState({}, '', window.location.pathname);
-    
+    aggiornaMetaTagsSEO(null, null, null);
+
     mostraScoreboard();
 }
 
@@ -253,7 +254,7 @@ function mostraScoreboard() {
 
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
 
-    // Filtra solo gli interpelli davvero ATTIVI e con data reale (escludendo le bacheche fisse/directory)
+    // Filtra solo gli interpelli davvero ATTIVI e con data reale (escludendo le bacheche fisse)
     let attivi = datiInterpelli.filter(i => !isScaduto(i) && i.data && i.data !== "" && !i.escludi_scoreboard);
     let conteggio = {};
     
@@ -310,12 +311,15 @@ function applicaFiltri() {
     const tipo = selectTipoScuola.value;
     const stato = selectStato.value;
 
-    // Aggiorna l'URL del browser in tempo reale per SEO e Deep Linking
+    // 1. Aggiorna l'URL del browser per SEO e Deep Linking
     const newUrl = new URL(window.location.href);
     if (reg) newUrl.searchParams.set('regione', reg); else newUrl.searchParams.delete('regione');
     if (prov && prov !== "TUTTE") newUrl.searchParams.set('provincia', prov); else newUrl.searchParams.delete('provincia');
     if (cdc) newUrl.searchParams.set('cdc', cdc); else newUrl.searchParams.delete('cdc');
     window.history.replaceState({}, '', newUrl);
+
+    // 2. Aggiorna Meta Tags e Title della pagina per la SERP di Google
+    aggiornaMetaTagsSEO(reg, prov, cdc);
 
     if (!reg && !cdc && !tipo && stato === "ATTIVI") {
         mostraScoreboard();
@@ -381,6 +385,10 @@ function applicaFiltri() {
         <p class="text-[14px] text-apple-muted font-medium mb-4">${risultatiCorrenti.length} interpelli in ${titoloRisultati}</p>
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
+    
+    // Genera e inietta i Dati Strutturati Schema.org JobPosting per Google for Jobs
+    aggiornaDatiStrutturatiSchema(risultatiCorrenti);
+
     caricaPezzi(CHUNK_INIZIALE);
 }
 
@@ -474,7 +482,11 @@ function caricaPezzi(quantita) {
     }
 }
 
-// LEGGE I PARAMETRI DALL'URL ALL'AVVIO DEL SITO (SEO Deep Linking)
+// ----------------------------------------------------------------------
+// 🚀 MODULI SEO DEDICATI (Fase 1 e Fase 2)
+// ----------------------------------------------------------------------
+
+// 1. LEGGE I PARAMETRI DALL'URL ALL'AVVIO DEL SITO (Deep Linking)
 function applicaFiltriDaURL() {
     const params = new URLSearchParams(window.location.search);
     const reg = params.get('regione');
@@ -494,4 +506,93 @@ function applicaFiltriDaURL() {
     if (reg || prov || cdc) {
         applicaFiltri();
     }
+}
+
+// 2. AGGIORNA I META TAGS E IL TITOLO DELLA PAGINA PER GOOGLE
+function aggiornaMetaTagsSEO(reg, prov, cdc) {
+    let titolo = "Interpelli Nazionali - La mappa delle supplenze scolastiche";
+    let desc = "Trova la tua prossima cattedra. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia per docenti e supplenze.";
+
+    if (reg || prov || cdc) {
+        let parti = [];
+        if (cdc) parti.push(`Classe di Concorso ${cdc}`);
+        if (prov && prov !== "TUTTE") parti.push(`Provincia di ${prov}`);
+        else if (reg) parti.push(`Regione ${reg}`);
+
+        titolo = `Interpelli ${parti.join(' - ')} | Interpelli Nazionali`;
+        desc = `Tutti gli interpelli scolastici attivi per ${parti.join(', ')}. Consulta gli avvisi di reclutamento docenti e candidati subito.`;
+    }
+
+    document.title = titolo;
+    
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+    
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', titolo);
+
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+}
+
+// 3. GENERATORE DINAMICO DATI STRUTTURATI SCHEMA.ORG (JobPosting per Google Jobs)
+function generaSchemaJobPosting(item) {
+    let datePosted = item.data_rilevamento ? item.data_rilevamento.split('T')[0] : new Date().toISOString().split('T')[0];
+    let validThrough = item.data && item.data !== "" ? `${item.data}T23:59:59` : undefined;
+    
+    let cdcText = item.cdc && item.cdc.length > 0 ? item.cdc.join(', ') : 'Tutte le classi';
+    let titoloPulito = item.titolo.replace('[CHIUSO]', '').trim();
+
+    let schema = {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": `Interpello Docente ${cdcText} - ${titoloPulito}`,
+        "description": `Avviso di reclutamento docente (Interpello) per ${titoloPulito} in provincia di ${item.provincia || 'Italia'} (${item.regione || ''}). Classe di concorso: ${cdcText}.`,
+        "identifier": {
+            "@type": "PropertyValue",
+            "name": "Interpelli Nazionali",
+            "value": item.url
+        },
+        "datePosted": datePosted,
+        "employmentType": "OTHER",
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": titoloPulito,
+            "sameAs": item.url
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": item.provincia || "Italia",
+                "addressRegion": item.regione || "Italia",
+                "addressCountry": "IT"
+            }
+        }
+    };
+
+    if (validThrough) {
+        schema["validThrough"] = validThrough;
+    }
+
+    return schema;
+}
+
+function aggiornaDatiStrutturatiSchema(lista) {
+    let scriptExist = document.getElementById('schema-jobs');
+    if (scriptExist) scriptExist.remove();
+
+    if (!lista || lista.length === 0) return;
+
+    // Prendiamo i primi 20 per non appesantire il DOM
+    const daIndicizzare = lista.slice(0, 20).filter(i => !isScaduto(i));
+    if (daIndicizzare.length === 0) return;
+
+    const schemas = daIndicizzare.map(generaSchemaJobPosting);
+
+    const script = document.createElement('script');
+    script.id = 'schema-jobs';
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schemas, null, 2);
+    document.head.appendChild(script);
 }
