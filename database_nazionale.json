@@ -1,5 +1,17 @@
 [
-    
+    {
+        "regione": "Veneto",
+        "provincia": "Vicenza",
+        "titolo": "Cartella Ufficiale Interpelli Vicenza (Report aggiornati ogni 6 ore)",
+        "data": "2026-08-06",
+        "cdc": [
+            "TUTTE LE CLASSI"
+        ],
+        "url": "https://usrveneto-my.sharepoint.com/personal/redazione_sito_usrve_it/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fredazione%5Fsito%5Fusrve%5Fit%2FDocuments%2FInterpelli%2FVI%2FAggiornamento%20interpelli&ga=1",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-03T21:29:42.820843"
+    },
     {
         "regione": "Piemonte",
         "provincia": "Cuneo",
