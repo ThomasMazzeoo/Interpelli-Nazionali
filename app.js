@@ -13,7 +13,7 @@ function normalizzaProvincia(nomeIstat) {
     return ALIAS_PROVINCE[nomeIstat] || nomeIstat;
 }
 
-// 🛡️ FUNZIONE ANTI-XSS: Converte caratteri pericolosi in entità HTML sicure
+// 🛡️ FUNZIONE ANTI-XSS
 function escapeHTML(str) {
     if (!str) return '';
     return String(str)
@@ -24,7 +24,7 @@ function escapeHTML(str) {
         .replace(/'/g, '&#039;');
 }
 
-// 🛡️ FUNZIONE ANTI-LINK INJECTION: Permette solo URL sicuri
+// 🛡️ FUNZIONE ANTI-LINK INJECTION
 function sanitizeURL(url) {
     if (!url) return '#';
     const str = String(url).trim();
@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     inizializzaMappa();
     await caricaDatiScraper();
     
+    // Inizializza la gesture di trascinamento in basso per chiudere il Bottom Sheet su mobile
+    inizializzaBottomSheetTouch();
+
     // Legge i parametri dall'URL e applica i filtri SEO Deep Linking
     applicaFiltriDaURL();
 
@@ -113,6 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
             if (leftSidebar) leftSidebar.classList.remove('hidden');
+            if (rightPanel) rightPanel.style.transform = '';
         }
     });
 });
@@ -213,7 +217,6 @@ function resetMappa() {
     caricaLayerRegioni();
     if(btnReset) btnReset.classList.add('hidden');
     
-    // Ripristina l'URL senza parametri SEO
     window.history.replaceState({}, '', window.location.pathname);
     aggiornaMetaTagsSEO(null, null, null);
 
@@ -287,10 +290,8 @@ function mostraScoreboard() {
 
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-chart-simple text-apple-blue mr-2"></i> Classifica Nazionale';
 
-    // Filtra solo gli interpelli davvero ATTIVI e con data reale
     let attivi = datiInterpelli.filter(i => !isScaduto(i) && i.data && i.data !== "" && !i.escludi_scoreboard);
     
-    // Aggiorna il badge notifica mobile
     aggiornaBadgeMobile(attivi.length);
 
     let conteggio = {};
@@ -347,14 +348,12 @@ function applicaFiltri() {
     const tipo = selectTipoScuola.value;
     const stato = selectStato.value;
 
-    // 1. Aggiorna l'URL del browser per SEO e Deep Linking
     const newUrl = new URL(window.location.href);
     if (reg) newUrl.searchParams.set('regione', reg); else newUrl.searchParams.delete('regione');
     if (prov && prov !== "TUTTE") newUrl.searchParams.set('provincia', prov); else newUrl.searchParams.delete('provincia');
     if (cdc) newUrl.searchParams.set('cdc', cdc); else newUrl.searchParams.delete('cdc');
     window.history.replaceState({}, '', newUrl);
 
-    // 2. Aggiorna Meta Tags e Title della pagina per la SERP di Google
     aggiornaMetaTagsSEO(reg, prov, cdc);
 
     if (!reg && !cdc && !tipo && stato === "ATTIVI") {
@@ -407,15 +406,12 @@ function applicaFiltri() {
     risultatiCorrenti = filtrati;
     indiceMostrati = 0;
 
-    // Aggiorna il badge notifica della bottom bar mobile
     aggiornaBadgeMobile(risultatiCorrenti.length);
 
-    // Su mobile, passa automaticamente alla vista Risultati quando l'utente applica un filtro
     if (window.innerWidth < 768) {
         mostraVistaMobile('risultati');
     }
 
-    // FASE 4: SMART FALLBACK (Se 0 risultati, proponiamo interpelli attivi correlati)
     if (risultatiCorrenti.length === 0) {
         let suggeriti = datiInterpelli.filter(i => !isScaduto(i) && (
             (reg && i.regione === reg) || (cdc && i.cdc && i.cdc.includes(cdc))
@@ -457,9 +453,7 @@ function applicaFiltri() {
         <div id="grigliaCard" class="flex flex-col gap-4"></div>
     `;
     
-    // Genera Dati Strutturati Schema.org JobPosting solo per i posti attivi
     aggiornaDatiStrutturatiSchema(risultatiCorrenti);
-
     caricaPezzi(CHUNK_INIZIALE);
 }
 
@@ -509,12 +503,10 @@ function caricaPezzi(quantita) {
             ? `<span class="text-apple-blue font-semibold uppercase">Nuovo · ${provinciaSicura}</span>` 
             : `<span class="uppercase">${provinciaSicura}</span>`;
         
-        // BADGE DATA INTELLIGENTE
         let testoData = "";
         if (scaduto) {
             testoData = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
         } else if (!item.data || item.data === "") {
-            // SE LA DATA E' VUOTA, BADGE GIALLO!
             testoData = `<span class="font-bold bg-amber-50 px-2.5 py-1 rounded text-amber-600 border border-amber-200 shadow-sm"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Non specificata</span>`;
         } else {
             testoData = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
@@ -524,7 +516,6 @@ function caricaPezzi(quantita) {
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
             : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
 
-        // USA <article> PER UN SEO ON-PAGE SEMANTICO
         griglia.innerHTML += `
             <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}" aria-label="Interpello ${titoloPulito}">
                 
@@ -560,17 +551,16 @@ function caricaPezzi(quantita) {
 }
 
 // ----------------------------------------------------------------------
-// 📱 MODULO 1 MOBILE FIRST: Gestore delle Viste e della Bottom Nav Bar
+// 📱 MODULO MOBILE 1 & 2: Viste, Bottom Nav e Gesture Bottom Sheet
 // ----------------------------------------------------------------------
 
 function mostraVistaMobile(vista) {
-    if (window.innerWidth >= 768) return; // Disattivato su Desktop
+    if (window.innerWidth >= 768) return; 
 
     const btnFiltri = document.getElementById('navFiltriBtn');
     const btnMappa = document.getElementById('navMappaBtn');
     const btnRisultati = document.getElementById('navRisultatiBtn');
 
-    // Reset stili bottoni bottom bar
     [btnFiltri, btnMappa, btnRisultati].forEach(b => {
         if(b) {
             b.classList.remove('text-apple-blue');
@@ -583,7 +573,10 @@ function mostraVistaMobile(vista) {
             leftSidebar.classList.remove('hidden');
             leftSidebar.classList.add('flex');
         }
-        if (rightPanel) rightPanel.classList.add('hidden');
+        if (rightPanel) {
+            rightPanel.classList.add('hidden');
+            rightPanel.style.transform = '';
+        }
         if (btnFiltri) {
             btnFiltri.classList.remove('text-apple-muted');
             btnFiltri.classList.add('text-apple-blue');
@@ -592,15 +585,19 @@ function mostraVistaMobile(vista) {
         if (rightPanel) {
             rightPanel.classList.remove('hidden');
             rightPanel.classList.add('flex');
+            rightPanel.style.transform = 'translateY(0)';
         }
         if (leftSidebar) leftSidebar.classList.add('hidden');
         if (btnRisultati) {
             btnRisultati.classList.remove('text-apple-muted');
             btnRisultati.classList.add('text-apple-blue');
         }
-    } else { // vista 'mappa'
+    } else { // 'mappa'
         if (leftSidebar) leftSidebar.classList.add('hidden');
-        if (rightPanel) rightPanel.classList.add('hidden');
+        if (rightPanel) {
+            rightPanel.classList.add('hidden');
+            rightPanel.style.transform = '';
+        }
         if (btnMappa) {
             btnMappa.classList.remove('text-apple-muted');
             btnMappa.classList.add('text-apple-blue');
@@ -621,8 +618,49 @@ function aggiornaBadgeMobile(conteggio) {
     }
 }
 
+// 📱 GESTURE DRAG-DOWN SULLA MANIGLIA DEL BOTTOM SHEET
+function inizializzaBottomSheetTouch() {
+    const handle = document.getElementById('bottomSheetHandle');
+    const panel = document.getElementById('rightPanel');
+    if (!handle || !panel) return;
+
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+
+    handle.addEventListener('touchstart', (e) => {
+        if (window.innerWidth >= 768) return;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        panel.style.transition = 'none';
+    }, { passive: true });
+
+    handle.addEventListener('touchmove', (e) => {
+        if (!isDragging || window.innerWidth >= 768) return;
+        currentY = e.touches[0].clientY - startY;
+        if (currentY > 0) { // Trascinamento verso il basso
+            panel.style.transform = `translateY(${currentY}px)`;
+        }
+    }, { passive: true });
+
+    handle.addEventListener('touchend', () => {
+        if (!isDragging || window.innerWidth >= 768) return;
+        isDragging = false;
+        panel.style.transition = 'transform 0.3s ease-out';
+        
+        // Se il trascina supera i 100px, chiudi il Bottom Sheet
+        if (currentY > 100) {
+            panel.style.transform = '';
+            mostraVistaMobile('mappa');
+        } else {
+            panel.style.transform = 'translateY(0)';
+        }
+        currentY = 0;
+    });
+}
+
 // ----------------------------------------------------------------------
-// 🚀 MODULI SEO DEDICATI (Fase 1, 2, 3 e 4)
+// 🚀 MODULI SEO DEDICATI
 // ----------------------------------------------------------------------
 
 function applicaFiltriDaURL() {
@@ -720,7 +758,6 @@ function aggiornaDatiStrutturatiSchema(lista) {
 
     if (!lista || lista.length === 0) return;
 
-    // Filtra SOLO gli interpelli ATTIVI per il markup Google for Jobs
     const daIndicizzare = lista.slice(0, 20).filter(i => !isScaduto(i));
     if (daIndicizzare.length === 0) return;
 
