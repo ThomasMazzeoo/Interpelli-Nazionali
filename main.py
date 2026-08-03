@@ -77,13 +77,13 @@ def avvia_orchestratore():
             
             if risultati:
                 for item in risultati:
-                    # 1. NUOVO FILTRO: Se manca la data di scadenza, eliminalo dalla ricerca!
-                    if not item.get("data") or item.get("data") == "":
+                    # Se non ha la data E NON è permanente, scartalo!
+                    if (not item.get("data") or item.get("data") == "") and not item.get("permanente"):
                         print(f"    ⚠️ SCARTATO (Data mancante): {item.get('titolo')} ({item.get('provincia')})")
-                        continue # Salta direttamente al prossimo interpello
+                        continue
                         
-                    # 2. VECCHIO FILTRO: Se la data c'è, ma è troppo vecchia, eliminalo!
                     if not is_troppo_vecchio(item):
+                        # ... resto del codice uguale ...
                         print(f"    🟢 AGGIUNTO: {item['titolo']} ({item['provincia']}) - Scadenza: {item['data']}")
                         nuovi_interpelli_totali.append(item)
                         totale_nuovi += 1
