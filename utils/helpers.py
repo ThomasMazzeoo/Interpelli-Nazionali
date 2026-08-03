@@ -37,7 +37,7 @@ def estrai_cdc(testo):
 
     cdc_trovate = set()
 
-    pattern_standard = r'\b[AB][\-\s]*(?:0\d{2}|\d{1,2})\b'
+    pattern_standard = r'\b[AB][\-]?\d{2,3}\b'
     for c in re.findall(pattern_standard, testo_pulito, re.IGNORECASE):
         sigla = re.sub(r'[^A-Za-z0-9]', '', c).upper()
         sigla_ufficiale = f"{sigla[0]}{sigla[1:].zfill(3)}"
