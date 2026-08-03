@@ -30,10 +30,33 @@
     contain-intrinsic-size: 180px;
 }
 
-/* 📱 PUNTO 3: REGOLA WEBKIT ANTI AUTO-ZOOM PER SAFARI / IOS */
+/* REGOLA WEBKIT ANTI AUTO-ZOOM PER SAFARI / IOS */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     select, input, textarea {
         font-size: 16px !important;
+    }
+}
+
+/* 📱 PUNTO 4: RIPOSIZIONAMENTO PANTOGRAFO ZOOM LEAFLET SU MOBILE (Evita la Bottom Bar) */
+@media (max-width: 767px) {
+    .leaflet-top.leaflet-right {
+        top: 16px !important;
+        right: 16px !important;
+    }
+    .leaflet-control-zoom {
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 14px !important;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    }
+    .leaflet-control-zoom a {
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+        font-size: 18px !important;
+        background-color: rgba(245, 245, 247, 0.85) !important;
+        backdrop-filter: blur(12px);
+        color: #1d1d1f !important;
     }
 }
 
