@@ -2,6 +2,306 @@
     {
         "regione": "Veneto",
         "provincia": "Treviso",
+        "titolo": "IC CONEGLIANO 2 \"CIMA\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icconegliano2cima.edu.it/albo-online",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.558574"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC PAESE \"C.CASTELLER\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icpaese.edu.it/pagine/interpelli-as-20242025",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.558666"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CONEGLIANO 1 \"GRAVA\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icconegliano1grava.edu.it/comunicati",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.558750"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC TREVISO 1 \"MARTINI\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.ic1martini.edu.it/servizio/interpelli-docenti/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.558832"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC TREVISO 2 \"SERENA\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.ic2serenatreviso.edu.it/servizio/m-a-d/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.558913"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC TREVISO 3 \"FELISSENT\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://ic3felissent.edu.it/servizio/interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.558995"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC TREVISO 4 \" STEFANINI\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC87300D/inserisci",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559077"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC TREVISO 5 \"COLETTI\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://comprensivo5colettitv.edu.it/servizio/invio-mad/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559159"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC RONCADE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/tvic875005/inserisci",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559241"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC VILLORBA E POVEGLIANO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC876001/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559324"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC MOGLIANO 2 \"M.MINERBI\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icminerbi.edu.it/interpello/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559429"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC MOGLIANO 1 \"N.MANDELA\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.ic1mandela.edu.it/tipologia-documento/albo-online/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559513"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC MOTTA DI LIVENZA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icmottadilivenza.edu.it/interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559745"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC MONTEBELLUNA 1 (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icmontebelluna1.edu.it/pagine/interpelli-per-la-selezione-di-personale-supplente",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559904"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC ODERZO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/bacheca-digitale/bacheca/TVIC88400X/5/IN_PUBBLICAZIONE/ef2bf02b-245c-47a5-b356-423809488dea/show",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.559985"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IS G. MARCONI DI CONEGLIANO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.liceoconegliano.edu.it/servizi?id=965&&source=servizi-personale",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.560143"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IS LEVI DI MONTEBELLUNA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.iisprimolevi.edu.it/pagine/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.560226"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IS VERDI DI VALDOBBIADENE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://isissverdi.edu.it/tipologia-articolo/notizie/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.560307"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IS CITTA' DELLA VITTORIA DI VITTORIO VENETO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.iisvittorioveneto.edu.it/documento/avvisi-selezione-om-88-2024-articolo-13-comma-23/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.560412"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IS CERLETTI DI CONEGLIANO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://web.spaggiari.eu/sdg/app/default/albo_pretorio.php?sede_codice=tvii0001",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T10:54:07.560501"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
         "titolo": "IC GIAVERA DEL MONTELLO (Bacheca Ufficiale dell'Istituto)",
         "data": "",
         "permanente": true,
