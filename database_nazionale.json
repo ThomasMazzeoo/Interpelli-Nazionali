@@ -1,6 +1,306 @@
 [
     {
         "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC GIAVERA DEL MONTELLO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/bacheca-digitale/bacheca/TVIC83700A/5/IN_PUBBLICAZIONE/0/show",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104417"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SPRESIANO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icspresiano.edu.it/servizio/interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104506"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SERNAGLIA DELLA BATTAGLIA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC841002/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104591"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC \"G. TONIOLO\" PIEVE DI SOLIGO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icpieve.edu.it/albo-online",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104675"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC FARRA DI SOLIGO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC84300N/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104760"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC ALTIVOLE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icaltivole.edu.it/pagine/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104842"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC RIESE PIO X (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://trasparenza-pa.net/?codcli=SC24884&node=954635",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.104923"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SAN FIOR (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://madinterpello.portaleargo.it/#/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105006"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CODOGNE' E GAIARINE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.iccodogne.edu.it/interpelli-scuola-primaria/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105165"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC PEDEROBBA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icpederobba.edu.it/servizio/messa-a-disposizione-mad/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105247"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CORNUDA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVMM85101N/interpelli",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105352"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SUSEGANA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icsusegana.edu.it/pagine/interpelli-primaria",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105440"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC SANTA LUCIA DI PIAVE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.portaleargo.it/albopretorio/online/#/?customerCode=SC27420",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105522"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC VITTORIO VENETO 2 A.ZANZOTTO (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.portaleargo.it/albopretorio/online/#/?customerCode=SC25608",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105604"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CARBONERA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/bacheca-digitale/bacheca/TVIC85600Q/5/IN_PUBBLICAZIONE/0/show",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105686"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC MASERADA E BREDA DI PIAVE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.icmaseradaebreda.edu.it/interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105775"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC VITTORIO VENETO 1 DA PONTE (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.portaleargo.it/albopretorio/online/#/?customerCode=SC25550",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.105858"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC PONTE DI PIAVE E SALGAREDA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://nuvola.madisoft.it/mad/TVIC861007/inserisci",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.106018"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC PIEVE DEL GRAPPA (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://icpievedelgrappa.edu.it/servizio/interpelli/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.106178"
+    },
+    {
+        "regione": "Veneto",
+        "provincia": "Treviso",
+        "titolo": "IC CONEGLIANO 3 \"BRUSTOLON\" (Bacheca Ufficiale dell'Istituto)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.portaleargo.it/albopretorio/online/#/?customerCode=SC26438&idCategoria=22488",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-04T07:51:57.106276"
+    },
+    {
+        "regione": "Veneto",
         "provincia": "Vicenza",
         "titolo": "Cartella Ufficiale Interpelli Vicenza (Report aggiornati ogni 6 ore)",
         "data": "",
