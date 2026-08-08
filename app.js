@@ -710,9 +710,14 @@ function caricaPezzi(quantita) {
                         ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
                     </a>
                     
-                    <a href="${usrUrl}" target="_blank" rel="noopener noreferrer" title="Visita la pagina dell'Ufficio Scolastico Territoriale" class="w-full bg-apple-pearl hover:bg-apple-parchment text-apple-muted border border-apple-hairline rounded-full text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest flex items-center justify-center">
-                        <i class="fa-solid fa-university mr-2 opacity-70"></i> Bacheca USR ${provinciaSicura}
-                    </a>
+                    <div class="flex gap-2 w-full">
+                        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(`📍 Interpello ${provinciaSicura}:\n${titoloGrezzo}\n\n🔗 Vedi dettagli su: https://www.interpellonazionale.it/?provincia=${encodeURIComponent(item.provincia || "")}`)}" target="_blank" rel="noopener noreferrer" title="Condividi su WhatsApp" class="flex-1 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30 rounded-full text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest flex items-center justify-center">
+                            <i class="fa-brands fa-whatsapp text-[16px] mr-1.5"></i> Invia
+                        </a>
+                        <a href="${usrUrl}" target="_blank" rel="noopener noreferrer" title="Visita la pagina dell'Ufficio Scolastico Territoriale" class="flex-1 bg-apple-pearl hover:bg-apple-parchment text-apple-muted border border-apple-hairline rounded-full text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest flex items-center justify-center">
+                            <i class="fa-solid fa-university mr-1.5 opacity-70"></i> USR ${provinciaSicura}
+                        </a>
+                    </div>
                 </div>
                 
             </article>

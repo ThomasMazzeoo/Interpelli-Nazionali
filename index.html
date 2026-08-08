@@ -12,6 +12,24 @@
     <link rel="preconnect" href="https://a.basemaps.cartocdn.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- PWA Setup -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0066cc">
+    <link rel="apple-touch-icon" href="logo.png">
+    
+    <!-- Schema.org WebApplication SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Interpello Nazionale",
+      "url": "https://www.interpellonazionale.it",
+      "description": "La mappa interattiva delle supplenze e degli interpelli scolastici in Italia.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All"
+    }
+    </script>
 
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="d1p5DRbKeXiKSnHNShfLP-N8w_8B1-myo4CSkG-wimM" />
@@ -274,8 +292,34 @@
         </button>
 
     </nav>
+    
+    <!-- 📢 PUNTO 5: BANNER CANALE TELEGRAM (Mobile & Desktop) -->
+    <a href="#" target="_blank" rel="noopener noreferrer" class="fixed top-20 right-4 md:right-8 md:top-24 z-50 bg-[#0088cc] hover:bg-[#0077b3] text-white px-4 py-2.5 rounded-full shadow-lg font-semibold flex items-center gap-2 transition-transform active:scale-95 text-[13px] md:text-[14px]">
+        <i class="fa-brands fa-telegram text-[18px]"></i> 
+        <span class="hidden md:inline">Unisciti al Canale Telegram</span>
+        <span class="md:hidden">Canale Ufficiale</span>
+    </a>
+
+    <!-- 📝 PUNTO 3: BLOCCO SEO TESTUALE (Nascosto visivamente ma leggibile da Google) -->
+    <section class="sr-only" aria-label="Informazioni SEO su Interpello Nazionale">
+        <h2>Interpelli Nazionali e Supplenze Scuola 2024/2025</h2>
+        <p>Trova tutte le posizioni aperte per le supplenze docenti. La mappa interattiva raccoglie gli avvisi di reclutamento (interpelli) pubblicati dalle scuole in Lombardia, Lazio, Campania, Piemonte, Veneto, Toscana, Emilia-Romagna e tutte le altre regioni italiane. Consulta le posizioni per classi di concorso come A022, A028, sostegno e scuola primaria. Sostituisce le vecchie domande di Messa a Disposizione (MAD) dopo l'esaurimento delle GPS.</p>
+    </section>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
     <script src="app.js" defer></script>
+    
+    <!-- Registrazione Service Worker per PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('SW registrato con successo: ', registration.scope);
+          }, err => {
+            console.log('Registrazione SW fallita: ', err);
+          });
+        });
+      }
+    </script>
 </body>
 </html>
