@@ -186,8 +186,10 @@ async function caricaLayerRegioni() {
                 fillOpacity: 0.4 // Colori più vibranti
             }),
             onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.reg_name, { 
-                    permanent: !isMobileDevice, // Nascondi etichette fisse su mobile
+                const nomeReg = feature.properties.reg_name;
+                const etichetta = isMobileDevice ? (nomeReg.substring(0,3).toUpperCase()) : nomeReg;
+                layer.bindTooltip(etichetta, { 
+                    permanent: true, 
                     direction: "center", 
                     className: "clean-label text-apple-ink font-bold text-[12px] uppercase tracking-wider" 
                 });
@@ -484,13 +486,17 @@ function applicaFiltri(apriPannelloEsplicito = false) {
 function apriPannelloRisultatiGUI(nomeZona, forzaJumpMobile = false) {
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-list-check text-apple-blue mr-2"></i> Risultati';
 
-    if (rightPanel.classList.contains('hidden')) {
-        rightPanel.classList.remove('hidden');
-        setTimeout(() => { if (map) map.invalidateSize(); }, 100);
-    }
+    const isMobile = window.innerWidth < 768;
 
-    if (window.innerWidth < 768 && forzaJumpMobile) {
-        mostraVistaMobile('risultati');
+    if (!isMobile) {
+        if (rightPanel.classList.contains('hidden')) {
+            rightPanel.classList.remove('hidden');
+            setTimeout(() => { if (map) map.invalidateSize(); }, 100);
+        }
+    } else {
+        if (forzaJumpMobile) {
+            mostraVistaMobile('risultati');
+        }
     }
 
     if (risultatiCorrenti.length === 0) {
