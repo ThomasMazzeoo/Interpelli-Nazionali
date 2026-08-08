@@ -17,6 +17,18 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0066cc">
     <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- 🔒 POLICY DI SICUREZZA STRICT (Nessun rischio XSS / Clickjacking) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://*.basemaps.cartocdn.com https://unpkg.com; frame-ancestors 'none'; connect-src 'self' https://nominatim.openstreetmap.org https://raw.githubusercontent.com;">
+    <!-- 🔒 ANTI-CLICKJACKING -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <!-- 📦 PUNTO 11: Preload critico del database JSON -->
+    <link rel="preload" href="database_nazionale.json" as="fetch" crossorigin>
+    
+    <!-- 🌐 PUNTO 5: Hreflang per localizzazione italiana -->
+    <link rel="alternate" hreflang="it" href="https://www.interpellonazionale.it/">
+    <link rel="alternate" hreflang="x-default" href="https://www.interpellonazionale.it/">
     
     <!-- Schema.org WebApplication SEO -->
     <script type="application/ld+json">
@@ -28,6 +40,56 @@
       "description": "La mappa interattiva delle supplenze e degli interpelli scolastici in Italia.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "All"
+    }
+    </script>
+    
+    <!-- 🎯 PUNTO 1: FAQ Schema.org per Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è un interpello nazionale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'interpello nazionale è una procedura di reclutamento docenti introdotta dall'OM 88/2024 (art. 13 c. 23). Quando le graduatorie GPS e d'istituto si esauriscono, le scuole pubblicano avvisi di reclutamento aperti a tutti i docenti abilitati d'Italia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come candidarsi a un interpello?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per candidarsi, visita la pagina dell'interpello sul sito della scuola o dell'Ambito Territoriale, scarica il modulo di domanda e invialo via email (PEC) alla scuola entro la data di scadenza indicata nell'avviso."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual è la differenza tra interpello e MAD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La MAD (Messa a Disposizione) è un'autocandidatura spontanea che il docente invia alle scuole. L'interpello, invece, è un avviso ufficiale pubblicato dalla scuola quando ha un posto vacante e le graduatorie sono esaurite. L'interpello è regolamentato dall'OM 88/2024."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando escono gli interpelli 2024/2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gli interpelli vengono pubblicati durante tutto l'anno scolastico, con una concentrazione maggiore tra settembre e dicembre e un secondo picco tra gennaio e marzo. Su Interpello Nazionale puoi monitorare tutti gli interpelli aggiornati in tempo reale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali classi di concorso sono più richieste negli interpelli?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le classi di concorso più frequenti negli interpelli sono: ADSS (Sostegno), A022 (Italiano), A028 (Matematica e Scienze), EEEE (Scuola Primaria), A060 (Tecnologia) e ADEE (Sostegno Primaria). Puoi filtrare per classe di concorso direttamente sulla mappa di Interpello Nazionale."
+          }
+        }
+      ]
     }
     </script>
 
@@ -140,7 +202,8 @@
                 </svg>
                 <h1 class="text-[16px] md:text-[17px] font-semibold tracking-tightest">Interpello Nazionale</h1>
             </div>
-            <span class="hidden md:inline-block text-[12px] text-gray-400 font-normal">www.interpellonazionale.it</span>
+            <!-- 📊 PUNTO 15: Contatore live animato -->
+            <span id="contatoreHeader" class="inline-block text-[11px] md:text-[12px] text-gray-400 font-medium bg-white/10 px-2.5 py-1 rounded-full">Caricamento...</span>
         </header>
 
         <div class="px-4 md:px-6 py-4 md:py-6 pb-0 md:pb-2 shrink-0 flex justify-between items-center">
@@ -188,7 +251,7 @@
                     <label for="statoSelect" class="sr-only">Stato Interpelli</label>
                     <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] min-h-[40px] md:min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2 px-3 md:py-2.5 md:px-4 cursor-pointer transition-colors">
                         <option value="TUTTI">Tutti gli Interpelli</option>
-                        <option value="ATTIVI" selected>🟢Solo Attivi (Aperti)</option>
+                        <option value="ATTIVI" selected>🟢Recenti (Ultimi 5 gg)</option>
                         <option value="DAVERIFICARE">🟠Da verificare</option>
                         <option value="SCADUTI">🔴Solo Scaduti</option>
                     </select>
@@ -217,9 +280,21 @@
                     <h4 class="font-semibold text-apple-ink text-[13px] mb-1">Cos'è l'Interpello Nazionale?</h4>
                     <p>In base all'OM 88/2024 (art. 13 c. 23), in caso di esaurimento delle graduatorie GPS e d'istituto, le scuole pubblicano gli avvisi di reclutamento docente chiamati <strong>Interpelli</strong>. La piattaforma Interpello Nazionale aggrega tutte le chiamate di supplenza in Italia.</p>
                 </div>
+                <!-- 🎯 PUNTO 10: Link interni FAQ -->
+                <div>
+                    <h4 class="font-semibold text-apple-ink text-[13px] mb-1">Come usare la mappa?</h4>
+                    <p>Seleziona una <strong>regione</strong> dalla mappa o dal menù, poi scegli la <strong>provincia</strong> e la <strong>classe di concorso</strong> per vedere solo gli interpelli che ti interessano. Puoi cercare ad esempio gli <a href="?cdc=A022" class="text-apple-blue underline">interpelli per A022</a>, <a href="?cdc=A028" class="text-apple-blue underline">interpelli per A028</a> o <a href="?cdc=ADSS" class="text-apple-blue underline">interpelli per il sostegno (ADSS)</a>.</p>
+                </div>
+                <!-- 🕒 PUNTO 18: Ultimo aggiornamento -->
+                <div class="bg-apple-pearl border border-apple-hairline rounded-xl px-3 py-2 text-center">
+                    <span id="ultimoAggiornamento" class="text-[11px] font-medium text-apple-muted">🔄 Caricamento dati...</span>
+                </div>
                 <div class="border-t border-apple-hairline pt-3 mt-1">
                     <p class="text-[11px] opacity-80">
                         <strong>Disclaimer:</strong> Questa piattaforma in versione Beta non è in alcun modo affiliata o collegata ad alcun sito istituzionale, Ministero dell'Istruzione o Ufficio Scolastico. È un aggregatore indipendente di dati pubblici.
+                    </p>
+                    <p class="text-[11px] opacity-80 mt-2 text-center">
+                        <a href="privacy.html" class="text-apple-blue hover:underline font-medium">Privacy Policy & Cookie Policy</a>
                     </p>
                 </div>
             </section>
@@ -293,11 +368,46 @@
 
     </nav>
     
-    <!-- 📝 PUNTO 3: BLOCCO SEO TESTUALE (Nascosto visivamente ma leggibile da Google) -->
+    <!-- 📝 PUNTO 8: BLOCCO SEO TESTUALE ESPANSO (Nascosto visivamente ma leggibile da Google) -->
     <section class="sr-only" aria-label="Informazioni SEO su Interpello Nazionale">
         <h2>Interpelli Nazionali e Supplenze Scuola 2024/2025</h2>
-        <p>Trova tutte le posizioni aperte per le supplenze docenti. La mappa interattiva raccoglie gli avvisi di reclutamento (interpelli) pubblicati dalle scuole in Lombardia, Lazio, Campania, Piemonte, Veneto, Toscana, Emilia-Romagna e tutte le altre regioni italiane. Consulta le posizioni per classi di concorso come A022, A028, sostegno e scuola primaria. Sostituisce le vecchie domande di Messa a Disposizione (MAD) dopo l'esaurimento delle GPS.</p>
+        <p>Trova tutte le posizioni aperte per le supplenze docenti. La mappa interattiva raccoglie gli avvisi di reclutamento (interpelli) pubblicati dalle scuole in Lombardia, Lazio, Campania, Piemonte, Veneto, Toscana, Emilia-Romagna e tutte le altre regioni italiane.</p>
+        <h3>Interpelli per Regione</h3>
+        <p>Interpelli supplenze Lombardia, interpelli Milano, interpelli Brescia, interpelli Bergamo docenti. Interpelli Lazio, interpelli Roma, interpelli Frosinone. Interpelli Campania, interpelli Napoli, interpelli Salerno. Interpelli Toscana, interpelli Firenze, interpelli Pisa. Interpelli Piemonte, interpelli Torino. Interpelli Veneto, interpelli Padova, interpelli Verona. Interpelli Sicilia, interpelli Palermo, interpelli Catania. Interpelli Puglia, interpelli Bari, interpelli Lecce. Interpelli Emilia-Romagna, interpelli Bologna, interpelli Modena. Interpelli Liguria, interpelli Genova, interpelli Imperia. Interpelli Sardegna, interpelli Cagliari, interpelli Sassari. Interpelli Marche, interpelli Ancona. Interpelli Abruzzo, interpelli Teramo, interpelli Pescara. Interpelli Calabria, interpelli Cosenza, interpelli Catanzaro.</p>
+        <h3>Classi di Concorso più Cercate</h3>
+        <p>Interpelli A022 Italiano Storia Geografia, interpelli A028 Matematica e Scienze, interpelli ADSS sostegno secondaria, interpelli EEEE scuola primaria, interpelli ADEE sostegno primaria, interpelli A060 Tecnologia, interpelli AAAA scuola dell'infanzia, interpelli A001 Arte e Immagine. Consulta le posizioni per classi di concorso e candidati tramite gli avvisi di reclutamento docenti. Sostituisce le vecchie domande di Messa a Disposizione (MAD) dopo l'esaurimento delle GPS e delle graduatorie d'istituto.</p>
     </section>
+
+    <!-- 📴 PUNTO 9: Noscript con elenco testuale per Googlebot -->
+    <noscript>
+        <section style="padding: 2rem; font-family: sans-serif;">
+            <h1>Interpello Nazionale - La Mappa delle Supplenze</h1>
+            <p>Interpello Nazionale aggrega tutti gli interpelli scolastici d'Italia. Cerca supplenze per regione, provincia e classe di concorso.</p>
+            <h2>Regioni disponibili</h2>
+            <ul>
+                <li><a href="?regione=Lombardia">Interpelli Lombardia</a></li>
+                <li><a href="?regione=Lazio">Interpelli Lazio</a></li>
+                <li><a href="?regione=Campania">Interpelli Campania</a></li>
+                <li><a href="?regione=Toscana">Interpelli Toscana</a></li>
+                <li><a href="?regione=Piemonte">Interpelli Piemonte</a></li>
+                <li><a href="?regione=Veneto">Interpelli Veneto</a></li>
+                <li><a href="?regione=Sicilia">Interpelli Sicilia</a></li>
+                <li><a href="?regione=Emilia-Romagna">Interpelli Emilia-Romagna</a></li>
+                <li><a href="?regione=Puglia">Interpelli Puglia</a></li>
+                <li><a href="?regione=Liguria">Interpelli Liguria</a></li>
+                <li><a href="?regione=Sardegna">Interpelli Sardegna</a></li>
+                <li><a href="?regione=Marche">Interpelli Marche</a></li>
+                <li><a href="?regione=Abruzzo">Interpelli Abruzzo</a></li>
+                <li><a href="?regione=Calabria">Interpelli Calabria</a></li>
+                <li><a href="?regione=Friuli-Venezia%20Giulia">Interpelli Friuli-Venezia Giulia</a></li>
+                <li><a href="?regione=Umbria">Interpelli Umbria</a></li>
+                <li><a href="?regione=Basilicata">Interpelli Basilicata</a></li>
+                <li><a href="?regione=Molise">Interpelli Molise</a></li>
+                <li><a href="?regione=Trentino-Alto%20Adige">Interpelli Trentino-Alto Adige</a></li>
+                <li><a href="?regione=Valle%20d'Aosta">Interpelli Valle d'Aosta</a></li>
+            </ul>
+        </section>
+    </noscript>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
     <script src="app.js" defer></script>

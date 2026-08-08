@@ -105,6 +105,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Inizializza la gesture di trascinamento in basso per chiudere il Bottom Sheet su mobile
     inizializzaBottomSheetTouch();
 
+    // 🎯 PUNTO 15: Contatore live animato nell'header
+    aggiornaContatoreHeader();
+    
+    // 🎯 PUNTO 18: Ultimo aggiornamento in tempo reale
+    aggiornaTimestampUltimoAggiornamento();
+
+    // 🎯 PUNTO 6/7: Aggiorna title e description con conteggio all'avvio
+    aggiornaMetaTagsSEO('', '', '');
+
     // Legge i parametri dall'URL e applica i filtri SEO Deep Linking
     applicaFiltriDaURL();
 
@@ -331,6 +340,9 @@ function selezionaRegioneDaMenu(regione, forzaJump = false) {
 
 async function caricaDatiScraper() {
     try {
+        // 🎯 PUNTO 13: Skeleton Loading prima del fetch
+        mostraSkeletonLoading();
+        
         const response = await fetch('database_nazionale.json?' + new Date().getTime());
         if (response.ok) {
             datiInterpelli = await response.json();
@@ -407,7 +419,7 @@ function mostraScoreboard() {
             <div class="text-center p-8 mt-10">
                 <i class="fa-solid fa-mug-hot text-4xl text-apple-muted mb-4 opacity-50"></i>
                 <p class="text-[17px] font-semibold text-apple-ink">Tutto tranquillo</p>
-                <p class="text-[14px] text-apple-muted mt-2">Al momento non ci sono posizioni aperte in Italia.</p>
+                <p class="text-[14px] text-apple-muted mt-2">Al momento non ci sono interpelli recenti in Italia.</p>
             </div>`;
         return;
     }
@@ -573,7 +585,7 @@ function apriPannelloRisultatiGUI(nomeZona, forzaJumpMobile = false) {
             <div class="text-center p-6 mt-4 bg-white rounded-[18px] border border-apple-hairline">
                 <i class="fa-solid fa-folder-open text-3xl text-apple-muted mb-2 opacity-50"></i>
                 <p class="text-[16px] font-semibold text-apple-ink">Nessun interpello attivo trovato</p>
-                <p class="text-[13px] text-apple-muted mt-1">Non ci sono posizioni aperte con i filtri selezionati.</p>
+                <p class="text-[13px] text-apple-muted mt-1">Non ci sono interpelli con i filtri selezionati.</p>
             </div>
             ${htmlSuggeriti}
         `;
@@ -645,11 +657,11 @@ function caricaPezzi(quantita) {
         
         let testoData = "";
         if (scaduto) {
-            testoData = `<span class="font-bold bg-gray-200 px-2.5 py-1 rounded text-gray-500 border border-gray-300 shadow-sm"><i class="fa-solid fa-lock mr-1"></i> CHIUSO</span>`;
+            testoData = `<span class="text-apple-red font-bold flex items-center bg-apple-red/5 px-2 py-1 rounded-md border border-apple-red/10"><i class="fa-regular fa-clock mr-1.5"></i> Chiuso</span>`;
         } else if (!item.data || item.data === "") {
             testoData = `<span class="font-bold bg-amber-50 px-2.5 py-1 rounded text-amber-600 border border-amber-200 shadow-sm"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Non specificata</span>`;
         } else {
-            testoData = `<span class="font-bold bg-red-50 px-2.5 py-1 rounded text-red-700 border border-red-200 shadow-sm"><i class="fa-regular fa-clock mr-1"></i> Scade il: ${dataIta}</span>`;
+            testoData = `<span class="text-apple-ink font-medium flex items-center bg-apple-pearl px-2 py-1 rounded-md border border-apple-hairline"><i class="fa-regular fa-calendar mr-1.5"></i> Rilevato il: ${dataIta}</span>`;
         }
 
         const stileBottone = scaduto 
@@ -691,8 +703,11 @@ function caricaPezzi(quantita) {
         };
         const usrUrl = MAPPA_USR[item.provincia] || `https://www.google.com/search?q=Ambito+Territoriale+${encodeURIComponent(item.provincia)}+interpelli`;
 
+        const safeProvincia = (item.provincia || '').replace(/'/g, "\\'");
+        const safeCdc = (item.cdc && item.cdc.length > 0) ? item.cdc[0].replace(/'/g, "\\'") : '';
+
         griglia.innerHTML += `
-            <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}" aria-label="Interpello ${titoloPulito}">
+            <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard} relative" aria-label="Interpello ${titoloPulito}">
                 
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-[12px] tracking-tightest font-medium ${isNuovo ? '' : 'text-apple-muted'}">${testoProvincia}</span>
@@ -714,6 +729,9 @@ function caricaPezzi(quantita) {
                         <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(`📍 Interpello ${provinciaSicura}:\n${titoloGrezzo}\n\n🔗 Vedi dettagli su: https://www.interpellonazionale.it/?provincia=${encodeURIComponent(item.provincia || "")}`)}" target="_blank" rel="noopener noreferrer" title="Condividi su WhatsApp" class="flex-1 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30 rounded-full text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest flex items-center justify-center">
                             <i class="fa-brands fa-whatsapp text-[16px] mr-1.5"></i> Invia
                         </a>
+                        <button onclick="copiaLinkInterpello('${safeProvincia}', '${safeCdc}')" title="Copia link" class="bg-apple-pearl hover:bg-apple-parchment text-apple-muted border border-apple-hairline rounded-full text-[14px] w-11 flex-shrink-0 text-center transition-transform active:scale-95 flex items-center justify-center cursor-pointer">
+                            <i class="fa-solid fa-link text-[13px]"></i>
+                        </button>
                         <a href="${usrUrl}" target="_blank" rel="noopener noreferrer" title="Visita la pagina dell'Ufficio Scolastico Territoriale" class="flex-1 bg-apple-pearl hover:bg-apple-parchment text-apple-muted border border-apple-hairline rounded-full text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest flex items-center justify-center">
                             <i class="fa-solid fa-university mr-1.5 opacity-70"></i> USR ${provinciaSicura}
                         </a>
@@ -892,8 +910,16 @@ function applicaFiltriDaURL() {
 }
 
 function aggiornaMetaTagsSEO(reg, prov, cdc) {
-    let titolo = "Interpello Nazionale - La mappa delle supplenze";
-    let desc = "Trova la tua prossima cattedra con Interpello Nazionale. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia.";
+    // 🎯 PUNTO 6: Titolo dinamico con conteggio interpelli
+    const conteggio = risultatiCorrenti.filter(i => !isScaduto(i)).length;
+    const conteggioTotale = datiInterpelli.filter(i => !isScaduto(i)).length;
+    
+    // 🎯 PUNTO 7: Data odierna nella meta description
+    const oggi = new Date();
+    const mesi = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+    const dataFormattata = `${oggi.getDate()} ${mesi[oggi.getMonth()]} ${oggi.getFullYear()}`;
+
+    let titolo, desc;
 
     if (reg || prov || cdc) {
         let parti = [];
@@ -901,8 +927,11 @@ function aggiornaMetaTagsSEO(reg, prov, cdc) {
         if (prov && prov !== "TUTTE") parti.push(`Provincia di ${prov}`);
         else if (reg) parti.push(`Regione ${reg}`);
 
-        titolo = `Interpelli ${parti.join(' - ')} | Interpello Nazionale`;
-        desc = `Tutti gli interpelli scolastici attivi per ${parti.join(', ')}. Consulta gli avvisi di reclutamento docenti e candidati subito su Interpello Nazionale.`;
+        titolo = `${conteggio} Interpelli ${parti.join(' - ')} | Interpello Nazionale`;
+        desc = `Aggiornato il ${dataFormattata} — ${conteggio} interpelli attivi per ${parti.join(', ')}. Consulta gli avvisi di reclutamento docenti e candidati subito su Interpello Nazionale.`;
+    } else {
+        titolo = `${conteggioTotale} Interpelli Attivi Oggi - Interpello Nazionale | La Mappa delle Supplenze`;
+        desc = `Aggiornato il ${dataFormattata} — ${conteggioTotale} interpelli attivi in tutta Italia. Cerca per regione, provincia e classe di concorso su Interpello Nazionale.`;
     }
 
     document.title = titolo;
@@ -910,11 +939,48 @@ function aggiornaMetaTagsSEO(reg, prov, cdc) {
     let metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', desc);
     
+    // 🎯 PUNTO 3: Meta tag OG dinamici
     let ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', titolo);
 
     let ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', desc);
+
+    let twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', titolo);
+
+    let twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', desc);
+
+    // 🎯 PUNTO 2: Breadcrumb Schema.org dinamici
+    let breadcrumbScript = document.getElementById('schema-breadcrumb');
+    if (breadcrumbScript) breadcrumbScript.remove();
+
+    let breadcrumbItems = [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.interpellonazionale.it/" }
+    ];
+    let pos = 2;
+    if (reg) {
+        breadcrumbItems.push({ "@type": "ListItem", "position": pos++, "name": reg, "item": `https://www.interpellonazionale.it/?regione=${encodeURIComponent(reg)}` });
+    }
+    if (prov && prov !== "TUTTE") {
+        breadcrumbItems.push({ "@type": "ListItem", "position": pos++, "name": prov, "item": `https://www.interpellonazionale.it/?regione=${encodeURIComponent(reg || '')}&provincia=${encodeURIComponent(prov)}` });
+    }
+    if (cdc) {
+        breadcrumbItems.push({ "@type": "ListItem", "position": pos++, "name": `CDC ${cdc}`, "item": `https://www.interpellonazionale.it/?cdc=${encodeURIComponent(cdc)}` });
+    }
+
+    if (breadcrumbItems.length > 1) {
+        const bcScript = document.createElement('script');
+        bcScript.id = 'schema-breadcrumb';
+        bcScript.type = 'application/ld+json';
+        bcScript.text = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbItems
+        });
+        document.head.appendChild(bcScript);
+    }
 }
 
 function generaSchemaJobPosting(item) {
@@ -975,4 +1041,111 @@ function aggiornaDatiStrutturatiSchema(lista) {
     script.type = 'application/ld+json';
     script.text = JSON.stringify(schemas, null, 2);
     document.head.appendChild(script);
+}
+
+// ========================================================================
+// 🎯 PUNTO 15: Contatore live animato nell'header
+// ========================================================================
+function aggiornaContatoreHeader() {
+    const el = document.getElementById('contatoreHeader');
+    if (!el) return;
+    const attivi = datiInterpelli.filter(i => !isScaduto(i)).length;
+    
+    // Animazione count-up
+    let current = 0;
+    const step = Math.max(1, Math.floor(attivi / 30));
+    const interval = setInterval(() => {
+        current += step;
+        if (current >= attivi) {
+            current = attivi;
+            clearInterval(interval);
+        }
+        el.textContent = `📊 ${current} interpelli recenti`;
+    }, 30);
+}
+
+// ========================================================================
+// 🎯 PUNTO 18: Ultimo aggiornamento in tempo reale
+// ========================================================================
+function aggiornaTimestampUltimoAggiornamento() {
+    const el = document.getElementById('ultimoAggiornamento');
+    if (!el || datiInterpelli.length === 0) return;
+
+    let maxDate = null;
+    datiInterpelli.forEach(i => {
+        if (i.data_rilevamento) {
+            const d = new Date(i.data_rilevamento);
+            if (!maxDate || d > maxDate) maxDate = d;
+        }
+    });
+
+    if (!maxDate) { el.textContent = '🔄 Dati in caricamento...'; return; }
+
+    const ora = new Date();
+    const diffMs = ora - maxDate;
+    const diffMin = Math.floor(diffMs / 60000);
+    const diffOre = Math.floor(diffMin / 60);
+    const diffGiorni = Math.floor(diffOre / 24);
+
+    let testo;
+    if (diffMin < 5) testo = 'Aggiornato adesso';
+    else if (diffMin < 60) testo = `Aggiornato ${diffMin} min fa`;
+    else if (diffOre < 24) testo = `Aggiornato ${diffOre} ore fa`;
+    else testo = `Aggiornato ${diffGiorni} giorni fa`;
+
+    el.textContent = `🔄 ${testo}`;
+}
+
+// ========================================================================
+// 🎯 PUNTO 13: Skeleton loading animation
+// ========================================================================
+function mostraSkeletonLoading() {
+    if (!containerLista) return;
+    let html = '';
+    const numSkeleton = isMobileDevice ? 4 : 6;
+    for (let i = 0; i < numSkeleton; i++) {
+        html += `
+            <div class="rounded-[18px] border border-apple-hairline p-6 bg-white animate-pulse">
+                <div class="flex justify-between mb-4">
+                    <div class="h-3 bg-gray-200 rounded-full w-20"></div>
+                    <div class="h-5 bg-gray-200 rounded w-28"></div>
+                </div>
+                <div class="h-5 bg-gray-200 rounded-full w-3/4 mb-3"></div>
+                <div class="h-4 bg-gray-200 rounded-full w-1/2 mb-6"></div>
+                <div class="flex gap-2 mb-4">
+                    <div class="h-7 bg-gray-200 rounded-full w-16"></div>
+                    <div class="h-7 bg-gray-200 rounded-full w-20"></div>
+                </div>
+                <div class="h-11 bg-gray-200 rounded-full w-full"></div>
+            </div>
+        `;
+    }
+    containerLista.innerHTML = html;
+}
+
+// ========================================================================
+// FUNZIONI ELIMINATE PER GDPR-COMPLIANCE TOTALE (Zero LocalStorage)
+// ========================================================================
+
+// ========================================================================
+// 🎯 PUNTO 16: Deep Link "Copia Link" per ogni card (utility)
+// ========================================================================
+function copiaLinkInterpello(provincia, cdc) {
+    let url = 'https://www.interpellonazionale.it/?';
+    const params = [];
+    if (provincia) params.push(`provincia=${encodeURIComponent(provincia)}`);
+    if (cdc) params.push(`cdc=${encodeURIComponent(cdc)}`);
+    url += params.join('&');
+    
+    navigator.clipboard.writeText(url).then(() => {
+        // Mostra un piccolo toast di conferma
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] bg-apple-ink text-white px-4 py-2 rounded-full font-medium shadow-xl text-[13px]';
+        toast.textContent = '✅ Link copiato!';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2000);
+    }).catch(() => {
+        // Fallback: seleziona il testo
+        prompt('Copia questo link:', url);
+    });
 }
