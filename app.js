@@ -813,7 +813,7 @@ function applicaFiltriDaURL() {
 }
 
 function aggiornaMetaTagsSEO(reg, prov, cdc) {
-    let titolo = "Interpello Nazionale";
+    let titolo = "Interpello Nazionale - La mappa delle supplenze";
     let desc = "Trova la tua prossima cattedra con Interpello Nazionale. Mappa interattiva e aggiornata in tempo reale con tutti gli interpelli scolastici d'Italia.";
 
     if (reg || prov || cdc) {
