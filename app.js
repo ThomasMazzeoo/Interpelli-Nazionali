@@ -476,6 +476,11 @@ function applicaFiltri(apriPannelloEsplicito = false) {
         filtrati = filtrati.filter(i => !isScaduto(i));
     } else if (stato === "SCADUTI") {
         filtrati = filtrati.filter(i => isScaduto(i));
+    } else if (stato === "DAVERIFICARE") {
+        filtrati = filtrati.filter(i => {
+            if (isScaduto(i)) return false;
+            return !i.data || i.data.trim() === "" || i.data.toLowerCase().includes("da verificare");
+        });
     }
 
 
