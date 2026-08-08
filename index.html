@@ -113,33 +113,30 @@
     <aside id="leftSidebar" class="w-full md:w-[28%] min-w-0 md:min-w-[320px] bg-apple-parchment z-40 fixed md:relative inset-0 pb-16 md:pb-0 hidden md:flex flex-col h-screen border-r border-apple-hairline overflow-y-auto transition-transform duration-300" role="search" aria-label="Filtri ricerca interpelli">
         
         <!-- Global Nav (stile Apple) -->
-        <header class="bg-apple-black text-white px-6 py-4 flex items-center justify-between shrink-0">
+        <header class="bg-apple-black text-white px-4 md:px-6 py-3 md:py-4 flex items-center justify-between shrink-0">
             <div class="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-8 h-8 text-white" aria-hidden="true" width="32" height="32">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-7 h-7 md:w-8 md:h-8 text-white" aria-hidden="true" width="32" height="32">
                     <polygon points="32,10 4,26 32,42 60,26" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
                     <polyline points="14,33 14,48 32,56 50,48 50,33" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
                     <line x1="60" y1="26" x2="60" y2="46" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                 </svg>
-                <h1 class="text-[17px] font-semibold tracking-tightest">Interpello Nazionale</h1>
+                <h1 class="text-[16px] md:text-[17px] font-semibold tracking-tightest">Interpello Nazionale</h1>
             </div>
-            <span class="text-[12px] text-gray-400 font-normal">www.interpelloNazionale.it</span>
+            <span class="hidden md:inline-block text-[12px] text-gray-400 font-normal">www.interpellonazionale.it</span>
         </header>
 
-        <div class="px-6 py-6 pb-2 shrink-0 flex justify-between items-center">
-            <h2 class="text-[28px] font-semibold tracking-tightest text-apple-ink leading-tight">Trova la tua<br>prossima cattedra.</h2>
-            <button onclick="mostraVistaMobile('mappa')" aria-label="Chiudi filtri" class="md:hidden bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-9 h-9 flex items-center justify-center min-h-[36px]">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+        <div class="px-4 md:px-6 py-4 md:py-6 pb-0 md:pb-2 shrink-0 flex justify-between items-center">
+            <h2 class="text-[22px] md:text-[28px] font-semibold tracking-tightest text-apple-ink leading-tight">Trova la tua<br>prossima cattedra.</h2>
         </div>
 
-        <div class="flex-1 px-6 py-4 flex flex-col gap-6">
+        <div class="flex-1 px-4 md:px-6 py-3 md:py-4 flex flex-col gap-4 md:gap-6">
             
-            <section class="bg-white rounded-[18px] border border-apple-hairline p-5 flex flex-col gap-4">
+            <section class="bg-white rounded-[18px] border border-apple-hairline p-4 md:p-5 flex flex-col gap-3 md:gap-4">
                 <h3 class="text-[14px] font-semibold text-apple-ink tracking-tightest">Territorio & Stato</h3>
                 
                 <div>
                     <label for="regioneSelect" class="sr-only">Seleziona Regione</label>
-                    <select id="regioneSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <select id="regioneSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] min-h-[40px] md:min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2 px-3 md:py-2.5 md:px-4 cursor-pointer transition-colors">
                         <option value="">Seleziona una Regione...</option>
                         <option value="Abruzzo">Abruzzo</option>
                         <option value="Basilicata">Basilicata</option>
@@ -165,13 +162,13 @@
                 </div>
                 <div>
                     <label for="provinciaSelect" class="sr-only">Seleziona Provincia</label>
-                    <select id="provinciaSelect" disabled class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+                    <select id="provinciaSelect" disabled class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] min-h-[40px] md:min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2 px-3 md:py-2.5 md:px-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
                         <option value="">Provincia...</option>
                     </select>
                 </div>
                 <div>
                     <label for="statoSelect" class="sr-only">Stato Interpelli</label>
-                    <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <select id="statoSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] min-h-[40px] md:min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2 px-3 md:py-2.5 md:px-4 cursor-pointer transition-colors">
                         <option value="TUTTI">Tutti gli Interpelli</option>
                         <option value="ATTIVI" selected>🟢Solo Attivi (Aperti)</option>
                         <option value="SCADUTI">🔴Solo Scaduti</option>
@@ -179,12 +176,12 @@
                 </div>
             </section>
 
-            <section class="bg-white rounded-[18px] border border-apple-hairline p-5 flex flex-col gap-4">
+            <section class="bg-white rounded-[18px] border border-apple-hairline p-4 md:p-5 flex flex-col gap-3 md:gap-4">
                 <h3 class="text-[14px] font-semibold text-apple-ink tracking-tightest">Posizione d'Insegnamento</h3>
                 
                 <div>
                     <label for="cdcSelect" class="sr-only">Classe di Concorso</label>
-                    <select id="cdcSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[16px] md:text-[15px] min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2.5 px-4 cursor-pointer transition-colors">
+                    <select id="cdcSelect" class="w-full bg-apple-pearl border border-apple-hairline text-apple-ink text-[15px] min-h-[40px] md:min-h-[44px] rounded-full focus:border-apple-blue focus:ring-1 focus:ring-apple-blue outline-none py-2 px-3 md:py-2.5 md:px-4 cursor-pointer transition-colors">
                         <option value="">Tutte le Classi di Concorso</option>
                     </select>
                 </div>
@@ -231,16 +228,16 @@
     <aside id="rightPanel" class="w-full md:w-[34%] min-w-0 md:min-w-[380px] bg-apple-parchment z-40 fixed md:relative inset-x-0 bottom-0 md:inset-auto md:top-0 md:right-0 h-[85vh] md:h-screen rounded-t-[28px] md:rounded-none border-t md:border-t-0 md:border-l border-apple-hairline shadow-2xl md:shadow-none transition-transform duration-300 ease-out hidden md:flex flex-col pb-16 md:pb-0" aria-label="Risultati e dettagli interpello">
         
         <!-- Maniglia di trascinamento touch -->
-        <div id="bottomSheetHandle" class="w-12 h-1.5 bg-apple-muted/30 rounded-full mx-auto my-3 shrink-0 md:hidden cursor-grab active:cursor-grabbing"></div>
+        <div id="bottomSheetHandle" class="w-14 h-1.5 bg-gray-300/70 rounded-full mx-auto mt-3 mb-2 shrink-0 md:hidden cursor-grab active:cursor-grabbing"></div>
 
-        <div class="bg-[#f5f5f7]/80 backdrop-blur-xl border-b border-apple-hairline px-6 py-3 flex justify-between items-center shrink-0 z-10 sticky top-0 rounded-t-[28px] md:rounded-none">
+        <div class="bg-[#f5f5f7]/80 backdrop-blur-xl border-b border-apple-hairline px-4 md:px-6 py-3 flex justify-between items-center shrink-0 z-10 sticky top-0 rounded-t-[28px] md:rounded-none">
             <span id="rightPanelTitle" class="text-[20px] md:text-[21px] font-semibold text-apple-ink tracking-tightest">Risultati</span>
-            <button id="chiudiPannelloBtn" aria-label="Chiudi pannello" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-9 h-9 flex items-center justify-center transition active:scale-95 cursor-pointer hover:bg-red-50 hover:text-red-500 min-h-[36px]">
+            <button id="chiudiPannelloBtn" aria-label="Chiudi pannello" class="bg-apple-pearl border border-apple-hairline text-apple-ink rounded-full w-8 h-8 md:w-9 md:h-9 flex items-center justify-center transition active:scale-95 cursor-pointer hover:bg-red-50 hover:text-red-500 min-h-[32px] md:min-h-[36px]">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
         
-        <div class="flex-1 min-h-0 overflow-y-auto px-6 py-6 relative" id="listaInterpelli">
+        <div class="flex-1 min-h-0 overflow-y-auto px-4 py-4 md:px-6 md:py-6 relative" id="listaInterpelli">
         </div>
     </aside>
 
@@ -263,7 +260,7 @@
         <button id="navRisultatiBtn" onclick="mostraVistaMobile('risultati')" class="relative flex flex-col items-center justify-center w-1/3 h-full text-apple-muted hover:text-apple-blue transition-colors active:scale-95 min-h-[44px]">
             <div class="relative inline-block">
                 <i class="fa-solid fa-list-check text-[19px] mb-1"></i>
-                <span id="mobileBadgeRisultati" class="hidden absolute -top-1.5 -right-3 bg-apple-blue text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full min-w-[18px] text-center shadow-sm border border-white">0</span>
+                <span id="mobileBadgeRisultati" class="hidden absolute -top-2 -right-3.5 bg-apple-blue text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full min-w-[18px] text-center shadow-sm border-[1.5px] border-white">0</span>
             </div>
             <span class="text-[10px] font-semibold tracking-tight">Risultati</span>
         </button>
