@@ -108,10 +108,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Legge i parametri dall'URL e applica i filtri SEO Deep Linking
     applicaFiltriDaURL();
 
-    selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
-    selectProvincia.addEventListener('change', () => applicaFiltri(true));
-    selectCdc.addEventListener('change', () => applicaFiltri(true));
-    selectStato.addEventListener('change', () => applicaFiltri(true));
+    selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value, false));
+    selectProvincia.addEventListener('change', () => applicaFiltri(false));
+    selectCdc.addEventListener('change', () => applicaFiltri(false));
+    selectStato.addEventListener('change', () => applicaFiltri(false));
     
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
@@ -186,7 +186,7 @@ async function caricaLayerRegioni() {
     } catch (error) { console.error(error); }
 }
 
-async function clickSuRegione(nomeRegione, bounds) {
+async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
     if(bounds) map.fitBounds(bounds);
     selectRegione.value = normalizzaRegione(nomeRegione);
     if (geojsonRegioni) map.removeLayer(geojsonRegioni);
@@ -220,7 +220,7 @@ async function clickSuRegione(nomeRegione, bounds) {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
                         // PUNTO 6: Cliccando sulla Provincia la Mappa Zoomma senza aprire il pannello!
-                        applicaFiltri(true); 
+                        applicaFiltri(false); 
                     }
                 });
             }
@@ -230,7 +230,7 @@ async function clickSuRegione(nomeRegione, bounds) {
         selectProvincia.value = "TUTTE";
         
         // 🎯 PUNTO 6: Zoom sulla Regione SENZA aprire automaticamente il pannello dei risultati!
-        applicaFiltri(true);
+        applicaFiltri(forzaJump);
         
         if(btnReset) btnReset.classList.remove('hidden');
     } catch (error) { console.error(error); }
@@ -263,18 +263,18 @@ function resetMappa() {
     mostraScoreboard();
 }
 
-function selezionaRegioneDaMenu(regione) {
+function selezionaRegioneDaMenu(regione, forzaJump = false) {
     if (!regione) return resetMappa();
     if(geojsonRegioni) {
         geojsonRegioni.eachLayer(layer => {
             const nomeMap = normalizzaRegione(layer.feature.properties.reg_name);
             const nomeInput = normalizzaRegione(regione);
             if (nomeMap === nomeInput) {
-                clickSuRegione(layer.feature.properties.reg_name, layer.getBounds());
+                clickSuRegione(layer.feature.properties.reg_name, layer.getBounds(), forzaJump);
             }
         });
     } else {
-        clickSuRegione(regione, null);
+        clickSuRegione(regione, null, forzaJump);
     }
 }
 
@@ -452,14 +452,12 @@ function applicaFiltri(apriPannelloEsplicito = false) {
         }
     }
 
-    // Apri il pannello risultati SOLO se l'utente ha esplicitamente cliccato sul pulsante o cercato dai filtri
-    if (apriPannelloEsplicito) {
-        apriPannelloRisultatiGUI(nomeZona);
-    }
+    // Apri il pannello risultati (sempre aggiornato, ma forza il jump su mobile solo se richiesto)
+    apriPannelloRisultatiGUI(nomeZona, apriPannelloEsplicito);
 }
 
 // Apre il pannello con i risultati renderizzati
-function apriPannelloRisultatiGUI(nomeZona) {
+function apriPannelloRisultatiGUI(nomeZona, forzaJumpMobile = false) {
     rightPanelTitle.innerHTML = '<i class="fa-solid fa-list-check text-apple-blue mr-2"></i> Risultati';
 
     if (rightPanel.classList.contains('hidden')) {
@@ -467,7 +465,7 @@ function apriPannelloRisultatiGUI(nomeZona) {
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 768 && forzaJumpMobile) {
         mostraVistaMobile('risultati');
     }
 
@@ -521,7 +519,7 @@ function apriRisultatiDaMappa() {
     const reg = selectRegione.value;
     const prov = selectProvincia.value;
     const nomeZona = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Italia");
-    apriPannelloRisultatiGUI(nomeZona);
+    apriPannelloRisultatiGUI(nomeZona, true);
 }
 
 function caricaPezzi(quantita) {
