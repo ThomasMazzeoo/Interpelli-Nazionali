@@ -512,6 +512,7 @@ function apriPannelloRisultatiGUI(nomeZona, forzaJumpMobile = false) {
     `;
     
     aggiornaDatiStrutturatiSchema(risultatiCorrenti);
+    indiceMostrati = 0;
     caricaPezzi(CHUNK_INIZIALE);
 }
 
