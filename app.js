@@ -221,6 +221,8 @@ async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
 
         aggiornaMenuProvinceDaGeoJSON(provinceRegione);
 
+        let provinciaSelezionataLayer = null;
+
         geojsonProvince = L.geoJSON(provinceRegione, {
             style: (feature) => ({ 
                 color: "#ffffff", 
@@ -236,12 +238,33 @@ async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
                 });
 
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.65 }),
-                    mouseout: (e) => geojsonProvince.resetStyle(e.target),
+                    mouseover: (e) => {
+                        if (provinciaSelezionataLayer !== e.target) {
+                            e.target.setStyle({ fillOpacity: 0.65 });
+                        }
+                    },
+                    mouseout: (e) => {
+                        if (provinciaSelezionataLayer !== e.target) {
+                            geojsonProvince.resetStyle(e.target);
+                        }
+                    },
                     click: (e) => {
+                        // Ripristina lo stile della provincia precedentemente selezionata
+                        if (provinciaSelezionataLayer) {
+                            geojsonProvince.resetStyle(provinciaSelezionataLayer);
+                        }
+                        
+                        // Imposta lo stile nero marcato per la nuova provincia selezionata
+                        provinciaSelezionataLayer = e.target;
+                        provinciaSelezionataLayer.setStyle({
+                            color: "#000000",
+                            weight: 3,
+                            fillOpacity: 0.65
+                        });
+                        provinciaSelezionataLayer.bringToFront();
+
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
-                        // PUNTO 6: Cliccando sulla Provincia la Mappa Zoomma senza aprire il pannello!
                         applicaFiltri(false); 
                     }
                 });
