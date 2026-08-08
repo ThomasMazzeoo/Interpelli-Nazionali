@@ -231,8 +231,10 @@ async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
                 fillOpacity: 0.45 
             }),
             onEachFeature: (feature, layer) => {
-                layer.bindTooltip(feature.properties.prov_name, { 
-                    permanent: !isMobileDevice, 
+                const nomeProv = feature.properties.prov_name;
+                const etichettaProv = isMobileDevice ? nomeProv.substring(0, 2).toUpperCase() : nomeProv;
+                layer.bindTooltip(etichettaProv, { 
+                    permanent: true, 
                     direction: "center", 
                     className: "clean-label text-apple-ink font-bold text-[10px] uppercase tracking-wider" 
                 });
