@@ -1,5 +1,509 @@
 [
     {
+        "regione": "Lazio",
+        "provincia": "Roma",
+        "titolo": "Interpelli per la selezione del personale docente ADEE-EEEE",
+        "data": "2026-07-28",
+        "cdc": [
+            "ADEE",
+            "EEEE"
+        ],
+        "url": "https://www.atpromaistruzione.it/atp/2026/07/interpelli-per-la-selezione-del-personale-docente-adee-eeee-33/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T18:21:22.690699"
+    },
+    {
+        "regione": "Lazio",
+        "provincia": "Roma",
+        "titolo": "Interpelli per la selezione del personale docente AAAA-ADAA-ADEE-EEEE",
+        "data": "2026-07-24",
+        "cdc": [
+            "AAAA",
+            "ADAA",
+            "ADEE",
+            "EEEE"
+        ],
+        "url": "https://www.atpromaistruzione.it/atp/2026/07/interpelli-per-la-selezione-del-personale-docente-aaaa-adaa-adee-eeee-35/",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T18:21:22.690699"
+    },
+    {
+        "regione": "Sardegna",
+        "provincia": "Sassari",
+        "titolo": "Individuazione tramite interpello esterno per soli titoli per il conferimento dell’incarico di n. 1 docente di matematica per corso di recupero - I.I.S. GIUSEPPE GARIBALDI - LA MADDALENA",
+        "data": "2026-08-03",
+        "cdc": [],
+        "url": "https://www.mim.gov.it/web/sassari/-/individuazione-tramite-interpello-esterno-per-soli-titoli-per-il-conferimento-dell-incarico-di-n-1-docente-di-matematica-per-corso-di-recupero-i-i-s-g",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T18:05:46.665935"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
+        "data": "2010-10-00",
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.comprensivotaggia.edu.it/albo-online#EEEE-h.24-dal_13-10-2025-al_22-11-2025",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T17:27:17.514650"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
+        "data": "2010-17-00",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.comprensivotaggia.edu.it/albo-online#ADEE-h.24-dal_20-10-2025-al_30-06-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T17:27:17.515650"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Imperia",
+        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
+        "data": "2010-17-00",
+        "cdc": [
+            "ADAA"
+        ],
+        "url": "https://www.comprensivotaggia.edu.it/albo-online#ADAA-h.25-dal_20-10-2025-al_30-06-2026",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T17:27:17.515650"
+    },
+    {
+        "regione": "Friuli Venezia Giulia",
+        "provincia": "Gorizia",
+        "titolo": "Bacheca Ufficiale Interpelli Provincia di Gorizia (USR FVG)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-gorizia/Interpelli/index.html",
+        "pdf_links": [],
+        "form_links": [
+            "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-gorizia/Interpelli/index.html"
+        ],
+        "data_rilevamento": "2026-08-08T12:32:25.620721"
+    },
+    {
+        "regione": "Friuli Venezia Giulia",
+        "provincia": "Udine",
+        "titolo": "Bacheca Ufficiale Interpelli Provincia di Udine (USR FVG)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-udine/Interpelli/index.html",
+        "pdf_links": [],
+        "form_links": [
+            "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-udine/Interpelli/index.html"
+        ],
+        "data_rilevamento": "2026-08-08T12:32:25.621222"
+    },
+    {
+        "regione": "Friuli Venezia Giulia",
+        "provincia": "Pordenone",
+        "titolo": "Bacheca Ufficiale Interpelli Provincia di Pordenone (USR FVG)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-pordenone/Interpelli/index.html",
+        "pdf_links": [],
+        "form_links": [
+            "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-pordenone/Interpelli/index.html"
+        ],
+        "data_rilevamento": "2026-08-08T12:32:25.621722"
+    },
+    {
+        "regione": "Liguria",
+        "provincia": "Genova",
+        "titolo": "Scuola Primaria Paritaria Padre O. Assarotti",
+        "data": "2026-09-07",
+        "cdc": [
+            "ADEE"
+        ],
+        "url": "https://www.scuoleassarotti.it/wp-content/uploads/2026/08/Interpello-per-la-copertura-di-una-supplenza-ASSAROTTI.pdf#ADEE-Intera-dal_14-9-2026-al_30-6-2027",
+        "pdf_links": [
+            "https://www.scuoleassarotti.it/wp-content/uploads/2026/08/Interpello-per-la-copertura-di-una-supplenza-ASSAROTTI.pdf#ADEE-Intera-dal_14-9-2026-al_30-6-2027"
+        ],
+        "form_links": [],
+        "data_rilevamento": "2026-08-08T12:28:32.544541"
+    },
+    {
+        "regione": "Friuli Venezia Giulia",
+        "provincia": "Trieste",
+        "titolo": "Bacheca Ufficiale Interpelli Provincia di Trieste (USR FVG)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-trieste/Interpelli/index.html",
+        "pdf_links": [],
+        "form_links": [
+            "https://usrfvg.gov.it/it/home/menu/uffici/ufficio-territoriale-di-trieste/Interpelli/index.html"
+        ],
+        "data_rilevamento": "2026-08-08T12:29:28.578269"
+    },
+    {
+        "regione": "Valle d'Aosta",
+        "provincia": "Valle d'Aosta",
+        "titolo": "Bacheca Ufficiale Supplenze Valle d'Aosta",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://scuole.vda.it/interpelli",
+        "pdf_links": [],
+        "form_links": [
+            "https://scuole.vda.it/interpelli"
+        ],
+        "data_rilevamento": "2026-08-05T00:59:58.993551"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Bolzano",
+        "titolo": "Piattaforma Autonoma Supplenze Alto Adige (MadLene)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "DA VERIFICARE SUL SITO"
+        ],
+        "url": "https://www.madlene.it/it",
+        "pdf_links": [],
+        "form_links": [
+            "https://www.madlene.it/it"
+        ],
+        "data_rilevamento": "2026-08-05T00:47:15.258833"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "SOST. MINORATI PSICOFISICI - ISTITUTO COMPRENSIVO TIONE (24 ore, Incarico ANNUALE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "SOSTEGNO"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#1751bebd3d",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO VIGOLO VATTARO (2 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "AM23"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#900ede2b02",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "SOST. MINORATI PSICOFISICI - ISTITUTO TECNICO ECONOMICO \"A. Tambosi\" - TRENTO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "ADSS"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#7bbe3f3170",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO VIGOLO VATTARO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "AM12"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#b894ad5658",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO VIGOLO VATTARO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "AM12"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#b894ad5658",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "COMUNE - ISTITUTO COMPRENSIVO TRENTO 3 (24 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#d7d454404a",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - LICEO \"F. Filzi\" - ROVERETO (7 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "A011",
+            "A051"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#ebd6aa40ba",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - LICEO \"F. Filzi\" - ROVERETO (7 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "A011",
+            "A051"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#ebd6aa40ba",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO DI SCUOLA PRIMARIA E SECONDARIA DI PRIMIERO (4 ore, Incarico TAD)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "B012"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#4020a6a102",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "CLIL TEDESCO - ISTITUTO COMPRENSIVO MORI (24 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#d0885b39c4",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "COMUNE - ISTITUTO COMPRENSIVO PREDAZZO TESERO PANCHIA' ZIANO (20 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#80bf2213f5",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO LEVICO TERME (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "AM12"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#d52754f44b",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO TRENTO 7 \"Rita Levi Montalcini\" (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "AM48"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#608f3b3ec0",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO DI ISTRUZIONE \"M. Martini\" - MEZZOLOMBARDO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "AS12"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#4eaf520cc6",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO DI ISTRUZIONE \"don L.Milani\" - ROVERETO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "A002",
+            "A015",
+            "A040"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#3af59acb91",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "SOST. MINORATI PSICOFISICI - ISTITUTO COMPRENSIVO ISERA - ROVERETO (24 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "SOSTEGNO"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#42b88f5503",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "LINGUA INGLESE - ISTITUTO COMPRENSIVO TIONE (9 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "EEEE"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#55ce2a3f3c",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO DI ISTRUZIONE \"M. Martini\" - MEZZOLOMBARDO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "A018",
+            "A036"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#bd0f807f3e",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO COMPRENSIVO TIONE (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "A028",
+            "A059"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#fbf0a06584",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
+        "regione": "Trentino-Alto Adige",
+        "provincia": "Trento",
+        "titolo": "NORMALE - ISTITUTO DI ISTRUZIONE \"don L.Milani\" - ROVERETO (18 ore, Incarico BREVE)",
+        "data": "",
+        "permanente": true,
+        "escludi_scoreboard": true,
+        "cdc": [
+            "A018",
+            "A036"
+        ],
+        "url": "https://www.vivoscuola.it/Lavora-con-noi/Quadri-di-disponibilita#94e587228a",
+        "pdf_links": [],
+        "form_links": [],
+        "data_rilevamento": "2026-08-05T00:23:18.617272"
+    },
+    {
         "regione": "Veneto",
         "provincia": "Treviso",
         "titolo": "IPSSEOA BELTRAME DI VITTORIO VENETO (Bacheca Ufficiale dell'Istituto)",
@@ -1420,96 +1924,5 @@
         "pdf_links": [],
         "form_links": [],
         "data_rilevamento": "2026-08-03T13:54:24.344058"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Genova",
-        "titolo": "Istituto Suore Benedettine della Provvidenza",
-        "data": "2026-07-22",
-        "cdc": [
-            "INFANZIA"
-        ],
-        "url": "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_30-06-2027",
-        "pdf_links": [
-            "https://www.benedettineprovvidenza.net/wp-content/uploads/2026/07/INTERPELLO-INFANZIA.pdf#Scuola_d'Infanzia-Intera-dal_10-09-2026-al_30-06-2027"
-        ],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:24.344227"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Imperia",
-        "titolo": "IIS RUFFINI AICARDI",
-        "data": "2026-10-03",
-        "cdc": [],
-        "url": "https://www.portaleargo.it/albopretorio/online/#/dettaglio-atto?customerCode=SG26025&id=3980467&archivio=false#A015Discipline_Sanitarie-SPEZZONEh:_02:00-dal_06-10-2025-al_30-06-2026",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:31.582367"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Imperia",
-        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
-        "data": "2010-10-00",
-        "cdc": [
-            "EEEE"
-        ],
-        "url": "https://www.comprensivotaggia.edu.it/albo-online#EEEE-h.24-dal_13-10-2025-al_22-11-2025",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:31.586472"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Imperia",
-        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
-        "data": "2010-17-00",
-        "cdc": [
-            "ADEE"
-        ],
-        "url": "https://www.comprensivotaggia.edu.it/albo-online#ADEE-h.24-dal_20-10-2025-al_30-06-2026",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:31.589824"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Imperia",
-        "titolo": "I.C.TAGGIA VALLE ARGENTINA",
-        "data": "2010-17-00",
-        "cdc": [
-            "ADAA"
-        ],
-        "url": "https://www.comprensivotaggia.edu.it/albo-online#ADAA-h.25-dal_20-10-2025-al_30-06-2026",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:31.589965"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Imperia",
-        "titolo": "Ist. Comp. Diano Marina",
-        "data": "2026-10-21",
-        "cdc": [
-            "ADAA"
-        ],
-        "url": "https://www.icdianomarina.it/interpello-supplenze1-spezzone-6-h-adaa-sostegno-infanzia-2-spezzone-8-h-adee-sostegno-primaria/#ADAA-6-dal_22-10-2025-al_30-06-2026",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:31.594761"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Savona",
-        "titolo": "IC ALBENGA I",
-        "data": "2026-09-19",
-        "cdc": [
-            "ADEE"
-        ],
-        "url": "https://www.icalbenga1.edu.it/albo-online?categoria=1030595&cerca=&storico=&aoo=#ADEE-Intera-dal_24-09-2025-al_30-06-2026",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:34.724598"
     }
 ]

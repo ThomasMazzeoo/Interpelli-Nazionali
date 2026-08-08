@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Link alla Sitemap Ufficiale per Googlebot e Bing
+Sitemap: https://www.interpellonazionale.it/sitemap.xml

@@ -60,7 +60,7 @@ def run(url_visti):
             # Se la riga è rotta o troppo corta, la saltiamo
             if len(cols) <= max(idx_cdc, idx_scuola, idx_link): continue 
             
-            cdc_raw = cols[idx_cdc].get_text(strip=True)
+            cdc_raw = cols[idx_cdc].get_text(separator=' ', strip=True)
             if not cdc_raw or 'CDC' in cdc_raw.upper() or 'ART.' in cdc_raw.upper(): continue
                 
             nome_scuola = cols[idx_scuola].get_text(separator=' ', strip=True)

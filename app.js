@@ -1,6 +1,15 @@
 const URL_REGIONI = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson";
 const URL_PROVINCE = "https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_provinces.geojson";
 
+const ALIAS_REGIONI = {
+    "Trentino-Alto Adige/Südtirol": "Trentino-Alto Adige",
+    "Valle d'Aosta/Vallée d'Aoste": "Valle d'Aosta"
+};
+
+function normalizzaRegione(nomeIstat) {
+    return ALIAS_REGIONI[nomeIstat] || nomeIstat;
+}
+
 const ALIAS_PROVINCE = {
     "Monza e della Brianza": "Monza Brianza",
     "Reggio di Calabria": "Reggio Calabria",
@@ -63,7 +72,7 @@ const CHUNK_SUCCESSIVO = isMobileDevice ? 15 : 20;
 const selectRegione = document.getElementById('regioneSelect');
 const selectProvincia = document.getElementById('provinciaSelect');
 const selectCdc = document.getElementById('cdcSelect');
-const selectTipoScuola = document.getElementById('tipoScuolaSelect');
+
 const selectStato = document.getElementById('statoSelect');
 const btnReset = document.getElementById('btnResetMappa'); 
 const containerLista = document.getElementById('listaInterpelli');
@@ -100,10 +109,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     applicaFiltriDaURL();
 
     selectRegione.addEventListener('change', (e) => selezionaRegioneDaMenu(e.target.value));
-    selectProvincia.addEventListener('change', () => applicaFiltri(false));
-    selectCdc.addEventListener('change', () => applicaFiltri(false));
-    selectTipoScuola.addEventListener('change', () => applicaFiltri(false));
-    selectStato.addEventListener('change', () => applicaFiltri(false));
+    selectProvincia.addEventListener('change', () => applicaFiltri(true));
+    selectCdc.addEventListener('change', () => applicaFiltri(true));
+    selectStato.addEventListener('change', () => applicaFiltri(true));
     
     if(btnReset) btnReset.addEventListener('click', resetMappa);
 
@@ -115,6 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 rightPanel.classList.add('hidden');
                 setTimeout(() => { if (map) map.invalidateSize(); }, 100);
             }
+            resetMappa();
         });
     }
 
@@ -150,6 +159,7 @@ async function caricaLayerRegioni() {
         const response = await fetch(URL_REGIONI);
         const data = await response.json();
         if (geojsonProvince) map.removeLayer(geojsonProvince);
+        if (geojsonRegioni) map.removeLayer(geojsonRegioni);
         
         geojsonRegioni = L.geoJSON(data, {
             style: (feature) => ({ 
@@ -178,7 +188,7 @@ async function caricaLayerRegioni() {
 
 async function clickSuRegione(nomeRegione, bounds) {
     if(bounds) map.fitBounds(bounds);
-    selectRegione.value = nomeRegione;
+    selectRegione.value = normalizzaRegione(nomeRegione);
     if (geojsonRegioni) map.removeLayer(geojsonRegioni);
     
     try {
@@ -210,7 +220,7 @@ async function clickSuRegione(nomeRegione, bounds) {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
                         selectProvincia.value = nomeDB;
                         // PUNTO 6: Cliccando sulla Provincia la Mappa Zoomma senza aprire il pannello!
-                        applicaFiltri(false); 
+                        applicaFiltri(true); 
                     }
                 });
             }
@@ -220,7 +230,7 @@ async function clickSuRegione(nomeRegione, bounds) {
         selectProvincia.value = "TUTTE";
         
         // 🎯 PUNTO 6: Zoom sulla Regione SENZA aprire automaticamente il pannello dei risultati!
-        applicaFiltri(false);
+        applicaFiltri(true);
         
         if(btnReset) btnReset.classList.remove('hidden');
     } catch (error) { console.error(error); }
@@ -232,10 +242,17 @@ function resetMappa() {
     selectProvincia.innerHTML = '<option value="">-- Prima seleziona una Regione --</option>';
     selectProvincia.disabled = true;
     selectCdc.value = "";
-    selectTipoScuola.value = "";
+
     
     if (geojsonProvince) map.removeLayer(geojsonProvince);
-    caricaLayerRegioni();
+    
+    if (geojsonRegioni) {
+        if (!map.hasLayer(geojsonRegioni)) {
+            map.addLayer(geojsonRegioni);
+        }
+    } else {
+        caricaLayerRegioni();
+    }
     
     if(btnReset) btnReset.classList.add('hidden');
     if(btnMostraRisultatiMappa) btnMostraRisultatiMappa.classList.add('hidden');
@@ -250,7 +267,11 @@ function selezionaRegioneDaMenu(regione) {
     if (!regione) return resetMappa();
     if(geojsonRegioni) {
         geojsonRegioni.eachLayer(layer => {
-            if (layer.feature.properties.reg_name === regione) clickSuRegione(regione, layer.getBounds());
+            const nomeMap = normalizzaRegione(layer.feature.properties.reg_name);
+            const nomeInput = normalizzaRegione(regione);
+            if (nomeMap === nomeInput) {
+                clickSuRegione(layer.feature.properties.reg_name, layer.getBounds());
+            }
         });
     } else {
         clickSuRegione(regione, null);
@@ -297,6 +318,10 @@ function isScaduto(item) {
         const parts = item.data.split('-');
         if (parts.length === 3) {
             const dataScadenza = new Date(parts[0], parts[1] - 1, parts[2]);
+            // Aggiungiamo 5 giorni di tolleranza. Spesso la 'data' è quella di pubblicazione
+            // e non quella reale di scadenza. Così evitiamo che scompaiano subito.
+            dataScadenza.setDate(dataScadenza.getDate() + 5);
+            
             const oggi = new Date();
             oggi.setHours(0, 0, 0, 0); 
             return dataScadenza < oggi;
@@ -369,7 +394,6 @@ function applicaFiltri(apriPannelloEsplicito = false) {
     const reg = selectRegione.value;
     const prov = selectProvincia.value;
     const cdc = selectCdc.value;
-    const tipo = selectTipoScuola.value;
     const stato = selectStato.value;
 
     const newUrl = new URL(window.location.href);
@@ -380,14 +404,17 @@ function applicaFiltri(apriPannelloEsplicito = false) {
 
     aggiornaMetaTagsSEO(reg, prov, cdc);
 
-    if (!reg && !cdc && !tipo && stato === "ATTIVI") {
+    if (!reg && (!prov || prov === "TUTTE") && !cdc && stato === "ATTIVI") {
         mostraScoreboard();
         return;
     }
 
     let filtrati = datiInterpelli;
     
-    if(reg) filtrati = filtrati.filter(i => (i.regione || "").toLowerCase() === reg.toLowerCase());
+    if(reg) {
+        const regNormalizzata = normalizzaRegione(reg).toLowerCase();
+        filtrati = filtrati.filter(i => (i.regione || "").toLowerCase() === regNormalizzata);
+    }
 
     if (prov && prov !== "TUTTE") {
         filtrati = filtrati.filter(i => (i.provincia || "").toLowerCase() === prov.toLowerCase());
@@ -400,20 +427,7 @@ function applicaFiltri(apriPannelloEsplicito = false) {
         filtrati = filtrati.filter(i => isScaduto(i));
     }
 
-    if (tipo === "IC") {
-        const kw = [' ic ', 'i.c.', 'istituto comprensivo', 'primaria', 'infanzia', 'primo grado', ' 1 grado', ' i grado', 'media'];
-        const cdcBase = ['AAAA','EEEE','AAHN','EEHN','AAMM','EEMM','ADAA','ADEE','ADMM'];
-        filtrati = filtrati.filter(i => {
-            const titolo = i.titolo.toLowerCase();
-            return kw.some(k => titolo.includes(k)) || (i.cdc && i.cdc.some(c => cdcBase.includes(c)));
-        });
-    } else if (tipo === "SUPERIORI") {
-        const kw = ['liceo', 'iis', 'i.i.s.', 'superiore', 'secondo grado', ' 2 grado', ' ii grado', 'tecnico', 'professionale', 'is '];
-        filtrati = filtrati.filter(i => {
-            const titolo = i.titolo.toLowerCase();
-            return kw.some(k => titolo.includes(k)) || (i.cdc && i.cdc.some(c => c.match(/^[A-Z]\d{2}$/) || c === 'ADSS'));
-        });
-    }
+
 
     filtrati.sort((a, b) => {
         let dataA = a.data || ""; let dataB = b.data || "";
@@ -569,6 +583,41 @@ function caricaPezzi(quantita) {
             ? 'bg-apple-parchment text-apple-muted border border-apple-hairline' 
             : 'bg-apple-blue hover:bg-apple-blueFocus text-white shadow-sm';
 
+        // Mappa delle province per il link all'USR (fonte)
+        const MAPPA_USR = {
+            "Ancona": "https://www.istruzione-ancona.it/category/docenti/interpelli/",
+            "Ascoli Piceno": "https://www.uspascolipiceno.it/wordpress/interpelli/",
+            "Fermo": "https://www.uspascolipiceno.it/wordpress/interpelli/",
+            "Macerata": "http://www.uspmc.sinp.net/documenti-uspmc-cms/page/2/?cat-documenti-uspmc=interpelli",
+            "Pesaro Urbino": "https://www.usppesarourbino.it/category/interpelli/",
+            "Genova": "https://www.istruzioneliguria.it/istituti-scolastici-interpelli-per-le-supplenze/",
+            "Imperia": "https://www.istruzioneimperia.gov.it/pagine/interpelli-im---as-2024-2025-1",
+            "La Spezia": "https://www.istruzioneliguria.it/istituti-scolastici-interpelli-per-le-supplenze/",
+            "Savona": "https://www.istruzioneliguria.it/istituti-scolastici-interpelli-per-le-supplenze/",
+            "Massa Carrara": "https://www.ustms.it/category/docenti/interpelli/",
+            "Pistoia": "https://www.ufficioscolasticoprovinciale.pistoia.it/category/docenti/interpelli-docenti/",
+            "Prato": "https://www.ufficioscolasticoprovinciale.prato.it/?s=interpello&submit=",
+            "Firenze": "https://www.ust.fi.it/mese/interpelli/",
+            "Pisa": "https://www.usp-pi.it/category/interpelli/",
+            "Siena": "https://www.uspsi.it/uspsiena/interpelli-docenti/",
+            "Arezzo": "https://www.arezzoistruzione.it/usparezzo/index.php/interpelli",
+            "Livorno": "https://www.ustli.it/usp_livorno/index.php/docenti/interpelli",
+            "Grosseto": "https://www.ufficioscolasticogrosseto.it/uff7/index.php/utilita/interpelli-nazionali-2",
+            "Teramo": "https://www.csateramo.it/wpusp/archive/category/interpello",
+            "Pescara": "https://www.istruzionechietipescara.it/category/dalle-istituzioni-scolatiche/",
+            "Sassari": "https://www.mim.gov.it/web/sassari/interpelli-docenti",
+            "Nuoro": "https://www.mim.gov.it/web/nuoro/interpelli",
+            "Oristano": "https://www.mim.gov.it/web/oristano/notizie",
+            "Cagliari": "https://www.mim.gov.it/web/cagliari/interpelli-docenti-e-personale-educativo",
+            "Sud Sardegna": "https://www.mim.gov.it/web/cagliari/interpelli-docenti-e-personale-educativo",
+            "Viterbo": "https://www.provveditoratostudiviterbo.it/DOCENTI/interpelli/INTERPELLIDOC.htm",
+            "Rieti": "https://www.usp-rieti.it/interpelli/",
+            "Roma": "https://www.atpromaistruzione.it/atp/category/reclutamento/interpelli-personale-docente/",
+            "Frosinone": "https://www.uspistruzione.fr.it/wp2/category/graduatorie/interpello-nazionale",
+            "Latina": "https://www.csalatina.it/interpelli/"
+        };
+        const usrUrl = MAPPA_USR[item.provincia] || `https://www.google.com/search?q=Ambito+Territoriale+${encodeURIComponent(item.provincia)}+interpelli`;
+
         griglia.innerHTML += `
             <article class="rounded-[18px] border border-apple-hairline p-6 flex flex-col transition-all ${classeCard}" aria-label="Interpello ${titoloPulito}">
                 
@@ -583,9 +632,15 @@ function caricaPezzi(quantita) {
                     ${badgeCDC}
                 </div>
                 
-                <a href="${urlSicuro}" target="_blank" rel="noopener noreferrer" class="w-full rounded-full text-[15px] px-4 py-3 text-center transition-transform active:scale-95 font-medium tracking-tightest min-h-[44px] flex items-center justify-center ${stileBottone}">
-                    ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
-                </a>
+                <div class="mt-auto flex flex-col gap-2">
+                    <a href="${urlSicuro}" target="_blank" rel="noopener noreferrer" class="w-full rounded-full text-[15px] px-4 py-3 text-center transition-transform active:scale-95 font-medium tracking-tightest min-h-[44px] flex items-center justify-center ${stileBottone}">
+                        ${scaduto ? 'Avviso Chiuso' : 'Apri Avviso Ufficiale'}
+                    </a>
+                    
+                    <a href="${usrUrl}" target="_blank" rel="noopener noreferrer" title="Visita la pagina dell'Ufficio Scolastico Territoriale" class="w-full bg-apple-pearl hover:bg-apple-parchment text-apple-muted border border-apple-hairline rounded-full text-[14px] px-4 py-2.5 text-center transition-transform active:scale-95 font-medium tracking-tightest flex items-center justify-center">
+                        <i class="fa-solid fa-university mr-2 opacity-70"></i> Bacheca USR ${provinciaSicura}
+                    </a>
+                </div>
                 
             </article>
         `;

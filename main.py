@@ -8,17 +8,58 @@ DATA_FILE = "database_nazionale.json"
 
 # LISTA DEI MODULI DA ESEGUIRE (Decommenta quelli che desideri testare)
 MODULI_ATTIVI = [
-    "spiders.lombardia",
-    "spiders.piemonte",
-    "spiders.liguria.genova",
-    "spiders.liguria.laspezia",
-    "spiders.liguria.imperia",
-    "spiders.liguria.savona",
-    "spiders.veneto.rovigo",
-    "spiders.veneto.padova",
-    "spiders.veneto.verona",
-    "spiders.veneto.vicenza",
-    "spiders.veneto.treviso"
+    #"spiders.lombardia",
+    #"spiders.piemonte",
+    #"spiders.liguria.genova",
+    #"spiders.liguria.laspezia",
+    #"spiders.liguria.imperia",
+    #"spiders.liguria.savona",
+    #"spiders.veneto.rovigo",
+    #"spiders.veneto.padova",
+    #"spiders.veneto.verona",
+    #"spiders.veneto.vicenza",
+    #"spiders.veneto.treviso",
+    #"spiders.trentino_alto_adige.trento",
+    #"spiders.trentino_alto_adige.bolzano",
+    #"spiders.valle_daosta.aosta",
+    #"spiders.friuli_venezia_giulia.trieste",
+    #"spiders.friuli_venezia_giulia.gorizia",
+    #"spiders.friuli_venezia_giulia.udine",
+    #"spiders.friuli_venezia_giulia.pordenone",
+    #"spiders.molise.isernia",
+    #"spiders.molise.campobasso",
+    #"spiders.basilicata.matera",
+    #"spiders.emilia_romagna.piacenza",
+    #"spiders.emilia_romagna.parma",
+    #"spiders.emilia_romagna.reggio_emilia",
+    #"spiders.emilia_romagna.ferrara",
+    #"spiders.emilia_romagna.ravenna",
+    #"spiders.emilia_romagna.forli_cesena",
+    #"spiders.emilia_romagna.rimini",
+    #"spiders.marche.ascoli_piceno",
+    #"spiders.marche.macerata",
+    #"spiders.marche.ancona",
+    #"spiders.marche.pesaro_urbino",
+    #"spiders.toscana.massa_carrara",
+    #"spiders.toscana.pistoia",
+    #"spiders.toscana.prato",
+    #"spiders.toscana.firenze",
+    #"spiders.toscana.pisa",
+    #"spiders.toscana.siena",
+    #"spiders.toscana.arezzo",
+    #"spiders.toscana.livorno",
+    #"spiders.toscana.grosseto",
+    #"spiders.abruzzo.teramo",
+    #"spiders.abruzzo.pescara",
+    #"spiders.sardegna.sassari",
+    #"spiders.sardegna.nuoro",
+    #"spiders.sardegna.oristano",
+    #"spiders.sardegna.cagliari",
+    #"spiders.lazio.viterbo",
+    #"spiders.lazio.rieti",
+    #"spiders.lazio.roma",
+    #"spiders.lazio.frosinone",
+    "spiders.lazio.latina"
 ]
 
 def is_troppo_vecchio(item):
@@ -35,6 +76,8 @@ def is_troppo_vecchio(item):
             data_obj = datetime.strptime(data_str, '%Y-%m-%d')
             if (oggi - data_obj).days > GIORNI_LIMITE:
                 return True
+            if (data_obj - oggi).days > 30:
+                return True # Evita refusi USR (es. 2026 invece di 2025)
         except:
             pass
 
