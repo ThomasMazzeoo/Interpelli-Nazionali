@@ -142,15 +142,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 function inizializzaMappa() {
     const isMobile = window.innerWidth < 768;
 
+    const boundsItalia = [[35.0, 5.0], [48.0, 20.0]]; // Limiti mappa (anti-dispersione)
+
     map = L.map('map', { 
         zoomControl: false,
         tap: !L.Browser.mobile,
-        bounceAtZoomLimits: false
-    }).setView([41.8719, 12.5674], 6);
+        bounceAtZoomLimits: false,
+        maxBounds: boundsItalia,
+        maxBoundsViscosity: 0.8
+    });
 
-    L.control.zoom({ position: isMobile ? 'topright' : 'bottomright' }).addTo(map);
+    if (isMobile) {
+        map.setView([42.5, 12.5674], 5.5); // Centratura rialzata per la barra inferiore
+    } else {
+        map.setView([41.8719, 12.5674], 6);
+    }
 
-    L.tileLayer('https://{s].basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 10, minZoom: 5 }).addTo(map);
+    if (!isMobile) {
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+    }
+
+    // Aggiungo il tilelayer
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { 
+        maxZoom: 10, 
+        minZoom: 5,
+        bounds: boundsItalia 
+    }).addTo(map);
     caricaLayerRegioni();
 }
 
@@ -164,19 +181,19 @@ async function caricaLayerRegioni() {
         geojsonRegioni = L.geoJSON(data, {
             style: (feature) => ({ 
                 color: "#ffffff", 
-                weight: 1.5, 
+                weight: 2, // Bordo premium
                 fillColor: getColorFromName(feature.properties.reg_name), 
-                fillOpacity: 0.25 
+                fillOpacity: 0.4 // Colori più vibranti
             }),
             onEachFeature: (feature, layer) => {
                 layer.bindTooltip(feature.properties.reg_name, { 
-                    permanent: true, 
+                    permanent: !isMobileDevice, // Nascondi etichette fisse su mobile
                     direction: "center", 
                     className: "clean-label text-apple-ink font-bold text-[12px] uppercase tracking-wider" 
                 });
                 
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.45, weight: 2 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.6, weight: 2.5 }),
                     mouseout: (e) => geojsonRegioni.resetStyle(e.target),
                     click: (e) => clickSuRegione(feature.properties.reg_name, e.target.getBounds())
                 });
@@ -187,7 +204,10 @@ async function caricaLayerRegioni() {
 }
 
 async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
-    if(bounds) map.fitBounds(bounds);
+    if(bounds) {
+        const padBottom = isMobileDevice ? [0, 80] : [0, 0];
+        map.flyToBounds(bounds, { paddingBottomRight: padBottom, duration: 0.8, easeLinearity: 0.25 });
+    }
     selectRegione.value = normalizzaRegione(nomeRegione);
     if (geojsonRegioni) map.removeLayer(geojsonRegioni);
     
@@ -202,19 +222,19 @@ async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
         geojsonProvince = L.geoJSON(provinceRegione, {
             style: (feature) => ({ 
                 color: "#ffffff", 
-                weight: 1.5, 
+                weight: 2, 
                 fillColor: getColorFromName(feature.properties.prov_name), 
-                fillOpacity: 0.3 
+                fillOpacity: 0.45 
             }),
             onEachFeature: (feature, layer) => {
                 layer.bindTooltip(feature.properties.prov_name, { 
-                    permanent: true, 
+                    permanent: !isMobileDevice, 
                     direction: "center", 
                     className: "clean-label text-apple-ink font-bold text-[10px] uppercase tracking-wider" 
                 });
 
                 layer.on({
-                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.55 }),
+                    mouseover: (e) => e.target.setStyle({ fillOpacity: 0.65 }),
                     mouseout: (e) => geojsonProvince.resetStyle(e.target),
                     click: (e) => {
                         const nomeDB = normalizzaProvincia(feature.properties.prov_name);
@@ -237,7 +257,11 @@ async function clickSuRegione(nomeRegione, bounds, forzaJump = false) {
 }
 
 function resetMappa() {
-    map.setView([41.8719, 12.5674], 6);
+    if (isMobileDevice) {
+        map.flyTo([42.5, 12.5674], 5.5, { duration: 0.8 });
+    } else {
+        map.flyTo([41.8719, 12.5674], 6, { duration: 0.8 });
+    }
     selectRegione.value = "";
     selectProvincia.innerHTML = '<option value="">-- Prima seleziona una Regione --</option>';
     selectProvincia.disabled = true;
