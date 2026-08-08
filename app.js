@@ -707,6 +707,11 @@ function mostraVistaMobile(vista) {
         }
         if (backdrop) backdrop.classList.remove('hidden');
         if (mapContainer) mapContainer.classList.add('pointer-events-none');
+        
+        const btnMostraRisultatiMappa = document.getElementById('btnMostraRisultatiMappa');
+        if(btnMostraRisultatiMappa) btnMostraRisultatiMappa.style.display = 'none';
+        const btnResetMappa = document.getElementById('btnResetMappa');
+        if(btnResetMappa) btnResetMappa.style.display = 'none';
 
     } else { // 'mappa'
         if (leftSidebar) leftSidebar.classList.add('hidden');
@@ -720,6 +725,12 @@ function mostraVistaMobile(vista) {
         }
         if (backdrop) backdrop.classList.add('hidden');
         if (mapContainer) mapContainer.classList.remove('pointer-events-none');
+        
+        const btnMostraRisultatiMappa = document.getElementById('btnMostraRisultatiMappa');
+        if(btnMostraRisultatiMappa) btnMostraRisultatiMappa.style.display = '';
+        const btnResetMappa = document.getElementById('btnResetMappa');
+        if(btnResetMappa) btnResetMappa.style.display = '';
+
         setTimeout(() => { if (map) map.invalidateSize(); }, 100);
     }
 }
