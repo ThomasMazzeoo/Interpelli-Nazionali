@@ -494,11 +494,25 @@ function applicaFiltri(apriPannelloEsplicito = false) {
     // 🎯 PUNTO 6: AGGIORNA IL PULSANTE FLUTTUANTE SULLA MAPPA "VEDI X INTERPELLI"
     const nomeZona = prov && prov !== "TUTTE" ? prov : (reg ? reg : "Italia");
     if (testoBtnRisultatiMappa && btnMostraRisultatiMappa) {
+        
+        btnMostraRisultatiMappa.classList.remove('btn-status-red', 'btn-status-orange', 'btn-status-green');
+
         if (conteggioInZona > 0) {
             testoBtnRisultatiMappa.textContent = `Vedi ${conteggioInZona} Interpelli in ${nomeZona}`;
+            
+            // Se c'è almeno un interpello con la data definita, diventa verde, altrimenti arancione
+            const haDatiValidi = risultatiCorrenti.some(i => i.data && i.data.trim() !== "");
+            
+            if (haDatiValidi) {
+                btnMostraRisultatiMappa.classList.add('btn-status-green');
+            } else {
+                btnMostraRisultatiMappa.classList.add('btn-status-orange');
+            }
+            
             btnMostraRisultatiMappa.classList.remove('hidden');
         } else {
             testoBtnRisultatiMappa.textContent = `Nessun Interpello in ${nomeZona}`;
+            btnMostraRisultatiMappa.classList.add('btn-status-red');
             btnMostraRisultatiMappa.classList.remove('hidden');
         }
     }

@@ -104,3 +104,8 @@
     outline: none !important;
     -webkit-tap-highlight-color: transparent !important;
 }
+
+/* Colori dinamici per il pulsante fluttuante sulla mappa */
+.btn-status-red { background-color: rgba(239, 68, 68, 0.9) !important; box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4) !important; }
+.btn-status-orange { background-color: rgba(249, 115, 22, 0.9) !important; box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4) !important; }
+.btn-status-green { background-color: rgba(34, 197, 94, 0.9) !important; box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4) !important; }
