@@ -29,7 +29,7 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add database_nazionale.json
+          git add database_nazionale.json sitemap.xml robots.txt
           
           # Se il database_nazionale.json ha subito modifiche, fa il commit. 
           # Fa un rebase per non sovrascrivere eventuali modifiche frontend fatte da te nel frattempo, e poi pusha.
