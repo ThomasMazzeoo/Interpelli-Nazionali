@@ -1,35 +1,5 @@
 [
     {
-        "regione": "Lazio",
-        "provincia": "Roma",
-        "titolo": "Interpelli per la selezione del personale docente ADEE-EEEE",
-        "data": "2026-07-28",
-        "cdc": [
-            "ADEE",
-            "EEEE"
-        ],
-        "url": "https://www.atpromaistruzione.it/atp/2026/07/interpelli-per-la-selezione-del-personale-docente-adee-eeee-33/",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-08T18:21:22.690699"
-    },
-    {
-        "regione": "Lazio",
-        "provincia": "Roma",
-        "titolo": "Interpelli per la selezione del personale docente AAAA-ADAA-ADEE-EEEE",
-        "data": "2026-07-24",
-        "cdc": [
-            "AAAA",
-            "ADAA",
-            "ADEE",
-            "EEEE"
-        ],
-        "url": "https://www.atpromaistruzione.it/atp/2026/07/interpelli-per-la-selezione-del-personale-docente-aaaa-adaa-adee-eeee-35/",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-08T18:21:22.690699"
-    },
-    {
         "regione": "Sardegna",
         "provincia": "Sassari",
         "titolo": "Individuazione tramite interpello esterno per soli titoli per il conferimento dell’incarico di n. 1 docente di matematica per corso di recupero - I.I.S. GIUSEPPE GARIBALDI - LA MADDALENA",
@@ -1820,19 +1790,6 @@
         "pdf_links": [],
         "form_links": [],
         "data_rilevamento": "2026-08-03T13:54:15.886645"
-    },
-    {
-        "regione": "Liguria",
-        "provincia": "Genova",
-        "titolo": "ISTITUTO DI CULTURA E LINGUE MARCELLINE",
-        "data": "2026-07-24",
-        "cdc": [
-            "AM48"
-        ],
-        "url": "mailto:personale_genova@libero.it",
-        "pdf_links": [],
-        "form_links": [],
-        "data_rilevamento": "2026-08-03T13:54:24.341455"
     },
     {
         "regione": "Liguria",
